@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./Question.module.css";
 
 function Question() {
   return (
