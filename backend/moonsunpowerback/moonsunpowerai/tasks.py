@@ -6,21 +6,7 @@ import os
 from django.utils import timezone
 
 @shared_task
-def generate_and_save_text():
-    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
-
-    prompt_content = [
-                {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": f"Generate a unique educational text for {timezone.now().strftime('%Y-%m-%d')}"
-                        }
-                    ]
-                }
-            ]
-            
+def generate_and_save_text():            
     client = OpenAI( api_key=os.environ.get("OPENAI_API_KEY"))
     response = client.chat.completions.create(
     model="gpt-4o",
@@ -30,7 +16,7 @@ def generate_and_save_text():
         "content": [
             {
             "type": "text",
-            "text": "make a educational text.\ndo not use paragraph titles.\ncreate it into json format, like\n{'paragraph1': 'text'}"
+            "text": "make a educational text.\ndo not use paragraph titles.\ncreate it into json format, like\n{'paragraph1': 'text'}\nwrite it into korean"
             }
         ]
         }
