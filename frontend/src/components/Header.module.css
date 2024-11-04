@@ -1,0 +1,55 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 60px;
+  background-color: #ffeaea; /* 다른 페이지에서는 핑크색 */
+  box-sizing: border-box;
+}
+
+/* Home 페이지에서 투명한 헤더 스타일 */
+.homeHeader {
+  background-color: transparent; /* 투명 배경 */
+  position: absolute; /* 공간 차지하지 않도록 설정 */
+  box-shadow: none;
+}
+.logoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e40046;
+}
+
+.nav {
+  display: flex;
+  gap: 30px;
+  margin-right: 50px;
+}
+
+.navLink {
+  text-decoration: none;
+  font-size: 18px;
+  color: #333;
+  font-weight: bold;
+}
+
+.navLink:hover {
+  color: #e40046;
+}

@@ -1,23 +1,156 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: auto;
+}
+
+header,
+.container {
+  margin: 0; /* 헤더와 컨테이너의 여백을 0으로 설정 */
+}
+
+/* Home 페이지 배경 그라데이션 적용 */
+.container {
+  text-align: center;
+  background: linear-gradient(to bottom, #fff8f7, #ffafa6);
+  width: 100%;
+  height: 100vh; /* 약간 줄여서 오차 방지 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.logoContainer {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .title {
-  font-size: 24px;
+  font-size: 70px;
+  font-weight: bold;
   color: #333;
+  text-shadow: 2px 2px #ccc;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 30px;
+  color: #666;
+  margin-bottom: 100px;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .startButton {
-  position: absolute;
-  bottom: 5%;
-  left: 10%;
-  width: 50%;
-  background-color: #ff6b6b;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  background-color: #ff5f5f;
   color: white;
+  width: 300px;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1em;
+  border-radius: 25px;
   cursor: pointer;
-  font-size: 16px;
-  text-decoration: none;
+  margin: 10px 0;
+  transition: background-color 0.3s;
 }
 
 .startButton:hover {
-  background-color: #ff4b4b;
+  background-color: #ff3f3f;
+}
+
+.questionButton {
+  background-color: #fff;
+  color: #ff5f5f;
+  border: 2px solid #ff5f5f;
+  width: 300px;
+  padding: 15px 30px;
+  font-size: 1em;
+  border-radius: 25px;
+  cursor: pointer;
+  margin: 10px 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.questionButton:hover {
+  background-color: #ffebeb;
+  color: #ff3f3f;
+}
+
+.logo {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  z-index: 1000;
+  width: 100px;
+  height: 100px;
+}
+
+/* Modal Styles */
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modalContent {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  height: 70%;
+  display: flex;
+  flex-direction: row; /* 가로 정렬 */
+  align-items: center;
+  position: relative;
+}
+
+.modalButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* 버튼과 이미지 사이의 간격 조절 */
+}
+
+.modalImage {
+  width: 80%;
+  object-fit: contain;
+  height: auto;
+  border-radius: 10px;
+}
+
+.arrowButton {
+  padding: 20px; /* 버튼 패딩을 키워 크기 조정 */
+  font-size: 18px; /* 폰트 크기를 키워 버튼의 가시성을 높임 */
+
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
