@@ -188,3 +188,8 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 backend/moonsunpowerback/secrets.json
+backend/moonsunpowerback/moonsunpowerai/migrations/0001_initial.py
+backend/moonsunpowerback/moonsunpowerai/migrations/*
+backend/moonsunpowerback/celerybeat-schedule.bak
+backend/moonsunpowerback/celerybeat-schedule.dat
+backend/moonsunpowerback/celerybeat-schedule.dir

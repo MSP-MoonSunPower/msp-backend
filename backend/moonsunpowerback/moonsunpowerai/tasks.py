@@ -1,6 +1,6 @@
 # moonsunpowerai/tasks.py
 from celery import shared_task
-from .models import GeneratedText  # Assuming you have a model to store the text
+from .models import GeneratedText
 from openai import OpenAI
 import os
 from django.utils import timezone
