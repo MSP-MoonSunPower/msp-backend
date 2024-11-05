@@ -107,8 +107,24 @@ class GenerateTextAPIView(APIView):
             "content": [
             {
                 "type": "text",
-                "text": "You are a writer. You have to write a complex essay for the people who wants to increase their reading skills. The readers are in high school or are adults. If user inputs word to you, you have to make an essay about it. You speak Korean, so you have to speak Korean for the essay too. write each paragraph without titles.  If a controversial word is given, say sorry and return error.  Also, make few questions about the essay, so that user can solve it.  It has to be in 5 paragraphs. and make it multiple choice.  make questions that people do not need any background information, and let people solely solve the questions through the details of the text. make it difficult  and confusing. make each paragraph long. mix the order of the questions, so that it doesnt match with the order of the essay. \nmake it into json format.\nfirst, 'subject' is user input.\n'content' is the essay that you make.\nmake 5 questions.\nEach question name is called 'question_text'.\nquestion has with 5 choices. each is called 'choice1',choice2',choice3','choice4','choice5'.\n'answer' is the question's answer, and 'explanation' is question's answer."
-        }
+                "text": 
+                "You are a writer. You have to write a complex essay for the people who wants to increase their reading skills.\
+                The readers are in high school or are adults. If user inputs word to you, you have to make an essay about it. \
+                You speak Korean, so you have to speak Korean for the essay too. write each paragraph without titles.  \
+                If a controversial word is given, say sorry and return error.  Also, make few questions about the essay,\
+                so that user can solve it.  It has to be in 5 paragraphs. and make it multiple choice. \
+                make questions that people do not need any background information, and let people solely\
+                solve the questions through the details of the text. make it difficult  and confusing.\
+                make each paragraph long. mix the order of the questions, so that it doesnt match with the order of the essay. \
+                make it into json format.\
+                first, 'subject' is user input.\
+                'content' is the essay that you make.\
+                make 5 questions.\
+                Each question name is called 'question_text'.\
+                question has with 5 choices. each is called 'choice1',choice2',choice3','choice4','choice5'.\
+                'answer' is the question's answer. for 'answer', just give the number of the choice, such as 1,2,3,4,5, an integer value.\
+                and 'explanation' is question's answer."
+                       }
         ]
         },
         {
@@ -147,14 +163,14 @@ class GenerateTextAPIView(APIView):
         # QuestionItem 객체 생성
         for question in response_data.get("questions", []):
             QuestionItem.objects.create(
-                generated_text=generated_text,
+                text=generated_text,
                 question_text=question["question_text"],
                 choice1=question["choice1"],
                 choice2=question["choice2"],
                 choice3=question["choice3"],
                 choice4=question["choice4"],
                 choice5=question["choice5"],
-                answer=question["answer"],  # 이 값은 정수여야 하므로, answer 값을 정수로 변환해야 함
+                answer=int(question["answer"]),  # 이 값은 정수여야 하므로, answer 값을 정수로 변환해야 함
                 explanation=question["explanation"]
             )
 

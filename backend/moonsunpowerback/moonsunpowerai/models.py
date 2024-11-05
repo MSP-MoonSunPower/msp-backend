@@ -13,7 +13,7 @@ class QuestionItem(models.Model):
     choice5= models.CharField(max_length=255)  # 다섯 번째 선택지
     answer = models.IntegerField(
         choices=[(1, "Choice 1"), (2, "Choice 2"), (3, "Choice 3"), (4, "Choice 4"),(5, "Choice 5")],
-        help_text="Enter the correct choice number (1 to 4)"
+        help_text="Enter the correct choice number (1 to 5)"
     )
     explanation = models.TextField()          # 해설
 
