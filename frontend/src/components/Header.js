@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 import logo from "../logo.jpg"; // 로고 이미지 경로에 맞게 조정 필요
 
 function Header({ isHomePage }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // 기본값을 false로 설정
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,7 +45,7 @@ function Header({ isHomePage }) {
           </Link>
         ) : (
           <Link to="/login" onClick={handleLogin} className={styles.navLink}>
-            Log in
+            Login
           </Link>
         )}
       </nav>
