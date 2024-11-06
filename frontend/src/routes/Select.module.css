@@ -1,7 +1,7 @@
 .container {
   text-align: center;
   width: 100%;
-  height: 100vh; /* 약간 줄여서 오차 방지 */
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,6 +23,7 @@
   border: none;
   cursor: pointer;
   margin-bottom: 30px;
+  transition: all 0.3s ease;
 }
 
 .difficultyButton:nth-child(1) {
@@ -31,6 +32,7 @@
 
 .difficultyButton:nth-child(1):hover {
   background-color: #eeecaa;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .difficultyButton:nth-child(2) {
@@ -39,6 +41,7 @@
 
 .difficultyButton:nth-child(2):hover {
   background-color: #c2e8ac;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .difficultyButton:nth-child(3) {
@@ -47,14 +50,21 @@
 
 .difficultyButton:nth-child(3):hover {
   background-color: #94b5e5;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .difficultyButton:nth-child(4) {
   background-color: #ff3b3b;
+  color: white;
 }
 
 .difficultyButton:nth-child(4):hover {
   background-color: #cc5151;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.selected {
+  border: 3px solid #000000;
 }
 
 .topicInput {
@@ -83,13 +93,20 @@
   background-color: #ffe2e2;
   border-radius: 10px;
   font-size: 0.9em;
-  flex: 1; /* 자동으로 같은 너비 */
+  flex: 1;
   max-width: 100px;
   text-align: center;
+  transition: all 0.3s ease;
 }
 
 .tag:hover {
   background-color: #ffb3b3;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.selectedTag {
+  border: 2px solid #ff5f5f;
+  background-color: #ffd1d1;
 }
 
 .buttons {
@@ -108,6 +125,11 @@
   padding: 15px 0;
   width: 200px;
   cursor: pointer;
+  margin-right: 10px;
+}
+
+.startButton:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .questionButton {
@@ -120,4 +142,8 @@
   padding: 15px 0;
   width: 200px;
   cursor: pointer;
+}
+
+.questionButton:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }

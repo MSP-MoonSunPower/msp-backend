@@ -1,0 +1,156 @@
+.container {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.content {
+  display: flex; /* 지문과 질문을 나란히 배치 */
+  align-items: flex-start; /* 자식 요소들이 위쪽에 정렬되도록 설정 */
+}
+
+.passage {
+  position: relative;
+  width: 60%;
+  padding-right: 50px;
+}
+
+.showPassageButton {
+  position: absolute; /* 절대 위치 설정 */
+  top: 10px; /* 위에서 10px 떨어지게 */
+  right: 30px; /* 오른쪽에서 10px 떨어지게 */
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #f0f0f0; /* 필요에 따라 배경색 추가 */
+}
+
+.showPassageButton:hover {
+  background-color: #fad4d0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.CloseFullPassageBTN {
+  position: absolute; /* 절대 위치 설정 */
+  top: 10px; /* 위에서 10px 떨어지게 */
+  right: 80px; /* 오른쪽에서 10px 떨어지게 */
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+}
+
+.CloseFullPassageBTN:hover {
+  background-color: #fad4d0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.Jimoon {
+  padding-top: 10px;
+  margin-bottom: 15px;
+  line-height: 1.6;
+  text-indent: 20px;
+  user-select: none;
+}
+.questions {
+  width: 40%; /* 질문 너비 */
+  padding-left: 10px;
+  background-color: rgb(251, 253, 255); /* 질문 배경색 */
+  display: flex; /* 질문을 세로로 정렬 */
+  border-left: 2px solid #000000;
+}
+
+.questions ol {
+  padding-left: 30px;
+}
+
+.submitButton {
+  display: block;
+  width: 30%;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-left: auto;
+  margin-right: 5%;
+  margin-top: 20px;
+}
+
+.submitButton:hover {
+  background-color: #ff523f;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.radioBtn {
+  appearance: none; /* 기본 라디오 버튼 스타일 제거 */
+  width: 15px;
+  height: 15px;
+  background-color: #f0f0f0; /* 배경색 */
+  border-radius: 50%; /* 동그라미 대신 다른 모양을 원하면 제거 */
+  display: inline-block;
+  cursor: pointer;
+}
+
+.radioBtn:checked {
+  background-color: #d97676; /* 선택된 상태의 배경색 */
+  border-color: #d97676;
+}
+
+.checked {
+  margin-left: 8px;
+}
+
+.notice {
+  margin-bottom: 10px;
+  color: rgb(94, 94, 94);
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  width: 400px;
+  height: 200px;
+  display: flex;
+  justify-content: center; /* 수평 가운데 정렬 */
+  align-items: center; /* 수직 가운데 정렬 */
+  flex-direction: column;
+}
+.confirmButton,
+.cancelButton {
+  margin: 10px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.confirmButton {
+  background-color: #ffdf5e;
+  color: rgb(17, 17, 17);
+}
+
+.cancelButton {
+  background-color: #6c757d;
+  color: white;
+}
+
+.fullPassage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  padding: 20px;
+  overflow: auto;
+  z-index: 1000; /* 다른 요소 위에 표시 */
+}
