@@ -30,7 +30,9 @@ function Header({ isHomePage }) {
     >
       <div className={styles.logoContainer}>
         <img src={logo} alt="Logo" className={styles.logo} />
-        <span className={styles.title}>MSP</span>
+        <Link to="/" className={styles.link}>
+          <span className={styles.title}>MSP</span>
+        </Link>
       </div>
       <nav className={styles.nav}>
         <Link to="/" className={styles.navLink}>
