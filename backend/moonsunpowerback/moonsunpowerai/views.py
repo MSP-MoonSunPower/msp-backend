@@ -13,10 +13,10 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.exceptions import NotFound
 from .models import Text
-from .serializers import TextSerializer
 from rest_framework import status  
 from .models import Text, GeneratedText, QuestionItem
 import json
+from .prompts import DIFFICULTY_PROMPTS, WORD_DIFFICULTY_PROMPTS
 
     
 load_dotenv()
@@ -89,12 +89,15 @@ class GenerateTextAPIView(APIView):
     """
     View that generates an educational text based on a provided subject.
     """
-
-    def get(self, request, subject, *args, **kwargs):
+    
+    def get(self, request, subject, difficulty, *args, **kwargs):
         # Retrieve 'subject' from request parameters
+        if difficulty not in DIFFICULTY_PROMPTS:
+            return Response({"error": "Invalid difficulty level. Choose a value between 1 and 4."},
+                            status=status.HTTP_400_BAD_REQUEST)
         if not subject:
             return Response({"error": "Subject parameter is required."}, status=status.HTTP_400_BAD_REQUEST)
-
+        prompt_text = DIFFICULTY_PROMPTS[difficulty]
         # Initialize the OpenAI client
         client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
@@ -107,25 +110,9 @@ class GenerateTextAPIView(APIView):
             "content": [
             {
                 "type": "text",
-                "text": 
-                "You are a writer. You have to write a complex essay for the people who wants to increase their reading skills.\
-                The readers are in high school or are adults. If user inputs word to you, you have to make an essay about it. \
-                You speak Korean, so you have to speak Korean for the essay too. write each paragraph without titles.  \
-                If a controversial word is given, say sorry and return error.  Also, make few questions about the essay,\
-                so that user can solve it.  It has to be in 5 paragraphs. and make it multiple choice. \
-                make questions that people do not need any background information, and let people solely\
-                solve the questions through the details of the text. make it difficult  and confusing.\
-                make each paragraph long. mix the order of the questions, so that it doesnt match with the order of the essay. \
-                make it into json format.\
-                first, 'subject' is user input.\
-                'content' is the essay that you make.\
-                make 5 questions.\
-                Each question name is called 'question_text'.\
-                question has with 5 choices. each is called 'choice1',choice2',choice3','choice4','choice5'.\
-                'answer' is the question's answer. for 'answer', just give the number of the choice, such as 1,2,3,4,5, an integer value.\
-                and 'explanation' is question's answer."
-                       }
-        ]
+                "text": prompt_text
+            }
+            ]
         },
         {
         "role": "user",
@@ -154,6 +141,7 @@ class GenerateTextAPIView(APIView):
         # Text 객체 생성
         generated_text = Text.objects.create(
             subject=subject,
+            difficulty=difficulty,
             content=content
         )
 
@@ -174,4 +162,82 @@ class GenerateTextAPIView(APIView):
                 explanation=question["explanation"]
             )
 
-        return Response({"subject": generated_text.subject, "content": generated_text.content}, status=status.HTTP_201_CREATED)
+        return Response({"subject": generated_text.subject, 
+                        "content": generated_text.content,
+                        "difficulty": generated_text.difficulty}, 
+                        status=status.HTTP_201_CREATED)
+
+
+
+class UnknownWordsAPIView(APIView):
+    @swagger_auto_schema(
+        operation_description="Process a list of unknown words with a specified difficulty level.",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'unknown_words': openapi.Schema(
+                    type=openapi.TYPE_ARRAY,
+                    items=openapi.Schema(type=openapi.TYPE_STRING),
+                    description="List of unknown words to define."
+                ),
+                'difficulty': openapi.Schema(
+                    type=openapi.TYPE_INTEGER,
+                    description="Difficulty level (1-4)."
+                ),
+            },
+            required=['unknown_words', 'difficulty'],
+        ),
+        responses={200: "Success", 400: "Invalid input"}
+    )
+    def post(self, request, *args, **kwargs):
+        unknown_words = request.data.get("unknown_words", [])
+        difficulty = request.data.get("difficulty")
+        client = OpenAI()
+        if not unknown_words:
+            return Response({"error": "No words provided"}, status=status.HTTP_400_BAD_REQUEST)
+        if difficulty not in WORD_DIFFICULTY_PROMPTS:
+            return Response({"error": "Invalid difficulty level. Choose a value between 1 and 4."},
+                            status=status.HTTP_400_BAD_REQUEST)
+        prompt_text = WORD_DIFFICULTY_PROMPTS[difficulty]
+        # Initialize the OpenAI client
+        client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+        prompt_input = f"{prompt_text}\nWords: {', '.join(unknown_words)}"
+        
+        # Generate response using OpenAI API
+        response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {
+            "role": "system",
+            "content": [
+            {
+                "type": "text",
+                "text": prompt_text
+            }
+            ]
+        },
+        {
+        "role": "user",
+        "content": [
+            {
+            "type": "text",
+            "text": prompt_input
+            }
+        ]
+        },
+        ],
+        temperature=1,
+        max_tokens=2048,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0,
+        response_format={
+        "type": "json_object"      
+        }
+            
+        )
+
+        content = response.choices[0].message.content
+        response_data = json.loads(content)
+
+        return Response({"definitions": response_data}, status=status.HTTP_200_OK)

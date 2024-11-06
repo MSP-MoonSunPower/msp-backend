@@ -43,6 +43,7 @@ class GeneratedText(models.Model):
 # 사용자가 요청한 주제 기반의 텍스트 모델
 class Text(models.Model):
     subject = models.CharField(max_length=255,null=True,default="")  
+    difficulty=models.IntegerField(null=True, default=3)
     date = models.DateTimeField(default=timezone.now)  # 생성된 날짜
     content = models.TextField()                       # 생성된 텍스트 내용
     created_at = models.DateTimeField(auto_now_add=True)  # 생성된 날짜와 시간
