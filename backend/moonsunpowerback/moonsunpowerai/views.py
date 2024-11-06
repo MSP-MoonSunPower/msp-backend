@@ -16,7 +16,7 @@ from .models import Text
 from rest_framework import status  
 from .models import Text, GeneratedText, QuestionItem
 import json
-from .prompts import DIFFICULTY_PROMPTS, WORD_DIFFICULTY_PROMPTS
+from .prompts import DIFFICULTY_PROMPTS, WORD_DIFFICULTY_PROMPTS, TEXT_LENGTH
 
     
 load_dotenv()
@@ -65,7 +65,7 @@ class TodayTextAPIView(APIView):
                 }
             ],
             temperature=1,
-            max_tokens=2048,
+            max_tokens=4000,
             top_p=1,
             frequency_penalty=0,
             presence_penalty=0,
@@ -98,6 +98,7 @@ class GenerateTextAPIView(APIView):
         if not subject:
             return Response({"error": "Subject parameter is required."}, status=status.HTTP_400_BAD_REQUEST)
         prompt_text = DIFFICULTY_PROMPTS[difficulty]
+        text_length=TEXT_LENGTH[difficulty]
         # Initialize the OpenAI client
         client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
@@ -125,7 +126,7 @@ class GenerateTextAPIView(APIView):
         },
         ],
         temperature=1,
-        max_tokens=2048,
+        max_tokens=text_length,
         top_p=1,
         frequency_penalty=0,
         presence_penalty=0,

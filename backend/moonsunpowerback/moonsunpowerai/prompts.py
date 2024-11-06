@@ -6,6 +6,7 @@ DIFFICULTY_PROMPTS={
 4:"You are a writer. You have to write a complex essay for the people who wants to increase their reading skills.\
     The readers are in high school or are adults. If user inputs word to you, you have to make an essay about it. \
     You speak Korean, so you have to speak Korean for the essay too. write each paragraph without titles.  \
+    make the essay long, try to use maximum length.\
     If a controversial word is given, write it educational. Also, make few questions about the essay,\
     so that user can solve it.  It has to be in 5 paragraphs. and make it multiple choice. \
     make questions that people do not need any background information, and let people solely\
@@ -32,4 +33,11 @@ WORD_DIFFICULTY_PROMPTS = {
         make it into json format.
         each word is 'word' and the definition you give 
         is 'definition.'"""
+}
+
+TEXT_LENGTH={
+    1: 1000,
+    2: 2000,
+    3: 3000,
+    4: 4000,
 }
