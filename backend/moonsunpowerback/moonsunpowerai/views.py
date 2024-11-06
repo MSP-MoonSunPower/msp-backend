@@ -1,23 +1,14 @@
-from openai import OpenAI
-from django.utils import timezone
-from datetime import timedelta
-from django.core.cache import cache
+import os
+import json
+from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
-import os
-from dotenv import load_dotenv
-from pathlib import Path
-from rest_framework import generics
-from rest_framework.response import Response
-from rest_framework.exceptions import NotFound
-from .models import Text
-from rest_framework import status  
+from openai import OpenAI
 from .models import Text, GeneratedText, QuestionItem
-import json
 from .prompts import DIFFICULTY_PROMPTS, WORD_DIFFICULTY_PROMPTS, TEXT_LENGTH
-
+from dotenv import load_dotenv
     
 load_dotenv()
 
@@ -67,6 +58,7 @@ class TodayTextAPIView(APIView):
         
         if latest_text:
             # 관련된 QuestionItems 가져오기
+            data=json.loads(latest_text.content)
             questions = latest_text.question_items.all()
             questions_data = [
                 {
@@ -82,9 +74,8 @@ class TodayTextAPIView(APIView):
                 for question in questions
             ]
             
-            # 최종 응답 데이터 구성
             response_data = {
-                "content": latest_text.content,
+                "content": data["content"],
                 "date": latest_text.date,
                 "questions": questions_data
             }
@@ -145,22 +136,36 @@ class GenerateTextAPIView(APIView):
             
         )
         
-        # Parse the content from the response
-        content = response.choices[0].message.content  # response에서 content 가져오기
+        # Extract the content from the response
+        content_raw = response.choices[0].message.content
+        if not content_raw:
+            return Response({"error": "No content received from OpenAI API"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        # Text 객체 생성
+        if "error" in content_raw:
+            # If there is an error, return it directly
+            return Response({"error": "죄송합니다. 다른 단어를 입력해주세요."}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Parse content JSON
+        try:
+            content_data = json.loads(content_raw)
+        except json.JSONDecodeError:
+            return Response({"error": "Invalid JSON format in API response"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        # Extract main content and questions
+        main_content = content_data.get("content", "")
+        questions = content_data.get("questions", [])
+
+        # Create Text object in the database
         generated_text = Text.objects.create(
             subject=subject,
             difficulty=difficulty,
-            content=content
+            content=main_content  # Save main content
         )
 
-        # Assuming `content` is in JSON format and contains questions
-        response_data = json.loads(content)
-
-        # QuestionItem 객체 생성
-        for question in response_data.get("questions", []):
-            QuestionItem.objects.create(
+        # Save each question as a QuestionItem
+        questions_data = []
+        for question in questions:
+            question_item = QuestionItem.objects.create(
                 text=generated_text,
                 question_text=question["question_text"],
                 choice1=question["choice1"],
@@ -168,16 +173,30 @@ class GenerateTextAPIView(APIView):
                 choice3=question["choice3"],
                 choice4=question["choice4"],
                 choice5=question["choice5"],
-                answer=int(question["answer"]),  # 이 값은 정수여야 하므로, answer 값을 정수로 변환해야 함
+                answer=int(question["answer"]),
                 explanation=question["explanation"]
             )
+            questions_data.append({
+                "question_text": question_item.question_text,
+                "choice1": question_item.choice1,
+                "choice2": question_item.choice2,
+                "choice3": question_item.choice3,
+                "choice4": question_item.choice4,
+                "choice5": question_item.choice5,
+                "answer": question_item.answer,
+                "explanation": question_item.explanation
+            })
 
-        return Response({"subject": generated_text.subject, 
-                        "content": generated_text.content,
-                        "difficulty": generated_text.difficulty}, 
-                        status=status.HTTP_201_CREATED)
+        # Format final response data
+        response_data = {
+            "subject": generated_text.subject,
+            "content": generated_text.content,
+            "date": generated_text.date,
+            "questions": questions_data
+        }
 
-
+        return Response(response_data, status=status.HTTP_200_OK)
+    
 
 class UnknownWordsAPIView(APIView):
     @swagger_auto_schema(
