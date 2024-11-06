@@ -22,69 +22,78 @@ from .prompts import DIFFICULTY_PROMPTS, WORD_DIFFICULTY_PROMPTS, TEXT_LENGTH
 load_dotenv()
 
 class TodayTextAPIView(APIView):
+    """
+    API to fetch the latest generated text entry along with its related question items.
+    """
+
     @swagger_auto_schema(
-        operation_description="Get today's generated text",
-        responses={200: openapi.Response('Success', schema=openapi.Schema(
-            type=openapi.TYPE_OBJECT,
-            properties={
-                'text': openapi.Schema(type=openapi.TYPE_STRING, description='Generated text for today'),
-            }
-        ))}
-    )
-    def get(self, request, *args, **kwargs):
-        # Retrieve 'today_text' from the cache
-        today_text = cache.get('today_text')
-        
-        # If 'today_text' is not in the cache, generate it
-        if today_text is None:
-            # Prompt content to be generated
-            prompt_content = [
-                {
-                    "role": "user",
-                    "content": [
-                        {
-                            "type": "text",
-                            "text": f"Generate a unique educational text for {timezone.now().strftime('%Y-%m-%d')}"
-                        }
-                    ]
+        operation_summary="Get the latest generated text with related questions",
+        operation_description="Fetches the most recent generated text along with associated question items.",
+        responses={
+            200: openapi.Response(
+                description="Successful response",
+                examples={
+                    "application/json": {
+                        "content": "Generated content here...",
+                        "date": "2023-01-01",
+                        "questions": [
+                            {
+                                "question_text": "Sample question?",
+                                "choice1": "Option 1",
+                                "choice2": "Option 2",
+                                "choice3": "Option 3",
+                                "choice4": "Option 4",
+                                "choice5": "Option 5",
+                                "answer": 1,
+                                "explanation": "Sample explanation"
+                            }
+                        ]
+                    }
                 }
+            ),
+            404: openapi.Response(
+                description="No content found",
+                examples={
+                    "application/json": {
+                        "error": "No content found"
+                    }
+                }
+            ),
+        }
+    )
+    def get(self, request):
+        # 가장 최근의 GeneratedText 가져오기
+        latest_text = GeneratedText.objects.order_by('-date').first()
+        
+        if latest_text:
+            # 관련된 QuestionItems 가져오기
+            questions = latest_text.question_items.all()
+            questions_data = [
+                {
+                    "question_text": question.question_text,
+                    "choice1": question.choice1,
+                    "choice2": question.choice2,
+                    "choice3": question.choice3,
+                    "choice4": question.choice4,
+                    "choice5": question.choice5,
+                    "answer": question.answer,
+                    "explanation": question.explanation
+                }
+                for question in questions
             ]
             
-            client = OpenAI( api_key=os.environ.get("OPENAI_API_KEY"))
-            response = client.chat.completions.create(
-            model="gpt-4o",
-            messages=[
-                {
-                "role": "system",
-                "content": [
-                    {
-                    "type": "text",
-                    "text": "make a educational text.\ndo not use paragraph titles.\ncreate it into json format, like\n{'paragraph1': 'text'}"
-                    }
-                ]
-                }
-            ],
-            temperature=1,
-            max_tokens=4000,
-            top_p=1,
-            frequency_penalty=0,
-            presence_penalty=0,
-            response_format={
-                "type": "json_object"
+            # 최종 응답 데이터 구성
+            response_data = {
+                "content": latest_text.content,
+                "date": latest_text.date,
+                "questions": questions_data
             }
-            )
-            
-            # Calculate time remaining until midnight
-            # now = timezone.now()
-            # midnight = (now + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
-            # timeout = (midnight - now).seconds
-
-            # # Store in cache until midnight
-            # cache.set('today_text', today_text, timeout=timeout)
+            return Response(response_data, status=status.HTTP_200_OK)
         
-        return Response(response)
-
-
+        # GeneratedText가 없을 경우
+        return Response({'error': 'No content found'}, status=status.HTTP_404_NOT_FOUND)
+    
+    
 class GenerateTextAPIView(APIView):
     """
     View that generates an educational text based on a provided subject.

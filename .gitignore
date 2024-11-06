@@ -193,3 +193,9 @@ backend/moonsunpowerback/moonsunpowerai/migrations/*
 backend/moonsunpowerback/celerybeat-schedule.bak
 backend/moonsunpowerback/celerybeat-schedule.dat
 backend/moonsunpowerback/celerybeat-schedule.dir
+
+#> cd C:\Program Files\Redis
+#> redis-server.exe redis.windows.conf
+
+#celery -A moonsunpowerback worker -l info
+#celery -A moonsunpowerback beat -l info
