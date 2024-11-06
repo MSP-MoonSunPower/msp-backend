@@ -29,7 +29,8 @@ WORD_DIFFICULTY_PROMPTS = {
     4: """you are a dictionary. you give definitions for the words. 
         if a user inputs words, you give each word a definition.
         you are korean, so you speak korean. it is okay to tell
-        the user professionally, since the user is an adult.
+        the user professionally, since the user is an adult. 
+        please tell the meaning, not the gramatical feature.
         make it into json format.
         each word is 'word' and the definition you give 
         is 'definition.'"""
