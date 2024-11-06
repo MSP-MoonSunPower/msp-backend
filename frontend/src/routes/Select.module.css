@@ -1,0 +1,123 @@
+.container {
+  text-align: center;
+  width: 100%;
+  height: 100vh; /* 약간 줄여서 오차 방지 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.difficultyOptions {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.difficultyButton {
+  width: 100px;
+  height: 100px;
+  font-size: 1.2em;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+.difficultyButton:nth-child(1) {
+  background-color: #fefdd6;
+}
+
+.difficultyButton:nth-child(1):hover {
+  background-color: #eeecaa;
+}
+
+.difficultyButton:nth-child(2) {
+  background-color: #e7ffd9;
+}
+
+.difficultyButton:nth-child(2):hover {
+  background-color: #c2e8ac;
+}
+
+.difficultyButton:nth-child(3) {
+  background-color: #cbe0ff;
+}
+
+.difficultyButton:nth-child(3):hover {
+  background-color: #94b5e5;
+}
+
+.difficultyButton:nth-child(4) {
+  background-color: #ff3b3b;
+}
+
+.difficultyButton:nth-child(4):hover {
+  background-color: #cc5151;
+}
+
+.topicInput {
+  width: 500px;
+  padding: 10px;
+  font-size: 1em;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 30px;
+}
+
+.tagContainer {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  width: 100%;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+}
+
+.tag {
+  padding: 10px 15px;
+  background-color: #ffe2e2;
+  border-radius: 10px;
+  font-size: 0.9em;
+  flex: 1; /* 자동으로 같은 너비 */
+  max-width: 100px;
+  text-align: center;
+}
+
+.tag:hover {
+  background-color: #ffb3b3;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.startButton {
+  background-color: #ff5f5f;
+  color: white;
+  font-size: 1.2em;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+  padding: 15px 0;
+  width: 200px;
+  cursor: pointer;
+}
+
+.questionButton {
+  background-color: #ffe2e2;
+  color: #ff5f5f;
+  font-size: 1.2em;
+  font-weight: bold;
+  border: none;
+  border-radius: 15px;
+  padding: 15px 0;
+  width: 200px;
+  cursor: pointer;
+}

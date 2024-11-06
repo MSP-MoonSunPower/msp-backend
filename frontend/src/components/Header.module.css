@@ -53,3 +53,7 @@
 .navLink:hover {
   color: #e40046;
 }
+
+.link {
+  text-decoration: none;
+}
