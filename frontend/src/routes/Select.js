@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import styles from "./Select.module.css";
 
 function Select() {
   const [difficulty, setDifficulty] = useState(null);
   const [topic, setTopic] = useState("");
+  const [selectedTag, setSelectedTag] = useState(null);
 
   const handleDifficultyClick = (level) => {
     setDifficulty(level);
@@ -11,6 +13,10 @@ function Select() {
 
   const handleTopicChange = (e) => {
     setTopic(e.target.value);
+  };
+
+  const handleTagClick = (tag) => {
+    setSelectedTag(tag);
   };
 
   return (
@@ -70,15 +76,23 @@ function Select() {
           "문학",
           "역사",
         ].map((tag) => (
-          <span key={tag} className={styles.tag}>
+          <span
+            key={tag}
+            className={`${styles.tag} ${
+              selectedTag === tag ? styles.selectedTag : ""
+            }`}
+            onClick={() => handleTagClick(tag)}
+          >
             {tag}
           </span>
         ))}
       </div>
 
       <div className={styles.buttons}>
-        <button className={styles.startButton}>시작하기</button>
-        <button className={styles.questionButton}>오늘의 지문</button>
+        <Link to="/Question">
+          <button className={styles.startButton}>시작하기</button>
+          <button className={styles.questionButton}>오늘의 지문</button>
+        </Link>
       </div>
     </div>
   );

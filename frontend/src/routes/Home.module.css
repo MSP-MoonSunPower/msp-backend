@@ -102,6 +102,12 @@ header,
   height: 100px;
 }
 
+.logo:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+}
+
 /* Modal Styles */
 
 .modalOverlay {
