@@ -2,6 +2,7 @@
   width: 90%;
   margin: 0 auto;
   padding: 20px;
+  position: relative;
 }
 
 .content {
@@ -11,22 +12,52 @@
 
 .passage {
   position: relative;
-  width: 60%;
+  flex: 3;
   padding-right: 50px;
 }
+.questions {
+  flex: 2; /* 질문 너비 */
+  padding-left: 10px;
+  background-color: rgb(251, 253, 255); /* 질문 배경색 */
+  display: flex; /* 질문을 세로로 정렬 */
+}
 
+.container::before {
+  content: "";
+  position: absolute;
+  top: 50px;
+  bottom: 50px;
+  left: 60%; /* .passage 끝에 맞춰 경계선 위치 */
+  width: 1.5px;
+  background-color: #000000;
+}
+
+.BTNs {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: relative; /* 위치 조정 가능하게 설정 */
+  top: -10px; /* 위로 이동 */
+  margin-top: -20px; /* 위쪽 여백 줄이기 */
+  margin-bottom: -10px;
+}
+
+.WordBtn,
 .showPassageButton {
-  position: absolute; /* 절대 위치 설정 */
-  top: 10px; /* 위에서 10px 떨어지게 */
-  right: 30px; /* 오른쪽에서 10px 떨어지게 */
   padding: 8px 16px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #f0f0f0; /* 필요에 따라 배경색 추가 */
+  background-color: #f0f0f0;
+  margin-left: 10px; /* 버튼 간 여백 설정 */
 }
 
 .showPassageButton:hover {
+  background-color: #c8c0fd;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.WordBtn:hover {
   background-color: #fad4d0;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
@@ -48,21 +79,15 @@
 }
 .Jimoon {
   padding-top: 10px;
+  margin-right: 10px;
   margin-bottom: 15px;
   line-height: 1.6;
   text-indent: 20px;
-  user-select: none;
-}
-.questions {
-  width: 40%; /* 질문 너비 */
-  padding-left: 10px;
-  background-color: rgb(251, 253, 255); /* 질문 배경색 */
-  display: flex; /* 질문을 세로로 정렬 */
-  border-left: 2px solid #000000;
 }
 
 .questions ol {
   padding-left: 30px;
+  line-height: 1.6;
 }
 
 .submitButton {
@@ -153,4 +178,86 @@
   padding: 20px;
   overflow: auto;
   z-index: 1000; /* 다른 요소 위에 표시 */
+}
+
+.FullJimoon {
+  justify-content: center; /* 수평 가운데 정렬 */
+  margin-left: 5%;
+  margin-right: 8%;
+  line-height: 1.6;
+  text-indent: 20px;
+  margin-top: 50px;
+}
+
+/*실제 모달의 내용이 표시되는 부분이야. 모달 창의 본문을 구성*/
+.modalContent {
+  background-color: #fffde7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+  width: 50%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  line-height: 0.1;
+  position: absolute;
+  top: 5%; /* 수직 위치 */
+  right: -60%; /* 오른쪽에서 5% 떨어지게 */
+  overflow: hidden;
+}
+
+.modalHeader {
+  position: sticky;
+  background-color: #fffde7; /* 배경색을 모달과 맞추기 */
+  padding-top: 5px;
+  padding-bottom: 25px;
+  top: -10%;
+  font-weight: bold;
+  text-align: center;
+  z-index: 1;
+  border-bottom: 2px solid black;
+}
+
+.wordList {
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  flex: 1; /* 남은 공간을 채우도록 설정 */
+  overflow-y: auto; /* 내용이 많을 때 스크롤 추가 */
+}
+
+.wordItem {
+  margin-bottom: 10px; /* 항목 사이의 간격 줄이기 */
+  display: flex;
+  align-items: center; /* 버튼과 텍스트를 수직으로 맞추기 */
+}
+
+.deleteButton {
+  margin-left: 8px;
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+}
+
+.closeButton {
+  background-color: #fff;
+  color: #ff5f5f;
+  border: 2px solid #ff5f5f;
+  width: 100px;
+  height: 30px;
+  font-size: 1em;
+  border-radius: 10px;
+  cursor: pointer;
+  align-self: center;
+  margin-top: 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.closeButton:hover {
+  background-color: #ffebeb;
+}
+
+.highlight {
+  background-color: rgb(253, 252, 170);
 }

@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import styles from "./Question.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Question = () => {
   const [selectedAnswers, setSelectedAnswers] = useState(Array(5).fill(null));
-  const [showPopup, setShowPopup] = useState(false); // 팝업창 상태
-  const navigate = useNavigate(); // 페이지 이동을 위한 네비게이트
+  const [showPopup, setShowPopup] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [highlightedWords, setHighlightedWords] = useState([]); // 하이라이트된 단어들
+  const [highlightedText, setHighlightedText] = useState(""); // 하이라이트된 텍스트
+  const navigate = useNavigate();
+  const [showFullPassage, setShowFullPassage] = useState(false);
 
-  const [showFullPassage, setShowFullPassage] = useState(false); // 지문만 보기
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const handleOptionChange = (questionIndex, answer) => {
     const updatedAnswers = [...selectedAnswers];
@@ -16,16 +21,14 @@ const Question = () => {
   };
 
   const handleSubmit = () => {
-    setShowPopup(true); // 팝업창 표시
+    setShowPopup(true);
   };
 
   const handleConfirm = () => {
-    // "확인" 버튼을 누르면 Solution.js로 이동
     navigate("/Solution");
   };
 
   const handleCancel = () => {
-    // "취소" 버튼을 누르면 팝업창 닫기
     setShowPopup(false);
   };
 
@@ -37,29 +40,75 @@ const Question = () => {
     setShowFullPassage(false);
   };
 
+  // 단어 하이라이트 및 저장 기능
+  const handleMouseUp = () => {
+    const selection = window.getSelection();
+    const text = selection.toString().trim();
+
+    if (text && !highlightedWords.includes(text)) {
+      setHighlightedWords((prevWords) => [...prevWords, text]);
+      highlightSelectedText();
+    }
+  };
+
+  // 하이라이트 기능
+  const highlightSelectedText = () => {
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) {
+      const range = selection.getRangeAt(0);
+      const span = document.createElement("span");
+      span.className = styles.highlight; // CSS 클래스 추가
+      span.textContent = selection.toString();
+      range.deleteContents();
+      range.insertNode(span);
+      selection.removeAllRanges();
+    }
+  };
+
+  // 단어 삭제 기능
+  const handleDeleteWord = (index) => {
+    setHighlightedWords((prevWords) => prevWords.filter((_, i) => i !== index));
+  };
+
   const questions = [
     {
-      question: "1. 순대국밥의 주요 재료는 무엇인가요?",
-      options: ["치킨", "돼지고기와 순대", "생선", "소고기", "야채"],
+      question: "루프트한자가 설립된 해는 언제인가요?",
+      options: ["1910", "1926", "1945", "1953", "1960"],
     },
     {
-      question: "순대는 무엇으로 만들어지나요?",
-      options: ["꽃", "밀가루", "돼지 창자, 찹쌀, 야채", "치즈", "과일"],
+      question: "루프트한자의 본사는 어느 도시에 위치해 있나요?",
+      options: ["베를린", "뮌헨", "프랑크푸르트", "함부르크", "쾰른"],
     },
     {
-      question: "순대국밥은 어떤 날씨에 특히 좋을까요?",
+      question:
+        "스타 얼라이언스와 관련하여 루프트한자는 어떤 역할을 하고 있나요?",
       options: [
-        "더운 날",
-        "비 오는 날",
-        "추운 날",
+        "회원이 아닌 독립 항공사",
+        "스타 얼라이언스를 탈퇴한 항공사",
+        "창립 멤버",
         "바람이 부는 날",
-        "건조한 날",
+        "비공식 파트너",
       ],
+    },
+    {
+      question: "루프트한자는 어떤 방법으로 환경 보호에 기여하고 있나요?",
+      options: [
+        "더 많은 항공편을 운영하여 상업적 이익 증가",
+        "오래된 항공기 유지",
+        "최신 항공기 도입과 연료 효율성 기술 사용",
+        "서비스 품질 개선에 중점",
+        "내부 비용 절감을 위한 조치",
+      ],
+    },
+    {
+      question:
+        "루프트한자가 두 시기로 나뉜 것 중 제2차 세계대전 이후의 시기는 몇 년부터 시작됐나요?",
+      options: ["1926년", "1945년", "1953년", "1980년", "2000년"],
     },
   ];
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onMouseUp={handleMouseUp}>
       <div className={styles.content}>
         {!showFullPassage ? (
           <div className={styles.passage}>
@@ -69,29 +118,71 @@ const Question = () => {
             <div style={{ fontWeight: "bold" }}>
               [1-5] 다음 글을 읽고 질문에 답하시오.
             </div>
-            <button
-              onClick={handleShowFullPassage}
-              className={styles.showPassageButton}
-            >
-              지문만 보기
-            </button>
+            <div className={styles.BTNs}>
+              <button className={styles.WordBtn} onClick={openModal}>
+                모르는 단어
+              </button>
+              <button
+                onClick={handleShowFullPassage}
+                className={styles.showPassageButton}
+              >
+                지문만 보기
+              </button>
+            </div>
+
+            {isModalOpen && (
+              <div className={styles.modalOverlay} onClick={closeModal}>
+                <div
+                  className={styles.modalContent}
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <h3 className={styles.modalHeader}>모르는 단어</h3>
+                  <ul className={styles.wordList}>
+                    {highlightedWords.map((word, index) => (
+                      <li key={index} className={styles.wordItem}>
+                        {index + 1}. {word}
+                        <button
+                          onClick={() => handleDeleteWord(index)}
+                          className={styles.deleteButton}
+                        >
+                          X
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                  <button onClick={closeModal} className={styles.closeButton}>
+                    닫기
+                  </button>
+                </div>
+              </div>
+            )}
+
             <div className={styles.Jimoon}>
               <p>
-                순대국밥은 한국에서 사랑받는 전통 음식이에요. 따뜻한 국물과 함께
-                밥을 먹는 요리로, 주로 순대와 돼지고기가 들어 있어요. 순대는
-                찹쌀과 야채를 돼지 창자에 넣어 만든 음식이랍니다.
+                루프트한자(Lufthansa)는 독일의 대표적인 항공사로, 세계적으로도
+                잘 알려진 항공사 중 하나입니다. 이 항공사는 1926년에
+                설립되었으며, 본사는 독일의 프랑크푸르트에 위치하고 있습니다.
+                루프트한자는 유럽은 물론 전 세계를 연결하는 항공 노선을 운영하고
+                있으며, 국제 항공업계에서 중요한 위치를 차지하고 있습니다.
+                루프트한자의 역사는 두 부분으로 나눌 수 있습니다.
               </p>
               <p>
-                {" "}
-                순대국밥은 추운 날씨에 먹으면 몸을 따뜻하게 해 줘요. 국물은
-                진하고 깊은 맛이 나고, 다양한 재료들이 함께 어우러져서
-                맛있답니다. 사람들이 각자 입맛에 맞게 소금이나 새우젓을 더 넣어
-                먹을 수도 있어요.{" "}
+                첫 번째는 1926년부터 1945년까지의 초기 시기이고, 두 번째는 제2차
+                세계대전 이후인 1953년부터 현재까지의 현대 시기입니다. 초기
+                시기에는 주로 유럽 내 단거리 운항을 주로 하였고, 대전 이후에는
+                국제선 운항이 확대되었습니다. 현대의 루프트한자는 300대 이상의
+                항공기를 보유하고 있으며, 스타 얼라이언스(Star Alliance)의 창립
+                회원국 중 하나로서, 많은 다른 국제 항공사들과 연합하여 고객에게
+                더욱 다양한 목적지를 제공하고 있습니다.
               </p>
               <p>
-                이 음식은 한국의 여러 식당에서 쉽게 찾아볼 수 있고, 특히
-                아침이나 점심으로 많이 먹는답니다. 든든하고 영양가가 높은
-                순대국밥, 기회가 되면 꼭 한번 맛보세요!
+                루프트한자의 서비스는 높은 수준의 안전성과 편안함으로 잘 알려져
+                있습니다. 비즈니스 클래스와 일등석에서는 더욱 특별한 서비스와
+                편안한 좌석을 제공하여, 고객의 만족도를 높이고자 노력하고
+                있습니다. 또한, 지속 가능한 항공 업계를 위해 다양한 환경 보호
+                정책을 시행하고 있습니다. 최신 항공기 도입과 연료 효율성을
+                높이는 기술을 사용하여 탄소 배출량을 줄이려는 노력을 계속하고
+                있습니다.
               </p>
             </div>
           </div>
@@ -103,23 +194,32 @@ const Question = () => {
             >
               문제로 돌아가기
             </button>
-            <div className={styles.Jimoon}>
+            <div className={styles.FullJimoon}>
               <p>
-                순대국밥은 한국에서 사랑받는 전통 음식이에요. 따뜻한 국물과 함께
-                밥을 먹는 요리로, 주로 순대와 돼지고기가 들어 있어요. 순대는
-                찹쌀과 야채를 돼지 창자에 넣어 만든 음식이랍니다.
+                루프트한자(Lufthansa)는 독일의 대표적인 항공사로, 세계적으로도
+                잘 알려진 항공사 중 하나입니다. 이 항공사는 1926년에
+                설립되었으며, 본사는 독일의 프랑크푸르트에 위치하고 있습니다.
+                루프트한자는 유럽은 물론 전 세계를 연결하는 항공 노선을 운영하고
+                있으며, 국제 항공업계에서 중요한 위치를 차지하고 있습니다.
+                루프트한자의 역사는 두 부분으로 나눌 수 있습니다.
               </p>
               <p>
-                {" "}
-                순대국밥은 추운 날씨에 먹으면 몸을 따뜻하게 해 줘요. 국물은
-                진하고 깊은 맛이 나고, 다양한 재료들이 함께 어우러져서
-                맛있답니다. 사람들이 각자 입맛에 맞게 소금이나 새우젓을 더 넣어
-                먹을 수도 있어요.{" "}
+                첫 번째는 1926년부터 1945년까지의 초기 시기이고, 두 번째는 제2차
+                세계대전 이후인 1953년부터 현재까지의 현대 시기입니다. 초기
+                시기에는 주로 유럽 내 단거리 운항을 주로 하였고, 대전 이후에는
+                국제선 운항이 확대되었습니다. 현대의 루프트한자는 300대 이상의
+                항공기를 보유하고 있으며, 스타 얼라이언스(Star Alliance)의 창립
+                회원국 중 하나로서, 많은 다른 국제 항공사들과 연합하여 고객에게
+                더욱 다양한 목적지를 제공하고 있습니다.
               </p>
               <p>
-                이 음식은 한국의 여러 식당에서 쉽게 찾아볼 수 있고, 특히
-                아침이나 점심으로 많이 먹는답니다. 든든하고 영양가가 높은
-                순대국밥, 기회가 되면 꼭 한번 맛보세요!
+                루프트한자의 서비스는 높은 수준의 안전성과 편안함으로 잘 알려져
+                있습니다. 비즈니스 클래스와 일등석에서는 더욱 특별한 서비스와
+                편안한 좌석을 제공하여, 고객의 만족도를 높이고자 노력하고
+                있습니다. 또한, 지속 가능한 항공 업계를 위해 다양한 환경 보호
+                정책을 시행하고 있습니다. 최신 항공기 도입과 연료 효율성을
+                높이는 기술을 사용하여 탄소 배출량을 줄이려는 노력을 계속하고
+                있습니다.
               </p>
             </div>
           </div>
@@ -153,7 +253,6 @@ const Question = () => {
         답안 제출하기
       </button>
 
-      {/* 팝업창 */}
       {showPopup && (
         <div className={styles.popup}>
           <p>정말 제출하시겠습니까?</p>

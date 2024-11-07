@@ -53,7 +53,7 @@ function Select() {
           }`}
           onClick={() => handleDifficultyClick("달인")}
         >
-          달인
+          지옥
         </button>
       </div>
 
