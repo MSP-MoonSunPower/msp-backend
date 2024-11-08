@@ -147,12 +147,13 @@ WORD_DIFFICULTY_PROMPTS = {
         please tell the meaning, not the gramatical feature.
         make it into json format.
         each word is 'word' and the definition you give 
-        is 'definition.'"""
+        is 'definition.'create it for each word.
+        if you do not know, create the definition part to 'error'."""
 }
 
 TEXT_LENGTH={
-    1: 16883,
-    2: 16883,
-    3: 16883,
-    4: 16883,
+    1: 16000,
+    2: 16000,
+    3: 16000,
+    4: 16000,
 }
