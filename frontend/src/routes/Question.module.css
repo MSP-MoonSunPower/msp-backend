@@ -261,3 +261,27 @@
 .highlight {
   background-color: rgb(253, 252, 170);
 }
+
+.Timer {
+  font-size: 12px;
+  margin-right: 30px;
+  position: absolute; /* 위치를 고정시키기 위해 사용 */
+  top: -10px; /* 원하는 위치에 따라 값을 조정 */
+  /* 오른쪽으로 고정 */
+  display: flex;
+  align-items: center;
+  right: 30px;
+}
+
+.timerBTN {
+  position: absolute; /* 위치를 고정시키기 위해 사용 */
+  top: 10px; /* 원하는 위치에 따라 값을 조정 */
+  right: -20px;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #ffe0e0;
+  margin-left: 10px;
+  font-weight: bold;
+}

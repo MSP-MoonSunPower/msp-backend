@@ -49,17 +49,6 @@ function Home() {
           </button>
         </Link>
       </div>
-      <div style={{ marginTop: "30px", fontSize: "40px" }}>
-        <span style={{ color: "red" }}>★</span>
-        <span style={{ color: "orange" }}> Made </span>
-        <span style={{ color: "yellow" }}>by.</span>
-        <span style={{ color: "green" }}> 최환 </span>
-        <span style={{ color: "blue" }}>안서진 </span>
-        <span style={{ color: "indigo" }}>오승민 </span>
-        <span style={{ color: "violet" }}>나윤재 </span>
-        <span style={{ color: "red" }}>황세빈 </span>
-        <span style={{ color: "orange" }}>★</span>
-      </div>
 
       <div className={styles.logoContainer}>
         <img

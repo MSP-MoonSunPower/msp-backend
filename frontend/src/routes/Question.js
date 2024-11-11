@@ -1,15 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Question.module.css";
 import { useNavigate } from "react-router-dom";
+import logo from "../logo.jpg";
 
 const Question = () => {
   const [selectedAnswers, setSelectedAnswers] = useState(Array(5).fill(null));
   const [showPopup, setShowPopup] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [highlightedWords, setHighlightedWords] = useState([]); // 하이라이트된 단어들
-  const [highlightedText, setHighlightedText] = useState(""); // 하이라이트된 텍스트
+  const [highlightedWords, setHighlightedWords] = useState([]);
+  const [highlightedText, setHighlightedText] = useState("");
   const navigate = useNavigate();
   const [showFullPassage, setShowFullPassage] = useState(false);
+  const [seconds, setSeconds] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  const [elapsedTime, setElapsedTime] = useState("");
+  const [intervalId, setIntervalId] = useState(null); // 타이머 ID 저장 상태
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -20,7 +25,30 @@ const Question = () => {
     setSelectedAnswers(updatedAnswers);
   };
 
+  const startTimer = () => {
+    const id = setInterval(() => {
+      setSeconds((prevSeconds) => prevSeconds + 1);
+    }, 1000);
+    setIntervalId(id);
+  };
+
+  const stopTimer = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+    }
+  };
+
+  useEffect(() => {
+    startTimer(); // 타이머 시작
+    return () => stopTimer(); // 컴포넌트 언마운트 시 타이머 정리
+  }, []);
+
   const handleSubmit = () => {
+    stopTimer(); // 타이머 멈추기
+    const elapsedMinutes = Math.floor(seconds / 60);
+    const elapsedDisplaySeconds = seconds % 60;
+    setElapsedTime(`${elapsedMinutes}분 ${elapsedDisplaySeconds}초`);
     setShowPopup(true);
   };
 
@@ -30,6 +58,7 @@ const Question = () => {
 
   const handleCancel = () => {
     setShowPopup(false);
+    startTimer(); // 타이머 다시 시작
   };
 
   const handleShowFullPassage = () => {
@@ -40,7 +69,6 @@ const Question = () => {
     setShowFullPassage(false);
   };
 
-  // 단어 하이라이트 및 저장 기능
   const handleMouseUp = () => {
     const selection = window.getSelection();
     const text = selection.toString().trim();
@@ -51,13 +79,12 @@ const Question = () => {
     }
   };
 
-  // 하이라이트 기능
   const highlightSelectedText = () => {
     const selection = window.getSelection();
     if (selection.rangeCount > 0) {
       const range = selection.getRangeAt(0);
       const span = document.createElement("span");
-      span.className = styles.highlight; // CSS 클래스 추가
+      span.className = styles.highlight;
       span.textContent = selection.toString();
       range.deleteContents();
       range.insertNode(span);
@@ -65,7 +92,9 @@ const Question = () => {
     }
   };
 
-  // 단어 삭제 기능
+  const minutes = Math.floor(seconds / 60);
+  const displaySeconds = seconds % 60;
+
   const handleDeleteWord = (index) => {
     setHighlightedWords((prevWords) => prevWords.filter((_, i) => i !== index));
   };
@@ -150,9 +179,10 @@ const Question = () => {
                       </li>
                     ))}
                   </ul>
-                  <button onClick={closeModal} className={styles.closeButton}>
-                    닫기
-                  </button>
+                  <button
+                    onClick={closeModal}
+                    className={styles.closeButton}
+                  ></button>
                 </div>
               </div>
             )}
@@ -226,6 +256,20 @@ const Question = () => {
         )}
 
         <div className={styles.questions}>
+          <div className={styles.Timer}>
+            {isVisible && (
+              <h1>
+                {minutes}:
+                {displaySeconds < 10 ? `0${displaySeconds}` : displaySeconds}
+              </h1>
+            )}
+          </div>
+          <button
+            className={styles.timerBTN}
+            onClick={() => setIsVisible(!isVisible)}
+          >
+            {isVisible ? "HIDE" : "SHOW"}
+          </button>
           <ol>
             {questions.map((item, index) => (
               <li key={index}>
@@ -256,6 +300,7 @@ const Question = () => {
       {showPopup && (
         <div className={styles.popup}>
           <p>정말 제출하시겠습니까?</p>
+          <p>소요 시간: {elapsedTime}</p> {/* 소요 시간 표시 */}
           <div>
             <button onClick={handleCancel} className={styles.cancelButton}>
               뒤로 가기
