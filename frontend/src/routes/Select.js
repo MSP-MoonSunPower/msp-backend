@@ -1,22 +1,64 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styles from "./Select.module.css";
 
 function Select() {
   const [difficulty, setDifficulty] = useState(null);
   const [topic, setTopic] = useState("");
   const [selectedTag, setSelectedTag] = useState(null);
+  const navigate = useNavigate(); // 페이지 이동을 위한 useNavigate 훅
 
+  // 난이도 버튼 클릭 핸들러
   const handleDifficultyClick = (level) => {
     setDifficulty(level);
   };
 
+  // 주제 입력 핸들러
   const handleTopicChange = (e) => {
     setTopic(e.target.value);
   };
 
+  // 태그 클릭 핸들러
   const handleTagClick = (tag) => {
     setSelectedTag(tag);
+  };
+
+  // 서버로 데이터 전송하는 함수
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const selectedTopic = topic || selectedTag; // 입력된 주제 또는 선택된 태그 사용
+
+    // 서버로 보낼 데이터
+    const data = {
+      difficulty,
+      topic: selectedTopic,
+    };
+
+    try {
+      // POST 요청으로 서버에 데이터 전송
+      const response = await fetch("http://localhost:3000/api/submit", {
+        method: "POST", // HTTP 메서드: POST (데이터를 서버에 보낼 때 사용)
+        headers: {
+          "Content-Type": "application/json", // 요청 본문이 JSON 형식임을 명시
+        },
+        body: JSON.stringify(data), // 데이터 객체를 JSON 문자열로 변환하여 본문에 포함
+      });
+
+      if (!response.ok) {
+        throw new Error("서버 응답 실패");
+      }
+
+      // 서버에서 받은 지문과 문제 데이터
+      const result = await response.json();
+      console.log("서버 응답:", result);
+
+      navigate("/Question", {
+        state: { passage: result.passage, question: result.question },
+        //  /Question 경로로 이동하면서 서버에서 받은 지문(passage)과 문제(question) 데이터를 함께 전달
+      });
+    } catch (error) {
+      console.error("데이터 전송 중 오류 발생:", error);
+    }
   };
 
   return (
@@ -49,9 +91,9 @@ function Select() {
         </button>
         <button
           className={`${styles.difficultyButton} ${
-            difficulty === "달인" ? styles.selected : ""
+            difficulty === "지옥" ? styles.selected : ""
           }`}
-          onClick={() => handleDifficultyClick("달인")}
+          onClick={() => handleDifficultyClick("지옥")}
         >
           지옥
         </button>
@@ -89,8 +131,13 @@ function Select() {
       </div>
 
       <div className={styles.buttons}>
+        {/* 시작하기 버튼 클릭 시 서버로 데이터 전송 */}
+
+        <button className={styles.startButton} onClick={handleSubmit}>
+          시작하기
+        </button>
+        {/* 오늘의 지문 버튼 */}
         <Link to="/Question">
-          <button className={styles.startButton}>시작하기</button>
           <button className={styles.questionButton}>오늘의 지문</button>
         </Link>
       </div>

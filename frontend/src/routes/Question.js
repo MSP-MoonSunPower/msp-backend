@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Question.module.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import logo from "../logo.jpg";
 
 const Question = () => {
@@ -15,6 +15,10 @@ const Question = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [elapsedTime, setElapsedTime] = useState("");
   const [intervalId, setIntervalId] = useState(null); // 타이머 ID 저장 상태
+
+  // Selection.js에서 넘겨받은 문제와 지문 보여주기
+  const location = useLocation();
+  const { passage, question } = location.state || {};
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
