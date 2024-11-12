@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'rest_framework',
     'moonsunpowerai',
+    'corsheaders',
     'drf_yasg',
 ]
 
@@ -66,8 +67,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 ROOT_URLCONF = 'moonsunpowerback.urls'
+
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 TEMPLATES = [
     {
