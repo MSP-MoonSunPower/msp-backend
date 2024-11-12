@@ -7,7 +7,7 @@ from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from openai import OpenAI
 from .models import Text, GeneratedText, QuestionItem
-from .prompts import DIFFICULTY_PROMPTS, WORD_DIFFICULTY_PROMPTS, TEXT_LENGTH
+from .prompts import DIFFICULTY_PROMPTS, WORD_DIFFICULTY_PROMPTS, TEXT_LENGTH,TAG_TEXT_PROMPT
 from dotenv import load_dotenv
     
 load_dotenv()
@@ -270,3 +270,172 @@ class UnknownWordsAPIView(APIView):
         response_data = json.loads(content)
 
         return Response({"definitions": response_data}, status=status.HTTP_200_OK)
+    
+
+
+class GenerateTagTextAPIView(APIView):
+    @swagger_auto_schema(
+        operation_description="Generate educational text and questions based on subject and difficulty level.",
+        manual_parameters=[
+            openapi.Parameter(
+                'subject',
+                openapi.IN_PATH,
+                description="Subject code (integer between 1 and 6) for generating educational text",
+                type=openapi.TYPE_INTEGER
+            ),
+            openapi.Parameter(
+                'difficulty',
+                openapi.IN_PATH,
+                description="Difficulty level (integer between 1 and 4) for educational content",
+                type=openapi.TYPE_INTEGER
+            ),
+        ],
+        responses={
+            200: openapi.Response(
+                description="Successfully generated educational content and questions",
+                examples={
+                    "application/json": {
+                        "subject": 1,
+                        "content": "Generated educational content about the subject",
+                        "date": "2023-01-01T00:00:00Z",
+                        "questions": [
+                            {
+                                "question_text": "What is 2+2?",
+                                "choice1": "3",
+                                "choice2": "4",
+                                "choice3": "5",
+                                "choice4": "6",
+                                "choice5": "7",
+                                "answer": 2,
+                                "explanation": "The correct answer is 4."
+                            }
+                        ]
+                    }
+                }
+            ),
+            400: openapi.Response(
+                description="Invalid parameters or API request errors",
+                examples={
+                    "application/json": {
+                        "error": "Invalid difficulty level. Choose a value between 1 and 4."
+                    }
+                }
+            ),
+            500: openapi.Response(
+                description="Server error or unexpected response from OpenAI API",
+                examples={
+                    "application/json": {
+                        "error": "No content received from OpenAI API"
+                    }
+                }
+            )
+        }
+    )
+    
+    def get(self, request, subject, difficulty, *args, **kwargs):
+        # Retrieve 'subject' from request parameters
+        if difficulty not in DIFFICULTY_PROMPTS:
+            return Response({"error": "Invalid difficulty level. Choose a value between 1 and 4."},
+                            status=status.HTTP_400_BAD_REQUEST)
+        if subject not in list(range(1,7)):
+            return Response({"error": "Subject parameter is not okay."}, status=status.HTTP_400_BAD_REQUEST)
+        prompt_text = DIFFICULTY_PROMPTS[difficulty]
+        text_length=TEXT_LENGTH[difficulty]
+        # Initialize the OpenAI client
+        client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+
+        # Generate response using OpenAI API
+        response = client.chat.completions.create(
+        model="gpt-4o",
+        messages=[
+            {
+            "role": "system",
+            "content": [
+            {
+                "type": "text",
+                "text": prompt_text
+            }
+            ]
+        },
+        {
+        "role": "user",
+        "content": [
+            {
+            "type": "text",
+            "text": subject
+            }
+        ]
+        },
+        ],
+        temperature=1,
+        max_tokens=text_length,
+        top_p=1,
+        frequency_penalty=0,
+        presence_penalty=0,
+        response_format={
+        "type": "json_object"      
+        }
+            
+        )
+        
+        # Extract the content from the response
+        content_raw = response.choices[0].message.content
+        if not content_raw:
+            return Response({"error": "No content received from OpenAI API"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        if "error" in content_raw:
+            # If there is an error, return it directly
+            return Response({"error": "죄송합니다. 다른 단어를 입력해주세요."}, status=status.HTTP_400_BAD_REQUEST)
+
+        # Parse content JSON
+        try:
+            content_data = json.loads(content_raw)
+        except json.JSONDecodeError:
+            return Response({"error": "Invalid JSON format in API response"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+        # Extract main content and questions
+        main_content = content_data.get("content", "")
+        questions = content_data.get("questions", [])
+
+        # Create Text object in the database
+        generated_text = Text.objects.create(
+            subject=subject,
+            difficulty=difficulty,
+            content=main_content  # Save main content
+        )
+
+        # Save each question as a QuestionItem
+        questions_data = []
+        for question in questions:
+            question_item = QuestionItem.objects.create(
+                text=generated_text,
+                question_text=question["question_text"],
+                choice1=question["choice1"],
+                choice2=question["choice2"],
+                choice3=question["choice3"],
+                choice4=question["choice4"],
+                choice5=question["choice5"],
+                answer=int(question["answer"]),
+                explanation=question["explanation"]
+            )
+            questions_data.append({
+                "question_text": question_item.question_text,
+                "choice1": question_item.choice1,
+                "choice2": question_item.choice2,
+                "choice3": question_item.choice3,
+                "choice4": question_item.choice4,
+                "choice5": question_item.choice5,
+                "answer": question_item.answer,
+                "explanation": question_item.explanation
+            })
+
+        # Format final response data
+        response_data = {
+            "subject": generated_text.subject,
+            "content": generated_text.content,
+            "date": generated_text.date,
+            "questions": questions_data
+        }
+
+        return Response(response_data, status=status.HTTP_200_OK)
+    
