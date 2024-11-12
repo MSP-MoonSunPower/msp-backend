@@ -8,8 +8,8 @@ from .prompts import DIFFICULTY_PROMPTS,TEXT_LENGTH
 import json
 @shared_task
 def generate_and_save_text():            
-    prompt_text = DIFFICULTY_PROMPTS[3]
-    text_length=TEXT_LENGTH[3]
+    prompt_text = DIFFICULTY_PROMPTS[5]
+    text_length=TEXT_LENGTH[4]
     client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
     response = client.chat.completions.create(
     model="gpt-4o",
