@@ -6,7 +6,7 @@ function Select() {
   const [difficulty, setDifficulty] = useState(null);
   const [topic, setTopic] = useState("");
   const [selectedTag, setSelectedTag] = useState(null);
-  const navigate = useNavigate(); // 페이지 이동을 위한 useNavigate 훅
+  const navigate = useNavigate();
 
   // 난이도 버튼 클릭 핸들러
   const handleDifficultyClick = (level) => {
@@ -31,78 +31,109 @@ function Select() {
     }
   };
 
-  // 서버로 데이터 전송하는 함수
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const selectedTopic = topic || selectedTag; // 사용자가 입력한 주제나 선택한 태그를 사용
-
-    // 필수 필드 확인
-    if (!difficulty || !selectedTopic) {
-      console.error("난이도와 주제를 모두 선택해주세요.");
+  // 시작하기 버튼 클릭 시 호출되는 함수
+  const handleStartClick = async () => {
+    if (!difficulty) {
+      console.error("난이도를 선택해주세요.");
       return;
     }
 
-    try {
-      // POST 요청으로 서버에 데이터 전송
-      const response = await fetch("http://localhost:3000/api/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          difficulty,
-          topic: selectedTopic,
-        }),
-      });
+    if (topic) {
+      // 사용자가 입력한 주제가 있을 경우 /text/{subject}/{difficulty} 요청
+      try {
+        const response = await fetch(
+          `http://localhost:3000/text/${topic}/${difficulty}`
+        );
+        if (!response.ok) {
+          throw new Error("텍스트 가져오기 실패");
+        }
+        const data = await response.json();
+        console.log("텍스트 가져오기 성공:", data);
 
-      if (!response.ok) {
-        throw new Error("서버 응답 실패");
+        navigate("/Question", {
+          state: { passage: data.content, questions: data.questions },
+        });
+      } catch (error) {
+        console.error("텍스트 가져오는 중 오류 발생:", error);
       }
+    } else if (selectedTag) {
+      // 선택된 태그가 있을 경우 /tagtext/{subject}/{difficulty} 요청
+      try {
+        const response = await fetch(
+          `http://localhost:3000/tagtext/${selectedTag}/${difficulty}`
+        );
+        if (!response.ok) {
+          throw new Error("태그 텍스트 가져오기 실패");
+        }
+        const data = await response.json();
+        console.log("태그 텍스트 가져오기 성공:", data);
 
-      const result = await response.json();
-      console.log("서버 응답:", result);
+        navigate("/Question", {
+          state: { passage: data.content, questions: data.questions },
+        });
+      } catch (error) {
+        console.error("태그 텍스트 가져오는 중 오류 발생:", error);
+      }
+    } else {
+      console.error("주제 또는 태그를 선택해주세요.");
+    }
+  };
+
+  // /todaytext/ 엔드포인트로 GET 요청
+  const fetchTodayText = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/todaytext/");
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error("No Content Found");
+        }
+        throw new Error("오늘의 지문 가져오기 실패");
+      }
+      const data = await response.json();
+      console.log("오늘의 지문 가져오기 성공:", data);
 
       navigate("/Question", {
-        state: { passage: result.passage, question: result.question },
+        state: { passage: data.content, questions: data.questions },
       });
     } catch (error) {
-      console.error("데이터 전송 중 오류 발생:", error);
+      console.error("오늘의 지문 가져오는 중 오류 발생:", error);
     }
   };
 
   return (
     <div className={styles.container}>
       <h2>1. 난이도 선택</h2>
+      {/* 초급, 중급, 고급, 지옥 = 각각 1, 2, 3, 4로 전달 (int) */}
       <div className={styles.difficultyOptions}>
         <button
           className={`${styles.difficultyButton} ${
-            difficulty === "초급" ? styles.selected : ""
+            difficulty === "1" ? styles.selected : ""
           }`}
-          onClick={() => handleDifficultyClick("초급")}
+          onClick={() => handleDifficultyClick("1")}
         >
           초급
         </button>
         <button
           className={`${styles.difficultyButton} ${
-            difficulty === "중급" ? styles.selected : ""
+            difficulty === "2" ? styles.selected : ""
           }`}
-          onClick={() => handleDifficultyClick("중급")}
+          onClick={() => handleDifficultyClick("2")}
         >
           중급
         </button>
         <button
           className={`${styles.difficultyButton} ${
-            difficulty === "고급" ? styles.selected : ""
+            difficulty === "3" ? styles.selected : ""
           }`}
-          onClick={() => handleDifficultyClick("고급")}
+          onClick={() => handleDifficultyClick("3")}
         >
           고급
         </button>
         <button
           className={`${styles.difficultyButton} ${
-            difficulty === "지옥" ? styles.selected : ""
+            difficulty === "4" ? styles.selected : ""
           }`}
-          onClick={() => handleDifficultyClick("지옥")}
+          onClick={() => handleDifficultyClick("4")}
         >
           지옥
         </button>
@@ -144,10 +175,10 @@ function Select() {
       </div>
 
       <div className={styles.buttons}>
-        <button className={styles.startButton} onClick={handleSubmit}>
+        <button className={styles.startButton} onClick={handleStartClick}>
           시작하기
         </button>
-        <Link to="/Question">
+        <Link to="#" onClick={fetchTodayText}>
           <button className={styles.questionButton}>오늘의 지문</button>
         </Link>
       </div>
