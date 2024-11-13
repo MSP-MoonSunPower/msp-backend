@@ -103,7 +103,7 @@ function Home() {
                     className={styles.modalImage}
                     alt="난이도 및 주제 선택"
                   />
-                  <p>난이도 및 주제 선택 가능</p>
+                  <p>난이도와 주제를 자유롭게 선택할 수 있습니다! </p>
                 </div>
               )}
               {currentModal === 2 && (
