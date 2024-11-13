@@ -104,7 +104,7 @@ class GenerateTextAPIView(APIView):
 
         # Generate response using OpenAI API
         response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-4o-mini",
         messages=[
             {
             "role": "system",
@@ -234,7 +234,7 @@ class UnknownWordsAPIView(APIView):
         
         # Generate response using OpenAI API
         response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-4o-mini",
         messages=[
             {
             "role": "system",
@@ -346,7 +346,7 @@ class GenerateTagTextAPIView(APIView):
 
         # Generate response using OpenAI API
         response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-4o-mini",
         messages=[
             {
             "role": "system",
