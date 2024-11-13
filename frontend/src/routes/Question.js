@@ -11,6 +11,7 @@ const Question = () => {
   const [seconds, setSeconds] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [elapsedTime, setElapsedTime] = useState("");
+  const [isTimerRunning, setIsTimerRunning] = useState(true);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,6 +21,7 @@ const Question = () => {
   };
 
   const passageRef = useRef(null);
+  const timerRef = useRef(null);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -31,17 +33,25 @@ const Question = () => {
   };
 
   const startTimer = useCallback(() => {
-    return setInterval(() => {
-      setSeconds((prevSeconds) => prevSeconds + 1);
-    }, 1000);
-  }, []);
+    if (isTimerRunning) {
+      timerRef.current = setInterval(() => {
+        setSeconds((prevSeconds) => prevSeconds + 1);
+      }, 1000);
+    }
+  }, [isTimerRunning]);
+
+  const stopTimer = () => {
+    clearInterval(timerRef.current);
+  };
 
   useEffect(() => {
-    const intervalId = startTimer();
-    return () => clearInterval(intervalId);
+    startTimer();
+    return () => stopTimer();
   }, [startTimer]);
 
   const handleSubmit = () => {
+    setIsTimerRunning(false);
+    stopTimer();
     const elapsedMinutes = Math.floor(seconds / 60);
     const elapsedDisplaySeconds = seconds % 60;
     setElapsedTime(`${elapsedMinutes}분 ${elapsedDisplaySeconds}초`);
@@ -54,6 +64,8 @@ const Question = () => {
 
   const handleCancel = () => {
     setShowPopup(false);
+    setIsTimerRunning(true);
+    startTimer();
   };
 
   const handleShowFullPassage = () => {
@@ -69,7 +81,6 @@ const Question = () => {
     if (jimoonElement && jimoonElement.contains(event.target)) {
       const selection = window.getSelection();
       const text = selection.toString().trim();
-
       if (text && !highlightedWords.includes(text)) {
         setHighlightedWords((prevWords) => [...prevWords, text]);
         highlightSelectedText();
