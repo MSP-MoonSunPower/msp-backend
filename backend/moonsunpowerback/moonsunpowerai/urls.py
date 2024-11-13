@@ -7,3 +7,4 @@ urlpatterns = [
     path('words/',UnknownWordsAPIView.as_view(),name='unknown-word'),
     path('tagtext/<int:subject>/<int:difficulty>',GenerateTagTextAPIView.as_view(),name='tag-text'),
 ]
+

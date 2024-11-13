@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import styles from "./Home.module.css";
 import logo from "../logo.jpg";
 import modal1 from "../modal1.jpg";
@@ -9,6 +9,7 @@ import modal3 from "../modal3.jpg";
 function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [currentModal, setCurrentModal] = useState(1);
+  const navigate = useNavigate();
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -33,6 +34,27 @@ function Home() {
     }
   };
 
+  // /todaytext/ 엔드포인트로 GET 요청
+  const fetchTodayText = async () => {
+    try {
+      const response = await fetch("http://localhost:3001/todaytext/");
+      if (!response.ok) {
+        if (response.status === 404) {
+          throw new Error("No Content Found");
+        }
+        throw new Error("오늘의 지문 가져오기 실패");
+      }
+      const data = await response.json();
+      console.log("오늘의 지문 가져오기 성공:", data);
+
+      navigate("/Question", {
+        state: { passage: data.content, questions: data.questions },
+      });
+    } catch (error) {
+      console.error("오늘의 지문 가져오는 중 오류 발생:", error);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Moon Sun Power</h1>
@@ -43,7 +65,7 @@ function Home() {
         <Link to="/select">
           <button className={styles.startButton}>시작하기</button>
         </Link>
-        <Link to="/question">
+        <Link to="#" onClick={fetchTodayText}>
           <button className={styles.questionButton}>
             오늘의 지문으로 바로 가기
           </button>
