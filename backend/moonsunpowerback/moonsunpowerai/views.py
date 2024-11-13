@@ -7,7 +7,8 @@ from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from openai import OpenAI
 from .models import Text, GeneratedText, QuestionItem
-from .prompts import DIFFICULTY_PROMPTS, WORD_DIFFICULTY_PROMPTS, TEXT_LENGTH,TAG_TEXT_PROMPT
+from .prompts import DIFFICULTY_PROMPTS, WORD_DIFFICULTY_PROMPTS, TEXT_LENGTH
+from .prompts import setPresetPrompt
 from dotenv import load_dotenv
     
 load_dotenv()
@@ -339,7 +340,7 @@ class GenerateTagTextAPIView(APIView):
                             status=status.HTTP_400_BAD_REQUEST)
         if subject not in list(range(1,7)):
             return Response({"error": "Subject parameter is not okay."}, status=status.HTTP_400_BAD_REQUEST)
-        prompt_text = DIFFICULTY_PROMPTS[difficulty]
+        prompt_text=setPresetPrompt(subject,difficulty)
         text_length=TEXT_LENGTH[difficulty]
         # Initialize the OpenAI client
         client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
@@ -362,7 +363,7 @@ class GenerateTagTextAPIView(APIView):
         "content": [
             {
             "type": "text",
-            "text": subject
+            "text": '지문 생성'
             }
         ]
         },
@@ -375,8 +376,8 @@ class GenerateTagTextAPIView(APIView):
         response_format={
         "type": "json_object"      
         }
-            
-        )
+        
+    )
         
         # Extract the content from the response
         content_raw = response.choices[0].message.content

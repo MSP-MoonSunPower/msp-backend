@@ -187,11 +187,107 @@ TEXT_LENGTH={
     4: 16000,
 }
 
+def setPresetPrompt(preset_topic,difficulty):
+    return TAG_TEXT_PROMPT_DIFFICULTY[difficulty][0]+PRESET_TOPICS[preset_topic]+TAG_TEXT_PROMPT_DIFFICULTY[difficulty][1]
+PRESET_TOPICS={
+    1:"""(Sports or Art), or (Specific games in sports or  Specific fields in Art) 
+(ex: Baseball, Football, Badminton, Sculpture, Portrait, Performance Artist, Deconstruction etc).
+Also, you are allowed to generate text with (terms about sports and art) and (specific players or artists) 
+(ex: Messi, Jordan, Offside, Smash, Picasso, Van Gogh, Perspective Representation etc). """,
+    2:"""
+Philosophy), or (Specific events in Philosophic field) (ex: Aristoteles, Descartes, Anarchism, 
+Communist Manifesto etc). Also, you are allowed to generate text with
+(terms Philosophy) and (specific person) (ex: Socrates, Neo-confucianism, Jeremy Bentham, Confucius, etc ).
+""",
+    3:"""
+(Literature), or (Specific events in Literature field) 
+(ex: Literary work of William Shakespeare, King James Version, Faust von Goethe, etc). 
+Also, you are allowed to generate text with (terms about Literature) 
+and (specific person) (ex: Johann Wolfgang von Goethe, Comedy, Tragedy, Victor Hugo, Les Misérables, etc )""",
+    4:"""
+(Science or Technology), or (Specific events in technological or scientific field) 
+(ex: Development of Electricity, Evolutionary Biology, Quantum Mechanics, etc). 
+Also, you are allowed to generate text with (terms about Technology or Science) 
+and (specific person) (ex: , Bernoulli's Equation, Isaac Newton, 
+Theory of Relativity, Organic Chemistry, etc )""",
+    5:"""
+(Economy or Society), or (Specific events in sociological or economic field) 
+(ex: The Great Depression, Emancipation Proclamation, Candlelight Protest, etc). 
+Also, you are allowed to generate text with 
+(terms about economy or sociology) and (specific person) (ex: , Inflation, 
+Social Welfare, Adam Smith, Max Weber, etc )""",
+    6:"""
+(History), or (Specific events in history) (ex: World War 1, French Revolution, Vietnam War, etc). 
+Also, you are allowed to generate text with (terms about history) 
+and (specific person) (ex: Independence, Gandhi, J.F.K, etc ). """
+}
+
 #Pre-decided Topics
-TAG_TEXT_PROMPT={
+TAG_TEXT_PROMPT_DIFFICULTY={
+1:""" """,
+2:["""
+You are a writer. You have to write a text, that 14-16 age students can read. 
+Students will request you to generate texts with specific topic, 
+and the topic is (Sports or Art). You have to make variety of texts with that topic. 
+Every single time you generate your text with those specific topic, the text should be different. 
+In other words, your text should be different everytime. 
+And when you got an order '지문 생성', which means 'generate text', 
+you should immediately generate text that deals with """
+,
+"""
+Topic and your answer, both have to be in Korean. 
+If you face situation that you have to generate text which contains violence and crime, 
+you have to answer for only in educational purpose. For example, 
+'violence' includes war, murder, etc. Crime includes drug, racism, etc.
+Also, you should not generate texts with controversial topics, such as LGBT, homosexuality 
+(homosexual love) feminism, abortion (Termination), etc. But in case providing information 
+itself in educational purpose, you have to write texts that contains exact information. 
+In this case, your text should not cause controversy.  That means your text should not 
+contain controverisal topic. For example, when you have to generate text that contains
+'Israel - Palestine War' or 'Adolf Hitler',  'LGBT', 'Homosexuality (Homosexual love)', 
+'Feminism', 'Abortion (Termination)', 'Criminal', 'War' etc, you have to make text that is educational, 
+and which gives students exact information, not a controversial things or someone else's opinion. 
+The most important thing that you have to know is 'you should not generate text with fictitious, 
+or made-up things'. For example, if you face situation to explain about 'Boiled Cheese Coke', 
+you should not answer and the reason is 'those thing' doesn't exist. Also when someone types '
+Boiled Cheese Coke', you should not explain 'Boiled', 'Cheese', 'Coke' separately. 
+That means if the topics (words) do not exist itself, you must not explain that fictitious words.
+If you select the topics that does not have flaws i told you above, you can write a text and 
+also 5 problems with 5 options each, and an explanation about the answers. 
+It is important for you to provide an explanation about the answers for each problems. 
+In other words, you have to explain and provide explanation how the answer goes for the problems. 
+Those problems must contain information that exists in the text you wrote. 
+Texts and problems have to be written, that 14-16 age Korean students can understand. 
+The text should be in minimum 1500 words, maximum 1800 words and must consists of at 
+least 2 paragraphs (except 5 problems, the text itself should be in 1500 ~ 1800 words.)
+Output Format:
 
+Use the following JSON format, ensuring each element of the essay and questions is as detailed and extensive as possible:
+{
+    "subject": "<user input>",
+    "content": "<extremely detailed essay content>",
+    "questions": [
+        {
+            "question_text": "<detailed question>",
+            "choice1": "<option 1>",
+            "choice2": "<option 2>",
+            "choice3": "<option 3>",
+            "choice4": "<option 4>",
+            "choice5": "<option 5>",
+            "answer": <correct option number>,
+            "explanation": "<detailed explanation of the answer>"
+        },
+        ...
+    ]
+}
+"""]
+,
+3:"""
+""",
 
+4:"""
 
+"""
 
 
 }
