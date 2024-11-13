@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import styles from "./Question.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -11,7 +11,6 @@ const Question = () => {
   const [seconds, setSeconds] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
   const [elapsedTime, setElapsedTime] = useState("");
-  const [intervalId, setIntervalId] = useState(null);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -19,6 +18,8 @@ const Question = () => {
     passage: "",
     questions: [],
   };
+
+  const passageRef = useRef(null);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -29,27 +30,18 @@ const Question = () => {
     setSelectedAnswers(updatedAnswers);
   };
 
-  const startTimer = () => {
-    const id = setInterval(() => {
+  const startTimer = useCallback(() => {
+    return setInterval(() => {
       setSeconds((prevSeconds) => prevSeconds + 1);
     }, 1000);
-    setIntervalId(id);
-  };
-
-  const stopTimer = () => {
-    if (intervalId) {
-      clearInterval(intervalId);
-      setIntervalId(null);
-    }
-  };
-
-  useEffect(() => {
-    startTimer();
-    return () => stopTimer();
   }, []);
 
+  useEffect(() => {
+    const intervalId = startTimer();
+    return () => clearInterval(intervalId);
+  }, [startTimer]);
+
   const handleSubmit = () => {
-    stopTimer();
     const elapsedMinutes = Math.floor(seconds / 60);
     const elapsedDisplaySeconds = seconds % 60;
     setElapsedTime(`${elapsedMinutes}분 ${elapsedDisplaySeconds}초`);
@@ -62,7 +54,6 @@ const Question = () => {
 
   const handleCancel = () => {
     setShowPopup(false);
-    startTimer();
   };
 
   const handleShowFullPassage = () => {
@@ -73,13 +64,16 @@ const Question = () => {
     setShowFullPassage(false);
   };
 
-  const handleMouseUp = () => {
-    const selection = window.getSelection();
-    const text = selection.toString().trim();
+  const handleMouseUp = (event) => {
+    const jimoonElement = passageRef.current;
+    if (jimoonElement && jimoonElement.contains(event.target)) {
+      const selection = window.getSelection();
+      const text = selection.toString().trim();
 
-    if (text && !highlightedWords.includes(text)) {
-      setHighlightedWords((prevWords) => [...prevWords, text]);
-      highlightSelectedText();
+      if (text && !highlightedWords.includes(text)) {
+        setHighlightedWords((prevWords) => [...prevWords, text]);
+        highlightSelectedText();
+      }
     }
   };
 
@@ -100,8 +94,32 @@ const Question = () => {
   const displaySeconds = seconds % 60;
 
   const handleDeleteWord = (index) => {
-    setHighlightedWords((prevWords) => prevWords.filter((_, i) => i !== index));
+    setHighlightedWords((prevWords) => {
+      const newWords = prevWords.filter((_, i) => i !== index);
+      removeHighlight(prevWords[index]);
+      return newWords;
+    });
   };
+
+  const removeHighlight = (word) => {
+    const highlights = passageRef.current.querySelectorAll(
+      `.${styles.highlight}`
+    );
+    highlights.forEach((highlight) => {
+      if (highlight.textContent === word) {
+        const parent = highlight.parentNode;
+        parent.replaceChild(
+          document.createTextNode(highlight.textContent),
+          highlight
+        );
+        parent.normalize();
+      }
+    });
+  };
+
+  const formattedPassage = passage
+    .split("\n\n")
+    .map((para, index) => <p key={index}>{para}</p>);
 
   return (
     <div className={styles.container} onMouseUp={handleMouseUp}>
@@ -146,16 +164,15 @@ const Question = () => {
                       </li>
                     ))}
                   </ul>
-                  <button
-                    onClick={closeModal}
-                    className={styles.closeButton}
-                  ></button>
+                  <button onClick={closeModal} className={styles.closeButton}>
+                    닫기
+                  </button>
                 </div>
               </div>
             )}
 
-            <div className={styles.Jimoon}>
-              <p>{passage}</p> {/* 전달받은 content를 표시 */}
+            <div className={styles.Jimoon} ref={passageRef}>
+              {formattedPassage}
             </div>
           </div>
         ) : (
@@ -166,8 +183,8 @@ const Question = () => {
             >
               문제로 돌아가기
             </button>
-            <div className={styles.FullJimoon}>
-              <p>{passage}</p> {/* 전체 지문 보기에서도 content 표시 */}
+            <div className={styles.FullJimoon} ref={passageRef}>
+              {formattedPassage}
             </div>
           </div>
         )}
@@ -190,8 +207,7 @@ const Question = () => {
           <ol>
             {questions.map((item, index) => (
               <li key={index}>
-                <p>{item.question_text}</p>{" "}
-                {/* 전달받은 question_text를 표시 */}
+                <p>{item.question_text}</p>
                 {[
                   item.choice1,
                   item.choice2,
