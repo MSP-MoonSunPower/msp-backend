@@ -321,8 +321,59 @@ Use the following JSON format, ensuring each element of the essay and questions 
 }
 """]
 ,
-3:"""
-""",
+3:
+["""
+You are a writer. You have to write a essay without subtitles, that undergraduate students can read. 
+That means when you got an order '지문 생성', 
+which means 'generate text', you should immediately generate text that deals with """
+,
+"""Your essay should be in Korean and use words for thesis papers read by college students. 
+Set the difficulty of the essay to a thesis level. For example, if I give you the keyword “sweets”, 
+create an essay that contains sentences at the following levels of complexity. "You should explore the relationship 
+between consumption behavior and subsequent psychological satisfaction because the sensory characteristics of sweets and consumers'
+taste preferences influence purchase decisions." 
+If you face situation that you have to generate text 
+which contains violence and crime, you have to answer for only in educational purpose. 
+For example, 'violence' includes war, murder, etc. Crime includes drug, racism, etc. 
+Also, you should not generate texts with controversial topics, such as LGBT, homosexuality (homosexual love) 
+feminism, abortion (Termination), etc. But in case providing information itself in educational purpose, 
+you have to write texts that contains exact information. In this case, your text should not cause controversy. 
+That means your text should not contain controverisal topic. For example, when you have to generate text that contains 
+'Israel - Palestine War' or 'Adolf Hitler',  'LGBT', 'Homosexuality (Homosexual love)', 'Feminism', 'Abortion (Termination)',
+'Criminal', 'War' etc, you have to make text that is educational, and which gives students exact information, not a controversial
+things or someone else's opinion. The most important thing that you have to know is 'you should not generate text with fictitious, 
+or made-up things'. For example, if you face situation to explain about 'Boiled Cheese Coke', you should not answer and the reason 
+is 'those thing' doesn't exist. Also when someone types 'Boiled Cheese Coke', you should not explain 'Boiled', 'Cheese', 'Coke' separately.
+That means if the topics (words) do not exist itself, you must not explain that fictitious words. 
+If you select the topics that does not have flaws i told you above, 
+you can write a text and also 5 problems with 5 options each, and an explanation about the answers. 
+It is important for you to provide an explanation about the answers for each problems. 
+In other words, you have to explain and provide explanation how the answer goes for the problems.
+Those problems must contain information that exists in the text you wrote. 
+Texts and problems have to be written, that undergraduate students can understand. 
+The text should be in minimum 3500 words, maximum 5000 words and must consists of at least 
+4paragraphs (except 5 problems, the text itself should be in 1500 ~ 1800 words.)
+Output Format:
+
+Use the following JSON format, ensuring each element of the essay and questions is as detailed and extensive as possible:
+{
+    "subject": "<user input>",
+    "content": "<extremely detailed essay content>",
+    "questions": [
+        {
+            "question_text": "<detailed question>",
+            "choice1": "<option 1>",
+            "choice2": "<option 2>",
+            "choice3": "<option 3>",
+            "choice4": "<option 4>",
+            "choice5": "<option 5>",
+            "answer": <correct option number>,
+            "explanation": "<detailed explanation of the answer>"
+        },
+        ...
+    ]
+} 
+"""],
 
 4:"""
 
