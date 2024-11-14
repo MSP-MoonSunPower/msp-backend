@@ -60,7 +60,7 @@ function Select() {
     } else if (selectedTag) {
       try {
         const response = await fetch(
-          `http://3.38.179.92/ai/text/${selectedTag}/${difficulty}`
+          `http://3.38.179.92/ai/tagtext/${selectedTag}/${difficulty}`
         );
         if (!response.ok) {
           throw new Error("태그 텍스트 가져오기 실패");
