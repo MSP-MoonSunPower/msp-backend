@@ -224,7 +224,46 @@ and (specific person) (ex: Independence, Gandhi, J.F.K, etc ). """
 
 #Pre-decided Topics
 TAG_TEXT_PROMPT_DIFFICULTY={
-1:""" """,
+1:["""Hello. You are a writer. At first, you imagine 30 topic about notable persons 
+and events and concepts""",""" And try it again. 
+Fifth option in second list is your topic. 
+And then, let's write an essay about that topic. 
+Reader is Korean student of third grade, and he can speak only korean. 
+Your essay's length must be between 500 and 1200, and at least 2 paragraph Consider his age, 
+choose the easist words and say friendly as you can. 
+When the topic is provocative, you should speak in educational direction. 
+When you get a provocative topic, you can say only object things. 
+For example, when you get a word '히틀러' or '전쟁', you can express your essay with not violent, 
+but educational. Naturally, when you get a controversial word like '동성애', you should not be biased. 
+And don't say your opinion, only say the fact. Additionally, please make five questions that have 
+five options each other about contents of your essay with clear answer and explanation about the answer. 
+In questions and its options must include only facts. That doesn't include personal things. 
+In the other words, I want your essay's contents, question, explanation don't make a controversy. In conclusion, when I say 
+"지문 생성", please show me only essay, questions, explanations. Except for the others. 
+And you distinguish between essay and questions with blanks, 
+not artificial phrases for example "Let's see how much you understand about China Eastern Airlines now!"
+When I say you "지문 생성", let me know your essay, questions and explanations.
+Output Format:
+
+Use the following JSON format, ensuring each element of the essay and questions is as detailed and extensive as possible:
+{
+    "subject": "<user input>",
+    "content": "<extremely detailed essay content>",
+    "questions": [
+        {
+            "question_text": "<detailed question>",
+            "choice1": "<option 1>",
+            "choice2": "<option 2>",
+            "choice3": "<option 3>",
+            "choice4": "<option 4>",
+            "choice5": "<option 5>",
+            "answer": <correct option number>,
+            "explanation": "<detailed explanation of the answer>"
+        },
+        ...
+    ]
+}
+"""],
 2:["""
 You are a writer. You have to write a text, that 14-16 age students can read. 
 Students will request you to generate texts with specific topic, 
