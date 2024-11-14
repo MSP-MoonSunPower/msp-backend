@@ -37,7 +37,7 @@ function Home() {
   // /todaytext/ 엔드포인트로 GET 요청
   const fetchTodayText = async () => {
     try {
-      const response = await fetch("http://localhost:3001/todaytext/");
+      const response = await fetch("http://3.38.179.92/ai/todaytext/");
       if (!response.ok) {
         if (response.status === 404) {
           throw new Error("No Content Found");
@@ -103,18 +103,18 @@ function Home() {
                     className={styles.modalImage}
                     alt="난이도 및 주제 선택"
                   />
-                  <p>난이도와 주제를 자유롭게 선택할 수 있습니다! </p>
+                  <p>난이도와 주제를 자유롭게 선택할 수 있습니다!</p>
                 </div>
               )}
               {currentModal === 2 && (
                 <div>
-                  <h2>문제 풀기 </h2>
+                  <h2>문제 풀기</h2>
                   <img
                     src={modal2}
                     className={styles.modalImage}
-                    alt="문제 풀기 "
+                    alt="문제 풀기"
                   />
-                  <p>문제 풀 수 있</p>
+                  <p>문제를 풀고 실력을 확인해보세요!</p>
                 </div>
               )}
               {currentModal === 3 && (
@@ -123,9 +123,9 @@ function Home() {
                   <img
                     src={modal3}
                     className={styles.modalImage}
-                    alt="난이도 및 주제 선택"
+                    alt="솔루션 페이지"
                   />
-                  <p>문제에 대한 해설 </p>
+                  <p>해설을 보고 문제 풀이 방법을 학습하세요!</p>
                 </div>
               )}
               {currentModal === 4 && (
@@ -134,9 +134,9 @@ function Home() {
                   <img
                     src={modal2}
                     className={styles.modalImage}
-                    alt="문제 풀기 "
+                    alt="오늘의 지문"
                   />
-                  <p>오늘의 지문 난이도 : 항상 고급</p>
+                  <p>오늘의 지문 난이도: 항상 고급!</p>
                 </div>
               )}
 
