@@ -25,9 +25,7 @@ function Header({ isHomePage }) {
   };
 
   return (
-    <header
-      className={`${styles.header} ${isHomePage ? styles.homeHeader : ""}`}
-    >
+    <header className={styles.header}>
       <div className={styles.logoContainer}>
         <img src={logo} alt="Logo" className={styles.logo} />
         <Link to="/" className={styles.link}>

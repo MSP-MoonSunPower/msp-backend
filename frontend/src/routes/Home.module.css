@@ -14,7 +14,7 @@ header,
 /* Home 페이지 배경 그라데이션 적용 */
 .container {
   text-align: center;
-  background: linear-gradient(to bottom, #fff8f7, #ffafa6);
+  background: white;
   width: 100%;
   height: 100vh; /* 약간 줄여서 오차 방지 */
   display: flex;
@@ -38,19 +38,35 @@ header,
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+@font-face {
+  font-family: "YoonChildfundkoreaManSeh";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408@1.0/YoonChildfundkoreaManSeh.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "BMDOHYEON";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url("//fonts.googleapis.com/earlyaccess/hanna.css");
+
 .title {
   font-size: 75px;
-  font-weight: bold;
-  font-family: "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode",
-    Geneva, Verdana, sans-serif;
+  font-family: "hanna";
   color: #333;
-  text-shadow: 4px 4px #898989;
   margin-bottom: -10px;
 }
 
 .description {
   font-size: 30px;
   color: #2d2d2d;
+  font-family: "YoonChildfundkoreaManSeh";
   margin-bottom: 100px;
 }
 
