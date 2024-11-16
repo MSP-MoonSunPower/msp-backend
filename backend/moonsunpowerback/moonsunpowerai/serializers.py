@@ -1,8 +1,5 @@
 # serializers.py
 from rest_framework import serializers
-from .models import Text
-
-from rest_framework import serializers
 from .models import Text, GeneratedText, QuestionItem
 
 # QuestionItem Serializer
