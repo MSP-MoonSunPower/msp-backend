@@ -25,8 +25,8 @@ function Login() {
         placeholder="아이디를 입력하세요."
         value={id}
         onChange={(e) => setId(e.target.value)}
-        onFocus={(e) => (e.target.placeholder = "")} // 클릭 시 플레이스홀더 제거
-        onBlur={(e) => (e.target.placeholder = "아이디를 입력하세요.")} // 입력 상자에서 벗어나면 플레이스홀더 복원
+        onFocus={(e) => (e.target.placeholder = "")}
+        onBlur={(e) => (e.target.placeholder = "아이디를 입력하세요.")}
       />
       <input
         name="pw"
@@ -35,8 +35,8 @@ function Login() {
         placeholder="비밀번호를 입력하세요"
         value={pw}
         onChange={(e) => setPw(e.target.value)}
-        onFocus={(e) => (e.target.placeholder = "")} // 클릭 시 플레이스홀더 제거
-        onBlur={(e) => (e.target.placeholder = "비밀번호를 입력하세요")} // 입력 상자에서 벗어나면 플레이스홀더 복원
+        onFocus={(e) => (e.target.placeholder = "")}
+        onBlur={(e) => (e.target.placeholder = "비밀번호를 입력하세요")}
       />
 
       <button className={styles.Button} onClick={clear}>

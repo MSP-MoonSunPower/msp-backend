@@ -13,7 +13,7 @@ function Home() {
 
   const openModal = () => {
     setIsModalOpen(true);
-    setCurrentModal(1); // 첫 번째 모달부터 시작
+    setCurrentModal(1);
   };
 
   const closeModal = () => setIsModalOpen(false);
@@ -22,7 +22,7 @@ function Home() {
     if (currentModal < 4) {
       setCurrentModal(currentModal + 1);
     } else {
-      setCurrentModal(1); // 네 번째 모달에서 첫 번째로 돌아가기
+      setCurrentModal(1);
     }
   };
 
@@ -30,7 +30,7 @@ function Home() {
     if (currentModal > 1) {
       setCurrentModal(currentModal - 1);
     } else {
-      setCurrentModal(4); // 첫 번째 모달에서 네 번째로 돌아가기
+      setCurrentModal(4);
     }
   };
 
@@ -87,7 +87,6 @@ function Home() {
             className={styles.modalContent}
             onClick={(e) => e.stopPropagation()}
           >
-            {/* 모달 내용 */}
             <div className={styles.modalButtons}>
               <button
                 onClick={previousModal}

@@ -1,0 +1,133 @@
+.container {
+  max-width: 90%;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.passage {
+  width: 96%;
+  margin: 10px auto;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: #fafafa;
+  color: #171717;
+}
+
+.splitContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.answers {
+  width: 48%;
+  padding: 20px;
+}
+
+.vocabulary {
+  width: 48%;
+  padding: 20px;
+}
+
+.vocabulary h3 {
+  font-size: 18px;
+  color: #ff5f5f;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.wordList {
+  padding: 0;
+  list-style: decimal;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.wordItem {
+  font-size: 14px;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+.questionList {
+  padding: 0;
+  list-style: none;
+  text-align: left;
+}
+
+.questionItem {
+  margin-bottom: 50px;
+}
+
+.questionItem p {
+  font-weight: bold;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.choice {
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  transition: all 0.3s;
+}
+
+.correctChoice {
+  border: 2px solid #386dff;
+  color: #386dff;
+  font-weight: bold;
+}
+
+.selectedChoice {
+  border: 2px solid #ff2121;
+  color: #ff2121;
+  font-weight: bold;
+}
+
+.explanation {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #000000;
+}
+
+.startButton {
+  display: block;
+  margin: 40px auto 0;
+  background-color: #ff5f5f;
+  color: white;
+  width: 90%;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1em;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+a {
+  text-decoration: none;
+}
+
+.startButton:hover {
+  background-color: #e53e3e;
+  box-shadow: 0 4px 15px rgba(229, 62, 62, 0.5);
+}

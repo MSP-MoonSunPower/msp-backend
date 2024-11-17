@@ -17,21 +17,21 @@
 }
 
 .inputBox {
-  color: #434343; /* 텍스트 색상 */
-  border: none; /* 테두리 색상을 회색으로 설정 */
+  color: #434343;
+  border: none;
   width: 250px;
   height: 30px;
-  font-size: 1em; /* 텍스트 크기를 3em 대신 1em으로 조정, 너무 큰 크기 방지 */
+  font-size: 1em;
   border-radius: 10px;
   margin: 5px;
-  padding: 5px; /* 안쪽 여백 추가로 텍스트가 상자에 더 잘 맞도록 */
-  background-color: #f3f3f3; /* 배경 색상을 조금 더 연한 회색으로 설정 */
-  outline: none; /* 포커스 시 외곽선을 제거 */
+  padding: 5px;
+  background-color: #f3f3f3;
+  outline: none;
 }
 
 .inputBox::placeholder {
-  color: #5f5f5f; /* 플레이스홀더 텍스트 색상 */
-  font-size: 0.9em; /* 플레이스홀더 텍스트 크기 */
+  color: #5f5f5f;
+  font-size: 0.9em;
   text-align: center;
 }
 
@@ -39,9 +39,9 @@
   background-color: #ff5f5f;
   border: 2px solid #ff5f5f;
   width: 250px;
-  height: 50px; /* 원하는 높이 설정 */
+  height: 50px;
   font-size: 1em;
-  line-height: 30px; /* 텍스트를 높이 중앙에 맞춤 */
+  line-height: 30px;
   border-radius: 25px;
   cursor: pointer;
   margin-top: 25px;

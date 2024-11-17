@@ -15,10 +15,7 @@ const Question = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const { passage, questions } = location.state || {
-    passage: "",
-    questions: [],
-  };
+  const { passage, questions } = location.state || { passage: "", questions: [] };
 
   const passageRef = useRef(null);
   const timerRef = useRef(null);
@@ -26,9 +23,9 @@ const Question = () => {
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
-  const handleOptionChange = (questionIndex, answer) => {
+  const handleOptionChange = (questionIndex, answerIndex) => {
     const updatedAnswers = [...selectedAnswers];
-    updatedAnswers[questionIndex] = answer;
+    updatedAnswers[questionIndex] = answerIndex + 1;
     setSelectedAnswers(updatedAnswers);
   };
 
@@ -49,17 +46,47 @@ const Question = () => {
     return () => stopTimer();
   }, [startTimer]);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setIsTimerRunning(false);
     stopTimer();
-    const elapsedMinutes = Math.floor(seconds / 60);
-    const elapsedDisplaySeconds = seconds % 60;
-    setElapsedTime(`${elapsedMinutes}분 ${elapsedDisplaySeconds}초`);
-    setShowPopup(true);
+
+    try {
+      const response = await fetch("http://3.38.179.92/ai/words/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          unknown_words: highlightedWords,
+          difficulty: 1,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch word definitions from the API");
+      }
+
+      const data = await response.json();
+      const wordDefinitions = data.word_definitions || [];
+
+      navigate("/Solution", {
+        state: {
+          passage,
+          questions,
+          selectedAnswers,
+          elapsedTime,
+          vocabulary: highlightedWords,
+          wordDefinitions,
+        },
+      });
+    } catch (error) {
+      console.error("Error fetching word definitions:", error);
+      setShowPopup(true);
+    }
   };
 
   const handleConfirm = () => {
-    navigate("/Solution");
+    setShowPopup(false);
   };
 
   const handleCancel = () => {
@@ -113,16 +140,11 @@ const Question = () => {
   };
 
   const removeHighlight = (word) => {
-    const highlights = passageRef.current.querySelectorAll(
-      `.${styles.highlight}`
-    );
+    const highlights = passageRef.current.querySelectorAll(`.${styles.highlight}`);
     highlights.forEach((highlight) => {
       if (highlight.textContent === word) {
         const parent = highlight.parentNode;
-        parent.replaceChild(
-          document.createTextNode(highlight.textContent),
-          highlight
-        );
+        parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
         parent.normalize();
       }
     });
@@ -131,6 +153,13 @@ const Question = () => {
   const formattedPassage = passage
     .split("\n\n")
     .map((para, index) => <p key={index}>{para}</p>);
+
+  const handleOpenPopup = () => {
+    const elapsedMinutes = Math.floor(seconds / 60);
+    const elapsedDisplaySeconds = seconds % 60;
+    setElapsedTime(`${elapsedMinutes}분 ${elapsedDisplaySeconds}초`);
+    setShowPopup(true);
+  };
 
   return (
     <div className={styles.container} onMouseUp={handleMouseUp}>
@@ -147,29 +176,19 @@ const Question = () => {
               <button className={styles.WordBtn} onClick={openModal}>
                 모르는 단어
               </button>
-              <button
-                onClick={handleShowFullPassage}
-                className={styles.showPassageButton}
-              >
+              <button onClick={handleShowFullPassage} className={styles.showPassageButton}>
                 지문만 보기
               </button>
             </div>
-
             {isModalOpen && (
               <div className={styles.modalOverlay} onClick={closeModal}>
-                <div
-                  className={styles.modalContent}
-                  onClick={(e) => e.stopPropagation()}
-                >
+                <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
                   <h3 className={styles.modalHeader}>모르는 단어</h3>
                   <ul className={styles.wordList}>
                     {highlightedWords.map((word, index) => (
                       <li key={index} className={styles.wordItem}>
                         {index + 1}. {word}
-                        <button
-                          onClick={() => handleDeleteWord(index)}
-                          className={styles.deleteButton}
-                        >
+                        <button onClick={() => handleDeleteWord(index)} className={styles.deleteButton}>
                           X
                         </button>
                       </li>
@@ -181,17 +200,13 @@ const Question = () => {
                 </div>
               </div>
             )}
-
             <div className={styles.Jimoon} ref={passageRef}>
               {formattedPassage}
             </div>
           </div>
         ) : (
           <div className={styles.fullPassage}>
-            <button
-              onClick={handleCloseFullPassage}
-              className={styles.CloseFullPassageBTN}
-            >
+            <button onClick={handleCloseFullPassage} className={styles.CloseFullPassageBTN}>
               문제로 돌아가기
             </button>
             <div className={styles.FullJimoon} ref={passageRef}>
@@ -199,55 +214,44 @@ const Question = () => {
             </div>
           </div>
         )}
-
         <div className={styles.questions}>
           <div className={styles.Timer}>
             {isVisible && (
               <h1>
-                {minutes}:
-                {displaySeconds < 10 ? `0${displaySeconds}` : displaySeconds}
+                {minutes}:{displaySeconds < 10 ? `0${displaySeconds}` : displaySeconds}
               </h1>
             )}
           </div>
-          <button
-            className={styles.timerBTN}
-            onClick={() => setIsVisible(!isVisible)}
-          >
+          <button className={styles.timerBTN} onClick={() => setIsVisible(!isVisible)}>
             {isVisible ? "HIDE" : "SHOW"}
           </button>
           <ol>
             {questions.map((item, index) => (
               <li key={index}>
                 <p>{item.question_text}</p>
-                {[
-                  item.choice1,
-                  item.choice2,
-                  item.choice3,
-                  item.choice4,
-                  item.choice5,
-                ].map((option, optionIndex) => (
-                  <div key={optionIndex} className={styles.option}>
-                    <input
-                      className={styles.radioBtn}
-                      type="radio"
-                      name={`question-${index}`}
-                      value={option}
-                      checked={selectedAnswers[index] === option}
-                      onChange={() => handleOptionChange(index, option)}
-                    />
-                    <label className={styles.checked}>{option}</label>
-                  </div>
-                ))}
+                {[item.choice1, item.choice2, item.choice3, item.choice4, item.choice5].map(
+                  (option, optionIndex) => (
+                    <div key={optionIndex} className={styles.option}>
+                      <input
+                        className={styles.radioBtn}
+                        type="radio"
+                        name={`question-${index}`}
+                        value={optionIndex + 1}
+                        checked={selectedAnswers[index] === optionIndex + 1}
+                        onChange={() => handleOptionChange(index, optionIndex)}
+                      />
+                      <label className={styles.checked}>{option}</label>
+                    </div>
+                  )
+                )}
               </li>
             ))}
           </ol>
         </div>
       </div>
-
-      <button className={styles.submitButton} onClick={handleSubmit}>
+      <button className={styles.submitButton} onClick={handleOpenPopup}>
         답안 제출하기
       </button>
-
       {showPopup && (
         <div className={styles.popup}>
           <p>정말 제출하시겠습니까?</p>
@@ -256,7 +260,7 @@ const Question = () => {
             <button onClick={handleCancel} className={styles.cancelButton}>
               뒤로 가기
             </button>
-            <button onClick={handleConfirm} className={styles.confirmButton}>
+            <button onClick={handleSubmit} className={styles.confirmButton}>
               제출하기
             </button>
           </div>

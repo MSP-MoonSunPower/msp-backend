@@ -17,17 +17,17 @@ function Select() {
   const handleTopicChange = (e) => {
     setTopic(e.target.value);
     if (e.target.value) {
-      setSelectedTag(null); // 사용자가 주제를 입력하면 태그 선택 해제
+      setSelectedTag(null);
     }
   };
 
   // 태그 클릭 핸들러
   const handleTagClick = (tagNumber) => {
     if (selectedTag === tagNumber) {
-      setSelectedTag(null); // 이미 선택된 태그를 다시 클릭하면 해제
+      setSelectedTag(null);
     } else {
       setSelectedTag(tagNumber);
-      setTopic(""); // 사용자가 태그를 클릭하면 주제 입력 필드 비우기
+      setTopic("");
     }
   };
 

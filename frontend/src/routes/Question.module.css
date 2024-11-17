@@ -6,8 +6,8 @@
 }
 
 .content {
-  display: flex; /* 지문과 질문을 나란히 배치 */
-  align-items: flex-start; /* 자식 요소들이 위쪽에 정렬되도록 설정 */
+  display: flex;
+  align-items: flex-start;
 }
 
 .passage {
@@ -16,10 +16,10 @@
   padding-right: 50px;
 }
 .questions {
-  flex: 2; /* 질문 너비 */
+  flex: 2;
   padding-left: 10px;
-  background-color: rgb(251, 253, 255); /* 질문 배경색 */
-  display: flex; /* 질문을 세로로 정렬 */
+  background-color: rgb(251, 253, 255);
+  display: flex;
 }
 
 .container::before {
@@ -27,7 +27,7 @@
   position: absolute;
   top: 50px;
   bottom: 50px;
-  left: 60%; /* .passage 끝에 맞춰 경계선 위치 */
+  left: 60%;
   width: 1.5px;
   background-color: #000000;
 }
@@ -36,9 +36,9 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  position: relative; /* 위치 조정 가능하게 설정 */
-  top: -10px; /* 위로 이동 */
-  margin-top: -20px; /* 위쪽 여백 줄이기 */
+  position: relative;
+  top: -10px;
+  margin-top: -20px;
   margin-bottom: -10px;
 }
 
@@ -49,7 +49,7 @@
   cursor: pointer;
   border-radius: 5px;
   background-color: #f0f0f0;
-  margin-left: 10px; /* 버튼 간 여백 설정 */
+  margin-left: 10px;
 }
 
 .showPassageButton:hover {
@@ -63,9 +63,9 @@
 }
 
 .CloseFullPassageBTN {
-  position: absolute; /* 절대 위치 설정 */
-  top: 10px; /* 위에서 10px 떨어지게 */
-  right: 80px; /* 오른쪽에서 10px 떨어지게 */
+  position: absolute;
+  top: 10px;
+  right: 80px;
   padding: 8px 16px;
   border: none;
   cursor: pointer;
@@ -111,17 +111,17 @@
 }
 
 .radioBtn {
-  appearance: none; /* 기본 라디오 버튼 스타일 제거 */
+  appearance: none;
   width: 15px;
   height: 15px;
-  background-color: #f0f0f0; /* 배경색 */
-  border-radius: 50%; /* 동그라미 대신 다른 모양을 원하면 제거 */
+  background-color: #f0f0f0;
+  border-radius: 50%;
   display: inline-block;
   cursor: pointer;
 }
 
 .radioBtn:checked {
-  background-color: #d97676; /* 선택된 상태의 배경색 */
+  background-color: #d97676;
   border-color: #d97676;
 }
 
@@ -177,11 +177,11 @@
   background-color: white;
   padding: 20px;
   overflow: auto;
-  z-index: 1000; /* 다른 요소 위에 표시 */
+  z-index: 1000;
 }
 
 .FullJimoon {
-  justify-content: center; /* 수평 가운데 정렬 */
+  justify-content: center;
   margin-left: 5%;
   margin-right: 8%;
   line-height: 1.6;
@@ -189,7 +189,6 @@
   margin-top: 50px;
 }
 
-/*실제 모달의 내용이 표시되는 부분이야. 모달 창의 본문을 구성*/
 .modalContent {
   background-color: #fffde7;
   padding: 20px;
@@ -201,14 +200,14 @@
   flex-direction: column;
   line-height: 0.1;
   position: absolute;
-  top: 5%; /* 수직 위치 */
-  right: -60%; /* 오른쪽에서 5% 떨어지게 */
+  top: 5%;
+  right: -60%;
   overflow: hidden;
 }
 
 .modalHeader {
   position: sticky;
-  background-color: #fffde7; /* 배경색을 모달과 맞추기 */
+  background-color: #fffde7;
   padding-top: 5px;
   padding-bottom: 25px;
   top: -10%;
@@ -222,14 +221,14 @@
   list-style: none;
   padding: 10px;
   margin: 0;
-  flex: 1; /* 남은 공간을 채우도록 설정 */
-  overflow-y: auto; /* 내용이 많을 때 스크롤 추가 */
+  flex: 1;
+  overflow-y: auto;
 }
 
 .wordItem {
-  margin-bottom: 10px; /* 항목 사이의 간격 줄이기 */
+  margin-bottom: 10px;
   display: flex;
-  align-items: center; /* 버튼과 텍스트를 수직으로 맞추기 */
+  align-items: center;
 }
 
 .deleteButton {
@@ -265,17 +264,16 @@
 .Timer {
   font-size: 12px;
   margin-right: 30px;
-  position: absolute; /* 위치를 고정시키기 위해 사용 */
-  top: -10px; /* 원하는 위치에 따라 값을 조정 */
-  /* 오른쪽으로 고정 */
+  position: absolute;
+  top: -10px;
   display: flex;
   align-items: center;
   right: 30px;
 }
 
 .timerBTN {
-  position: absolute; /* 위치를 고정시키기 위해 사용 */
-  top: 10px; /* 원하는 위치에 따라 값을 조정 */
+  position: absolute;
+  top: 10px;
   right: -20px;
   padding: 8px 16px;
   border: none;
