@@ -202,3 +202,4 @@ backend/moonsunpowerback/celerybeat-schedule.dir
 # 제거할 내용 (예시)
 frontend/package.json
 frontend/package-lock.json
+frontend/node_modules/
