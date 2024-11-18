@@ -28,7 +28,7 @@ def generate_and_save_text():
     "content": [
         {
         "type": "text",
-        "text": "create what you are told to do."
+        "text": "create what you are told to do. make the essay really long." 
         }
     ]
     },
