@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./Solution.module.css";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 
@@ -12,8 +12,21 @@ const Solution = () => {
     selectedAnswers = [],
     elapsedTime = "",
     vocabulary = [],
-    wordDefinitions = [],
+    wordDefinitions = [], // 배열로 처리
   } = location.state || {};
+
+  // 키 이름 변경하기
+  const modifiedWordDefinitions = wordDefinitions.map(
+    ({ word, definition }) => ({
+      word,
+      meaning: definition, // 'definition'을 'meaning'으로 변경
+    })
+  );
+
+  // 데이터 점검용 console.log
+  useEffect(() => {
+    console.log("modifiedWordDefinitions 배열:", modifiedWordDefinitions);
+  }, [modifiedWordDefinitions]);
 
   return (
     <div className={styles.container}>
@@ -73,15 +86,11 @@ const Solution = () => {
         <div className={styles.vocabulary}>
           <h2>단어장</h2>
           <ol className={styles.wordList}>
-            {wordDefinitions.length > 0 ? (
-              wordDefinitions.map((wordDef, index) => (
-                <li key={index} className={styles.wordItem}>
-                  <strong>{wordDef.word}</strong>: {wordDef.definition}
-                </li>
-              ))
-            ) : (
-              <p>모르는 단어가 없습니다.</p>
-            )}
+            {modifiedWordDefinitions.map((wordDef, index) => (
+              <li key={index}>
+                {index + 1}. <strong>{wordDef.word}</strong>: {wordDef.meaning}
+              </li>
+            ))}
           </ol>
         </div>
       </div>

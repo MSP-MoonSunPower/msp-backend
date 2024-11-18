@@ -41,7 +41,7 @@ function Select() {
     if (topic) {
       try {
         const response = await fetch(
-          `http://3.38.179.92/ai/text/${encodeURIComponent(
+          `https://3.38.179.92/ai/text/${encodeURIComponent(
             topic
           )}/${difficulty}`
         );
@@ -60,7 +60,7 @@ function Select() {
     } else if (selectedTag) {
       try {
         const response = await fetch(
-          `http://3.38.179.92/ai/tagtext/${selectedTag}/${difficulty}`
+          `https://3.38.179.92/ai/tagtext/${selectedTag}/${difficulty}`
         );
         if (!response.ok) {
           throw new Error("태그 텍스트 가져오기 실패");
@@ -82,7 +82,7 @@ function Select() {
   // /todaytext/ 엔드포인트로 GET 요청
   const fetchTodayText = async () => {
     try {
-      const response = await fetch("http://3.38.179.92/ai/todaytext/");
+      const response = await fetch("https://3.38.179.92/ai/todaytext/");
       if (!response.ok) {
         if (response.status === 404) {
           throw new Error("No Content Found");

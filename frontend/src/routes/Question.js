@@ -15,7 +15,10 @@ const Question = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-  const { passage, questions } = location.state || { passage: "", questions: [] };
+  const { passage, questions } = location.state || {
+    passage: "",
+    questions: [],
+  };
 
   const passageRef = useRef(null);
   const timerRef = useRef(null);
@@ -49,16 +52,15 @@ const Question = () => {
   const handleSubmit = async () => {
     setIsTimerRunning(false);
     stopTimer();
-
     try {
-      const response = await fetch("http://3.38.179.92/ai/words/", {
+      const response = await fetch("https://3.38.179.92/ai/words/", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           unknown_words: highlightedWords,
-          difficulty: 1,
+          difficulty: 1, // 난이도 (예: 1)
         }),
       });
 
@@ -67,7 +69,15 @@ const Question = () => {
       }
 
       const data = await response.json();
-      const wordDefinitions = data.word_definitions || [];
+      console.log("API 응답:", data);
+
+      // API 응답을 배열로 변환
+      const wordDefinitions = Object.entries(data.definitions).map(
+        ([key, value]) => ({
+          word: key,
+          definition: value,
+        })
+      );
 
       navigate("/Solution", {
         state: {
@@ -140,11 +150,16 @@ const Question = () => {
   };
 
   const removeHighlight = (word) => {
-    const highlights = passageRef.current.querySelectorAll(`.${styles.highlight}`);
+    const highlights = passageRef.current.querySelectorAll(
+      `.${styles.highlight}`
+    );
     highlights.forEach((highlight) => {
       if (highlight.textContent === word) {
         const parent = highlight.parentNode;
-        parent.replaceChild(document.createTextNode(highlight.textContent), highlight);
+        parent.replaceChild(
+          document.createTextNode(highlight.textContent),
+          highlight
+        );
         parent.normalize();
       }
     });
@@ -176,19 +191,28 @@ const Question = () => {
               <button className={styles.WordBtn} onClick={openModal}>
                 모르는 단어
               </button>
-              <button onClick={handleShowFullPassage} className={styles.showPassageButton}>
+              <button
+                onClick={handleShowFullPassage}
+                className={styles.showPassageButton}
+              >
                 지문만 보기
               </button>
             </div>
             {isModalOpen && (
               <div className={styles.modalOverlay} onClick={closeModal}>
-                <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+                <div
+                  className={styles.modalContent}
+                  onClick={(e) => e.stopPropagation()}
+                >
                   <h3 className={styles.modalHeader}>모르는 단어</h3>
                   <ul className={styles.wordList}>
                     {highlightedWords.map((word, index) => (
                       <li key={index} className={styles.wordItem}>
                         {index + 1}. {word}
-                        <button onClick={() => handleDeleteWord(index)} className={styles.deleteButton}>
+                        <button
+                          onClick={() => handleDeleteWord(index)}
+                          className={styles.deleteButton}
+                        >
                           X
                         </button>
                       </li>
@@ -206,7 +230,10 @@ const Question = () => {
           </div>
         ) : (
           <div className={styles.fullPassage}>
-            <button onClick={handleCloseFullPassage} className={styles.CloseFullPassageBTN}>
+            <button
+              onClick={handleCloseFullPassage}
+              className={styles.CloseFullPassageBTN}
+            >
               문제로 돌아가기
             </button>
             <div className={styles.FullJimoon} ref={passageRef}>
@@ -218,32 +245,40 @@ const Question = () => {
           <div className={styles.Timer}>
             {isVisible && (
               <h1>
-                {minutes}:{displaySeconds < 10 ? `0${displaySeconds}` : displaySeconds}
+                {minutes}:
+                {displaySeconds < 10 ? `0${displaySeconds}` : displaySeconds}
               </h1>
             )}
           </div>
-          <button className={styles.timerBTN} onClick={() => setIsVisible(!isVisible)}>
+          <button
+            className={styles.timerBTN}
+            onClick={() => setIsVisible(!isVisible)}
+          >
             {isVisible ? "HIDE" : "SHOW"}
           </button>
           <ol>
             {questions.map((item, index) => (
               <li key={index}>
                 <p>{item.question_text}</p>
-                {[item.choice1, item.choice2, item.choice3, item.choice4, item.choice5].map(
-                  (option, optionIndex) => (
-                    <div key={optionIndex} className={styles.option}>
-                      <input
-                        className={styles.radioBtn}
-                        type="radio"
-                        name={`question-${index}`}
-                        value={optionIndex + 1}
-                        checked={selectedAnswers[index] === optionIndex + 1}
-                        onChange={() => handleOptionChange(index, optionIndex)}
-                      />
-                      <label className={styles.checked}>{option}</label>
-                    </div>
-                  )
-                )}
+                {[
+                  item.choice1,
+                  item.choice2,
+                  item.choice3,
+                  item.choice4,
+                  item.choice5,
+                ].map((option, optionIndex) => (
+                  <div key={optionIndex} className={styles.option}>
+                    <input
+                      className={styles.radioBtn}
+                      type="radio"
+                      name={`question-${index}`}
+                      value={optionIndex + 1}
+                      checked={selectedAnswers[index] === optionIndex + 1}
+                      onChange={() => handleOptionChange(index, optionIndex)}
+                    />
+                    <label className={styles.checked}>{option}</label>
+                  </div>
+                ))}
               </li>
             ))}
           </ol>
