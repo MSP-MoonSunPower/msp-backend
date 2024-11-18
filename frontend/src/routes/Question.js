@@ -53,14 +53,14 @@ const Question = () => {
     setIsTimerRunning(false);
     stopTimer();
     try {
-      const response = await fetch("https://3.38.179.92/ai/words/", {
+      const response = await fetch("https://moonsunpower.com/ai/words/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           unknown_words: highlightedWords,
-          difficulty: 1, // 난이도 (예: 1)
+          difficulty: 1,
         }),
       });
 
@@ -71,13 +71,7 @@ const Question = () => {
       const data = await response.json();
       console.log("API 응답:", data);
 
-      // API 응답을 배열로 변환
-      const wordDefinitions = Object.entries(data.definitions).map(
-        ([key, value]) => ({
-          word: key,
-          definition: value,
-        })
-      );
+      const wordDefinitions = data.definitions.words || [];
 
       navigate("/Solution", {
         state: {
@@ -95,23 +89,15 @@ const Question = () => {
     }
   };
 
-  const handleConfirm = () => {
-    setShowPopup(false);
-  };
-
+  const handleConfirm = () => setShowPopup(false);
   const handleCancel = () => {
     setShowPopup(false);
     setIsTimerRunning(true);
     startTimer();
   };
 
-  const handleShowFullPassage = () => {
-    setShowFullPassage(true);
-  };
-
-  const handleCloseFullPassage = () => {
-    setShowFullPassage(false);
-  };
+  const handleShowFullPassage = () => setShowFullPassage(true);
+  const handleCloseFullPassage = () => setShowFullPassage(false);
 
   const handleMouseUp = (event) => {
     const jimoonElement = passageRef.current;

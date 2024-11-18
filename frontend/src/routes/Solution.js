@@ -6,27 +6,28 @@ const Solution = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    console.log("location.state:", location.state);
+  }, [location]);
+
   const {
     passage = "",
     questions = [],
     selectedAnswers = [],
     elapsedTime = "",
     vocabulary = [],
-    wordDefinitions = [], // 배열로 처리
+    wordDefinitions = [],
   } = location.state || {};
 
-  // 키 이름 변경하기
-  const modifiedWordDefinitions = wordDefinitions.map(
-    ({ word, definition }) => ({
-      word,
-      meaning: definition, // 'definition'을 'meaning'으로 변경
-    })
-  );
+  const modifiedVocabulary = vocabulary.map((word) => {
+    const definitionObj = wordDefinitions.find((item) => item.word === word);
+    const meaning = definitionObj ? definitionObj.definition : "정의 없음";
+    return { word, meaning };
+  });
 
-  // 데이터 점검용 console.log
   useEffect(() => {
-    console.log("modifiedWordDefinitions 배열:", modifiedWordDefinitions);
-  }, [modifiedWordDefinitions]);
+    console.log("modifiedVocabulary 배열:", modifiedVocabulary);
+  }, [modifiedVocabulary]);
 
   return (
     <div className={styles.container}>
@@ -86,10 +87,10 @@ const Solution = () => {
         <div className={styles.vocabulary}>
           <h2>단어장</h2>
           <ol className={styles.wordList}>
-            {modifiedWordDefinitions.map((wordDef, index) => (
-              <li key={index}>
+            {modifiedVocabulary.map((wordDef, index) => (
+              <div key={index}>
                 {index + 1}. <strong>{wordDef.word}</strong>: {wordDef.meaning}
-              </li>
+              </div>
             ))}
           </ol>
         </div>
