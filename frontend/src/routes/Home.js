@@ -57,9 +57,12 @@ function Home() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Moon Sun Power</h1>
+      <h1 className={styles.title}>Moon Sun Power </h1>
+
       <p className={styles.description}>
-        생성형 AI 기반 NLG를 이용한 개인 맞춤형 문해력 향상 학습 프로그램
+        생성형 AI 기반 NLG를 이용한 개인 맞춤형 문해력 향상 학습 프로그램인데
+        이왕이면 노트북으로 들어와주세요.. bitte.. <br />
+        아직 부족한 점이 많은 사이트입니다 ㅎㅎ - FE 개발자 -
       </p>
       <div className={styles.buttonContainer}>
         <Link to="/select">
