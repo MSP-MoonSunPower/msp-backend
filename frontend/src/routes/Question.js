@@ -279,15 +279,20 @@ const Question = () => {
       </button>
       {showPopup && (
         <div className={styles.popup}>
-          <p>정말 제출하시겠습니까?</p>
-          <p>소요 시간: {elapsedTime}</p>
-          <div>
-            <button onClick={handleCancel} className={styles.cancelButton}>
-              뒤로 가기
-            </button>
-            <button onClick={handleSubmit} className={styles.confirmButton}>
-              제출하기
-            </button>
+          <div className={styles.popupContent}>
+            <p className={styles.popupTitle}>정말 제출하시겠습니까?</p>
+            <p className={styles.popupWarning}>
+              모르는 단어 하나 이상 선택해주셔야 제출이 됩니다.. (수정중~)
+            </p>
+            <p className={styles.popupTime}>소요 시간: {elapsedTime}</p>
+            <div className={styles.popupButtons}>
+              <button onClick={handleCancel} className={styles.cancelButton}>
+                뒤로 가기
+              </button>
+              <button onClick={handleSubmit} className={styles.confirmButton}>
+                제출하기
+              </button>
+            </div>
           </div>
         </div>
       )}

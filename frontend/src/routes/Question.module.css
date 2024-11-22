@@ -143,31 +143,57 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   width: 400px;
-  height: 200px;
+  padding: 20px;
   display: flex;
-  justify-content: center; /* 수평 가운데 정렬 */
-  align-items: center; /* 수직 가운데 정렬 */
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.confirmButton,
-.cancelButton {
-  margin: 10px;
+
+.popupContent {
+  width: 100%;
+  text-align: center;
+}
+
+.popupTitle {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.popupWarning {
+  font-size: 14px;
+  color: #ff0000;
+  margin-bottom: 10px;
+}
+
+.popupTime {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.popupButtons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cancelButton,
+.confirmButton {
   padding: 8px 16px;
   border: none;
-  cursor: pointer;
   border-radius: 5px;
+  cursor: pointer;
+}
+
+.cancelButton {
+  background-color: #f0f0f0;
+  color: #333;
 }
 
 .confirmButton {
-  background-color: #ffdf5e;
-  color: rgb(17, 17, 17);
-}
-
-.cancelButton {
-  background-color: #6c757d;
+  background-color: #eb4a44;
   color: white;
 }
-
 .fullPassage {
   position: fixed;
   top: 0;
