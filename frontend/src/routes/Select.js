@@ -6,14 +6,15 @@ function Select() {
   const [difficulty, setDifficulty] = useState(null);
   const [topic, setTopic] = useState("");
   const [selectedTag, setSelectedTag] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
   const navigate = useNavigate();
 
-  // 난이도 버튼 클릭 핸들러
   const handleDifficultyClick = (level) => {
     setDifficulty(level);
   };
 
-  // 주제 입력 핸들러
   const handleTopicChange = (e) => {
     setTopic(e.target.value);
     if (e.target.value) {
@@ -21,7 +22,6 @@ function Select() {
     }
   };
 
-  // 태그 클릭 핸들러
   const handleTagClick = (tagNumber) => {
     if (selectedTag === tagNumber) {
       setSelectedTag(null);
@@ -31,12 +31,15 @@ function Select() {
     }
   };
 
-  // 시작하기 버튼 클릭 시 호출되는 함수
   const handleStartClick = async () => {
     if (!difficulty) {
-      console.error("난이도를 선택해주세요.");
+      setError("난이도를 선택해주세요.");
+      setIsPopupOpen(true);
       return;
     }
+
+    setIsLoading(true);
+    setError(null);
 
     if (topic) {
       try {
@@ -56,6 +59,10 @@ function Select() {
         });
       } catch (error) {
         console.error("텍스트 가져오는 중 오류 발생:", error);
+        setError("지문 생성에 실패했습니다. 주제를 다시 선택해주세요.");
+        setIsPopupOpen(true);
+      } finally {
+        setIsLoading(false);
       }
     } else if (selectedTag) {
       try {
@@ -73,14 +80,21 @@ function Select() {
         });
       } catch (error) {
         console.error("태그 텍스트 가져오는 중 오류 발생:", error);
+        setError("지문 생성에 실패했습니다. 주제를 다시 선택해주세요.");
+        setIsPopupOpen(true);
+      } finally {
+        setIsLoading(false);
       }
     } else {
-      console.error("주제 또는 태그를 선택해주세요.");
+      setError("주제 또는 태그를 선택해주세요.");
+      setIsPopupOpen(true);
+      setIsLoading(false);
     }
   };
 
-  // /todaytext/ 엔드포인트로 GET 요청
   const fetchTodayText = async () => {
+    setIsLoading(true);
+    setError(null);
     try {
       const response = await fetch("https://moonsunpower.com/ai/todaytext/");
       if (!response.ok) {
@@ -97,11 +111,33 @@ function Select() {
       });
     } catch (error) {
       console.error("오늘의 지문 가져오는 중 오류 발생:", error);
+      setError("오늘의 지문을 가져오는데 실패했습니다. 다시 시도해주세요.");
+      setIsPopupOpen(true);
+    } finally {
+      setIsLoading(false);
     }
   };
 
+  if (isLoading) {
+    return (
+      <div className={styles.loadingContainer}>
+        <div className={styles.spinner}></div>
+        <p>지문이 생성되고 있습니다. 잠시만 기다려주세요!</p>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.container}>
+      {isPopupOpen && (
+        <div className={styles.popup}>
+          <div className={styles.popupContent}>
+            <p>{error}</p>
+            <button onClick={() => setIsPopupOpen(false)}>닫기</button>
+          </div>
+        </div>
+      )}
+
       <h2>1. 난이도 선택</h2>
       <div className={styles.difficultyOptions}>
         <button
