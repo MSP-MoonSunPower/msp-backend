@@ -63,16 +63,12 @@ const Question = () => {
           difficulty: 1,
         }),
       });
-
       if (!response.ok) {
         throw new Error("Failed to fetch word definitions from the API");
       }
-
       const data = await response.json();
       console.log("API 응답:", data);
-
       const wordDefinitions = data.definitions.words || [];
-
       navigate("/Solution", {
         state: {
           passage,
@@ -163,7 +159,7 @@ const Question = () => {
   };
 
   return (
-    <div className={styles.container} onMouseUp={handleMouseUp}>
+    <div className={styles.container}>
       <div className={styles.content}>
         {!showFullPassage ? (
           <div className={styles.passage}>
@@ -210,7 +206,11 @@ const Question = () => {
                 </div>
               </div>
             )}
-            <div className={styles.Jimoon} ref={passageRef}>
+            <div
+              className={styles.Jimoon}
+              ref={passageRef}
+              onMouseUp={handleMouseUp}
+            >
               {formattedPassage}
             </div>
           </div>
@@ -222,7 +222,11 @@ const Question = () => {
             >
               문제로 돌아가기
             </button>
-            <div className={styles.FullJimoon} ref={passageRef}>
+            <div
+              className={styles.FullJimoon}
+              ref={passageRef}
+              onMouseUp={handleMouseUp}
+            >
               {formattedPassage}
             </div>
           </div>
