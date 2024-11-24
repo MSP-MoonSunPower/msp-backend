@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
-import logo from "../logo.jpg"; // 로고 이미지 경로에 맞게 조정 필요
+import logo from "../logo.jpg";
 
 function Header({ isHomePage }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // 기본값을 false로 설정
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,6 +35,9 @@ function Header({ isHomePage }) {
       <nav className={styles.nav}>
         <Link to="/" className={styles.navLink}>
           Home
+        </Link>
+        <Link to="/About Us" className={styles.navLink}>
+          About Us
         </Link>
         <Link to="/mypage" className={styles.navLink}>
           My Page

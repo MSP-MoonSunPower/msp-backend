@@ -12,6 +12,7 @@ import MyPage from "./routes/MyPage";
 import Question from "./routes/Question";
 import Select from "./routes/Select";
 import Solution from "./routes/Solution";
+import AboutUs from "./routes/AboutUs";
 
 function App() {
   const location = useLocation();
@@ -28,6 +29,7 @@ function App() {
           <Route path="/question" element={<Question />} />
           <Route path="/select" element={<Select />} />
           <Route path="/solution" element={<Solution />} />
+          <Route path="/AboutUs" element={<AboutUs />} />
         </Routes>
       </main>
     </>

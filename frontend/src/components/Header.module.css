@@ -97,14 +97,13 @@
   left: 0;
   z-index: 1000;
   height: 60px;
-  background-color: #ffeaea; /* 다른 페이지에서는 핑크색 */
+  background-color: #ffeaea;
   box-sizing: border-box;
 }
 
-/* Home 페이지에서 투명한 헤더 스타일 */
 .homeHeader {
-  background-color: transparent; /* 투명 배경 */
-  position: absolute; /* 공간 차지하지 않도록 설정 */
+  background-color: transparent;
+  position: absolute;
 }
 .logoContainer {
   display: flex;
