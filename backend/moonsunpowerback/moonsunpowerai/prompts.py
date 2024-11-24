@@ -94,7 +94,7 @@ The structure of your output should follow: essay - blank a line - each question
 Essay, questions, explanation follow each other's instructions.
 
 <Essay's instruction>
-Your essay's length must be between 2400 and 3600, and at least 4 paragraph. 
+Your essay's length must be really really long, with at least 8 paragraph. 
 The separation between paragraphs should be done by leaving a blank line, not by using other symbols. 
 Each paragraph must be more than 500. When you choose words, please consider my reading skill, choose the hard one. 
 If I give you a provocative word, you can say only object things. For example, when I give you a word '히틀러' or '전쟁', you can express your essay with not violent, but educational. 
@@ -106,7 +106,7 @@ The number of questions and its explanations are five.
 Questions have five options each other, it contains contents of your essay with clear answer and explanation.
 Also in questions and its options must include only essay's contents. And that include not personal things, but facts. 
 One of the questions should involve using a dictionary to create a vocabulary-related question based on the passage, such as focusing on synonyms, antonyms, or inferring the meaning of a word. 
-But Choose a word whose meaning can be inferred just by reading the essay. Also I want the question is not too easy.
+But Choose a word whose meaning can be inferred just by reading the essay. Also I want the question to be extremely difficult.
 Present the output in the following JSON structure, ensuring that every part of the essay and the accompanying questions are constructed with the highest level of detail and complexity:
 
 ```json
