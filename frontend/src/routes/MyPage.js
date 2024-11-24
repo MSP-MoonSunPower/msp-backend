@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./MyPage.module.css";
-
+import mypage from "../mypage.jpg";
 function MyPage() {
   return (
     <div className={styles.imageContainer}>
-      <h1>마이페이지 꾸미는 중</h1>
+      <img src={mypage} alt="MyPage" />
     </div>
   );
 }

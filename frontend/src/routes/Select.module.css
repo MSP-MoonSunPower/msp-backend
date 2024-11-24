@@ -176,3 +176,18 @@
   border-radius: 3px;
   cursor: pointer;
 }
+
+.loadingcontainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.waittext {
+  font-size: 25px;
+  color: #333;
+  font-family: "MaruBuri";
+  text-align: center;
+  margin-top: 20%;
+}
