@@ -1,3 +1,13 @@
+/*font-family
+font-family: "MaruBuri";
+font-family: "NanumSquareNeoLight";
+font-family: "NanumSquareNeo";
+font-family: "NanumSquareNeoBold";
+font-family: "BookkMyungjo-Bd";
+font-family: "YoonChildfundkoreaManSeh";
+font-family: "BMDOHYEON";
+font-family: "hanna";
+*/
 @font-face {
   font-family: "YoonChildfundkoreaManSeh";
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408@1.0/YoonChildfundkoreaManSeh.woff2")
