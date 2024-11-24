@@ -16,12 +16,20 @@ const Solution = () => {
     selectedAnswers = [],
     elapsedTime = "",
     vocabulary = [],
-    wordDefinitions = [],
+    wordDefinitions = [], // 단어 정의 배열
   } = location.state || {};
 
+  // `vocabulary`와 `wordDefinitions` 매핑
   const modifiedVocabulary = vocabulary.map((word) => {
-    const definitionObj = wordDefinitions.find((item) => item.word === word);
-    const meaning = definitionObj ? definitionObj.definition : "정의 없음";
+    const definitionObj = wordDefinitions.find((item) => {
+      const normalizedWord = word.trim().toLowerCase();
+      const normalizedDefinitionWord = item.word.trim().toLowerCase();
+      return normalizedWord === normalizedDefinitionWord;
+    });
+
+    const meaning = definitionObj
+      ? definitionObj.definition
+      : "단어의 정의를 찾을 수 없습니다. Sorry ㅜㅜ";
     return { word, meaning };
   });
 

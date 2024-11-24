@@ -70,7 +70,8 @@ const Question = () => {
       }
       const data = await response.json();
       console.log("API 응답:", data);
-      const wordDefinitions = data.definitions.words || [];
+
+      const wordDefinitions = data.definitions?.words || [];
       navigate("/Solution", {
         state: {
           passage,
@@ -83,7 +84,16 @@ const Question = () => {
       });
     } catch (error) {
       console.error("Error fetching word definitions:", error);
-      setShowPopup(true);
+      navigate("/Solution", {
+        state: {
+          passage,
+          questions,
+          selectedAnswers,
+          elapsedTime,
+          vocabulary: highlightedWords,
+          wordDefinitions: [],
+        },
+      });
     }
   };
 
@@ -167,7 +177,7 @@ const Question = () => {
     const elapsedDisplaySeconds = seconds % 60;
     setElapsedTime(`${elapsedMinutes}분 ${elapsedDisplaySeconds}초`);
     setShowPopup(true);
-    stopTimer(); // 팝업 열릴 때 타이머 멈춤
+    stopTimer();
   };
 
   const minutes = Math.floor(seconds / 60);
@@ -296,10 +306,7 @@ const Question = () => {
         <div className={styles.popup}>
           <div className={styles.popupContent}>
             <p className={styles.popupTitle}>정말 제출하시겠습니까?</p>
-            <p className={styles.popupWarning}>
-              모르는 단어 하나 이상 선택해주셔야 제출이 됩니다.. (수정중~)
-            </p>
-            <p className={styles.popupTime}>소요 시간: {elapsedTime}</p>
+            <p className={styles.popupWarning}>소요 시간: {elapsedTime}</p>
             <div className={styles.popupButtons}>
               <button onClick={handleCancel} className={styles.cancelButton}>
                 뒤로 가기
