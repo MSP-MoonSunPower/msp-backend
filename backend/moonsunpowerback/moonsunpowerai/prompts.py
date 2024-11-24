@@ -238,11 +238,13 @@ Philosophy), or (Specific events in Philosophic field) (ex: Aristoteles, Descart
 Communist Manifesto etc). Also, you are allowed to generate text with
 (terms Philosophy) and (specific person) (ex: Socrates, Neo-confucianism, Jeremy Bentham, Confucius, etc ).
 """,
-    3:"""
-(Literature), or (Specific events in Literature field) 
-(ex: Literary work of William Shakespeare, King James Version, Faust von Goethe, etc). 
-Also, you are allowed to generate text with (terms about Literature) 
-and (specific person) (ex: Johann Wolfgang von Goethe, Comedy, Tragedy, Victor Hugo, Les Misérables, etc )""",
+    3:"""(Economy or Society), or (Specific events in sociological or economic field) 
+(ex: The Great Depression, Emancipation Proclamation, Candlelight Protest, etc). 
+Also, you are allowed to generate text with 
+(terms about economy or sociology) and (specific person) (ex: , Inflation, 
+Social Welfare, Adam Smith, Max Weber, etc )
+"""
+,
     4:"""
 (Science or Technology), or (Specific events in technological or scientific field) 
 (ex: Development of Electricity, Evolutionary Biology, Quantum Mechanics, etc). 
@@ -250,11 +252,10 @@ Also, you are allowed to generate text with (terms about Technology or Science)
 and (specific person) (ex: , Bernoulli's Equation, Isaac Newton, 
 Theory of Relativity, Organic Chemistry, etc )""",
     5:"""
-(Economy or Society), or (Specific events in sociological or economic field) 
-(ex: The Great Depression, Emancipation Proclamation, Candlelight Protest, etc). 
-Also, you are allowed to generate text with 
-(terms about economy or sociology) and (specific person) (ex: , Inflation, 
-Social Welfare, Adam Smith, Max Weber, etc )""",
+(Literature), or (Specific events in Literature field) 
+(ex: Literary work of William Shakespeare, King James Version, Faust von Goethe, etc). 
+Also, you are allowed to generate text with (terms about Literature) 
+and (specific person) (ex: Johann Wolfgang von Goethe, Comedy, Tragedy, Victor Hugo, Les Misérables, etc )""",
     6:"""
 (History), or (Specific events in history) (ex: World War 1, French Revolution, Vietnam War, etc). 
 Also, you are allowed to generate text with (terms about history) 
