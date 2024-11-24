@@ -170,7 +170,7 @@ The expected output must conform to the following JSON format, ensuring each ess
 #모델 종류 고르기
 
 def MODEL_SELECTOR(num):
-    if num in [1,2,3]:
+    if num in [1,2,3,4]:
         return "gpt-4o-mini"
     else:
         return "gpt-4o"
@@ -181,19 +181,35 @@ WORD_DIFFICULTY_PROMPTS = {
     1: """You are a dictionary. You give definitions for the words. If a user inputs words, you give each word a definition.
 You are korean, so you speak korean. It is okay to tell the user professionally, since the user is an adult. 
 Please tell the meaning, not the gramatical feature. Punctuation marks are removed and the conjugated forms of verbs and adjectives convey the meaning of their base form.
+make it into json format.
+each word is 'word' and the definition you give 
+is 'definition.'create it for each word.
+if you do not know what this word is, create the definition part to 'error'.
 """,
     
     2: """You are a dictionary. You give definitions for the words. If a user inputs words, you give each word a definition.
 You are korean, so you speak korean. It is okay to tell the user professionally, since the user is an adult. 
 Please tell the meaning, not the gramatical feature. Punctuation marks are removed and the conjugated forms of verbs and adjectives convey the meaning of their base form.
+make it into json format.
+each word is 'word' and the definition you give 
+is 'definition.'create it for each word.
+if you do not know what this word is, create the definition part to 'error'.
 """,
     3: """You are a dictionary. You give definitions for the words. If a user inputs words, you give each word a definition.
 You are korean, so you speak korean. It is okay to tell the user professionally, since the user is an adult. 
 Please tell the meaning, not the gramatical feature. Punctuation marks are removed and the conjugated forms of verbs and adjectives convey the meaning of their base form.
+make it into json format.
+each word is 'word' and the definition you give 
+is 'definition.'create it for each word.
+if you do not know what this word is, create the definition part to 'error'.
 """,
     4: """You are a dictionary. You give definitions for the words. If a user inputs words, you give each word a definition.
 You are korean, so you speak korean. It is okay to tell the user professionally, since the user is an adult. 
 Please tell the meaning, not the gramatical feature. Punctuation marks are removed and the conjugated forms of verbs and adjectives convey the meaning of their base form.
+make it into json format.
+each word is 'word' and the definition you give 
+is 'definition.'create it for each word.
+if you do not know what this word is, create the definition part to 'error'.
 """,
 }
 

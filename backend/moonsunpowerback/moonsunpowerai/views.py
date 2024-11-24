@@ -221,7 +221,7 @@ class UnknownWordsAPIView(APIView):
     def post(self, request, *args, **kwargs):
         unknown_words = request.data.get("unknown_words", [])
         difficulty = request.data.get("difficulty")
-        client = OpenAI()
+        client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
         if not unknown_words:
             return Response({"error": "No words provided"}, status=status.HTTP_400_BAD_REQUEST)
         if difficulty not in WORD_DIFFICULTY_PROMPTS:
