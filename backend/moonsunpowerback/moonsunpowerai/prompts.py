@@ -109,7 +109,7 @@ One of the questions should involve using a dictionary to create a vocabulary-re
 But Choose a word whose meaning can be inferred just by reading the essay. Also I want the question is not too easy. Make it more hard and hard with complexity.
 
 Use the following JSON format, ensuring each element of the essay and questions is as detailed and extensive as possible:
-```json
+
 {
     "subject": "<user input>",
     "content": "<incredibly detailed and complex essay content>",
