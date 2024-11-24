@@ -1,42 +1,3 @@
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  overflow: auto;
-}
-
-header,
-.container {
-  margin: 0;
-}
-
-.container {
-  text-align: center;
-  background: white;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
-
-.logoContainer {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  cursor: pointer;
-}
-
-.logo {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
 @font-face {
   font-family: "YoonChildfundkoreaManSeh";
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408@1.0/YoonChildfundkoreaManSeh.woff2")
@@ -55,126 +16,104 @@ header,
 
 @import url("//fonts.googleapis.com/earlyaccess/hanna.css");
 
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.container {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.leftContainer {
+  flex: 6;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: #ffefe8;
+  padding: 0;
+  overflow: hidden;
+}
+
+.logoImage {
+  width: 100%;
+  border-radius: 15px;
+  margin-left: 0;
+}
+
+.rightContainer {
+  flex: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #ffffff;
+  padding: 2rem;
+}
+
 .title {
-  font-size: 75px;
+  font-size: 60px;
   font-family: "hanna";
   color: #333;
   margin-bottom: -10px;
 }
 
 .description {
-  font-size: 30px;
+  font-size: 25px;
+  line-height: 1.6;
+  width: 90%;
   color: #2d2d2d;
   font-family: "YoonChildfundkoreaManSeh";
   margin-bottom: 100px;
+  margin-top: 30px;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05);
 }
 
 .buttonContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 300px;
 }
 
 .startButton {
   background-color: #ff5f5f;
   color: white;
-  width: 300px;
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 1.2rem;
+  border-radius: 20px;
   border: none;
-  padding: 15px 30px;
-  font-size: 1em;
-  border-radius: 25px;
   cursor: pointer;
-  margin: 10px 0;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .startButton:hover {
   background-color: #ff3f3f;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   transform: scale(1.05);
-  transition: transform 0.3s ease;
 }
 
 .questionButton {
-  background-color: #fff;
+  background-color: white;
   color: #ff5f5f;
   border: 2px solid #ff5f5f;
-  width: 300px;
-  padding: 15px 30px;
-  font-size: 1em;
-  border-radius: 25px;
+  width: 100%;
+  padding: 15px 20px;
+  font-size: 1.2rem;
+  border-radius: 20px;
   cursor: pointer;
-  margin: 10px 0;
-  transition: background-color 0.3s, color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .questionButton:hover {
-  color: #ff3f3f;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background-color: #ff5f5f;
+  color: white;
   transform: scale(1.05);
-  transition: transform 0.3s ease;
-}
-
-.logo {
-  position: fixed;
-  bottom: 50px;
-  right: 50px;
-  z-index: 1000;
-  width: 100px;
-  height: 100px;
-}
-
-.logo:hover {
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transform: scale(1.1);
-  transition: transform 0.3s ease;
-}
-
-.modalOverlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.modalContent {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
-  width: 50%;
-  height: 70%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  position: relative;
-}
-
-.modalButtons {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.modalImage {
-  width: 80%;
-  object-fit: contain;
-  height: auto;
-  border-radius: 10px;
-}
-
-.arrowButton {
-  padding: 20px;
-  font-size: 18px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  background-color: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
