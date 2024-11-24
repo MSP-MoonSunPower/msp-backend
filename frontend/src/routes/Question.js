@@ -41,7 +41,10 @@ const Question = () => {
   }, [isTimerRunning]);
 
   const stopTimer = () => {
-    clearInterval(timerRef.current);
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
   };
 
   useEffect(() => {
@@ -85,7 +88,6 @@ const Question = () => {
     }
   };
 
-  const handleConfirm = () => setShowPopup(false);
   const handleCancel = () => {
     setShowPopup(false);
     setIsTimerRunning(true);
@@ -111,39 +113,49 @@ const Question = () => {
     const selection = window.getSelection();
     if (selection.rangeCount > 0) {
       const range = selection.getRangeAt(0);
-      const span = document.createElement("span");
-      span.className = styles.highlight;
-      span.textContent = selection.toString();
-      range.deleteContents();
-      range.insertNode(span);
-      selection.removeAllRanges();
+      const selectedText = selection.toString();
+
+      if (selectedText.trim() !== "") {
+        const span = document.createElement("span");
+        span.className = styles.highlight;
+        span.textContent = selectedText;
+
+        try {
+          range.deleteContents();
+          range.insertNode(span);
+          selection.removeAllRanges();
+        } catch (error) {
+          console.error("Error highlighting text:", error);
+        }
+      }
     }
   };
 
-  const minutes = Math.floor(seconds / 60);
-  const displaySeconds = seconds % 60;
+  const removeHighlight = (word) => {
+    const highlights = passageRef.current?.querySelectorAll(
+      `.${styles.highlight}`
+    );
+    if (highlights) {
+      highlights.forEach((highlight) => {
+        if (highlight.textContent === word) {
+          const parent = highlight.parentNode;
+          if (parent) {
+            parent.replaceChild(
+              document.createTextNode(highlight.textContent),
+              highlight
+            );
+            parent.normalize();
+          }
+        }
+      });
+    }
+  };
 
   const handleDeleteWord = (index) => {
     setHighlightedWords((prevWords) => {
       const newWords = prevWords.filter((_, i) => i !== index);
       removeHighlight(prevWords[index]);
       return newWords;
-    });
-  };
-
-  const removeHighlight = (word) => {
-    const highlights = passageRef.current.querySelectorAll(
-      `.${styles.highlight}`
-    );
-    highlights.forEach((highlight) => {
-      if (highlight.textContent === word) {
-        const parent = highlight.parentNode;
-        parent.replaceChild(
-          document.createTextNode(highlight.textContent),
-          highlight
-        );
-        parent.normalize();
-      }
     });
   };
 
@@ -157,6 +169,9 @@ const Question = () => {
     setElapsedTime(`${elapsedMinutes}분 ${elapsedDisplaySeconds}초`);
     setShowPopup(true);
   };
+
+  const minutes = Math.floor(seconds / 60);
+  const displaySeconds = seconds % 60;
 
   return (
     <div className={styles.container}>
