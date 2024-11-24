@@ -178,42 +178,23 @@ def MODEL_SELECTOR(num):
 #Difficulty per word creation
 
 WORD_DIFFICULTY_PROMPTS = {
-    1: """you are a dictionary. you give definitions for the words. 
-        if a user inputs words, you give each word a definition.
-        you are korean, so you speak korean. it is okay to tell
-        the user professionally, since the user is an adult. 
-        please tell the meaning, not the gramatical feature.
-        make it into json format.
-        each word is 'word' and the definition you give 
-        is 'definition.'create it for each word.
-        if you do not know what this word is, create the definition part to 'error'.""",
-    2: """you are a dictionary. you give definitions for the words. 
-        if a user inputs words, you give each word a definition.
-        you are korean, so you speak korean. it is okay to tell
-        the user professionally, since the user is an adult. 
-        please tell the meaning, not the gramatical feature.
-        make it into json format.
-        each word is 'word' and the definition you give 
-        is 'definition.'create it for each word.
-        if you do not know what this word is, create the definition part to 'error'.""",
-    3: """you are a dictionary. you give definitions for the words. 
-        if a user inputs words, you give each word a definition.
-        you are korean, so you speak korean. it is okay to tell
-        the user professionally, since the user is an adult. 
-        please tell the meaning, not the gramatical feature.
-        make it into json format.
-        each word is 'word' and the definition you give 
-        is 'definition.'create it for each word.
-        if you do not know what this word is, create the definition part to 'error'.""",
-    4: """you are a dictionary. you give definitions for the words. 
-        if a user inputs words, you give each word a definition.
-        you are korean, so you speak korean. it is okay to tell
-        the user professionally, since the user is an adult. 
-        please tell the meaning, not the gramatical feature.
-        make it into json format.
-        each word is 'word' and the definition you give 
-        is 'definition.'create it for each word.
-        if you do not know what this word is, create the definition part to 'error'."""
+    1: """You are a dictionary. You give definitions for the words. If a user inputs words, you give each word a definition.
+You are korean, so you speak korean. It is okay to tell the user professionally, since the user is an adult. 
+Please tell the meaning, not the gramatical feature. Punctuation marks are removed and the conjugated forms of verbs and adjectives convey the meaning of their base form.
+""",
+    
+    2: """You are a dictionary. You give definitions for the words. If a user inputs words, you give each word a definition.
+You are korean, so you speak korean. It is okay to tell the user professionally, since the user is an adult. 
+Please tell the meaning, not the gramatical feature. Punctuation marks are removed and the conjugated forms of verbs and adjectives convey the meaning of their base form.
+""",
+    3: """You are a dictionary. You give definitions for the words. If a user inputs words, you give each word a definition.
+You are korean, so you speak korean. It is okay to tell the user professionally, since the user is an adult. 
+Please tell the meaning, not the gramatical feature. Punctuation marks are removed and the conjugated forms of verbs and adjectives convey the meaning of their base form.
+""",
+    4: """You are a dictionary. You give definitions for the words. If a user inputs words, you give each word a definition.
+You are korean, so you speak korean. It is okay to tell the user professionally, since the user is an adult. 
+Please tell the meaning, not the gramatical feature. Punctuation marks are removed and the conjugated forms of verbs and adjectives convey the meaning of their base form.
+""",
 }
 
 #Text Length Per Person
@@ -261,25 +242,29 @@ and (specific person) (ex: Independence, Gandhi, J.F.K, etc ). """
 
 #Pre-decided Topics
 TAG_TEXT_PROMPT_DIFFICULTY={
-1:["""Hello. You are a writer. At first, you imagine 30 topic about notable persons 
-and events and concepts""",""" And try it again. 
-Fifth option in second list is your topic. 
-And then, let's write an essay about that topic. 
-Reader is Korean student of third grade, and he can speak only korean. 
-Your essay's length must be between 500 and 1200, and at least 2 paragraph Consider his age, 
-choose the easist words and say friendly as you can. 
-When the topic is provocative, you should speak in educational direction. 
-When you get a provocative topic, you can say only object things. 
-For example, when you get a word '히틀러' or '전쟁', you can express your essay with not violent, 
-but educational. Naturally, when you get a controversial word like '동성애', you should not be biased. 
-And don't say your opinion, only say the fact. Additionally, please make five questions that have 
-five options each other about contents of your essay with clear answer and explanation about the answer. 
-In questions and its options must include only facts. That doesn't include personal things. 
-In the other words, I want your essay's contents, question, explanation don't make a controversy. In conclusion, when I say 
-"지문 생성", please show me only essay, questions, explanations. Except for the others. 
-And you distinguish between essay and questions with blanks, 
-not artificial phrases for example "Let's see how much you understand about China Eastern Airlines now!"
-When I say you "지문 생성", let me know your essay, questions and explanations.
+1:["""You are a writer, I am korean and student of third grade. I want to improve reading skill with your essay.
+When you get a topic, you write an essay and questions, explanation of it.
+
+The overarching premise is as follows:
+It's okay if it takes time, but please follow the system instruction thoroughly.
+You should write in the order of topic selection, then essay and question creation.
+You can speak only Korean. Don't show me english, chinese characters,... etc.
+I want your essay's contents, questions, explanations don't make a controversy. And you separate between essay and questions should be done by leaving a blank line, not by using other symbols.
+The structure of your output should follow: essay - blank a line - each question and its explanation.
+Topic selection and essay, questions, explanation follow each other's instructions.
+When I say you "지문 생성", let me know your output. You should show me only essay, questions, explanations of it, and exclude the process of topic selection.
+When I say you "주제 리스트", let me know your two of topic lists.
+
+<Topic selection>
+At first, you imagine 30 topics in """
+,
+""" And then imagine again except for first 30 topics. Now you get two lists of topics, twenty-fifth option in second list is your topic.
+
+<Essay's instruction>
+You write a essay about your topic with out title and subtitle. Your essay's length must be between 500 and 1200, and at least 2 paragraph. The separation between paragraphs should be done by leaving a blank line, not by using other symbols. Each paragraph must be more than 300. When you choose words, please consider my age, choose the easy one. If you get a provocative word as topic, you can say only object things. For example, when you get a word '히틀러' or '전쟁', you can express your essay with not violent, but educational. Naturally, when you get a controversial word like '동성애', you should not be biased. And don't say your opinion, only say the fact. Please say friendly as you can! 
+
+<Question and explanation's instruction>
+The number of questions and its explanations are five. Questions have five options each other, it contains contents of your essay with clear answer and explanation. Also in questions and its options must include only essay's contents. And that include not personal things, but facts. One of the questions should involve using a dictionary to create a vocabulary-related question based on the passage, such as focusing on synonyms, antonyms, or inferring the meaning of a word. But Choose a word whose meaning can be inferred just by reading the essay.
 Output Format:
 
 Use the following JSON format, ensuring each element of the essay and questions is as detailed and extensive as possible:
