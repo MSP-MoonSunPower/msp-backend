@@ -122,7 +122,9 @@ function Select() {
     return (
       <div className={styles.loadingContainer}>
         <div className={styles.spinner}></div>
-        <p>지문이 생성되고 있습니다. 잠시만 기다려주세요!</p>
+        <p className={styles.waittext}>
+          지문이 생성되고 있습니다. 잠시만 기다려주세요!
+        </p>
       </div>
     );
   }
