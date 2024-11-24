@@ -1,0 +1,11 @@
+/* AboutUs.module.css */
+.container {
+  text-align: center;
+  padding: 50px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  font-size: 32px;
+  color: #333;
+}

@@ -42,7 +42,7 @@ function Header() {
         <Link to="/" className={styles.navLink}>
           Home
         </Link>
-        <Link to="/About Us" className={styles.navLink}>
+        <Link to="/aboutus" className={styles.navLink}>
           About Us
         </Link>
         <Link to="/mypage" className={styles.navLink}>
