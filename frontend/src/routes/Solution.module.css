@@ -5,14 +5,16 @@
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  font-family: "NanumSquareNeo";
 }
 
 .header {
   text-align: center;
   margin-bottom: 30px;
   font-size: 24px;
-  font-weight: bold;
   color: #333;
+  font-family: "NanumSquareNeoBold" !important;
+  font-weight: bolder;
 }
 
 .passage {
@@ -25,6 +27,7 @@
   line-height: 1.6;
   background-color: #fafafa;
   color: #171717;
+  font-family: "MaruBuri";
 }
 
 .splitContainer {
@@ -43,11 +46,11 @@
   padding: 20px;
 }
 
-.vocabulary h3 {
-  font-size: 18px;
+.vocabulary h2 {
   color: #ff5f5f;
   font-weight: bold;
   margin-bottom: 10px;
+  font-family: "MaruBuri";
 }
 
 .wordList {
@@ -55,12 +58,17 @@
   list-style: decimal;
   text-align: left;
   margin-left: 20px;
+  font-size: 16px;
+  line-height: 1.6;
 }
 
 .wordItem {
-  font-size: 14px;
   color: #000000;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.word {
+  color: #002f5d;
 }
 
 .questionList {
@@ -92,8 +100,8 @@
 }
 
 .selectedChoice {
-  border: 2px solid #386dff;
-  color: #386dff;
+  border: 2px solid #001756;
+  color: #001756;
   font-weight: bold;
 }
 
@@ -104,11 +112,18 @@
 }
 
 .explanation {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #000000;
+  margin-top: 15px;
+  font-size: 15px;
+  color: #ff1212;
+  text-indent: 10px;
+  font-weight: bold;
 }
 
+.explanationText {
+  line-height: 1.6;
+  font-weight: normal !important;
+  color: black !important;
+}
 .startButton {
   display: block;
   margin: 40px auto 0;

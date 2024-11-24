@@ -16,10 +16,9 @@ const Solution = () => {
     selectedAnswers = [],
     elapsedTime = "",
     vocabulary = [],
-    wordDefinitions = [], // 단어 정의 배열
+    wordDefinitions = [],
   } = location.state || {};
 
-  // `vocabulary`와 `wordDefinitions` 매핑
   const modifiedVocabulary = vocabulary.map((word) => {
     const definitionObj = wordDefinitions.find((item) => {
       const normalizedWord = word.trim().toLowerCase();
@@ -93,12 +92,13 @@ const Solution = () => {
         </div>
 
         <div className={styles.vocabulary}>
-          <h2>단어장</h2>
+          <h2 className={styles.wordListtitle}>단어장</h2>
           <ol className={styles.wordList}>
             {modifiedVocabulary.map((wordDef, index) => (
-              <div key={index}>
-                {index + 1}. <strong>{wordDef.word}</strong>: {wordDef.meaning}
-              </div>
+              <li key={index} className={styles.wordItem}>
+                <strong className={styles.word}>{wordDef.word}</strong>:{" "}
+                {wordDef.meaning}
+              </li>
             ))}
           </ol>
         </div>
