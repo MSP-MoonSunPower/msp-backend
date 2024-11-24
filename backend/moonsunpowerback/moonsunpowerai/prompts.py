@@ -165,9 +165,18 @@ The expected output must conform to the following JSON format, ensuring each ess
     ]
 }
 """
+}
+
+#모델 종류 고르기
+
+def MODEL_SELECTOR(num):
+    if num in [1,2,3]:
+        return "gpt-4o-mini"
+    else:
+        return "gpt-4o"
 
 #Difficulty per word creation
-}
+
 WORD_DIFFICULTY_PROMPTS = {
     1: """you are a dictionary. you give definitions for the words. 
         if a user inputs words, you give each word a definition.
