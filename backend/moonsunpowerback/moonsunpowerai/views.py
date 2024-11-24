@@ -104,7 +104,7 @@ class GenerateTextAPIView(APIView):
 
         # Generate response using OpenAI API
         response = client.chat.completions.create(
-        model=MODEL_SELECTOR(difficulty)
+        model=MODEL_SELECTOR(difficulty),
         messages=[
             {
             "role": "system",
