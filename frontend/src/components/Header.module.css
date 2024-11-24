@@ -103,8 +103,9 @@
 
 .homeHeader {
   background-color: transparent;
-  position: absolute;
+  box-shadow: none;
 }
+
 .logoContainer {
   display: flex;
   align-items: center;

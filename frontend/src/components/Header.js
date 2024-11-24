@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import logo from "../logo.jpg";
 
-function Header({ isHomePage }) {
+function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Check if the current page is the main page
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const loggedInStatus = localStorage.getItem("isLoggedIn") === "true";
@@ -25,7 +29,9 @@ function Header({ isHomePage }) {
   };
 
   return (
-    <header className={styles.header}>
+    <header
+      className={`${styles.header} ${isHomePage ? styles.homeHeader : ""}`}
+    >
       <div className={styles.logoContainer}>
         <img src={logo} alt="Logo" className={styles.logo} />
         <Link to="/" className={styles.link}>
