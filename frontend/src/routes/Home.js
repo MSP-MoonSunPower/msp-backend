@@ -1,10 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./Home.module.css";
 import logo from "../logo.jpg";
 
 function Home() {
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const fetchTodayText = async () => {
     try {
@@ -25,6 +39,25 @@ function Home() {
       console.error("오늘의 지문 가져오는 중 오류 발생:", error);
     }
   };
+
+  if (isMobile) {
+    return (
+      <div className={styles.mobileContainer}>
+        <h1 className={styles.title}>Moon Sun Power</h1>
+        <p className={styles.mobileMessage}>PC를 이용한 학습을 권장합니다!</p>
+        <div className={styles.buttonContainer}>
+          <Link to="/select">
+            <button className={styles.startButton}>시작하기</button>
+          </Link>
+          <Link to="#" onClick={fetchTodayText}>
+            <button className={styles.questionButton}>
+              오늘의 지문으로 바로 가기
+            </button>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.container}>
