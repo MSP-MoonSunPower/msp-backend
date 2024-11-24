@@ -12,6 +12,7 @@ const Question = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [elapsedTime, setElapsedTime] = useState("");
   const [isTimerRunning, setIsTimerRunning] = useState(true);
+  const [errorPopup, setErrorPopup] = useState(false); // 올바르지 않은 단어 팝업 상태
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -111,6 +112,11 @@ const Question = () => {
     if (jimoonElement && jimoonElement.contains(event.target)) {
       const selection = window.getSelection();
       const text = selection.toString().trim();
+      if (text.length > 22) {
+        setErrorPopup(true);
+        selection.removeAllRanges();
+        return;
+      }
       if (text && !highlightedWords.includes(text)) {
         setHighlightedWords((prevWords) => [...prevWords, text]);
         highlightSelectedText();
@@ -315,6 +321,19 @@ const Question = () => {
                 제출하기
               </button>
             </div>
+          </div>
+        </div>
+      )}
+      {errorPopup && (
+        <div className={styles.popup}>
+          <div className={styles.popupContent}>
+            <p>올바른 단어가 아닙니다.</p>
+            <button
+              onClick={() => setErrorPopup(false)}
+              className={styles.closeButton}
+            >
+              닫기
+            </button>
           </div>
         </div>
       )}
