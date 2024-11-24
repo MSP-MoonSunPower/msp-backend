@@ -23,8 +23,7 @@ const Question = () => {
   const passageRef = useRef(null);
   const timerRef = useRef(null);
 
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  const toggleModal = () => setIsModalOpen((prev) => !prev);
 
   const handleOptionChange = (questionIndex, answerIndex) => {
     const updatedAnswers = [...selectedAnswers];
@@ -168,6 +167,7 @@ const Question = () => {
     const elapsedDisplaySeconds = seconds % 60;
     setElapsedTime(`${elapsedMinutes}분 ${elapsedDisplaySeconds}초`);
     setShowPopup(true);
+    stopTimer(); // 팝업 열릴 때 타이머 멈춤
   };
 
   const minutes = Math.floor(seconds / 60);
@@ -185,7 +185,7 @@ const Question = () => {
               [1-5] 다음 글을 읽고 질문에 답하시오.
             </div>
             <div className={styles.BTNs}>
-              <button className={styles.WordBtn} onClick={openModal}>
+              <button className={styles.WordBtn} onClick={toggleModal}>
                 모르는 단어
               </button>
               <button
@@ -196,7 +196,7 @@ const Question = () => {
               </button>
             </div>
             {isModalOpen && (
-              <div className={styles.modalOverlay} onClick={closeModal}>
+              <div className={styles.modalOverlay} onClick={toggleModal}>
                 <div
                   className={styles.modalContent}
                   onClick={(e) => e.stopPropagation()}
@@ -215,7 +215,7 @@ const Question = () => {
                       </li>
                     ))}
                   </ul>
-                  <button onClick={closeModal} className={styles.closeButton}>
+                  <button onClick={toggleModal} className={styles.closeButton}>
                     닫기
                   </button>
                 </div>
