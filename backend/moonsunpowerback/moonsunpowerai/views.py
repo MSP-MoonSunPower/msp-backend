@@ -7,8 +7,7 @@ from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from openai import OpenAI
 from .models import Text, GeneratedText, QuestionItem
-from .prompts import DIFFICULTY_PROMPTS, WORD_DIFFICULTY_PROMPTS, TEXT_LENGTH
-from .prompts import setPresetPrompt
+from .prompts import *
 from dotenv import load_dotenv
     
 load_dotenv()
@@ -105,7 +104,7 @@ class GenerateTextAPIView(APIView):
 
         # Generate response using OpenAI API
         response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model=MODEL_SELECTOR(difficulty),
         messages=[
             {
             "role": "system",
