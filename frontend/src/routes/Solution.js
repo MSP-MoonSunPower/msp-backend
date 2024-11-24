@@ -29,7 +29,7 @@ const Solution = () => {
 
     const meaning = definitionObj
       ? definitionObj.definition
-      : "단어의 정의를 찾을 수 없습니다. Sorry ㅜㅜ";
+      : "단어의 정의를 찾을 수 없습니다.";
     return { word, meaning };
   });
 
