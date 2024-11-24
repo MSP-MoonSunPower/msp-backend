@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import logo from "../logo.jpg";
+import msplogo from "../msplogo.png";
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -33,7 +34,7 @@ function Header() {
       className={`${styles.header} ${isHomePage ? styles.homeHeader : ""}`}
     >
       <div className={styles.logoContainer}>
-        <img src={logo} alt="Logo" className={styles.logo} />
+        <img src={msplogo} alt="Logo" className={styles.logo} />
         <Link to="/" className={styles.link}>
           <span className={styles.title}>MSP</span>
         </Link>
@@ -42,7 +43,7 @@ function Header() {
         <Link to="/" className={styles.navLink}>
           Home
         </Link>
-        <Link to="/About Us" className={styles.navLink}>
+        <Link to="/aboutus" className={styles.navLink}>
           About Us
         </Link>
         <Link to="/mypage" className={styles.navLink}>
