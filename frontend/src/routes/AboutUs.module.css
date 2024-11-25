@@ -71,6 +71,14 @@ font-family: "hanna";
   margin-bottom: 8px;
 }
 
+.memberIntroduction {
+  font-size: 0.9rem;
+  font-family: "NanumSquareNeo";
+  color: #555;
+  text-align: center;
+  margin-bottom: -5px;
+}
+
 .memberTagline {
   font-size: 1rem;
   font-family: "YoonChildfundkoreaManSeh";

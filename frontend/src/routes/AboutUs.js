@@ -13,6 +13,7 @@ function AboutUs() {
       id: 1,
       name: "최후안",
       description: "PM & Backend Developer",
+      introduction: "유문 & 컴공 19",
       tagline: (
         <>
           대한민국 예비역 병장 <br />
@@ -25,6 +26,7 @@ function AboutUs() {
       id: 2,
       name: "안서진",
       description: "Designer & Frontend Developer",
+      introduction: "유문 & 컴공 20",
       tagline: (
         <>
           대한민국 예비역 대위 <br />
@@ -37,6 +39,7 @@ function AboutUs() {
       id: 3,
       name: "나윤재",
       description: "Prompt Engineer",
+      introduction: "유문 & 경영 21",
       tagline: (
         <>
           대한민국 예비역 병장
@@ -50,6 +53,7 @@ function AboutUs() {
       id: 4,
       name: "오승민",
       description: "Prompt Engineer",
+      introduction: "유문 & 경영 21",
       tagline: (
         <>
           대한민국 예비역 병장 <br />
@@ -62,6 +66,7 @@ function AboutUs() {
       id: 5,
       name: "황세빈",
       description: "Designer",
+      introduction: "유문 & 경영 21",
       tagline: (
         <>
           미필 <br />적 고의
@@ -90,7 +95,9 @@ function AboutUs() {
               className={styles.memberImage}
             />
             <h3 className={styles.memberName}>{member.name}</h3>
+            <p className={styles.memberIntroduction}>{member.introduction}</p>
             <p className={styles.memberDescription}>{member.description}</p>
+
             <p className={styles.memberTagline}>{member.tagline}</p>
           </div>
         ))}

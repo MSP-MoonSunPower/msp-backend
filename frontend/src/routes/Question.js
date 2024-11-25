@@ -12,7 +12,7 @@ const Question = () => {
   const [isVisible, setIsVisible] = useState(true);
   const [elapsedTime, setElapsedTime] = useState("");
   const [isTimerRunning, setIsTimerRunning] = useState(true);
-  const [errorPopup, setErrorPopup] = useState(false); // 올바르지 않은 단어 팝업 상태
+  const [errorPopup, setErrorPopup] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,7 +20,6 @@ const Question = () => {
     passage: "",
     questions: [],
   };
-
   const passageRef = useRef(null);
   const timerRef = useRef(null);
 
@@ -71,7 +70,6 @@ const Question = () => {
       }
       const data = await response.json();
       console.log("API 응답:", data);
-
       const wordDefinitions = data.definitions?.words || [];
       navigate("/Solution", {
         state: {
@@ -129,12 +127,10 @@ const Question = () => {
     if (selection.rangeCount > 0) {
       const range = selection.getRangeAt(0);
       const selectedText = selection.toString();
-
       if (selectedText.trim() !== "") {
         const span = document.createElement("span");
         span.className = styles.highlight;
         span.textContent = selectedText;
-
         try {
           range.deleteContents();
           range.insertNode(span);
@@ -288,14 +284,18 @@ const Question = () => {
                   item.choice4,
                   item.choice5,
                 ].map((option, optionIndex) => (
-                  <div key={optionIndex} className={styles.option}>
+                  <div
+                    key={optionIndex}
+                    className={styles.option}
+                    onClick={() => handleOptionChange(index, optionIndex)}
+                  >
                     <input
                       className={styles.radioBtn}
                       type="radio"
                       name={`question-${index}`}
                       value={optionIndex + 1}
                       checked={selectedAnswers[index] === optionIndex + 1}
-                      onChange={() => handleOptionChange(index, optionIndex)}
+                      onChange={() => {}}
                     />
                     <label className={styles.checked}>{option}</label>
                   </div>
