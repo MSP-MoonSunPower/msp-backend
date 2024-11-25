@@ -176,7 +176,7 @@ And for sure text and your answer both have to be in Korean. You should not use 
 #모델 종류 고르기
 
 def MODEL_SELECTOR(num):
-    if num in [1,2,3,4]:
+    if num in [1,2,3]:
         return "gpt-4o-mini"
     else:
         return "gpt-4o"
