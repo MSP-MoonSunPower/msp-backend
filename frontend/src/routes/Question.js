@@ -110,10 +110,23 @@ const Question = () => {
     }
   };
 
+  const handleResetAll = () => {
+    const spans = passageRef.current?.querySelectorAll("span");
+    if (spans) {
+      spans.forEach((span) => {
+        const parent = span.parentNode;
+        if (parent) {
+          parent.replaceChild(document.createTextNode(span.textContent), span);
+          parent.normalize();
+        }
+      });
+    }
+  };
+
   const handleDeleteWord = (index) => {
     const { word } = highlightedWords[index];
-    removeStylesFromText(word, index); // 스타일 제거
-    setHighlightedWords((prevWords) => prevWords.filter((_, i) => i !== index)); // 단어 리스트에서 삭제
+    removeStylesFromText(word, index); // 본문 스타일 제거
+    setHighlightedWords((prevWords) => prevWords.filter((_, i) => i !== index)); // 단어장에서 삭제
   };
 
   const handleSubmit = async () => {
@@ -201,6 +214,9 @@ const Question = () => {
                 className={styles.showPassageButton}
               >
                 지문만 보기
+              </button>
+              <button onClick={handleResetAll} className={styles.resetButton}>
+                Reset
               </button>
             </div>
             {isModalOpen && (
