@@ -56,11 +56,24 @@ const Question = () => {
     if (jimoonElement && jimoonElement.contains(event.target)) {
       const selection = window.getSelection();
       const text = selection.toString().trim();
+
+      const anchorNode = selection.anchorNode?.textContent || "";
+      const focusNode = selection.focusNode?.textContent || "";
+      const selectedRange = anchorNode + focusNode;
+
+      if (selectedRange.includes("\n\n")) {
+        console.warn("선택 범위에 문단 경계가 포함되어 있습니다.");
+        setErrorPopup(true); // 에러 팝업 표시
+        selection.removeAllRanges(); // 선택 해제
+        return;
+      }
+
       if (text.length > 22) {
         setErrorPopup(true);
         selection.removeAllRanges();
         return;
       }
+
       if (text && !highlightedWords.some((hw) => hw.word === text)) {
         const newWord = { word: text, index: highlightedWords.length };
         setHighlightedWords((prevWords) => [...prevWords, newWord]);
