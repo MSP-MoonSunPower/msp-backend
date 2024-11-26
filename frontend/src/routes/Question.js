@@ -51,6 +51,71 @@ const Question = () => {
     return () => stopTimer();
   }, [startTimer]);
 
+  const handleMouseUp = (event) => {
+    const jimoonElement = passageRef.current;
+    if (jimoonElement && jimoonElement.contains(event.target)) {
+      const selection = window.getSelection();
+      const text = selection.toString().trim();
+      if (text.length > 22) {
+        setErrorPopup(true);
+        selection.removeAllRanges();
+        return;
+      }
+      if (text && !highlightedWords.some((hw) => hw.word === text)) {
+        const newWord = { word: text, index: highlightedWords.length };
+        setHighlightedWords((prevWords) => [...prevWords, newWord]);
+        applyStylesToText(selection, "green", "bold", newWord.index);
+        selection.removeAllRanges();
+      }
+    }
+  };
+
+  const applyStylesToText = (selection, color, fontWeight, index) => {
+    const range = selection.getRangeAt(0);
+    const selectedText = range.toString();
+    if (selectedText.trim() !== "") {
+      const span = document.createElement("span");
+      span.style.color = color;
+      span.style.fontWeight = fontWeight;
+      span.dataset.index = index;
+      span.textContent = selectedText;
+
+      try {
+        range.deleteContents();
+        range.insertNode(span);
+      } catch (error) {
+        console.error("Error applying styles to text:", error);
+      }
+    }
+  };
+
+  const removeStylesFromText = (wordToRemove, indexToRemove) => {
+    const spans = passageRef.current?.querySelectorAll("span");
+    if (spans) {
+      spans.forEach((span) => {
+        if (
+          span.textContent === wordToRemove &&
+          parseInt(span.dataset.index, 10) === indexToRemove
+        ) {
+          const parent = span.parentNode;
+          if (parent) {
+            parent.replaceChild(
+              document.createTextNode(span.textContent),
+              span
+            );
+            parent.normalize();
+          }
+        }
+      });
+    }
+  };
+
+  const handleDeleteWord = (index) => {
+    const { word } = highlightedWords[index];
+    removeStylesFromText(word, index); // 스타일 제거
+    setHighlightedWords((prevWords) => prevWords.filter((_, i) => i !== index)); // 단어 리스트에서 삭제
+  };
+
   const handleSubmit = async () => {
     setIsTimerRunning(false);
     stopTimer();
@@ -61,7 +126,7 @@ const Question = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          unknown_words: highlightedWords,
+          unknown_words: highlightedWords.map((hw) => hw.word),
           difficulty: 1,
         }),
       });
@@ -69,7 +134,6 @@ const Question = () => {
         throw new Error("Failed to fetch word definitions from the API");
       }
       const data = await response.json();
-      console.log("API 응답:", data);
       const wordDefinitions = data.definitions?.words || [];
       navigate("/Solution", {
         state: {
@@ -77,7 +141,7 @@ const Question = () => {
           questions,
           selectedAnswers,
           elapsedTime,
-          vocabulary: highlightedWords,
+          vocabulary: highlightedWords.map((hw) => hw.word),
           wordDefinitions,
         },
       });
@@ -89,7 +153,7 @@ const Question = () => {
           questions,
           selectedAnswers,
           elapsedTime,
-          vocabulary: highlightedWords,
+          vocabulary: highlightedWords.map((hw) => hw.word),
           wordDefinitions: [],
         },
       });
@@ -102,78 +166,6 @@ const Question = () => {
     startTimer();
   };
 
-  const handleShowFullPassage = () => setShowFullPassage(true);
-  const handleCloseFullPassage = () => setShowFullPassage(false);
-
-  const handleMouseUp = (event) => {
-    const jimoonElement = passageRef.current;
-    if (jimoonElement && jimoonElement.contains(event.target)) {
-      const selection = window.getSelection();
-      const text = selection.toString().trim();
-      if (text.length > 22) {
-        setErrorPopup(true);
-        selection.removeAllRanges();
-        return;
-      }
-      if (text && !highlightedWords.includes(text)) {
-        setHighlightedWords((prevWords) => [...prevWords, text]);
-        highlightSelectedText();
-      }
-    }
-  };
-
-  const highlightSelectedText = () => {
-    const selection = window.getSelection();
-    if (selection.rangeCount > 0) {
-      const range = selection.getRangeAt(0);
-      const selectedText = selection.toString();
-      if (selectedText.trim() !== "") {
-        const span = document.createElement("span");
-        span.className = styles.highlight;
-        span.textContent = selectedText;
-        try {
-          range.deleteContents();
-          range.insertNode(span);
-          selection.removeAllRanges();
-        } catch (error) {
-          console.error("Error highlighting text:", error);
-        }
-      }
-    }
-  };
-
-  const removeHighlight = (word) => {
-    const highlights = passageRef.current?.querySelectorAll(
-      `.${styles.highlight}`
-    );
-    if (highlights) {
-      highlights.forEach((highlight) => {
-        if (highlight.textContent === word) {
-          const parent = highlight.parentNode;
-          if (parent) {
-            parent.replaceChild(
-              document.createTextNode(highlight.textContent),
-              highlight
-            );
-            parent.normalize();
-          }
-        }
-      });
-    }
-  };
-
-  const handleDeleteWord = (index) => {
-    setHighlightedWords((prevWords) => {
-      const newWords = prevWords.filter((_, i) => i !== index);
-      removeHighlight(prevWords[index]);
-      return newWords;
-    });
-  };
-
-  const formattedPassage = passage
-    .split("\n\n")
-    .map((para, index) => <p key={index}>{para}</p>);
-
   const handleOpenPopup = () => {
     const elapsedMinutes = Math.floor(seconds / 60);
     const elapsedDisplaySeconds = seconds % 60;
@@ -181,6 +173,10 @@ const Question = () => {
     setShowPopup(true);
     stopTimer();
   };
+
+  const formattedPassage = passage
+    .split("\n\n")
+    .map((para, index) => <p key={index}>{para}</p>);
 
   const minutes = Math.floor(seconds / 60);
   const displaySeconds = seconds % 60;
@@ -201,7 +197,7 @@ const Question = () => {
                 모르는 단어
               </button>
               <button
-                onClick={handleShowFullPassage}
+                onClick={() => setShowFullPassage(true)}
                 className={styles.showPassageButton}
               >
                 지문만 보기
@@ -215,9 +211,9 @@ const Question = () => {
                 >
                   <h3 className={styles.modalHeader}>모르는 단어</h3>
                   <ul className={styles.wordList}>
-                    {highlightedWords.map((word, index) => (
+                    {highlightedWords.map((hw, index) => (
                       <li key={index} className={styles.wordItem}>
-                        {index + 1}. {word}
+                        {index + 1}. {hw.word}
                         <button
                           onClick={() => handleDeleteWord(index)}
                           className={styles.deleteButton}
@@ -244,7 +240,7 @@ const Question = () => {
         ) : (
           <div className={styles.fullPassage}>
             <button
-              onClick={handleCloseFullPassage}
+              onClick={() => setShowFullPassage(false)}
               className={styles.CloseFullPassageBTN}
             >
               문제로 돌아가기
@@ -277,29 +273,25 @@ const Question = () => {
             {questions.map((item, index) => (
               <li key={index}>
                 <p>{item.question_text}</p>
-                {[
-                  item.choice1,
-                  item.choice2,
-                  item.choice3,
-                  item.choice4,
-                  item.choice5,
-                ].map((option, optionIndex) => (
-                  <div
-                    key={optionIndex}
-                    className={styles.option}
-                    onClick={() => handleOptionChange(index, optionIndex)}
-                  >
-                    <input
-                      className={styles.radioBtn}
-                      type="radio"
-                      name={`question-${index}`}
-                      value={optionIndex + 1}
-                      checked={selectedAnswers[index] === optionIndex + 1}
-                      onChange={() => {}}
-                    />
-                    <label className={styles.checked}>{option}</label>
-                  </div>
-                ))}
+                {[item.choice1, item.choice2, item.choice3, item.choice4].map(
+                  (option, optionIndex) => (
+                    <div
+                      key={optionIndex}
+                      className={styles.option}
+                      onClick={() => handleOptionChange(index, optionIndex)}
+                    >
+                      <input
+                        className={styles.radioBtn}
+                        type="radio"
+                        name={`question-${index}`}
+                        value={optionIndex + 1}
+                        checked={selectedAnswers[index] === optionIndex + 1}
+                        onChange={() => {}}
+                      />
+                      <label className={styles.checked}>{option}</label>
+                    </div>
+                  )
+                )}
               </li>
             ))}
           </ol>
