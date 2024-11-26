@@ -273,25 +273,29 @@ const Question = () => {
             {questions.map((item, index) => (
               <li key={index}>
                 <p>{item.question_text}</p>
-                {[item.choice1, item.choice2, item.choice3, item.choice4].map(
-                  (option, optionIndex) => (
-                    <div
-                      key={optionIndex}
-                      className={styles.option}
-                      onClick={() => handleOptionChange(index, optionIndex)}
-                    >
-                      <input
-                        className={styles.radioBtn}
-                        type="radio"
-                        name={`question-${index}`}
-                        value={optionIndex + 1}
-                        checked={selectedAnswers[index] === optionIndex + 1}
-                        onChange={() => {}}
-                      />
-                      <label className={styles.checked}>{option}</label>
-                    </div>
-                  )
-                )}
+                {[
+                  item.choice1,
+                  item.choice2,
+                  item.choice3,
+                  item.choice4,
+                  item.choice5,
+                ].map((option, optionIndex) => (
+                  <div
+                    key={optionIndex}
+                    className={styles.option}
+                    onClick={() => handleOptionChange(index, optionIndex)}
+                  >
+                    <input
+                      className={styles.radioBtn}
+                      type="radio"
+                      name={`question-${index}`}
+                      value={optionIndex + 1}
+                      checked={selectedAnswers[index] === optionIndex + 1}
+                      onChange={() => {}}
+                    />
+                    <label className={styles.checked}>{option}</label>
+                  </div>
+                ))}
               </li>
             ))}
           </ol>
