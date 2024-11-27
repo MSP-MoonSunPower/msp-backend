@@ -50,24 +50,27 @@ const Question = () => {
     startTimer();
     return () => stopTimer();
   }, [startTimer]);
-
   const handleMouseUp = (event) => {
     const jimoonElement = passageRef.current;
+
     if (jimoonElement && jimoonElement.contains(event.target)) {
       const selection = window.getSelection();
       const text = selection.toString().trim();
 
-      const anchorNode = selection.anchorNode?.textContent || "";
-      const focusNode = selection.focusNode?.textContent || "";
-      const selectedRange = anchorNode + focusNode;
+      if (!text) return;
 
-      if (selectedRange.includes("\n\n")) {
-        console.warn("선택 범위에 문단 경계가 포함되어 있습니다.");
-        setErrorPopup(true); // 에러 팝업 표시
-        selection.removeAllRanges(); // 선택 해제
+      const range = selection.getRangeAt(0);
+      const startNode = range.startContainer;
+      const endNode = range.endContainer;
+
+      // 에러1. 문단 넘어서는 선택
+      if (startNode !== endNode) {
+        setErrorPopup(true);
+        selection.removeAllRanges();
         return;
       }
 
+      // 에러 2. 텍스트 길이가 22자 이상인 경우
       if (text.length > 22) {
         setErrorPopup(true);
         selection.removeAllRanges();
