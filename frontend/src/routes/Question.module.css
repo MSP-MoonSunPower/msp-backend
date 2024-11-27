@@ -53,6 +53,23 @@
   background-color: #f0f0f0;
   margin-left: 10px;
 }
+.resetButton {
+  font-family: "MaruBuri" !important;
+  padding: 15px;
+  border-radius: 50px;
+  margin-left: 10px;
+  font-weight: bold !important;
+  margin-right: -15px;
+  border: none;
+  cursor: pointer;
+  background-color: #ffeaea;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.resetButton:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
 
 .showPassageButton:hover {
   background-color: #c8c0fd;

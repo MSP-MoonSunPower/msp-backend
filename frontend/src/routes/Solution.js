@@ -78,7 +78,9 @@ const Solution = () => {
                     ))}
                   </div>
                   <div className={styles.explanation}>
-                    {isCorrect ? "정답입니다!" : `정답: ${item.answer}번`}
+                    {isCorrect
+                      ? "정답입니다!"
+                      : `이걸 틀리냐? 정답은 ${item.answer}번 `}
                     {item.explanation && (
                       <p className={styles.explanationText}>
                         해설: {item.explanation}
