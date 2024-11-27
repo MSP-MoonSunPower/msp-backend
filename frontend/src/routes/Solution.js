@@ -80,7 +80,7 @@ const Solution = () => {
                   <div className={styles.explanation}>
                     {isCorrect
                       ? "정답입니다!"
-                      : `이걸 틀리냐? 정답은 ${item.answer}번 `}
+                      : `틀렸습니다! 정답 : ${item.answer}번 `}
                     {item.explanation && (
                       <p className={styles.explanationText}>
                         해설: {item.explanation}
@@ -95,14 +95,18 @@ const Solution = () => {
 
         <div className={styles.vocabulary}>
           <h2 className={styles.wordListtitle}>단어장</h2>
-          <ol className={styles.wordList}>
-            {modifiedVocabulary.map((wordDef, index) => (
-              <li key={index} className={styles.wordItem}>
-                <strong className={styles.word}>{wordDef.word}</strong>:{" "}
-                {wordDef.meaning}
-              </li>
-            ))}
-          </ol>
+          {modifiedVocabulary.length > 0 ? (
+            <ol className={styles.wordList}>
+              {modifiedVocabulary.map((wordDef, index) => (
+                <li key={index} className={styles.wordItem}>
+                  <strong className={styles.word}>{wordDef.word}</strong>:{" "}
+                  {wordDef.meaning}
+                </li>
+              ))}
+            </ol>
+          ) : (
+            <p className={styles.noWordsMessage}>선택한 단어가 없습니다</p>
+          )}
         </div>
       </div>
 
