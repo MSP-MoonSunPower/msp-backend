@@ -104,10 +104,17 @@
   line-height: 1.6;
   text-indent: 20px;
   font-family: "MaruBuri" !important;
+  font-size: 18px;
+}
+
+.option:hover {
+  color: rgb(255, 165, 20);
+  cursor: pointer;
 }
 
 .questions ol {
   padding-left: 30px;
+  font-size: 17.5px;
   line-height: 1.6;
 }
 
@@ -142,8 +149,8 @@
 }
 
 .radioBtn:checked {
-  background-color: #d97676;
-  border-color: #d97676;
+  background-color: rgb(255, 165, 20);
+  border: none;
 }
 
 .checked {

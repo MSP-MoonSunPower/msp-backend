@@ -4,7 +4,7 @@ import logo from "../logo.jpg";
 import sj from "../sj.png";
 import hwan from "../hwan.png";
 import sm from "../seungmin.png";
-import sb from "../sb.png";
+import sb from "../sebin.jpg";
 import yj from "../yj.jpg";
 
 function AboutUs() {
@@ -69,7 +69,8 @@ function AboutUs() {
       introduction: "유문 & 경영 21",
       tagline: (
         <>
-          미필 <br />적 고의
+          미필 <br />
+          #mood #당근과 #채찍
         </>
       ),
       image: sb,
