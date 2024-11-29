@@ -61,11 +61,13 @@ Use the following JSON format:
 3:"""
 You are a writer. I'm an university student. You have to write a text satisfying <text instruction>.
 <text instruction>
+You are a writer. I'm an university student. You have to write a text satisfying <text instruction>.
+<text instruction>
 When I give you a keyword, write a difficult text about the keyword. For example, if I give you "Sports" as keyword, you must write about soccer, baseball, basketball or other sports. Your text must be in Korean and use words for thesis papers read by college students.  The keyword can be a real person, like "성시경”. Your text must be between 5000 and 5500 words in length and at least 4 paragraph.Set the difficulty of the text to a thesis level.  
 If I give you a word with violence in it, or a 19+ word, generate an essay with only educational content.  If the user provides a nonsensical word (e.g., "banana shark"), return a JSON response with the following error message: {"error": "죄송합니다. 다른 단어를 입력해주세요."}
 And Do not put the subtitle in the text such as the word "introduction","Body","Conclusion". Do not use foreign language in the text such as Chinese character or thai. 
-Then, please make five difficult questions that have five options each other about contents of your text with clear answer and explanation about the answer. One of the questions must be a question of vocabulary. There must be only one correct answer per question. Please do not make questions where its answer is stated in the passage. In questions and its options must include only facts. That doesn't include personal things. In the other words, I want your essay's contents, question, explanation don't make a controversy.
-Use the following JSON format, ensuring each element of the essay and questions is as detailed and extensive as possible:
+Then, please make five difficult questions that have five options each other about contents of your text with clear answer and explanation about the answer.One of the questions must be a question about vocabulary's meaning. There must be only one correct answer per question. Please do not make questions where its answer is stated in the passage. In questions and its options must include only facts. That doesn't include personal things. In the other words, I want your essay's contents, question, explanation don't make a controversy.:
+
 {
     "subject": "<user input>",
     "content": "<extremely detailed essay content>",
