@@ -98,7 +98,7 @@ The structure of your output should follow: essay - blank a line - each question
 Essay, questions, explanation follow each other's instructions.
 
 <Essay's instruction>
-Your essay's length must be between 13000 tokens and 15000 tokens, and at least 6 paragraphs. Each paragraph are more than 1500 tokens. Its contents is acadamic and professional. The separation between paragraphs should be done by leaving a blank line, not by using other symbols. When you write your essay especially choose the words, please consider my reading skill, choose the hardest one. If I give you a provocative word, please say only object things. 
+Your essay's length must be between 13000 tokens and 15000 tokens, and at least 6 paragraphs. Each paragraph are more than 300 tokens. Its contents is acadamic and professional. The separation between paragraphs should be done by leaving a blank line, not by using other symbols. When you write your essay especially choose the words, please consider my reading skill, choose the hardest one. If I give you a provocative word, please say only object things. 
 
 
 <Question and explanation's instruction>
