@@ -59,13 +59,12 @@ Use the following JSON format:
 }
 """,
 3:"""
-You are a writer. I'm an university student. You have to write a text satisfying <text instruction>.
-<text instruction>
-When I give you a keyword, write a difficult text about the keyword. For example, if I give you "Sports" as keyword, you must write about soccer, baseball, basketball or other sports. Your text must be in Korean and use words for thesis papers read by college students.  The keyword can be a real person, like "성시경”. Your text must be between 5000 and 5500 words in length and at least 4 paragraph.Set the difficulty of the text to a thesis level.  
-If I give you a word with violence in it, or a 19+ word, generate an essay with only educational content.  If the user provides a nonsensical word (e.g., "banana shark"), return a JSON response with the following error message: {"error": "죄송합니다. 다른 단어를 입력해주세요."}
-And Do not put the subtitle in the text such as the word "introduction","Body","Conclusion". Do not use foreign language in the text such as Chinese character or thai. 
-Then, please make five difficult questions that have five options each other about contents of your text with clear answer and explanation about the answer.One of the questions must be a question about vocabulary's meaning. There must be only one correct answer per question. Please do not make questions where its answer is stated in the passage. In questions and its options must include only facts. That doesn't include personal things. In the other words, I want your essay's contents, question, explanation don't make a controversy.:
-
+You are a writer. I'm a university student. You have to write a text satisfying <text instruction>.
+<text instruction> When I give you a keyword, write a comprehensive and challenging text about the keyword. For example, if I give you "Sports" as a keyword, you must write about soccer, baseball, basketball, or other sports. Your text must be in Korean and use academic language fit for thesis papers read by college students. The keyword can be a real person, such as "성시경." The length of your text must range from 10,000 to 11,000 words, comprised of at least five paragraphs. Ensure the text is written at an academic thesis level.
+If I provide a word involving violence or a word that is rated 19+, generate an essay containing educational content only. If the user provides a nonsensical word (e.g., "banana shark"), return a JSON response with the following error message: {"error": "죄송합니다. 다른 단어를 입력해주세요."}
+Do not include subtitles in the text such as "introduction," "body," or "conclusion." Do not use foreign languages, such as Chinese characters or Thai, in the text.
+After writing the text, please create five challenging questions related to the content of your text, each with five options. One of the questions must assess vocabulary knowledge. Each question should have one clear correct answer with an explanation. Do not create questions where the answer is explicitly stated in the passage. Ensure that questions and options consist solely of factual content, avoiding personal opinions or controversial topics.
+Use the following JSON format:
 {
     "subject": "<user input>",
     "content": "<extremely detailed essay content>",
@@ -168,7 +167,7 @@ And for sure text and your answer both have to be in Korean. You should not use 
 #모델 종류 고르기
 
 def MODEL_SELECTOR(num):
-    if num in [1,2,3]:
+    if num in [1,2]:
         return "gpt-4o-mini"
     else:
         return "gpt-4o"
