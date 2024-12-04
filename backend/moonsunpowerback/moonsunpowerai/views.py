@@ -101,7 +101,7 @@ class GenerateTextAPIView(APIView):
         text_length=TEXT_LENGTH[difficulty]
         # Initialize the OpenAI client
         client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
-
+        print(subject)
         # Generate response using OpenAI API
         response = client.chat.completions.create(
         model=MODEL_SELECTOR(difficulty),
