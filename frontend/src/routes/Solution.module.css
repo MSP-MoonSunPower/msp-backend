@@ -99,22 +99,32 @@
   transition: all 0.3s;
 }
 
-.selectedChoice {
+.correctChoice {
   border: 2px solid #ff2121;
   color: #ff2121;
+  background-color: #ffdbdb;
   font-weight: bold;
 }
 
-.correctChoice {
-  border: 2px solid #001756;
-  color: #001756;
+.correctSelected {
+  border: 2.5px solid #ff0505;
+  background-color: #bfceff;
+  color: #000000;
+  font-weight: bold;
+}
+
+.incorrectSelected {
+  border: 2px solid #ddd;
+  background-color: #becdff;
+  color: #333333;
   font-weight: bold;
 }
 
 .explanation {
   margin-top: 15px;
   font-size: 15px;
-  color: #001756;
+  color: #ff2121;
+
   text-indent: 10px;
   font-weight: bold;
 }
@@ -124,6 +134,7 @@
   font-weight: normal !important;
   color: black !important;
 }
+
 .startButton {
   display: block;
   margin: 40px auto 0;

@@ -63,13 +63,14 @@ const Solution = () => {
                       <div
                         key={choiceIndex}
                         className={`${styles.choice} ${
-                          choiceIndex + 1 === item.answer
-                            ? styles.correctChoice
+                          selectedAnswers[index] === choiceIndex + 1
+                            ? isCorrect
+                              ? styles.correctSelected
+                              : styles.incorrectSelected
                             : ""
                         } ${
-                          selectedAnswers[index] === choiceIndex + 1 &&
-                          selectedAnswers[index] !== item.answer
-                            ? styles.selectedChoice
+                          choiceIndex + 1 === item.answer
+                            ? styles.correctChoice
                             : ""
                         }`}
                       >

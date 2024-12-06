@@ -1,4 +1,3 @@
-
 @font-face {
   font-family: "MaruBuri";
   src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.eot);
@@ -124,6 +123,7 @@
   height: 60px;
   background-color: #ffeaea;
   box-sizing: border-box;
+  font-family: "MaruBuri" !important;
 }
 
 .homeHeader {
@@ -144,10 +144,10 @@
 }
 
 .title {
-  font-size: 24px;
-  font-family: "BookkMyungjo-Bd";
-  font-weight: bold;
-  color: #e40046;
+  font-size: 25px;
+  font-family: "hanna";
+  letter-spacing: 1px;
+  color: #d31717;
 }
 
 .nav {
