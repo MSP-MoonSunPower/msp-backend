@@ -198,6 +198,8 @@ def MODEL_SELECTOR(num):
         return "gpt-4o-mini"
     else:
         return "gpt-4o"
+# else:
+#     return "o1-mini"
 
 #Difficulty per word creation
 

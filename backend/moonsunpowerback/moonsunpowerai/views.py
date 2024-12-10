@@ -9,6 +9,8 @@ from openai import OpenAI
 from .models import Text, GeneratedText, QuestionItem
 from .prompts import *
 from dotenv import load_dotenv
+import re
+
     
 load_dotenv()
 
@@ -91,7 +93,6 @@ class GenerateTextAPIView(APIView):
     """
     
     def get(self, request, subject, difficulty, *args, **kwargs):
-        # Retrieve 'subject' from request parameters
         if difficulty not in DIFFICULTY_PROMPTS:
             return Response({"error": "Invalid difficulty level. Choose a value between 1 and 4."},
                             status=status.HTTP_400_BAD_REQUEST)
@@ -99,70 +100,65 @@ class GenerateTextAPIView(APIView):
             return Response({"error": "Subject parameter is required."}, status=status.HTTP_400_BAD_REQUEST)
         prompt_text = DIFFICULTY_PROMPTS[difficulty]
         text_length=TEXT_LENGTH[difficulty]
-        # Initialize the OpenAI client
         client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
-        print(subject)
-        # Generate response using OpenAI API
-        response = client.chat.completions.create(
-        model=MODEL_SELECTOR(difficulty),
-        messages=[
-            {
-            "role": "system",
-            "content": [
-            {
-                "type": "text",
-                "text": prompt_text
-            }
-            ]
-        },
-        {
-        "role": "user",
-        "content": [
-            {
-            "type": "text",
-            "text": subject
-            }
-        ]
-        },
-        ],
-        temperature=1,
-        max_tokens=text_length,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0,
-        response_format={
-        "type": "json_object"      
-        }
-            
-        )
         
-        # Extract the content from the response
+        # if difficulty != 4:
+        response = client.chat.completions.create(
+            model=MODEL_SELECTOR(difficulty),
+            messages=[
+                {
+                    "role": "system",
+                    "content": prompt_text
+                },
+                {
+                    "role": "user",
+                    "content": subject
+                },
+            ],
+            temperature=1,
+            max_tokens=text_length,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0,
+        )
+        # else:
+        #     response = client.chat.completions.create(
+        #         model=MODEL_SELECTOR(difficulty),
+        #         messages=[
+        #             {
+        #                 "role": "user",
+        #                 "content":[
+        #                 {
+        #                     "type": "text",
+        #                     "text": prompt_text+"\n\n"+subject+"\n\nget rid of ```json at the start"
+        #                 },
+        #                 ],
+        #             },
+        #         ]
+        #   )       
+        
         content_raw = response.choices[0].message.content
+
         if not content_raw:
             return Response({"error": "No content received from OpenAI API"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         if "error" in content_raw:
-            # If there is an error, return it directly
             return Response({"error": "죄송합니다. 다른 단어를 입력해주세요."}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Parse content JSON
         try:
             content_data = json.loads(content_raw)
         except json.JSONDecodeError:
             return Response({"error": "Invalid JSON format in API response"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        # Extract main content and questions
         main_content = content_data.get("content", "")
         questions = content_data.get("questions", [])
 
-        # Create Text object in the database
         generated_text = Text.objects.create(
             subject=subject,
             difficulty=difficulty,
-            content=main_content  # Save main content
+            content=main_content  
         )
 
-        # Save each question as a QuestionItem
         questions_data = []
         for question in questions:
             question_item = QuestionItem.objects.create(
@@ -187,7 +183,6 @@ class GenerateTextAPIView(APIView):
                 "explanation": question_item.explanation
             })
 
-        # Format final response data
         response_data = {
             "subject": generated_text.subject,
             "content": generated_text.content,
