@@ -15,7 +15,7 @@
 | :------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | 
 |   <img width =80 src="https://github.com/user-attachments/assets/8f779af5-65e7-4b9c-abd0-14a51ccbfa7f" />|  <img width=100 src="https://github.com/user-attachments/assets/f5bcd7a1-62e0-47a8-8114-c69dad7f46c7"/>                   |  <img width =100 src="https://github.com/user-attachments/assets/6f781155-0c03-479d-b72a-3a3ca0125ad6" /> |                   <img width =150 src="https://github.com/user-attachments/assets/422b25b1-e9f7-48e1-a010-f94aaa090b3f" />|<img width=100  src="https://github.com/user-attachments/assets/6971c21d-abb0-4fa6-bf73-925ed63825ee" /> |  |
 |   [@acupoframen](https://github.com/acupoframen)   |    [@xxj15](https://github.com/xxj15) | [@5zum](https://github.com/5zum)  | [@acupoframen](https://github.com/acupoframen) | [@sebinHwang](https://github.com/sebinHwang) |
-| 서강대학교 유럽문화학과 | 서강대학교 유럽문화학과 | 서강대학교 유럽문화학과 | 서강대학교 유럽문화학과 | 서강대학교 유럽문화학과 |
+| 서강대학교 유럽문화학과 & 컴퓨터공학과 19 | 서강대학교 유럽문화학과 | 서강대학교 유럽문화학과 | 서강대학교 유럽문화학과 | 서강대학교 유럽문화학과 |
 
 ---
 
