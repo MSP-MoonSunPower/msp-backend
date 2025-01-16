@@ -129,9 +129,10 @@ class GenerateTextAPIView(APIView):
             frequency_penalty=0,
             presence_penalty=0,
         )
-
+        print(response)
         content_raw = response.choices[0].message.content
-        if not content_raw:
+        print(content_raw)
+        if not content_raw or "error" in content_raw:
             return Response(
                 {"error": "No content received from OpenAI API"},
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
