@@ -1,88 +1,80 @@
-/*font-family
-font-family: "MaruBuri";
-font-family: "NanumSquareNeoLight";
-font-family: "NanumSquareNeo";
-font-family: "NanumSquareNeoBold";
-font-family: "BookkMyungjo-Bd";
-font-family: "YoonChildfundkoreaManSeh";
-font-family: "BMDOHYEON";
-font-family: "hanna";
-*/
-
 .container {
-  text-align: center;
-  padding: 10px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px;
 }
 
 .title {
-  font-family: "YoonChildfundkoreaManSeh";
-  font-size: 40px;
+  font-size: 32px;
+  font-family: "NanumSquareNeoLight";
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
-.ment {
-  font-family: "MaruBuri";
-  font-size: 25px;
-  line-height: 1.5;
-  margin-bottom: 30px;
+.section {
+  margin-bottom: 50px;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-family: "NanumSquareNeoLight";
+  margin-bottom: 20px;
+  color: #333;
+  text-align: left;
 }
 
 .teamContainer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 50px 80px;
 }
 
 .memberCard {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  width: 200px;
-  height: auto;
-  background-color: #d3e4ff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  gap: 50px;
+  padding: 10px;
+  margin-left: 20px;
 }
 
 .memberImage {
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 10px;
-  margin-top: 20px;
+}
+
+.textContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .memberName {
-  font-size: 1.1rem;
-  font-family: "NanumSquareNeoBold";
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #222;
-}
-
-.memberDescription {
-  font-size: 1.1rem;
-  font-family: "NanumSquareNeoLight";
-  color: #282828;
-  text-align: center;
-  margin-bottom: 8px;
+  font-size: 1.4rem;
+  font-family: "NanumSquareNeo";
+  margin-bottom: 1px;
+  color: #333;
 }
 
 .memberIntroduction {
-  font-size: 0.9rem;
+  font-size: 17px;
   font-family: "NanumSquareNeo";
-  color: #555;
-  text-align: center;
   margin-bottom: -5px;
+  color: #000000;
+}
+
+.memberDescription {
+  font-size: 15px;
+  font-family: "NanumSquareNeoLight";
+  margin-bottom: -1px;
+  color: #000000;
 }
 
 .memberTagline {
-  font-size: 1rem;
-  font-family: "YoonChildfundkoreaManSeh";
-  color: #ff0e0e;
-  text-align: center;
-  margin-top: 10px;
+  font-size: 14px;
+  font-family: "NanumSquareNeoLight";
+  color: #ff4040;
 }
