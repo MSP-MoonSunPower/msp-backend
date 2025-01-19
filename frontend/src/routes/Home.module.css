@@ -1,13 +1,3 @@
-/*font-family
-font-family: "MaruBuri";
-font-family: "NanumSquareNeoLight";
-font-family: "NanumSquareNeo";
-font-family: "NanumSquareNeoBold";
-font-family: "BookkMyungjo-Bd";
-font-family: "YoonChildfundkoreaManSeh";
-font-family: "BMDOHYEON";
-font-family: "hanna";
-*/
 @font-face {
   font-family: "YoonChildfundkoreaManSeh";
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408@1.0/YoonChildfundkoreaManSeh.woff2")
@@ -31,120 +21,110 @@ html {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-family: "NanumSquareNeoLight", sans-serif;
 }
 
 .container {
-  margin: 0;
-  height: 100vh;
   display: flex;
-  flex-direction: row;
+  height: 100vh;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
 
 .leftContainer {
-  flex: 6;
+  flex: 4.5;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
-  background-color: #ffefe8;
-  padding: 0;
-  overflow: hidden;
 }
 
 .logoImage {
   width: 100%;
-  margin-left: 0;
+  margin-left: -20%;
 }
 
 .rightContainer {
-  flex: 5;
+  flex: 5.5;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: #ffffff;
-  padding: 2rem;
+  align-items: flex-start;
+  text-align: left;
+  padding-left: 2rem;
 }
 
 .title {
   font-size: 60px;
-  font-family: "BookkMyungjo-Bd";
-  color: #361600;
-  font-weight: 1000;
+  font-family: "NanumSquareNeoLight";
+  color: #000000;
   margin-bottom: -10px;
+  margin-top: -20px;
 }
 
 .description {
   font-size: 22px;
-  line-height: 1.6;
-  width: 100%;
+  line-height: 1.3;
   color: #2d2d2d;
-  font-family: "MaruBuri";
-  margin-bottom: 100px;
-  margin-top: 25px;
-  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
 }
 
 .buttonContainer {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 100%;
-  max-width: 300px;
+  width: 50%;
+  justify-content: center;
 }
 
-.startButton {
-  background-color: #ff5f5f;
+.startButton,
+.questionButton {
+  background-color: #ff0808;
   color: white;
   width: 100%;
   padding: 15px 20px;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   border-radius: 20px;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-family: "NanumSquareNeoLight";
 }
 
-.startButton:hover {
+.startButton:hover,
+.questionButton:hover {
   background-color: #ff3f3f;
   transform: scale(1.05);
 }
 
 .questionButton {
   background-color: white;
-  color: #ff5f5f;
-  border: 2px solid #ff5f5f;
-  width: 100%;
-  padding: 15px 20px;
-  font-size: 1.1rem;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: "NanumSquareNeoLight";
+  color: #ff0808;
+  border: 2px solid #ff0808;
 }
 
 .questionButton:hover {
-  background-color: #ff5f5f;
+  background-color: #ff0808;
   color: white;
-  transform: scale(1.05);
 }
 
-.mobileContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  background-color: #f5f5f5;
-  flex-direction: column;
-  text-align: center;
-  padding: 20px;
-  box-sizing: border-box;
-}
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+  }
 
-.mobileMessage {
-  font-size: 1.5rem;
-  color: #333;
-  text-align: center;
-  font-family: "BookkMyungjo-Bd";
+  .leftContainer,
+  .rightContainer {
+    flex: 1;
+  }
+
+  .logoImage {
+    width: 70%;
+  }
+
+  .rightContainer {
+    align-items: center;
+    text-align: center;
+    padding-left: 0;
+  }
 }

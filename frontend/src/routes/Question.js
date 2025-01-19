@@ -144,8 +144,12 @@ const Question = () => {
     removeStylesFromText(word, index); // 본문 스타일 제거
     setHighlightedWords((prevWords) => prevWords.filter((_, i) => i !== index)); // 단어장에서 삭제
   };
-
   const handleSubmit = async () => {
+    if (highlightedWords.length === 0) {
+      console.warn("선택된 단어가 없습니다.");
+      return;
+    }
+
     setIsTimerRunning(false);
     stopTimer();
     try {
@@ -159,11 +163,26 @@ const Question = () => {
           difficulty: 1,
         }),
       });
+
       if (!response.ok) {
         throw new Error("Failed to fetch word definitions from the API");
       }
+
       const data = await response.json();
-      const wordDefinitions = data.definitions?.words || [];
+
+      const wordDefinitions = (() => {
+        if (Array.isArray(data.definitions?.words)) {
+          // words가 배열인 경우
+          return data.definitions.words;
+        } else if (data.definitions?.words) {
+          // words가 객체인 경우 배열로 감싸기
+          return [data.definitions.words];
+        } else {
+          // words가 undefined인 경우 빈 배열 반환
+          return [];
+        }
+      })();
+
       navigate("/Solution", {
         state: {
           passage,

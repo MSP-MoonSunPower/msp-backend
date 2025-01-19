@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./Home.module.css";
-import logo from "../logo.jpg";
+import logo from "../msp-bear.png";
 
 function Home() {
   const navigate = useNavigate();

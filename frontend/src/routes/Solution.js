@@ -21,6 +21,7 @@ const Solution = () => {
 
   const modifiedVocabulary = vocabulary.map((word) => {
     const definitionObj = wordDefinitions.find((item) => {
+      if (!item || !item.word) return false; // item이 undefined인 경우 처리
       const normalizedWord = word.trim().toLowerCase();
       const normalizedDefinitionWord = item.word.trim().toLowerCase();
       return normalizedWord === normalizedDefinitionWord;
