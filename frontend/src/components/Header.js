@@ -39,11 +39,11 @@ function Header() {
         </Link>
       </div>
       <nav className={styles.nav}>
-        <Link to="/aboutus" className={styles.navLink}>
-          About Us
-        </Link>
         <Link to="/mypage" className={styles.navLink}>
           My Page
+        </Link>
+        <Link to="/aboutus" className={styles.navLink}>
+          About Us
         </Link>
         <Link to="/contact" className={styles.navLink}>
           Contact

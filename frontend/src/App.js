@@ -13,6 +13,7 @@ import AboutUs from "./routes/AboutUs";
 import Question from "./routes/Question";
 import Select from "./routes/Select";
 import Solution from "./routes/Solution";
+import Contact from "./routes/contact";
 
 function App() {
   const location = useLocation();
@@ -30,7 +31,7 @@ function App() {
           <Route path="/question" element={<Question />} />
           <Route path="/select" element={<Select />} />
           <Route path="/solution" element={<Solution />} />
-          <Route path="/contact" element={<contact />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
     </>

@@ -16,8 +16,7 @@ function AboutUs() {
           name: "Hwan Choe",
           description: "Team Leader / Backend Developer / Project Manager",
           introduction: "서강대학교 유럽문화학과 & 컴퓨터공학과 19",
-          tagline:
-            "Twenty years from now you will be more disappointed by the things you didn't do than by the ones you did. So throw off the bowlines. Sail away from the safe harbor. Catch the trade winds in your sails. Explore. Dream. Discover.” - Mark Twain",
+          tagline: "inifity and beyond",
           image: hwan,
         },
         {
@@ -36,7 +35,7 @@ function AboutUs() {
         {
           id: 3,
           name: "Seungmin Oh",
-          description: "Prompt Engineer ",
+          description: "Prompt Engineer / Accountant ",
           introduction: "서강대학교 유럽문화학과 & 경영학과 21",
           tagline: "Stay hungry, Stay foolish",
           image: sm,
@@ -44,9 +43,9 @@ function AboutUs() {
         {
           id: 4,
           name: "Yunje Na",
-          description: "Prompt Engineer",
+          description: "Prompt Engineer / Partnership Manager",
           introduction: "서강대학교 유럽문화학과 & 경영학과 21",
-          tagline: "Happy go Lucky",
+          tagline: "Do or Die",
           image: yj,
         },
       ],
@@ -57,7 +56,7 @@ function AboutUs() {
         {
           id: 5,
           name: "Sebin Hwang",
-          description: "Building Revenue Structure / Marketing",
+          description: "Business Development Manager",
           introduction: "서강대학교 유럽문화학과 & 경영학과 21",
           tagline: "The growth of the team is the growth of the individual",
           image: sb,
