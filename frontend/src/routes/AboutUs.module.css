@@ -28,7 +28,6 @@
 .teamContainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 50px 80px;
 }
 
 .memberCard {
@@ -36,7 +35,7 @@
   align-items: center;
   gap: 50px;
   padding: 10px;
-  margin-left: 20px;
+  margin-left: 10px;
 }
 
 .memberImage {
@@ -44,6 +43,7 @@
   height: 130px;
   border-radius: 50%;
   object-fit: cover;
+  aspect-ratio: 1 / 1;
 }
 
 .textContainer {
@@ -53,14 +53,14 @@
 }
 
 .memberName {
-  font-size: 1.4rem;
+  font-size: 20px;
   font-family: "NanumSquareNeo";
   margin-bottom: 1px;
   color: #333;
 }
 
 .memberIntroduction {
-  font-size: 17px;
+  font-size: 15px;
   font-family: "NanumSquareNeo";
   margin-bottom: -5px;
   color: #000000;

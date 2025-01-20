@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./AboutUs.module.css";
-import sj from "../sj.png";
-import hwan from "../hwan.png";
+import sj from "../sj.jpg";
+import hwan from "../hwan.jpg";
 import sm from "../seungmin.png";
 import sb from "../sebin.jpg";
 import yj from "../yj.jpg";
@@ -9,57 +9,57 @@ import yj from "../yj.jpg";
 function AboutUs() {
   const teamSections = [
     {
-      title: "개발팀",
+      title: "Development",
       members: [
         {
           id: 1,
-          name: "최환",
-          description: "PM & Backend Engineer",
+          name: "Hwan Choe",
+          description: "Team Leader / Backend Developer / Project Manager",
           introduction: "서강대학교 유럽문화학과 & 컴퓨터공학과 19",
-          tagline: "행복은 결과가 아니라 과정에서 발견된다.",
+          tagline:
+            "Twenty years from now you will be more disappointed by the things you didn't do than by the ones you did. So throw off the bowlines. Sail away from the safe harbor. Catch the trade winds in your sails. Explore. Dream. Discover.” - Mark Twain",
           image: hwan,
         },
         {
           id: 2,
-          name: "안서진",
-          description: "Designer & Frontend Engineer",
+          name: "Seojin An",
+          description: "Designer / Frontend Engineer",
           introduction: "서강대학교 유럽문화학과 & 컴퓨터공학과 20",
-          tagline: "네가 할 수 있다고 믿든, 할 수 없다고 믿든, 둘 다 맞다.",
+          tagline: "Always be curious. Carpe diem!",
           image: sj,
         },
       ],
     },
     {
-      title: "프롬프트 엔지니어링",
+      title: "Prompt Engineering",
       members: [
         {
           id: 3,
-          name: "오승민",
+          name: "Seungmin Oh",
           description: "Prompt Engineer ",
           introduction: "서강대학교 유럽문화학과 & 경영학과 21",
-          tagline: "변화는 고통스럽다. 하지만 후회는 더 고통스럽다.",
+          tagline: "Stay hungry, Stay foolish",
           image: sm,
         },
         {
           id: 4,
-          name: "나윤재",
+          name: "Yunje Na",
           description: "Prompt Engineer",
           introduction: "서강대학교 유럽문화학과 & 경영학과 21",
-          tagline:
-            "성공은 넘어지는 횟수가 아니라, 다시 일어나는 횟수로 결정된다.",
+          tagline: "Happy go Lucky",
           image: yj,
         },
       ],
     },
     {
-      title: "재무/전략",
+      title: "Strategic Planning",
       members: [
         {
           id: 5,
-          name: "황세빈",
-          description: "재무",
+          name: "Sebin Hwang",
+          description: "Building Revenue Structure / Marketing",
           introduction: "서강대학교 유럽문화학과 & 경영학과 21",
-          tagline: "미래를 예측하는 가장 좋은 방법은 그것을 만드는 것이다.",
+          tagline: "The growth of the team is the growth of the individual",
           image: sb,
         },
       ],
