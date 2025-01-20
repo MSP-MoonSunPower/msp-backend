@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./MyPage.module.css";
-import mypage from "../mypage.jpg";
+
 function MyPage() {
-  return (
-    <div className={styles.imageContainer}>
-      <img src={mypage} alt="MyPage" />
-    </div>
-  );
+  const navigate = useNavigate();
+  const [alertShown, setAlertShown] = useState(false);
+
+  useEffect(() => {
+    if (!alertShown) {
+      setAlertShown(true);
+      alert("MyPage는 2월 중에 만나볼 수 있습니다!");
+      navigate("/");
+    }
+  }, [alertShown, navigate]);
 }
 
 export default MyPage;

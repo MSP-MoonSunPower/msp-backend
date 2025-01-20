@@ -9,7 +9,6 @@ function Header() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Check if the current page is the main page
   const isHomePage = location.pathname === "/";
 
   useEffect(() => {
@@ -40,14 +39,14 @@ function Header() {
         </Link>
       </div>
       <nav className={styles.nav}>
-        <Link to="/" className={styles.navLink}>
-          Home
-        </Link>
         <Link to="/aboutus" className={styles.navLink}>
           About Us
         </Link>
         <Link to="/mypage" className={styles.navLink}>
           My Page
+        </Link>
+        <Link to="/contact" className={styles.navLink}>
+          Contact
         </Link>
         {isLoggedIn ? (
           <Link to="/" onClick={handleLogout} className={styles.navLink}>
