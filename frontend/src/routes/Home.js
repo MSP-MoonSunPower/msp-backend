@@ -43,8 +43,12 @@ function Home() {
   if (isMobile) {
     return (
       <div className={styles.mobileContainer}>
+        <img src={logo} alt="MSP Logo" className={styles.logoImage} />
         <h1 className={styles.title}>Moon Sun Power</h1>
-        <p className={styles.mobileMessage}>PC를 이용한 학습을 권장합니다!</p>
+        <p className={styles.mobileMessage1}>
+          개인 맞춤형 문해력 향상 학습 프로그램
+        </p>
+
         <div className={styles.buttonContainer}>
           <Link to="/select">
             <button className={styles.startButton}>시작하기</button>
@@ -55,6 +59,9 @@ function Home() {
             </button>
           </Link>
         </div>
+        <p className={styles.mobileMessage2}>
+          * 모바일 버전은 3월중 업데이트 예정입니다. (PC 학습 권장)
+        </p>
       </div>
     );
   }

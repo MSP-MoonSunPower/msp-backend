@@ -107,23 +107,64 @@ html {
 }
 
 @media (max-width: 768px) {
-  .container {
+  .mobileContainer {
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-  }
-
-  .leftContainer,
-  .rightContainer {
-    flex: 1;
+    padding: 16px;
+    height: 100vh;
   }
 
   .logoImage {
-    width: 70%;
+    margin-left: 0.1px;
+    width: 50%;
+    margin-bottom: 16px;
   }
 
-  .rightContainer {
-    align-items: center;
-    text-align: center;
-    padding-left: 0;
+  .title {
+    font-size: 24px;
+    font-family: "NanumSquareNeoLight";
+    margin-bottom: 1px;
+  }
+
+  .mobileMessage1 {
+    font-size: 17px;
+    margin-bottom: 27px;
+  }
+  .mobileMessage2 {
+    font-size: 14px;
+
+    color: blue;
+  }
+  .buttonContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 10px;
+  }
+
+  .startButton,
+  .questionButton {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+  }
+
+  .startButton {
+    background-color: red;
+    color: white;
+  }
+
+  .questionButton {
+    background-color: white;
+    color: red;
+    border: 2px solid red;
   }
 }
