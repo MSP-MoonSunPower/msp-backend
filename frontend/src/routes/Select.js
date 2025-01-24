@@ -146,7 +146,7 @@ function Select() {
         </div>
       )}
 
-      <h2>1. 난이도 선택</h2>
+      <h2>✔️ 지문 난이도 </h2>
       <div className={styles.difficultyOptions}>
         <button
           className={`${styles.difficultyButton} ${
@@ -182,7 +182,7 @@ function Select() {
         </button>
       </div>
 
-      <h2>2. 주제 선택</h2>
+      <h2>✔️ 지문 주제 </h2>
       <input
         type="text"
         className={styles.topicInput}
