@@ -87,6 +87,30 @@ function Home() {
           </Link>
         </div>
       </div>
+      <footer className={styles.footer}>
+        Contact :&nbsp;
+        <a
+          href="https://pf.kakao.com/_hdaKn"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.footerLink}
+        >
+          MSP 카카오 채널
+        </a>
+        |&nbsp;
+        <span
+          onClick={() => {
+            window.open(
+              "https://www.instagram.com/moonsunpower.sg/",
+              "_blank",
+              "noopener,noreferrer"
+            );
+          }}
+          className={styles.footerLink}
+        >
+          Instagram
+        </span>
+      </footer>
     </div>
   );
 }

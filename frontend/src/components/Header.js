@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
-import logo from "../logo.jpg";
 import msplogo from "../msplogo.png";
+import LoginModal from "../components/LoginModal";
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,9 +24,18 @@ function Header() {
     navigate("/");
   };
 
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setIsModalOpen(false);
+  };
+
   const handleLogin = () => {
     setIsLoggedIn(true);
     localStorage.setItem("isLoggedIn", "true");
+    setIsModalOpen(false);
   };
 
   return (
@@ -45,19 +55,19 @@ function Header() {
         <Link to="/aboutus" className={styles.navLink}>
           About Us
         </Link>
-        <Link to="/contact" className={styles.navLink}>
-          Contact
-        </Link>
         {isLoggedIn ? (
-          <Link to="/" onClick={handleLogout} className={styles.navLink}>
+          <button onClick={handleLogout} className={styles.navLink}>
             Log out
-          </Link>
+          </button>
         ) : (
-          <Link to="/login" onClick={handleLogin} className={styles.navLink}>
+          <button onClick={handleModalOpen} className={styles.navLink}>
             Login
-          </Link>
+          </button>
         )}
       </nav>
+      {isModalOpen && (
+        <LoginModal onClose={handleModalClose} onLogin={handleLogin} />
+      )}
     </header>
   );
 }

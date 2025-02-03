@@ -22,7 +22,7 @@ function AboutUs() {
         {
           id: 2,
           name: "Seojin An",
-          description: "Designer / Frontend Engineer",
+          description: "UIUX Designer / Frontend Engineer",
           introduction: "서강대학교 유럽문화학과 & 컴퓨터공학과 20",
           tagline: "Always be curious. Carpe diem!",
           image: sj,
@@ -43,7 +43,7 @@ function AboutUs() {
         {
           id: 4,
           name: "Yunje Na",
-          description: "Prompt Engineer / Partnership Manager",
+          description: "Prompt Engineer / UIUX Designer",
           introduction: "서강대학교 유럽문화학과 & 경영학과 21",
           tagline: "Do or Die",
           image: yj,
