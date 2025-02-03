@@ -97,7 +97,7 @@ function Home() {
         >
           MSP 카카오 채널
         </a>
-        |&nbsp;
+        &nbsp;|&nbsp;
         <span
           onClick={() => {
             window.open(

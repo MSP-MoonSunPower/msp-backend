@@ -52,11 +52,5 @@
 }
 
 .loginButton:hover {
-  background-color: #ffc2c2; /* 호버 시 더 진한 파란색 */
-}
-
-.description {
-  font-size: 11px;
-  margin-top: 5px;
-  color: blue;
+  background-color: #ffc2c2;
 }
