@@ -162,6 +162,16 @@ STATIC_URL = 'django_static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+AUTH_USER_MODEL = 'accounts.CustomUser'
+
+SITE_ID = 1  
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',  # allauth backend
+)
+
+
 ##CELERY
 CELERY_BROKER_URL = 'redis://localhost:6379/0' 
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
