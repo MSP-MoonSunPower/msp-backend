@@ -1,9 +1,7 @@
+/* 기본 폰트 */
 @font-face {
   font-family: "MaruBuri";
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.eot);
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.eot?#iefix)
-      format("embedded-opentype"),
-    url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.woff2)
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.woff2)
       format("woff2"),
     url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.woff)
       format("woff"),
@@ -11,11 +9,11 @@
       format("truetype");
 }
 
+/* 나눔스퀘어 네오 폰트 */
 @font-face {
   font-family: "NanumSquareNeoLight";
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-aLt.eot);
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-aLt.eot?#iefix)
-      format("embedded-opentype"),
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-aLt.woff2)
+      format("woff2"),
     url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-aLt.woff)
       format("woff"),
     url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-aLt.ttf)
@@ -24,9 +22,8 @@
 
 @font-face {
   font-family: "NanumSquareNeo";
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-bRg.eot);
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-bRg.eot?#iefix)
-      format("embedded-opentype"),
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-bRg.woff2)
+      format("woff2"),
     url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-bRg.woff)
       format("woff"),
     url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-bRg.ttf)
@@ -35,9 +32,8 @@
 
 @font-face {
   font-family: "NanumSquareNeoBold";
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.eot);
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.eot?#iefix)
-      format("embedded-opentype"),
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.woff2)
+      format("woff2"),
     url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.woff)
       format("woff"),
     url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-cBd.ttf)
@@ -46,9 +42,8 @@
 
 @font-face {
   font-family: "NanumSquareNeoExtraBold";
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-dEb.eot);
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-dEb.eot?#iefix)
-      format("embedded-opentype"),
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-dEb.woff2)
+      format("woff2"),
     url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-dEb.woff)
       format("woff"),
     url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-dEb.ttf)
@@ -57,15 +52,15 @@
 
 @font-face {
   font-family: "NanumSquareNeoHeavy";
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-eHv.eot);
-  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-eHv.eot?#iefix)
-      format("embedded-opentype"),
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-eHv.woff2)
+      format("woff2"),
     url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-eHv.woff)
       format("woff"),
     url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumSquareNeo/NanumSquareNeoTTF-eHv.ttf)
       format("truetype");
 }
 
+/* 북명조 */
 @font-face {
   font-family: "BookkMyungjo-Bd";
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/BookkMyungjo-Bd.woff2")
@@ -74,26 +69,7 @@
   font-style: normal;
 }
 
-@font-face {
-  font-family: "MaruBuri";
-  src: url("https://example.com/maruburi.woff");
-}
-
-@font-face {
-  font-family: "NanumSquareNeoLight";
-  src: url("https://example.com/nanumsquarelight.woff");
-}
-
-@font-face {
-  font-family: "NanumSquareNeoBold";
-  src: url("https://example.com/nanumsquarebold.woff");
-}
-
-@font-face {
-  font-family: "BookkMyungjo-Bd";
-  src: url("https://example.com/bookmyungjobold.woff");
-}
-
+/* 기타 폰트 */
 @font-face {
   font-family: "YoonChildfundkoreaManSeh";
   src: url("https://example.com/yoonchildfundkoreamanseh.woff");
