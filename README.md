@@ -1,11 +1,16 @@
-# MoonSunPower
+# Moon Sun Power ✨
 
-<div align="center">
-<img width="329" alt="image" src="https://moonsunpower.com/static/media/logo.5c99d3dc76890910b2b9.jpg">
-</div>
+Welcome to MoonSunPower Hub!🌙☀️ <br/>
+Since 2024.09, Team MSP is actively driving the project forward with great enthusiasm! 🚀<br/>
+Moon Sun Power is an AI-powered personalized language learning platform designed to improve reading and comprehension skills efficiently.<br/>
+<br/>
 
-> **서강대학교 유럽문화학과 캡스톤디자인**  
-> **개발기간: 2024.09 ~**
+![Moon Sun Power Preview](frontend/src/assets/aboutMSP.gif)
+
+
+🌐 [**Click here**](https://moonsunpower.com) to explore our platform! 🚀 <br/>
+⏳ Choose the topic and difficulty of the passage, and a personalized passage with questions will be generated for you in just 1 minute! 📝✨
+
 
 ---
 
