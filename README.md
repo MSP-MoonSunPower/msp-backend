@@ -92,9 +92,7 @@ After completing the questions, check:
 
 ---
 
-## 아키텍처
-
-# 패치 목록
+## Architecture-Patches
 
 ### Amsterdam Schipol (~2024.12.06)
 v1.1.0:
