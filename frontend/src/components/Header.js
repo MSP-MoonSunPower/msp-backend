@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
-import msplogo from "../msplogo.png";
+import msplogo from "../assets/msplogo.png";
 import LoginModal from "../components/LoginModal";
 
 function Header() {
