@@ -14,13 +14,13 @@ Moon Sun Power is an AI-powered personalized language learning platform designed
 
 ---
 
-## 웹개발팀 소개
+## TEAM MSP ✨
 
-|      최  환       |          안서진         |       오승민         |      나윤재 |     황세빈       |                                                                                                               
-| :------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | 
-|   <img width =80 src="https://github.com/user-attachments/assets/8f779af5-65e7-4b9c-abd0-14a51ccbfa7f" />|  <img width=100 src="https://github.com/user-attachments/assets/f5bcd7a1-62e0-47a8-8114-c69dad7f46c7"/>                   |  <img width =100 src="https://github.com/user-attachments/assets/6f781155-0c03-479d-b72a-3a3ca0125ad6" /> |                   <img width =150 src="https://github.com/user-attachments/assets/422b25b1-e9f7-48e1-a010-f94aaa090b3f" />|<img width=100  src="https://github.com/user-attachments/assets/6971c21d-abb0-4fa6-bf73-925ed63825ee" /> |  |
-|   [@acupoframen](https://github.com/acupoframen)   |    [@xxj15](https://github.com/xxj15) | [@5zum](https://github.com/5zum)  | [@acupoframen](https://github.com/acupoframen) | [@sebinHwang](https://github.com/sebinHwang) |
-| 서강대학교 유럽문화학과 19 | 서강대학교 유럽문화학과 | 서강대학교 유럽문화학과 | 서강대학교 유럽문화학과 | 서강대학교 유럽문화학과 |
+| Members | About Us | Members | About Us |
+|:------------:|:----------|:------------:|:----------|
+| <img src="frontend/src/assets/hwan.jpg" alt="Hwan Choe" width="120"> <br/> **Hwan Choe** | [@acupoframen](https://github.com/acupoframen) <br/> Team Leader / Backend Developer <br/> 서강대학교 유럽문화학과 & 컴퓨터공학과 19 | <img src="frontend/src/assets/sj.jpg" alt="Seojin An" width="120"> <br/> **Seojin An** | [@xxj15](https://github.com/xxj15) <br/> Frontend Engineer / UXUI Designer <br/> 서강대학교 유럽문화학과 & 컴퓨터공학과 20 |
+| <img src="frontend/src/assets/seungmin.png" alt="Seungmin Oh" width="120"> <br/> **Seungmin Oh** | [@5zum](https://github.com/5zum) <br/> Prompt Engineer <br/> 서강대학교 유럽문화학과 & 경영학과 21 | <img src="frontend/src/assets/yj.jpg" alt="Yunje Na" width="120"> <br/> **Yunje Na** | [@YunJe-Na](https://github.com/YunJe-Na) <br/> Prompt Engineer <br/> 서강대학교 유럽문화학과 & 경영학과 21 |
+| <img src="frontend/src/assets/sebin.jpg" alt="Sebin Hwang" width="120"> <br/> **Sebin Hwang** | [@sebinHwang](https://github.com/sebinHwang) <br/> Business Development Manager <br/> 서강대학교 유럽문화학과 & 경영학과 21 | | |
 
 ---
 
@@ -56,15 +56,6 @@ Moon Sun Power is an AI-powered personalized language learning platform designed
 <img src="https://img.shields.io/badge/Amazon rds-527FFF?style=for-the-badge&logo=Amazon RDS&logoColor=white" style="margin-right: 3px;">
 <img src="https://img.shields.io/badge/AWS Route 53-8C4FFF?style=for-the-badge&logo=Amazon route 53&logoColor=white" style="margin-right: 3px;">
 <img src="https://img.shields.io/badge/AWS CloudWatch-FF4F8B?style=for-the-badge&logo=Amazon CloudWatch&logoColor=white">
-
----
-
-## 화면 구성 
-
-| 메인 페이지  | 선택 페이지 | 질문 페이지 | 솔루션 페이지 |
-| :-------------------------------------------: | :------------: | :----------: | :-----------: |
-|  <img width="160px" src="https://moonsunpower.com/static/media/logo.5c99d3dc76890910b2b9.jpg" /> |  <img width="160px" src="https://moonsunpower.com/static/media/logo.5c99d3dc76890910b2b9.jpg" /> |  <img width="160px" src="https://moonsunpower.com/static/media/logo.5c99d3dc76890910b2b9.jpg" /> |  <img width="160px" src="https://moonsunpower.com/static/media/logo.5c99d3dc76890910b2b9.jpg" /> |
-| 주요 기능 미리보기 | 사용자 선택 옵션 | 질문 작성 및 선택 | 솔루션 제시 및 답변 |
 
 
 ---
