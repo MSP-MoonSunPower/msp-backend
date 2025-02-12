@@ -100,6 +100,7 @@ class GenerateTextAPIView(APIView):
             )
         prompt_key = f"difficulty_{difficulty}"
         if prompt_key not in DIFFICULTY_PROMPTS:
+            print(prompt_key)
             return Response(
                 {"error": "Invalid difficulty level. Choose a value between 1 and 5."},
                 status=status.HTTP_400_BAD_REQUEST
