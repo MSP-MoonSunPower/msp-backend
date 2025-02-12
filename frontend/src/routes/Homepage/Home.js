@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./Home.module.css";
-import logo from "../assets/msp-bear.png";
+import logo from "../../assets/msp-bear.png";
+import Section1 from "./Section1";
+import Section2 from "./Section2";
+import Section3 from "./Section3";
 
 function Home() {
   const navigate = useNavigate();
@@ -65,28 +68,37 @@ function Home() {
       </div>
     );
   }
-
   return (
-    <div className={styles.container}>
-      <div className={styles.leftContainer}>
-        <img src={logo} alt="MSP Logo" className={styles.logoImage} />
-      </div>
-      <div className={styles.rightContainer}>
-        <h1 className={styles.title}>Moon Sun Power</h1>
-        <p className={styles.description}>
-          생성형 AI 기반 NLG를 이용한 개인 맞춤형 문해력 향상 학습 프로그램
-        </p>
-        <div className={styles.buttonContainer}>
-          <Link to="/select">
-            <button className={styles.startButton}>시작하기</button>
-          </Link>
-          <Link to="#" onClick={fetchTodayText}>
-            <button className={styles.questionButton}>
-              오늘의 지문으로 바로 가기
-            </button>
-          </Link>
+    <div>
+      <div className={styles.container}>
+        <div className={styles.leftContainer}>
+          <img src={logo} alt="MSP Logo" className={styles.logoImage} />
+        </div>
+
+        <div className={styles.rightContainer}>
+          <h1 className={styles.title}>Moon Sun Power</h1>
+          <p className={styles.description}>
+            생성형 AI 기반 NLG를 이용한 개인 맞춤형 문해력 향상 학습 프로그램
+          </p>
+          <div className={styles.buttonContainer}>
+            <Link to="/select">
+              <button className={styles.startButton}>시작하기</button>
+            </Link>
+            <Link to="#" onClick={fetchTodayText}>
+              <button className={styles.questionButton}>
+                오늘의 지문으로 바로 가기
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
+      {/* ✅ sectionContainer를 올바른 위치로 이동 */}
+      <div className={styles.sectionContainer}>
+        <Section1 />
+        <Section2 />
+        <Section3 />
+      </div>
+      {/* ✅ footer도 container 내부에 유지 */}
       <footer className={styles.footer}>
         Contact :&nbsp;
         <a
