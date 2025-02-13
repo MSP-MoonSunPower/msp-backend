@@ -1,74 +1,98 @@
-# MoonSunPower
+# Moon Sun Power ✨
 
-<div align="center">
-<img width="329" alt="image" src="https://moonsunpower.com/static/media/logo.5c99d3dc76890910b2b9.jpg">
-</div>
+Welcome to MoonSunPower Hub!🌙☀️ <br/>
+Since 2024.09, Team MSP is actively driving the project forward with great enthusiasm! 🚀<br/>
+Moon Sun Power is an AI-powered personalized language learning platform designed to improve reading and comprehension skills efficiently.<br/>
+<br/>
 
-> **서강대학교 유럽문화학과 캡스톤디자인**  
-> **개발기간: 2024.09 ~**
+![Moon Sun Power Preview](frontend/src/assets/aboutMSP.gif)
 
----
+<br/>
+ 
+🌐 [**Click Here**](https://moonsunpower.com/) to explore our platform! 🚀 <br/>
+⏳ Choose the topic and difficulty of the passage, and a personalized passage with questions will be generated for you in just 1 minute! 📝✨
 
-## 웹개발팀 소개
-
-|      최  환       |          안서진         |       오승민         |      나윤재 |     황세빈       |                                                                                                               
-| :------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------: | 
-|   <img width =80 src="https://github.com/user-attachments/assets/8f779af5-65e7-4b9c-abd0-14a51ccbfa7f" />|                      |  <img width =80 src="https://github.com/user-attachments/assets/6f781155-0c03-479d-b72a-3a3ca0125ad6" /> |                   <img width =80 src="https://github.com/user-attachments/assets/422b25b1-e9f7-48e1-a010-f94aaa090b3f" />|<img width=80  src="https://github.com/user-attachments/assets/6971c21d-abb0-4fa6-bf73-925ed63825ee" /> |  |
-|   [@acupoframen](https://github.com/acupoframen)   |    [@xxj15](https://github.com/xxj15) | [@5zum](https://github.com/5zum)  | [@acupoframen](https://github.com/acupoframen) | [@sebinHwang](https://github.com/sebinHwang) |
-| 서강대학교 유럽문화학과 | 서강대학교 유럽문화학과 | 서강대학교 유럽문화학과 | 서강대학교 유럽문화학과 | 서강대학교 유럽문화학과 |
 
 ---
 
-## 프로젝트 소개
+## What is MSP?  🌟
+**MSP stands for**:  
+**Moon (문) + Sun (해) + Power (력)**  
+Moon Sun Power is a **personalized language learning program** powered by AI-based NLG, designed to enhance reading and comprehension skills.  
 
-### 문제 제기
-4차 산업혁명 시대의 기술 발전으로 정보 수집이 쉬워졌지만, 이로 인해 ‘문해력 저하’ 문제가 심화되고 있다. 영상 매체와 짧은 글로 정보가 전달되면서 문해력 부족 현상이 발생하고 있다. 이에 따라 사용자의 문해력을 향상시킬 수 있는 새로운 프로그램이 필요하다는 문제 제기가 이루어졌다.
 
-### 과제 목적
-‘Moon, Sun, Power’ 프로그램은 디지털 시대의 문해력 문제를 해결하는 것을 목표로 한다. 기존의 반복적이고 형식적인 프로그램과 차별화되며, AI 기반 맞춤형 학습 지문을 제공한다. 사용자가 원하는 주제나 난이도를 선택할 수 있어, 문해력뿐 아니라 어휘력과 사고 능력도 함께 향상시킬 수 있다.
+## How to Use MSP 📚  
 
-### 지역 연계
-서울특별시교육청 등과 협력하여, 서울시 내 학생과 성인들에게 문해력 향상 프로그램을 제공할 계획이다. 웹 기반의 AI 맞춤형 학습 지문 생성 시스템으로 다양한 연령대와 사회 계층에 맞춘 학습 콘텐츠를 제공하며, 지역사회 내 문해력 격차 해소에 기여하고자 한다.
+### 1. Generate a Passage  
+Select the **difficulty** and **topic**, and your personalized passage will be generated instantly!  
+- **Difficulty Levels**: Beginner, Intermediate, Advanced, Expert (4 levels)  
+- **Topics**: Choose from a list or input your own topic.  
 
+
+### 2. Comprehend and Solve Questions  
+Each passage comes with **5 questions** to enhance learning effectiveness.  
+Additional features include:  
+1. A **timer** to measure your reading speed (ON/OFF toggle).  
+2. Highlighted unknown words for further review.  
+
+
+### 3. Review and Reinforce  
+After completing the questions, check:  
+- Your **time spent** and **correct answers**.  
+- The **meanings of highlighted words** for reinforcement.  
 ---
 
+## TEAM MSP ✨
+
+| Members | About Us | Members | About Us |
+|:------------:|:----------|:------------:|:----------|
+| <img src="frontend/src/assets/hwan.jpg" alt="Hwan Choe" width="120"> <br/> **Hwan Choe** | [@acupoframen](https://github.com/acupoframen) <br/> Team Leader / Backend Developer <br/> 서강대학교 유럽문화학과 & 컴퓨터공학과 19 | <img src="frontend/src/assets/sj.jpg" alt="Seojin An" width="120"> <br/> **Seojin An** | [@xxj15](https://github.com/xxj15) <br/> Frontend Engineer / UXUI Designer <br/> 서강대학교 유럽문화학과 & 컴퓨터공학과 20 |
+| <img src="frontend/src/assets/seungmin.png" alt="Seungmin Oh" width="120"> <br/> **Seungmin Oh** | [@5zum](https://github.com/5zum) <br/> Prompt Engineer <br/> 서강대학교 유럽문화학과 & 경영학과 21 | <img src="frontend/src/assets/yj.jpg" alt="Yunje Na" width="120"> <br/> **Yunje Na** | [@YunJe-Na](https://github.com/YunJe-Na) <br/> Prompt Engineer <br/> 서강대학교 유럽문화학과 & 경영학과 21 |
+| <img src="frontend/src/assets/sebin.jpg" alt="Sebin Hwang" width="120"> <br/> **Sebin Hwang** | [@sebinHwang](https://github.com/sebinHwang) <br/> Business Development Manager <br/> 서강대학교 유럽문화학과 & 경영학과 21 | | |
+
+
+---
 ## Stacks
 
+### Prompt Engineering
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
+
+
+### Frontend
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![CSS Modules](https://img.shields.io/badge/CSS_Modules-000000?style=for-the-badge&logo=css3&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
+
+
 ### Backend
-<img src="https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white" style="margin-right: 3px
-;">
-<img src="https://img.shields.io/badge/Celery-37814A?style=for-the-badge&logo=celery&logoColor=white" style="margin-right: 3px
-;">
-<img src="https://img.shields.io/badge/Redis-FF4438?style=for-the-badge&logo=redis&logoColor=white" style="margin-right: 3px
-;">
-<img src="https://img.shields.io/badge/gunicorn-499848?style=for-the-badge&logo=Gunicorn&logoColor=white" style="margin-right: 3px
-;">
-<img src="https://img.shields.io/badge/nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" style="margin-right: 3px
-;">
+![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
+![Django REST Framework](https://img.shields.io/badge/DRF-092E20?style=for-the-badge&logo=django&logoColor=white)
+![NGINX](https://img.shields.io/badge/NGINX-009639?style=for-the-badge&logo=nginx&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
+![Gunicorn](https://img.shields.io/badge/Gunicorn-499848?style=for-the-badge&logo=gunicorn&logoColor=white)
+![Celery](https://img.shields.io/badge/Celery-37814A?style=for-the-badge&logo=celery&logoColor=white)
+
+### Design
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)
+![Adobe Photoshop](https://img.shields.io/badge/Photoshop-31A8FF?style=for-the-badge&logo=adobe-photoshop&logoColor=white)
+
+### Communication
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white)
+![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
 
 ### Deployment
-<img src="https://img.shields.io/badge/AWS EC2-FF9900?style=for-the-badge&logo=Amazon EC2&logoColor=white" style="margin-right: 3px;">
-<img src="https://img.shields.io/badge/Amazon rds-527FFF?style=for-the-badge&logo=Amazon RDS&logoColor=white" style="margin-right: 3px;">
-<img src="https://img.shields.io/badge/AWS Route 53-8C4FFF?style=for-the-badge&logo=Amazon route 53&logoColor=white" style="margin-right: 3px;">
-<img src="https://img.shields.io/badge/AWS CloudWatch-FF4F8B?style=for-the-badge&logo=Amazon CloudWatch&logoColor=white">
+![AWS](https://img.shields.io/badge/AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![Route 53](https://img.shields.io/badge/Route_53-232F3E?style=for-the-badge&logo=amazon-route53&logoColor=white)
+
+### Web Traffic Analysis
+![Google Analytics](https://img.shields.io/badge/Google_Analytics-E37400?style=for-the-badge&logo=google-analytics&logoColor=white)
 
 ---
 
-## 화면 구성 
-
-| 메인 페이지  | 선택 페이지 | 질문 페이지 | 솔루션 페이지 |
-| :-------------------------------------------: | :------------: | :----------: | :-----------: |
-|  <img width="160px" src="https://moonsunpower.com/static/media/logo.5c99d3dc76890910b2b9.jpg" /> |  <img width="160px" src="https://moonsunpower.com/static/media/logo.5c99d3dc76890910b2b9.jpg" /> |  <img width="160px" src="https://moonsunpower.com/static/media/logo.5c99d3dc76890910b2b9.jpg" /> |  <img width="160px" src="https://moonsunpower.com/static/media/logo.5c99d3dc76890910b2b9.jpg" /> |
-| 주요 기능 미리보기 | 사용자 선택 옵션 | 질문 작성 및 선택 | 솔루션 제시 및 답변 |
-
-
----
-
-
-
-## 아키텍처
-
-# 패치 목록
+## Architecture-Patches
 
 ### Amsterdam Schipol (~2024.12.06)
 v1.1.0:
@@ -87,3 +111,15 @@ v1.0.0: Creation of MoonSunPower!
     - Question.js Implementation
     - Solution Page Implementation
     - Basic Prompt settings for creating Text / Questions / Word Definitions
+
+---
+## Contact Us  
+📩 **Feel free to reach out!**  
+DM us on Instagram at [@moonsunpower.sg](https://www.instagram.com/moonsunpower.sg/) 🌟  
+
+ 
+
+
+
+
+
