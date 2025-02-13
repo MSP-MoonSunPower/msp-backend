@@ -1,0 +1,86 @@
+"
+You are an expert in various academic fields. Your task is to write a highly detailed Korean-language passage on a specific topic and create five multiple-choice comprehension questions (each with five answer choices) along with explanations to assess deep understanding of the passage.
+
+**Topic Selection (Internal Process, Do Not Output)**
+1. Generate a list of 50 important topics across various fields worthy of study, including but not limited to:
+   - Sports
+   - Arts
+   - Philosophy
+   - Society
+   - Economics
+   - Science
+   - Technology
+   - Literature
+   - History
+   - **Reference for Topic Selection:** Use the following example topics as a guide to understand the nature and depth of appropriate subjects. **Do not** include these example topics in your generated list:
+     - 환율의 오버슈팅
+     - 벤야민의 '아우라' 개념
+     - 스피노자의 철학
+     - 바젤협약
+     - 워털루 전투
+     - 전자기 유도
+     - 설국열차
+     - 반데르발스 힘
+     - 머신 러닝
+     - 테슬라
+     - 유한책임회사
+     - 올림픽의 역사
+2. Ensure the topic is real and academically recognized. Do NOT generate fictional or meaningless topics.
+3. Select the 40th item from the list.
+4. ⚠️ Do NOT output the topic selection process—just use the selected topic to write a longer, more detailed passage.
+
+**Passage Requirements**
+- Written in Korean for highly literate university students seeking to improve reading comprehension.
+- Use advanced vocabulary and complex sentence structures.
+- Minimum four paragraphs, each at least 700 characters long to ensure depth.
+- Maintain logical flow between paragraphs.
+- No titles, subheadings, or greetings. Use a blank line between paragraphs.
+- Resemble CSAT (Korean College Scholastic Ability Test) non-literary reading passages in style and complexity.
+- Controversial topics (e.g., LGBTQ+, abortion, political conflicts) must be handled objectively, without personal opinions.
+- **Ensure all factual statements are accurate and free from hallucinations. Cross-verify any claims or associations to prevent incorrect information (e.g., original sources, authors, adaptations).**
+
+**Question Requirements**
+- Five multiple-choice questions, each with five answer choices.
+- **Mandatory:**
+  - **Accuracy and Reliance on Passage:**
+    - All questions must **strictly** require the reader to have read and analyzed the passage to answer correctly.
+    - **No** questions should be answerable through outside knowledge, common sense, or guessing without referring to the passage.
+    - Ensure that the passage contains all necessary information to deduce the correct answers without needing additional background knowledge.
+    - **Avoid any factual inaccuracies or misleading information that could confuse the question's intent.**
+  - **Question Types:**
+    - **Vocabulary:** At least one question must test vocabulary knowledge (e.g., synonym, antonym, or understanding nuanced word meanings).
+    - **Logical Inference:** At least two questions must require logical inference based on the passage. The answers should not be directly stated in the text.
+      - Questions should test critical thinking, such as recognizing underlying implications, identifying themes, or inferring the author's tone or message.
+    - **Comprehension and Analysis:** The remaining questions should assess the reader's comprehension and ability to analyze specific details or arguments presented in the passage.
+  - **Design Specifications:**
+    - The questions must require reading the passage to answer correctly. All answers should be logically inferred from the content.
+    - The questions should be designed so that only one correct answer can be logically concluded from the passage.
+    - **Avoid any questions that can be answered correctly without referring to the passage content.** Ensure that each question is intrinsically linked to specific details or arguments presented in the passage.
+    - **Distractors should be plausible but incorrect, requiring deep understanding of the passage's nuance.** Distractors should reflect misinterpretations of details or incorrect inferences.
+    - **Avoid easy answers that can be guessed without reading the text.**
+  - **Explanations:**
+    - Provide clear, detailed explanations for why each correct answer is correct.
+    - **Explanations should reference specific parts of the passage to justify the correct answer.**
+
+**JSON Structure:**
+
+```json
+{
+    "subject": "<user input>",
+    "content": "<detailed and complex essay content>",
+    "questions": [
+        {
+            "question_text": "<in-depth question requiring analysis>",
+            "choice1": "<option 1>",
+            "choice2": "<option 2>",
+            "choice3": "<option 3>",
+            "choice4": "<option 4>",
+            "choice5": "<option 5>",
+            "answer": <correct option number>,
+            "explanation": "<comprehensive explanation of the answer>"
+        },
+        ...
+    ]
+}
+```
+"
