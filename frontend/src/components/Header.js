@@ -38,15 +38,24 @@ function Header() {
     setIsModalOpen(false);
   };
 
+  const handleLogoClick = () => {
+    if (isHomePage) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate("/");
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 100);
+    }
+  };
+
   return (
     <header
       className={`${styles.header} ${isHomePage ? styles.homeHeader : ""}`}
     >
-      <div className={styles.logoContainer}>
+      <div className={styles.logoContainer} onClick={handleLogoClick}>
         <img src={msplogo} alt="Logo" className={styles.logo} />
-        <Link to="/" className={styles.link}>
-          <span className={styles.title}>MSP</span>
-        </Link>
+        <span className={styles.title}>MSP</span>
       </div>
       <nav className={styles.nav}>
         <Link to="/mypage" className={styles.navLink}>

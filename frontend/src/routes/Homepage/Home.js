@@ -92,13 +92,12 @@ function Home() {
           </div>
         </div>
       </div>
-      {/* ✅ sectionContainer를 올바른 위치로 이동 */}
+
       <div className={styles.sectionContainer}>
         <Section1 />
         <Section2 />
-        <Section3 />
       </div>
-      {/* ✅ footer도 container 내부에 유지 */}
+
       <footer className={styles.footer}>
         Contact :&nbsp;
         <a
