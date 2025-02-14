@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDown } from "lucide-react";
-import { ScrollAnimation } from "@lasbe/react-scroll-animation";
 import styles from "./Section3.module.css";
+import { ScrollAnimation } from "@lasbe/react-scroll-animation";
 
 const questions = [
   {
@@ -50,13 +51,13 @@ const Section3 = () => {
   const [openItem, setOpenItem] = useState(null);
 
   return (
-    <ScrollAnimation
-      animateIn="fadeInUp"
-      animateOnce={false}
-      duration={1.5}
-      initiallyVisible={false}
-    >
-      <div className={styles.container}>
+    <div className={styles.container}>
+      <ScrollAnimation
+        animateIn="fadeInUp"
+        animateOnce={false}
+        duration={1.5}
+        initiallyVisible={false}
+      >
         <div className={styles.card}>
           <h2 className={styles.title}> 📌 자주 묻는 질문</h2>
           <Accordion.Root
@@ -94,8 +95,13 @@ const Section3 = () => {
             ))}
           </Accordion.Root>
         </div>
-      </div>
-    </ScrollAnimation>
+      </ScrollAnimation>
+
+      {/* ✅ select 버튼을 ScrollAnimation 바깥으로 이동 */}
+      <Link to="/select">
+        <button className={styles.startButton}> MSP 시작하러 가기 📖 </button>
+      </Link>
+    </div>
   );
 };
 

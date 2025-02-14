@@ -1,8 +1,8 @@
-/* 전체 컨테이너 */
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   min-height: 100vh;
   background: white;
   padding: 40px 20px;
@@ -15,6 +15,9 @@
   padding: 32px;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
   transition: all 0.9s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
@@ -23,25 +26,22 @@
   font-family: "NanumSquareNeoBold";
   margin-bottom: 16px;
   color: #222;
+  width: 100%;
 }
 
-/* 아코디언 스타일 */
 .accordion {
   width: 100%;
 }
 
-/* 개별 아이템 */
 .item {
   margin-bottom: 8px;
   border-radius: 12px;
   overflow: hidden;
   background: #ffffff;
-  box-shadow: none;
   border: 1px solid #e0e0e0;
   transition: all 0.3s ease-in-out;
 }
 
-/* 질문 버튼 */
 .trigger {
   display: flex;
   justify-content: space-between;
@@ -57,18 +57,10 @@
   transition: background 0.2s ease-in-out;
 }
 
-/* 아이콘 스타일 */
-.chevron {
-  width: 22px;
-  height: 22px;
-  transition: transform 0.3s ease-in-out;
-}
-
 .rotate {
   transform: rotate(180deg);
 }
 
-/* 아코디언 내용 */
 .content {
   padding: 14px 18px;
   background: #ffffff;
@@ -87,4 +79,23 @@
 .accordion [data-state="open"] .content {
   max-height: 300px;
   opacity: 1;
+}
+
+.startButton {
+  display: block;
+  margin-top: 50px;
+  background-color: #ff5f5f;
+  color: white;
+  width: 620px;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1em;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  text-align: center;
+}
+
+.startButton:hover {
+  background-color: #e04e4e;
 }
