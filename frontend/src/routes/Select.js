@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import ClockLoader from "react-spinners/ClockLoader";
 import styles from "./Select.module.css";
 
 function Select() {
@@ -131,7 +132,12 @@ function Select() {
   if (isLoading) {
     return (
       <div className={styles.loadingContainer}>
-        <div className={styles.spinner}></div>
+        <ClockLoader
+          color="black"
+          size={80}
+          aria-label="Loading Spinner"
+          data-testid="loader"
+        />
         <p className={styles.waittext}>
           지문이 생성되고 있습니다. 잠시만 기다려주세요!
         </p>
