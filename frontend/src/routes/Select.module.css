@@ -189,17 +189,20 @@
   cursor: pointer;
 }
 
-.loadingcontainer {
+/* Select.module.css */
+.loadingContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin-top: -35px;
 }
 
 .waittext {
   font-size: 25px;
   color: #333;
-  font-family: "MaruBuri";
+  font-weight: bold;
   text-align: center;
-  margin-top: 20%;
+  margin-top: 50px;
 }
