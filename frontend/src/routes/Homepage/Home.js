@@ -94,8 +94,9 @@ function Home() {
       </div>
 
       <div className={styles.sectionContainer}>
-        <Section1 />
         <Section2 />
+        <Section1 />
+
         <Section3 />
       </div>
 
