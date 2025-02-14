@@ -5,6 +5,11 @@
   gap: 60px;
   width: 100%;
   height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    white 60%,
+    rgba(255, 235, 235, 0.997) 100%
+  );
 }
 
 .sectionImage {
