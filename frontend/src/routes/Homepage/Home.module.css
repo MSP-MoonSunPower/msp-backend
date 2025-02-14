@@ -1,27 +1,10 @@
-@font-face {
-  font-family: "YoonChildfundkoreaManSeh";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2408@1.0/YoonChildfundkoreaManSeh.woff2")
-    format("woff2");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "BMDOHYEON";
-  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/BMDOHYEON.woff")
-    format("woff");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@import url("//fonts.googleapis.com/earlyaccess/hanna.css");
-
 body,
 html {
   margin: 0;
   padding: 0;
   height: 100%;
   font-family: "NanumSquareNeoLight";
+  height: 100vh;
 }
 
 .container {
