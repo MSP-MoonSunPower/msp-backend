@@ -84,18 +84,21 @@
 .startButton {
   display: block;
   margin-top: 50px;
+  margin-bottom: 30px;
   background-color: #ff5f5f;
   color: white;
   width: 620px;
   border: none;
   padding: 15px 30px;
-  font-size: 1em;
+  font-size: 16px;
   border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
+  font-family: "NanumSquareNeoBold";
   text-align: center;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 
 .startButton:hover {
   background-color: #e04e4e;
+  transform: scale(1.05);
 }

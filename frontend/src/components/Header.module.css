@@ -99,7 +99,8 @@
   height: 60px;
   background-color: #ffeaea;
   box-sizing: border-box;
-  font-family: "MaruBuri" !important;
+  font-family: "NanumSquareNeo" !important;
+  font-weight: bold;
 }
 
 .homeHeader {
