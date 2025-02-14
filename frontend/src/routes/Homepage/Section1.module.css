@@ -38,39 +38,8 @@
   object-fit: contain;
   box-shadow: 5px 5px 15px rgba(255, 126, 126, 0.222);
   border-radius: 30px;
+  transition: opacity 0.5s ease-in-out;
 }
-
-/* 슬라이드 애니메이션 */
-@keyframes slideRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0.8;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0.8;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.slide-in-right {
-  animation: slideRight 0.5s ease-in-out;
-}
-
-.slide-in-left {
-  animation: slideLeft 0.5s ease-in-out;
-}
-
 .bottomNavButtons {
   position: absolute;
   bottom: 50px;
