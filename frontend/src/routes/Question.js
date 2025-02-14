@@ -213,7 +213,7 @@ const Question = () => {
     const elapsedMinutes = Math.floor(seconds / 60);
     const elapsedDisplaySeconds = seconds % 60;
     if (highlightedWords.length === 0) {
-      alert("모르는 단어를 하나 이상 선택해주세요");
+      alert("모르는 단어를 하나 이상 선택해주세요!");
       return;
     }
     setElapsedTime(`${elapsedMinutes}분 ${elapsedDisplaySeconds}초`);

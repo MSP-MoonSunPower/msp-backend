@@ -189,7 +189,6 @@
   cursor: pointer;
 }
 
-/* Select.module.css */
 .loadingContainer {
   display: flex;
   flex-direction: column;
