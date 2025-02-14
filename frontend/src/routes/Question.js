@@ -145,11 +145,6 @@ const Question = () => {
     setHighlightedWords((prevWords) => prevWords.filter((_, i) => i !== index)); // 단어장에서 삭제
   };
   const handleSubmit = async () => {
-    if (highlightedWords.length === 0) {
-      console.warn("선택된 단어가 없습니다.");
-      return;
-    }
-
     setIsTimerRunning(false);
     stopTimer();
     try {
@@ -217,6 +212,10 @@ const Question = () => {
   const handleOpenPopup = () => {
     const elapsedMinutes = Math.floor(seconds / 60);
     const elapsedDisplaySeconds = seconds % 60;
+    if (highlightedWords.length === 0) {
+      alert("모르는 단어를 하나 이상 선택해주세요");
+      return;
+    }
     setElapsedTime(`${elapsedMinutes}분 ${elapsedDisplaySeconds}초`);
     setShowPopup(true);
     stopTimer();
@@ -360,6 +359,7 @@ const Question = () => {
           <div className={styles.popupContent}>
             <p className={styles.popupTitle}>정말 제출하시겠습니까?</p>
             <p className={styles.popupWarning}>소요 시간: {elapsedTime}</p>
+
             <div className={styles.popupButtons}>
               <button onClick={handleCancel} className={styles.cancelButton}>
                 뒤로 가기
