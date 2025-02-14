@@ -96,6 +96,7 @@ function Home() {
       <div className={styles.sectionContainer}>
         <Section1 />
         <Section2 />
+        <Section3 />
       </div>
 
       <footer className={styles.footer}>
