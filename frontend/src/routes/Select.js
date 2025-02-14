@@ -11,6 +11,16 @@ function Select() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    if (isLoading) {
+      window.scrollTo(0, 0);
+    }
+  }, [isLoading]);
+
   const handleDifficultyClick = (level) => {
     setDifficulty(level);
   };
@@ -117,12 +127,6 @@ function Select() {
       setIsLoading(false);
     }
   };
-
-  useEffect(() => {
-    if (isLoading) {
-      window.scrollTo(0, 0);
-    }
-  }, [isLoading]);
 
   if (isLoading) {
     return (
