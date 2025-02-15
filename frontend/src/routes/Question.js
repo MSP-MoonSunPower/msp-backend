@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import styles from "./Question.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
+import { PropagateLoader } from "react-spinners";
 
 const Question = () => {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
@@ -13,6 +14,7 @@ const Question = () => {
   const [elapsedTime, setElapsedTime] = useState("");
   const [isTimerRunning, setIsTimerRunning] = useState(true);
   const [errorPopup, setErrorPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // solution 넘어가기 전 로딩 화면
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -145,6 +147,7 @@ const Question = () => {
     setHighlightedWords((prevWords) => prevWords.filter((_, i) => i !== index)); // 단어장에서 삭제
   };
   const handleSubmit = async () => {
+    setIsLoading(true); // 로딩 시작
     setIsTimerRunning(false);
     stopTimer();
     try {
@@ -200,6 +203,8 @@ const Question = () => {
           wordDefinitions: [],
         },
       });
+    } finally {
+      setIsLoading(false); // 로딩 종료
     }
   };
 
@@ -227,6 +232,15 @@ const Question = () => {
 
   const minutes = Math.floor(seconds / 60);
   const displaySeconds = seconds % 60;
+
+  const LoadingScreen = () => {
+    return (
+      <div className={styles.loadingOverlay}>
+        <div className={styles.spinner}></div>
+        <p>잠시만 기다려 주세요...</p>
+      </div>
+    );
+  };
 
   return (
     <div className={styles.container}>
@@ -357,20 +371,32 @@ const Question = () => {
       {showPopup && (
         <div className={styles.popup}>
           <div className={styles.popupContent}>
-            <p className={styles.popupTitle}>정말 제출하시겠습니까?</p>
-            <p className={styles.popupWarning}>소요 시간: {elapsedTime}</p>
-
-            <div className={styles.popupButtons}>
-              <button onClick={handleCancel} className={styles.cancelButton}>
-                뒤로 가기
-              </button>
-              <button onClick={handleSubmit} className={styles.confirmButton}>
-                제출하기
-              </button>
-            </div>
+            {isLoading ? (
+              <PropagateLoader color="#c8c0fd" size={30} />
+            ) : (
+              <>
+                <p className={styles.popupTitle}>정말 제출하시겠습니까?</p>
+                <p className={styles.popupWarning}>소요 시간: {elapsedTime}</p>
+                <div className={styles.popupButtons}>
+                  <button
+                    onClick={handleCancel}
+                    className={styles.cancelButton}
+                  >
+                    뒤로 가기
+                  </button>
+                  <button
+                    onClick={handleSubmit}
+                    className={styles.confirmButton}
+                  >
+                    제출하기
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}
+
       {errorPopup && (
         <div className={styles.popup}>
           <div className={styles.popupContent}>
