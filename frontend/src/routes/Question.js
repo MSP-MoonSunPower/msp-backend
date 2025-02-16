@@ -147,7 +147,7 @@ const Question = () => {
     setHighlightedWords((prevWords) => prevWords.filter((_, i) => i !== index)); // 단어장에서 삭제
   };
   const handleSubmit = async () => {
-    setIsLoading(true); // 로딩 시작
+    setIsLoading(true); // 로딩 시작 (전역 로딩 화면 활성화)
     setIsTimerRunning(false);
     stopTimer();
     try {
@@ -170,13 +170,10 @@ const Question = () => {
 
       const wordDefinitions = (() => {
         if (Array.isArray(data.definitions?.words)) {
-          // words가 배열인 경우
           return data.definitions.words;
         } else if (data.definitions?.words) {
-          // words가 객체인 경우 배열로 감싸기
           return [data.definitions.words];
         } else {
-          // words가 undefined인 경우 빈 배열 반환
           return [];
         }
       })();
@@ -264,7 +261,7 @@ const Question = () => {
                 지문만 보기
               </button>
               <button onClick={handleResetAll} className={styles.resetButton}>
-                Reset
+                Clear
               </button>
             </div>
             {isModalOpen && (
@@ -368,31 +365,27 @@ const Question = () => {
       <button className={styles.submitButton} onClick={handleOpenPopup}>
         답안 제출하기
       </button>
+      {isLoading && (
+        <div className={styles.loadingOverlay}>
+          <div className={styles.spinner}>
+            <PropagateLoader color="#ffffff" size={30} />
+          </div>
+        </div>
+      )}
+
       {showPopup && (
         <div className={styles.popup}>
           <div className={styles.popupContent}>
-            {isLoading ? (
-              <PropagateLoader color="#c8c0fd" size={30} />
-            ) : (
-              <>
-                <p className={styles.popupTitle}>정말 제출하시겠습니까?</p>
-                <p className={styles.popupWarning}>소요 시간: {elapsedTime}</p>
-                <div className={styles.popupButtons}>
-                  <button
-                    onClick={handleCancel}
-                    className={styles.cancelButton}
-                  >
-                    뒤로 가기
-                  </button>
-                  <button
-                    onClick={handleSubmit}
-                    className={styles.confirmButton}
-                  >
-                    제출하기
-                  </button>
-                </div>
-              </>
-            )}
+            <p className={styles.popupTitle}>정말 제출하시겠습니까?</p>
+            <p className={styles.popupWarning}>소요 시간: {elapsedTime}</p>
+            <div className={styles.popupButtons}>
+              <button onClick={handleCancel} className={styles.cancelButton}>
+                뒤로 가기
+              </button>
+              <button onClick={handleSubmit} className={styles.confirmButton}>
+                제출하기
+              </button>
+            </div>
           </div>
         </div>
       )}
