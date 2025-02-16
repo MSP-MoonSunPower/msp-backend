@@ -230,15 +230,6 @@ const Question = () => {
   const minutes = Math.floor(seconds / 60);
   const displaySeconds = seconds % 60;
 
-  const LoadingScreen = () => {
-    return (
-      <div className={styles.loadingOverlay}>
-        <div className={styles.spinner}></div>
-        <p>잠시만 기다려 주세요...</p>
-      </div>
-    );
-  };
-
   return (
     <div className={styles.container}>
       <div className={styles.content}>

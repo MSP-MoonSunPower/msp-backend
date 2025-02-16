@@ -85,6 +85,14 @@
   src: url("https://example.com/hanna.woff");
 }
 
+@font-face {
+  font-family: "Pretendard-Regular";
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+    format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -114,18 +122,21 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-.logo {
-  width: 60px;
-  height: 60px;
-  margin-top: 3px;
-  margin-right: -5px;
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Gloria+Hallelujah&display=swap");
+
+.gloria-hallelujah-regular {
+  font-family: "Gloria Hallelujah", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .title {
-  font-size: 23px;
-  letter-spacing: 1px;
+  font-size: 28px;
+  margin-left: 20px;
+  letter-spacing: 1.5px;
   font-weight: bold;
-  color: #d31717;
+  font-family: "Gloria Hallelujah", cursive;
+  color: #de2a2a;
 }
 
 .nav {

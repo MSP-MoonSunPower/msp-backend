@@ -24,7 +24,7 @@ html {
 
 .logoImage {
   width: 100%;
-  margin-left: -20%;
+  margin-left: -10%;
 }
 
 .rightContainer {
@@ -34,14 +34,24 @@ html {
   justify-content: center;
   align-items: flex-start;
   text-align: left;
-  padding-left: 2rem;
+  padding-left: 16px;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap");
+.patrick-hand-sc-regular {
+  font-family: "Patrick Hand SC", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .title {
-  font-size: 60px;
-  color: #000000;
-  margin-bottom: -10px;
+  font-size: 80px;
+  color: #1d1d1d;
+  font-family: "Patrick Hand SC", serif;
+  font-weight: lighter;
+  margin-bottom: -20px;
   margin-top: -20px;
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
 }
 
 .description {
@@ -64,8 +74,9 @@ html {
   background-color: #ff0808;
   color: white;
   width: 100%;
+  font-family: "NanumSquareNeo";
   padding: 15px 20px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   border-radius: 20px;
   border: none;
   cursor: pointer;
