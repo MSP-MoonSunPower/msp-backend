@@ -54,7 +54,6 @@ function Header() {
       className={`${styles.header} ${isHomePage ? styles.homeHeader : ""}`}
     >
       <div className={styles.logoContainer} onClick={handleLogoClick}>
-        <img src={msplogo} alt="Logo" className={styles.logo} />
         <span className={styles.title}>MSP</span>
       </div>
       <nav className={styles.nav}>
