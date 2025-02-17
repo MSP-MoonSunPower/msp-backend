@@ -47,6 +47,7 @@ AWS_S3_REGION_NAME = get_secret("AWS_S3_REGION_NAME")
 AWS_S3_CUSTOM_DOMAIN = get_secret("AWS_S3_CUSTOM_DOMAIN")
 
 INSTALLED_APPS = [
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,7 +60,6 @@ INSTALLED_APPS = [
     'moonsunpowerai',
     'corsheaders',
     'drf_yasg',
-    'accounts',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
