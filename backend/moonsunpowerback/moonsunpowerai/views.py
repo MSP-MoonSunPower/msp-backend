@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from openai import OpenAI
-from .models import Text, GeneratedText, QuestionItem
+from .models import CustomText, GeneratedText, QuestionItem
 from .prompts import *
 from dotenv import load_dotenv
 import re
@@ -151,7 +151,7 @@ class GenerateTextAPIView(APIView):
         questions = content_data.get("questions", [])
 
         # 텍스트 및 질문 저장 로직
-        generated_text = Text.objects.create(
+        generated_text = CustomText.objects.create(
             subject=subject,
             difficulty=difficulty,
             content=main_content
@@ -382,7 +382,7 @@ class GenerateTagTextAPIView(APIView):
         questions = content_data.get("questions", [])
 
         # Create Text object in the database
-        generated_text = Text.objects.create(
+        generated_text = CustomText.objects.create(
             subject=subject,
             difficulty=difficulty,
             content=main_content  # Save main content
