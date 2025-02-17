@@ -175,6 +175,7 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',  # allauth backend
 )
 
+CSRF_TRUSTED_ORIGINS = ['https://moonsunpower.com', 'https://www.moonsunpower.com']
 
 ##CELERY
 CELERY_BROKER_URL = 'redis://localhost:6379/0' 
