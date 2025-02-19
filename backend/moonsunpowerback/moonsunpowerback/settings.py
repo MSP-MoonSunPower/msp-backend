@@ -11,10 +11,13 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# 정적 파일을 모을 디렉토리 설정 (예: 프로젝트 루트 내 staticfiles 폴더)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -47,6 +50,7 @@ AWS_S3_REGION_NAME = get_secret("AWS_S3_REGION_NAME")
 AWS_S3_CUSTOM_DOMAIN = get_secret("AWS_S3_CUSTOM_DOMAIN")
 
 INSTALLED_APPS = [
+    'accounts',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,7 +63,6 @@ INSTALLED_APPS = [
     'moonsunpowerai',
     'corsheaders',
     'drf_yasg',
-    'accounts',
     'django.contrib.sites',
     'allauth',
     'allauth.account',
@@ -156,7 +159,7 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 
 MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/media/'
-STATIC_URL = 'django_static/'
+STATIC_URL = '/django_static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
@@ -172,7 +175,7 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',  # allauth backend
 )
 
-
+CSRF_TRUSTED_ORIGINS = ['https://*.moonsunpower.com','https://*.127.0.0.1']
 ##CELERY
 CELERY_BROKER_URL = 'redis://localhost:6379/0' 
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'

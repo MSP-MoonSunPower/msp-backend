@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import styles from "./Question.module.css";
 import { useNavigate, useLocation } from "react-router-dom";
+import { PropagateLoader } from "react-spinners";
 
 const Question = () => {
   const [selectedAnswers, setSelectedAnswers] = useState([]);
@@ -13,6 +14,7 @@ const Question = () => {
   const [elapsedTime, setElapsedTime] = useState("");
   const [isTimerRunning, setIsTimerRunning] = useState(true);
   const [errorPopup, setErrorPopup] = useState(false);
+  const [isLoading, setIsLoading] = useState(false); // solution 넘어가기 전 로딩 화면
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -145,11 +147,7 @@ const Question = () => {
     setHighlightedWords((prevWords) => prevWords.filter((_, i) => i !== index)); // 단어장에서 삭제
   };
   const handleSubmit = async () => {
-    if (highlightedWords.length === 0) {
-      console.warn("선택된 단어가 없습니다.");
-      return;
-    }
-
+    setIsLoading(true); // 로딩 시작 (전역 로딩 화면 활성화)
     setIsTimerRunning(false);
     stopTimer();
     try {
@@ -172,13 +170,10 @@ const Question = () => {
 
       const wordDefinitions = (() => {
         if (Array.isArray(data.definitions?.words)) {
-          // words가 배열인 경우
           return data.definitions.words;
         } else if (data.definitions?.words) {
-          // words가 객체인 경우 배열로 감싸기
           return [data.definitions.words];
         } else {
-          // words가 undefined인 경우 빈 배열 반환
           return [];
         }
       })();
@@ -205,6 +200,8 @@ const Question = () => {
           wordDefinitions: [],
         },
       });
+    } finally {
+      setIsLoading(false); // 로딩 종료
     }
   };
 
@@ -217,6 +214,10 @@ const Question = () => {
   const handleOpenPopup = () => {
     const elapsedMinutes = Math.floor(seconds / 60);
     const elapsedDisplaySeconds = seconds % 60;
+    if (highlightedWords.length === 0) {
+      alert("모르는 단어를 하나 이상 선택해주세요!");
+      return;
+    }
     setElapsedTime(`${elapsedMinutes}분 ${elapsedDisplaySeconds}초`);
     setShowPopup(true);
     stopTimer();
@@ -251,7 +252,7 @@ const Question = () => {
                 지문만 보기
               </button>
               <button onClick={handleResetAll} className={styles.resetButton}>
-                Reset
+                Clear
               </button>
             </div>
             {isModalOpen && (
@@ -355,6 +356,14 @@ const Question = () => {
       <button className={styles.submitButton} onClick={handleOpenPopup}>
         답안 제출하기
       </button>
+      {isLoading && (
+        <div className={styles.loadingOverlay}>
+          <div className={styles.spinner}>
+            <PropagateLoader color="#ffffff" size={30} />
+          </div>
+        </div>
+      )}
+
       {showPopup && (
         <div className={styles.popup}>
           <div className={styles.popupContent}>
@@ -371,6 +380,7 @@ const Question = () => {
           </div>
         </div>
       )}
+
       {errorPopup && (
         <div className={styles.popup}>
           <div className={styles.popupContent}>

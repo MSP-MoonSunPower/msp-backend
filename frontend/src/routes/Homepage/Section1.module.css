@@ -1,71 +1,45 @@
+.page {
+  background-color: rgba(255, 235, 235, 0.997);
+}
+
 .wrapper {
   display: flex;
+
   justify-content: center;
   align-items: center;
   width: 100%;
+  min-height: 100vh;
 }
 
-/* 섹션 내부 컨테이너 */
 .sectionContainer {
-  margin-top: -150px;
+  margin-top: 0px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
-  overflow: hidden;
 }
 
-/* 이미지 컨테이너 */
 .imageContainer {
   display: flex;
-  height: 100%;
   justify-content: center;
   align-items: center;
-  width: 80%;
+  width: 100%;
+  height: auto;
   position: relative;
 }
 
-/* 이미지 크기 조정 */
 .sectionImage {
-  width: 60%;
+  width: 90%;
+  max-width: 950px;
   height: auto;
+  object-fit: contain;
+  box-shadow: 5px 5px 15px rgba(255, 126, 126, 0.222);
+  border-radius: 30px;
+  transition: opacity 0.5s ease-in-out;
 }
-
-/* 슬라이드 애니메이션 */
-@keyframes slideRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0.8;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes slideLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0.8;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-.slide-in-right {
-  animation: slideRight 0.5s ease-in-out;
-}
-
-.slide-in-left {
-  animation: slideLeft 0.5s ease-in-out;
-}
-
-/* 오른쪽 아래 버튼 컨테이너 */
 .bottomNavButtons {
   position: absolute;
   bottom: 50px;
