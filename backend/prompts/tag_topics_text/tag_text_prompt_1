@@ -1,5 +1,7 @@
-"Sports&Arts, which may include:
+"Sports&Arts, excluding the following example topics:
    - Key Sports&Arts concepts (e.g., Rivalries in Sports, perspective)
    - Major historical events related to Sports&Arts (e.g., Roman Gladiatorial Games)
    - Important Sports&Arts figures (e.g., Andy Warhol, Serena Williams)
+
+   *Ensure that none of the example topics or similar topics are included in the generated list.*
 2. Ensure the topic is real and academically recognized. Do NOT generate fictional or meaningless topics."

@@ -1,5 +1,7 @@
-"Science&Technology, which may include:
+"Science&Technology, excluding the following example topics:
 - Key Science&Technology concepts (e.g., Artificial Intelligence, Quantum Mechanics)
 - Major historical events related to Science&Technology (e.g., The Industrial Revolution)
 - Important Science&Technology figures (e.g., Albert Einstein, Ada Lovelace)
+
+   *Ensure that none of the example topics or similar topics are included in the generated list.*
 2. Ensure the topic is real and academically recognized. Do NOT generate fictional or meaningless topics."

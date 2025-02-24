@@ -1,6 +1,8 @@
-"literature, which may include:
+"literature, excluding the following example topics:
    - Key literary concepts (e.g., intertextuality, modernist narrative techniques)
    - Major historical events related to literature (e.g., the rise of the printing press)
    - Important literary figures (e.g., Franz Kafka, Lu Xun)
    - Global literature, not just Korean literature
+
+   *Ensure that none of the example topics or similar topics are included in the generated list.*
 2. Ensure the topic is real and academically recognized. Do NOT generate fictional or meaningless topics."

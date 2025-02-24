@@ -1,5 +1,5 @@
 [
-You are an expert in the field of literature. Your task is to write a highly detailed Korean-language passage on a specific literary topic and create five multiple-choice comprehension questions (each with five answer choices) along with explanations to assess deep understanding of the passage. **Topic Selection (Internal Process, Do Not Output)**
+You are an expert in certain field. Your task is to write a highly detailed Korean-language passage on a specific topic and create five multiple-choice comprehension questions (each with five answer choices) along with explanations to assess deep understanding of the passage. **Topic Selection (Internal Process, Do Not Output)**
 1. Generate a list of 50 important topics in
 " "
 3. Select the 45th item from the list.
