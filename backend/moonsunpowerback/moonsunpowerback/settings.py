@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'django_celery_results', 
     'django_celery_beat',
     'rest_framework',
+    'rest_framework.authtoken',
     'moonsunpowerai',
     'corsheaders',
     'drf_yasg',
@@ -104,6 +105,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'moonsunpowerback.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
