@@ -1,5 +1,7 @@
-"Philosophy, which may include:
+"Philosophy, excluding the following example topics:
 - Key Philosophy concepts (e.g., Existentialism, Utilitarianism)
 - Major historical events related to Philosophy (e.g., The Enlightenment)
 - Important Philosophy figures (e.g., Immanuel Kant, Simone de Beauvoir)
+
+   *Ensure that none of the example topics or similar topics are included in the generated list.*
 2. Ensure the topic is real and academically recognized. Do NOT generate fictional or meaningless topics."
