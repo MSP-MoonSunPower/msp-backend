@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./LoginModal.module.css";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 function LoginModal({ onClose, onLogin }) {
   const handleSubmit = (e) => {
@@ -28,6 +29,9 @@ function LoginModal({ onClose, onLogin }) {
             로그인하기
           </button>
         </form>
+        <div className={styles.signup}>
+          <Link to="/signup">회원가입하기</Link>
+        </div>
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ import AboutUs from "./routes/AboutUs";
 import Question from "./routes/Question";
 import Select from "./routes/Select";
 import Solution from "./routes/Solution";
+import SignUp from "./routes/SignUp";
 
 function App() {
   const location = useLocation();
@@ -23,11 +24,12 @@ function App() {
       <main style={{ marginTop: isHomePage ? "0px" : "80px" }}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/mypage" element={<MyPage />} />
-          <Route path="/aboutus" element={<AboutUs />} />
-          <Route path="/question" element={<Question />} />
-          <Route path="/select" element={<Select />} />
-          <Route path="/solution" element={<Solution />} />
+          <Route path="/Mypage" element={<MyPage />} />
+          <Route path="/Aboutus" element={<AboutUs />} />
+          <Route path="/Suestion" element={<Question />} />
+          <Route path="/Select" element={<Select />} />
+          <Route path="/Solution" element={<Solution />} />
+          <Route path="/SignUp" element={<SignUp />} />
         </Routes>
       </main>
     </>
