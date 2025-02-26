@@ -52,12 +52,10 @@ TAG_TEXT_PROMPTS = load_json_files_from_local(
 )
 
 # 5. WORD_DIFFICULTY_PROMPTS (PROMPTS_DIR/word_difficulty_prompts 폴더)
-try:
-    with open(os.path.join(PROMPTS_DIR, "dictionary.txt"), 'r', encoding='utf-8') as f:
-        DICTIONARY_TEXT = f.read()
-except Exception as e:
-    print(f"Failed to load dictionary.txt: {e}")
-    DICTIONARY_TEXT = ""
+DICTIONARY_TEXT=load_json_files_from_local(
+    folder_path=os.path.join(PROMPTS_DIR, "word_definition_dictionary"),
+    file_keys=[f"tag_text_prompt_{i}.py" for i in range(1, 5)]  # 수정된 파일 이름 패턴
+)
 
 # 6. MODEL_SELECTOR (PROMPTS_DIR/model_type 폴더, model_type_1.json ~ model_type_4.json)
 MODEL_SELECTOR = load_json_files_from_local(
