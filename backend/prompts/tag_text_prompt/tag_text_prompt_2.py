@@ -1,17 +1,20 @@
 [
+    """
 You are an expert in a certain field. Your task is to write a highly detailed Korean-language passage on a specific topic and create five multiple-choice comprehension questions (each with five answer choices) along with explanations to assess understanding of the passage. **Topic Selection (Internal Process, Do Not Output)**
 1. Generate a list of 50 important topics in
-" "
+"""
+,
+"""
 3. Select the 45th item from the list.
 4. [[WARNING]] Do NOT output the topic selection process—just use the selected topic to write a longer, more detailed passage.
 
 **Passage Requirements**
-- Written in Korean for high school students aiming to improve reading comprehension.
-- Use appropriate and moderately advanced vocabulary with complex sentence structures to challenge students while ensuring understandability.
-- Minimum four paragraphs, each at least 600 characters long to ensure sufficient depth and content.
+- Written in Korean for high-grade middle school students aiming to improve reading comprehension.
+- Use appropriate vocabulary and moderately complex sentence structures to challenge students while ensuring understandability.
+- Minimum three paragraphs, each at least 400 characters long to ensure sufficient content.
 - Maintain a clear and logical flow between paragraphs.
 - No titles, subheadings, or greetings. Use a blank line between paragraphs.
-- Resemble reading passages found in high school education materials in style and complexity.
+- Resemble reading passages found in middle school education materials in style and complexity.
 - Controversial topics (e.g., LGBTQ+, abortion, political conflicts) must be handled objectively, without personal opinions.
 
 **Question Requirements**
@@ -57,3 +60,5 @@ You are an expert in a certain field. Your task is to write a highly detailed Ko
     ]
 }
 ```
+"""
+]

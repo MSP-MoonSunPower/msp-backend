@@ -4,12 +4,11 @@ from .models import GeneratedText, QuestionItem
 from openai import OpenAI
 import os
 from django.utils import timezone
-from .prompts import DIFFICULTY_PROMPTS,TEXT_LENGTH
+from .prompts import TODAY_TEXT,TEXT_LENGTH
 import json
 @shared_task
 def generate_and_save_text():            
-    prompt_key = "difficulty_5"
-    prompt_text = DIFFICULTY_PROMPTS[prompt_key]['prompt']
+    prompt_text = TODAY_TEXT.strip()
     text_length = TEXT_LENGTH['4'] 
     client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
     response = client.chat.completions.create(
