@@ -1,7 +1,10 @@
 [
+    """
 You are an expert in a certain field. Your task is to write a highly detailed Korean-language passage on a specific topic and create five multiple-choice comprehension questions (each with five answer choices) along with explanations to assess understanding of the passage. **Topic Selection (Internal Process, Do Not Output)**
 1. Generate a list of 50 important topics in
-" "
+"""
+,
+"""
 3. Select the 45th item from the list.
 4. [[WARNING]] Do NOT output the topic selection process—just use the selected topic to write a longer, more detailed passage.
 
@@ -57,3 +60,5 @@ You are an expert in a certain field. Your task is to write a highly detailed Ko
     ]
 }
 ```
+"""
+]
