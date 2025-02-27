@@ -181,7 +181,8 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',  # allauth backend
 )
 
-CSRF_TRUSTED_ORIGINS = ['https://*.moonsunpower.com','https://*.127.0.0.1']
+CSRF_TRUSTED_ORIGINS = ['https://*.moonsunpower.com','https://*.127.0.0.1',"http://localhost:3000"]
+
 ##CELERY
 CELERY_BROKER_URL = 'redis://localhost:6379/0' 
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
