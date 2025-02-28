@@ -256,6 +256,7 @@ class GenerateTagTextAPIView(APIView):
     def get(self, request, subject, difficulty, *args, **kwargs):
         # subject를 문자열로 전달하여 setPresetPrompt에서 제대로 찾을 수 있도록 함
         prompt_text = setPresetPrompt(subject, difficulty)
+        print(prompt_text)
         if not prompt_text:
             return Response(
                 {"error": "태그 주제 텍스트를 찾을 수 없습니다."},
@@ -347,21 +348,20 @@ class GenerateTagTextAPIView(APIView):
         }
 
         return Response(response_data, status=status.HTTP_200_OK)
-
 class UnknownWordsAPIView(APIView):
     @swagger_auto_schema(
-        operation_description="Process a list of unknown words with a specified difficulty level.",
+        operation_description="사전 API: 입력된 단어 또는 구에 대해 각각의 기본형과 정의를 반환합니다. 단일 단어 입력 시 단일 JSON 객체, 여러 단어 입력 시 JSON 배열로 출력합니다.",
         request_body=openapi.Schema(
             type=openapi.TYPE_OBJECT,
             properties={
                 'unknown_words': openapi.Schema(
                     type=openapi.TYPE_ARRAY,
                     items=openapi.Schema(type=openapi.TYPE_STRING),
-                    description="List of unknown words to define."
+                    description="정의할 단어 혹은 구의 목록"
                 ),
                 'difficulty': openapi.Schema(
                     type=openapi.TYPE_INTEGER,
-                    description="Difficulty level (1-4)."
+                    description="난이도 (1-4)"
                 ),
             },
             required=['unknown_words', 'difficulty'],
@@ -374,19 +374,35 @@ class UnknownWordsAPIView(APIView):
         if not unknown_words:
             return Response({"error": "No words provided"}, status=status.HTTP_400_BAD_REQUEST)
         if difficulty not in range(1, 5):
-            return Response({"error": "Invalid difficulty level. Choose a value between 1 and 4."},
-                            status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                {"error": "Invalid difficulty level. Choose a value between 1 and 4."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
         
-        # WORD_DEFINITION_DICTIONARY를 사용하여 프롬프트 텍스트를 가져옵니다.
+        # WORD_DEFINITION_DICTIONARY에서 난이도에 맞는 프롬프트를 가져옵니다.
         prompt_key = f"word_definition_dictionary_{difficulty}"
         if prompt_key not in WORD_DEFINITION_DICTIONARY:
-            return Response({"error": "No definition prompt available for this difficulty."},
-                            status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                {"error": "No definition prompt available for this difficulty."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
         prompt_text = WORD_DEFINITION_DICTIONARY[prompt_key]
-        prompt_input = f"{prompt_text}\nWords: {', '.join(unknown_words)}"
+        
+        # 사전 역할 수행을 위한 상세 지시사항을 추가합니다.
+        instructions = (
+            "너는 사전이다. 사용자가 입력한 단어 또는 구에 대해 각 기본형과 정의를 "
+            "JSON 형식으로 반환하라. \n"
+            "출력 형식:\n"
+            "- 단일 단어 입력 시: {\"word\": \"<기본형>\", \"definition\": \"<의미>\"}\n"
+            "- 여러 단어 입력 시: [{\"word\": \"<기본형>\", \"definition\": \"<의미>\"}, ...]\n"
+            "문장 부호는 제거하고, 동사와 형용사의 활용형은 반드시 기본형으로 변환하라. "
+            "정의는 정확하고 전문적으로 제공하라. 단어를 인식할 수 없으면 'error'라고 표시하라."
+        )
+        
+        # instructions, 프롬프트 텍스트, 그리고 입력 단어들을 하나의 입력으로 구성합니다.
+        prompt_input = f"{instructions}\n{prompt_text}\nWords: {', '.join(unknown_words)}"
         
         client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
-        
         response = client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
@@ -408,6 +424,20 @@ class UnknownWordsAPIView(APIView):
         )
         
         content = response.choices[0].message.content
-        response_data = json.loads(content)
+        try:
+            response_data = json.loads(content)
+        except json.JSONDecodeError:
+            return Response(
+                {"error": "Invalid JSON format in API response"},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
         
-        return Response({"definitions": response_data}, status=status.HTTP_200_OK)
+        # 입력 단어가 여러 개인 경우에는 JSON 배열, 단일 단어면 단일 객체 반환
+        if len(unknown_words) > 1:
+            if not isinstance(response_data, list):
+                response_data = [response_data]
+        else:
+            if isinstance(response_data, list) and len(response_data) > 0:
+                response_data = response_data[0]
+        print(response_data)
+        return Response(response_data, status=status.HTTP_200_OK)
