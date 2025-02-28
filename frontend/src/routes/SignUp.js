@@ -1,16 +1,22 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./SignUp.module.css";
 
 function SignUp() {
   const [formData, setFormData] = useState({
     username: "",
+    name: "",
     password: "",
+    confirmPassword: "",
     email: "",
     nickname: "",
-    name: "",
     birth_date: "",
     rank: "normal",
   });
+
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -20,27 +26,44 @@ function SignUp() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("회원가입 데이터:", formData);
+    setError("");
+    setSuccess("");
+
+    if (formData.password !== formData.confirmPassword) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+
+    try {
+      const response = await fetch("https://moonsunpower.com/user/signup/", {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.status === 201) {
+        setSuccess("회원가입이 완료되었습니다!");
+      } else {
+        setError(data.detail || "회원가입 실패");
+      }
+    } catch (err) {
+      setError("서버 요청 중 오류가 발생했습니다.");
+    }
   };
 
   return (
     <div className={styles.signupContainer}>
       <h2 className={styles.SignUp}>회원가입</h2>
+      {error && <p className={styles.error}>{error}</p>}
+      {success && <p className={styles.success}>{success}</p>}
       <form onSubmit={handleSubmit} className={styles.signupForm}>
-        <div className={styles.formGroup}>
-          <label htmlFor="name">이름 *</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            placeholder="이름을 입력하세요."
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-        </div>
         <div className={styles.formGroup}>
           <label htmlFor="username">아이디 *</label>
           <input
@@ -54,6 +77,18 @@ function SignUp() {
           />
         </div>
         <div className={styles.formGroup}>
+          <label htmlFor="name">이름 *</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="이름을 입력하세요."
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className={styles.formGroup}>
           <label htmlFor="password">비밀번호 *</label>
           <input
             type="password"
@@ -61,6 +96,18 @@ function SignUp() {
             name="password"
             placeholder="비밀번호를 입력하세요."
             value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div className={styles.formGroup}>
+          <label htmlFor="confirmPassword">비밀번호 확인 *</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            placeholder="비밀번호를 다시 입력하세요."
+            value={formData.confirmPassword}
             onChange={handleChange}
             required
           />
@@ -89,7 +136,6 @@ function SignUp() {
             required
           />
         </div>
-
         <div className={styles.formGroup}>
           <label htmlFor="birth_date">생년월일 (선택)</label>
           <input
@@ -100,7 +146,6 @@ function SignUp() {
             onChange={handleChange}
           />
         </div>
-
         <button type="submit" className={styles.submitButton}>
           회원가입
         </button>
