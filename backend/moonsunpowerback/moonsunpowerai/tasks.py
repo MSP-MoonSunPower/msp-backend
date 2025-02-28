@@ -9,7 +9,7 @@ import json
 @shared_task
 def generate_and_save_text():            
     prompt_text = TODAY_TEXT.strip()
-    text_length = TEXT_LENGTH['4'] 
+    text_length = int(TEXT_LENGTH['4'])
     client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
     response = client.chat.completions.create(
     model="gpt-4o",

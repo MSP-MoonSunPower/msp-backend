@@ -11,7 +11,6 @@ from .prompts import *
 from dotenv import load_dotenv
 import re
 
-    
 load_dotenv()
 
 class TodayTextAPIView(APIView):
@@ -85,11 +84,10 @@ class TodayTextAPIView(APIView):
         
         # GeneratedText가 없을 경우
         return Response({'error': 'No content found'}, status=status.HTTP_404_NOT_FOUND)
-    
-    
+
 class GenerateTextAPIView(APIView):
     """
-    View that generates an educational text based on a provided subject.
+    주어진 subject와 difficulty에 따라 교육용 텍스트를 생성하는 API 뷰입니다.
     """
     
     def get(self, request, subject, difficulty, *args, **kwargs):
@@ -98,22 +96,26 @@ class GenerateTextAPIView(APIView):
                 {"error": "Subject parameter is required."},
                 status=status.HTTP_400_BAD_REQUEST
             )
-        prompt_key = f"difficulty_{difficulty}"
-        if prompt_key not in DIFFICULTY_PROMPTS:
+        # USER_SELECT_TEXT_PROMPTS에서 해당 난이도의 프롬프트를 가져옵니다.
+        prompt_key = f"user_select_text_prompt_{difficulty}"
+        if prompt_key not in USER_SELECT_TEXT_PROMPTS:
             print(prompt_key)
             return Response(
-                {"error": "Invalid difficulty level. Choose a value between 1 and 5."},
+                {"error": "Invalid difficulty level. Choose a value between 1 and 4."},
                 status=status.HTTP_400_BAD_REQUEST
             )
-
-        prompt_text = DIFFICULTY_PROMPTS[prompt_key]['prompt']
-        text_length = TEXT_LENGTH[str(difficulty)]  
+        prompt_text = USER_SELECT_TEXT_PROMPTS[prompt_key]
+        
+        try:
+            text_length = int(TEXT_LENGTH[str(difficulty)])
+        except (KeyError, ValueError):
+            return Response(
+                {"error": "Invalid text length configuration."},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
         client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
-        
-        
-
         response = client.chat.completions.create(
-            model=MODEL_SELECTOR["difficulty_"+str(difficulty)]['model'],
+            model = str(MODEL_SELECTOR.get(f"model_type_{difficulty}")).strip(),
             messages=[
                 {
                     "role": "system",
@@ -150,7 +152,6 @@ class GenerateTextAPIView(APIView):
         main_content = content_data.get("content", "")
         questions = content_data.get("questions", [])
 
-        # 텍스트 및 질문 저장 로직
         generated_text = CustomText.objects.create(
             subject=subject,
             difficulty=difficulty,
@@ -189,80 +190,6 @@ class GenerateTextAPIView(APIView):
         }
 
         return Response(response_data, status=status.HTTP_200_OK)
-class UnknownWordsAPIView(APIView):
-    @swagger_auto_schema(
-        operation_description="Process a list of unknown words with a specified difficulty level.",
-        request_body=openapi.Schema(
-            type=openapi.TYPE_OBJECT,
-            properties={
-                'unknown_words': openapi.Schema(
-                    type=openapi.TYPE_ARRAY,
-                    items=openapi.Schema(type=openapi.TYPE_STRING),
-                    description="List of unknown words to define."
-                ),
-                'difficulty': openapi.Schema(
-                    type=openapi.TYPE_INTEGER,
-                    description="Difficulty level (1-4)."
-                ),
-            },
-            required=['unknown_words', 'difficulty'],
-        ),
-        responses={200: "Success", 400: "Invalid input"}
-    )
-    def post(self, request, *args, **kwargs):
-        unknown_words = request.data.get("unknown_words", [])
-        difficulty = request.data.get("difficulty")
-        if not unknown_words:
-            return Response({"error": "No words provided"}, status=status.HTTP_400_BAD_REQUEST)
-        if difficulty not in range(1, 5): 
-            return Response({"error": "Invalid difficulty level. Choose a value between 1 and 4."},
-                            status=status.HTTP_400_BAD_REQUEST)
-        prompt_key = f"difficulty_{difficulty}"
-        prompt_text = WORD_DIFFICULTY_PROMPTS[prompt_key]
-        prompt_input = f"{prompt_text}\nWords: {', '.join(unknown_words)}"
-
-        client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
-        
-        # Generate response using OpenAI API
-        response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {
-            "role": "system",
-            "content": [
-            {
-                "type": "text",
-                "text": prompt_text
-            }
-            ]
-        },
-        {
-        "role": "user",
-        "content": [
-            {
-            "type": "text",
-            "text": prompt_input
-            }
-        ]
-        },
-        ],
-        temperature=1,
-        max_tokens=2048,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0,
-        response_format={
-        "type": "json_object"      
-        }
-            
-        )
-
-        content = response.choices[0].message.content
-        response_data = json.loads(content)
-
-        return Response({"definitions": response_data}, status=status.HTTP_200_OK)
-    
-
 
 class GenerateTagTextAPIView(APIView):
     @swagger_auto_schema(
@@ -324,71 +251,67 @@ class GenerateTagTextAPIView(APIView):
     )
     
     def get(self, request, subject, difficulty, *args, **kwargs):
-
-        prompt_text=setPresetPrompt(subject,difficulty)
+        # subject를 문자열로 전달하여 setPresetPrompt에서 제대로 찾을 수 있도록 함
+        prompt_text = setPresetPrompt(subject, difficulty)
+        if not prompt_text:
+            return Response(
+                {"error": "태그 주제 텍스트를 찾을 수 없습니다."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+            
         client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
-
-        text_length=TEXT_LENGTH[str(difficulty)]
+        
+        try:
+            text_length = int(TEXT_LENGTH[str(difficulty)])
+        except (KeyError, ValueError):
+            return Response(
+                {"error": "Invalid text length configuration."},
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
+            
         response = client.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[
-            {
-            "role": "system",
-            "content": [
-            {
-                "type": "text",
-                "text": prompt_text
+            model="gpt-4o-mini",
+            messages=[
+                {
+                    "role": "system",
+                    "content": prompt_text
+                },
+                {
+                    "role": "user",
+                    "content": "지문 생성"
+                },
+            ],
+            temperature=1,
+            max_tokens=text_length,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0,
+            response_format={
+                "type": "json_object"      
             }
-            ]
-        },
-        {
-        "role": "user",
-        "content": [
-            {
-            "type": "text",
-            "text": '지문 생성'
-            }
-        ]
-        },
-        ],
-        temperature=1,
-        max_tokens=text_length,
-        top_p=1,
-        frequency_penalty=0,
-        presence_penalty=0,
-        response_format={
-        "type": "json_object"      
-        }
+        )
         
-    )
-        
-        # Extract the content from the response
         content_raw = response.choices[0].message.content
         if not content_raw:
             return Response({"error": "No content received from OpenAI API"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         if "error" in content_raw:
-            # If there is an error, return it directly
             return Response({"error": "죄송합니다. 다른 단어를 입력해주세요."}, status=status.HTTP_400_BAD_REQUEST)
 
-        # Parse content JSON
         try:
             content_data = json.loads(content_raw)
         except json.JSONDecodeError:
             return Response({"error": "Invalid JSON format in API response"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
-        # Extract main content and questions
         main_content = content_data.get("content", "")
         questions = content_data.get("questions", [])
 
-        # Create Text object in the database
         generated_text = CustomText.objects.create(
             subject=subject,
             difficulty=difficulty,
-            content=main_content  # Save main content
+            content=main_content
         )
 
-        # Save each question as a QuestionItem
         questions_data = []
         for question in questions:
             question_item = QuestionItem.objects.create(
@@ -413,7 +336,6 @@ class GenerateTagTextAPIView(APIView):
                 "explanation": question_item.explanation
             })
 
-        # Format final response data
         response_data = {
             "subject": generated_text.subject,
             "content": generated_text.content,
@@ -422,4 +344,67 @@ class GenerateTagTextAPIView(APIView):
         }
 
         return Response(response_data, status=status.HTTP_200_OK)
-    
+
+class UnknownWordsAPIView(APIView):
+    @swagger_auto_schema(
+        operation_description="Process a list of unknown words with a specified difficulty level.",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            properties={
+                'unknown_words': openapi.Schema(
+                    type=openapi.TYPE_ARRAY,
+                    items=openapi.Schema(type=openapi.TYPE_STRING),
+                    description="List of unknown words to define."
+                ),
+                'difficulty': openapi.Schema(
+                    type=openapi.TYPE_INTEGER,
+                    description="Difficulty level (1-4)."
+                ),
+            },
+            required=['unknown_words', 'difficulty'],
+        ),
+        responses={200: "Success", 400: "Invalid input"}
+    )
+    def post(self, request, *args, **kwargs):
+        unknown_words = request.data.get("unknown_words", [])
+        difficulty = request.data.get("difficulty")
+        if not unknown_words:
+            return Response({"error": "No words provided"}, status=status.HTTP_400_BAD_REQUEST)
+        if difficulty not in range(1, 5):
+            return Response({"error": "Invalid difficulty level. Choose a value between 1 and 4."},
+                            status=status.HTTP_400_BAD_REQUEST)
+        
+        # WORD_DEFINITION_DICTIONARY를 사용하여 프롬프트 텍스트를 가져옵니다.
+        prompt_key = f"word_definition_dictionary_{difficulty}"
+        if prompt_key not in WORD_DEFINITION_DICTIONARY:
+            return Response({"error": "No definition prompt available for this difficulty."},
+                            status=status.HTTP_400_BAD_REQUEST)
+        prompt_text = WORD_DEFINITION_DICTIONARY[prompt_key]
+        prompt_input = f"{prompt_text}\nWords: {', '.join(unknown_words)}"
+        
+        client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
+        
+        response = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {
+                    "role": "system",
+                    "content": prompt_text
+                },
+                {
+                    "role": "user",
+                    "content": prompt_input
+                },
+            ],
+            temperature=1,
+            max_tokens=2048,
+            top_p=1,
+            frequency_penalty=0,
+            presence_penalty=0,
+            response_format={"type": "json_object"}
+        )
+        
+        content = response.choices[0].message.content
+        response_data = json.loads(content)
+        
+        return Response({"definitions": response_data}, status=status.HTTP_200_OK)
