@@ -126,6 +126,9 @@ class GenerateTextAPIView(APIView):
                     "content": subject
                 },
             ],
+            response_format={
+            "type": "json_object"
+                },
             temperature=1,
             max_tokens=text_length,
             top_p=1,
