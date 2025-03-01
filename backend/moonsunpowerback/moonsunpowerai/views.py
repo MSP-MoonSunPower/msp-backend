@@ -387,20 +387,7 @@ class UnknownWordsAPIView(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
         prompt_text = WORD_DEFINITION_DICTIONARY[prompt_key]
-        
-        # 사전 역할 수행을 위한 상세 지시사항을 추가합니다.
-        instructions = (
-            "너는 사전이다. 사용자가 입력한 단어 또는 구에 대해 각 기본형과 정의를 "
-            "JSON 형식으로 반환하라. \n"
-            "출력 형식:\n"
-            "- 단일 단어 입력 시: {\"word\": \"<기본형>\", \"definition\": \"<의미>\"}\n"
-            "- 여러 단어 입력 시: [{\"word\": \"<기본형>\", \"definition\": \"<의미>\"}, ...]\n"
-            "문장 부호는 제거하고, 동사와 형용사의 활용형은 반드시 기본형으로 변환하라. "
-            "정의는 정확하고 전문적으로 제공하라. 단어를 인식할 수 없으면 'error'라고 표시하라."
-        )
-        
-        # instructions, 프롬프트 텍스트, 그리고 입력 단어들을 하나의 입력으로 구성합니다.
-        prompt_input = f"{instructions}\n{prompt_text}\nWords: {', '.join(unknown_words)}"
+        prompt_input = f"{prompt_text}\nWords: {', '.join(unknown_words)}"
         
         client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
         response = client.chat.completions.create(
