@@ -19,18 +19,19 @@ const Solution = () => {
     wordDefinitions = [],
   } = location.state || {};
 
-  const modifiedVocabulary = vocabulary.map((word) => {
-    const definitionObj = wordDefinitions.find((item) => {
-      if (!item || !item.word) return false; // item이 undefined인 경우 처리
-      const normalizedWord = word.trim().toLowerCase();
-      const normalizedDefinitionWord = item.word.trim().toLowerCase();
-      return normalizedWord === normalizedDefinitionWord;
-    });
+  useEffect(() => {
+    console.log("Received wordDefinitions:", wordDefinitions);
+  }, [wordDefinitions]);
 
-    const meaning = definitionObj
-      ? definitionObj.definition
-      : "단어의 정의를 찾을 수 없습니다.";
-    return { word, meaning };
+  const modifiedVocabulary = vocabulary.map((word) => {
+    const definitionObj = wordDefinitions.find(
+      (item) => item.word.trim().toLowerCase() === word.trim().toLowerCase()
+    );
+
+    return {
+      word,
+      definition: definitionObj ? definitionObj.definition : "정의 없음",
+    };
   });
 
   useEffect(() => {
@@ -102,7 +103,7 @@ const Solution = () => {
               {modifiedVocabulary.map((wordDef, index) => (
                 <li key={index} className={styles.wordItem}>
                   <strong className={styles.word}>{wordDef.word}</strong>:{" "}
-                  {wordDef.meaning}
+                  {wordDef.definition || "정의 없음"}
                 </li>
               ))}
             </ol>
