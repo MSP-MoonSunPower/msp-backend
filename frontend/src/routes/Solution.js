@@ -19,19 +19,31 @@ const Solution = () => {
     wordDefinitions = [],
   } = location.state || {};
 
-  useEffect(() => {
-    console.log("Received wordDefinitions:", wordDefinitions);
-  }, [wordDefinitions]);
+  const modifiedVocabulary = vocabulary.flatMap((wordString) => {
+    // 쉼표와 공백 기준 단어 분리
+    const words = wordString
+      .split(/[\s,]+/)
+      .map((w) => w.trim())
+      .filter((w) => w.length > 0);
 
-  const modifiedVocabulary = vocabulary.map((word) => {
-    const definitionObj = wordDefinitions.find(
-      (item) => item.word.trim().toLowerCase() === word.trim().toLowerCase()
-    );
+    return words.map((word) => {
+      // 정확한 매칭 시도
+      let definitionObj = wordDefinitions.find(
+        (item) => item.word.trim() === word.trim()
+      );
 
-    return {
-      word,
-      definition: definitionObj ? definitionObj.definition : "정의 없음",
-    };
+      // 정확한 매칭이 없으면 부분 일치로 대체 (예: "문화의" → "문화")
+      if (!definitionObj) {
+        definitionObj = wordDefinitions.find((item) =>
+          word.includes(item.word)
+        );
+      }
+
+      return {
+        word: definitionObj ? definitionObj.word : word, //  API에서 찾은 단어로 변경
+        definition: definitionObj ? definitionObj.definition : "정의 없음",
+      };
+    });
   });
 
   useEffect(() => {
