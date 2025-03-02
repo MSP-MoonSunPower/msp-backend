@@ -11,7 +11,6 @@ function SignUp() {
     email: "",
     nickname: "",
     birth_date: "",
-    rank: "normal",
   });
 
   const [error, setError] = useState("");
@@ -36,20 +35,34 @@ function SignUp() {
       return;
     }
 
+    // 요청 데이터 필터링 (빈 값 제외)
+    const requestData = {
+      username: formData.username,
+      password: formData.password,
+      email: formData.email,
+      nickname: formData.nickname,
+    };
+
+    if (formData.name) requestData.name = formData.name;
+    if (formData.birth_date) requestData.birth_date = formData.birth_date;
+
     try {
       const response = await fetch("https://moonsunpower.com/user/signup/", {
         method: "POST",
-
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(requestData),
       });
 
       const data = await response.json();
 
-      if (response.status === 201) {
+      if (response.ok) {
         setSuccess("회원가입이 완료되었습니다!");
+
+        // 반환된 토큰이 있다면 저장 후 자동 로그인
+        if (data.token) {
+          localStorage.setItem("authToken", data.token);
+          navigate("/"); // 회원가입 후 홈으로 이동
+        }
       } else {
         setError(data.detail || "회원가입 실패");
       }
@@ -77,7 +90,7 @@ function SignUp() {
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="name">이름 *</label>
+          <label htmlFor="name">이름 (선택)</label>
           <input
             type="text"
             id="name"
@@ -85,7 +98,6 @@ function SignUp() {
             placeholder="이름을 입력하세요."
             value={formData.name}
             onChange={handleChange}
-            required
           />
         </div>
         <div className={styles.formGroup}>

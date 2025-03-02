@@ -146,10 +146,12 @@ const Question = () => {
     removeStylesFromText(word, index); // 본문 스타일 제거
     setHighlightedWords((prevWords) => prevWords.filter((_, i) => i !== index)); // 단어장에서 삭제
   };
+
   const handleSubmit = async () => {
-    setIsLoading(true); // 로딩 시작 (전역 로딩 화면 활성화)
+    setIsLoading(true);
     setIsTimerRunning(false);
     stopTimer();
+
     try {
       const response = await fetch("https://moonsunpower.com/ai/words/", {
         method: "POST",
@@ -167,16 +169,12 @@ const Question = () => {
       }
 
       const data = await response.json();
+      console.log("API 응답:", data); // 🔥 응답 확인
 
-      const wordDefinitions = (() => {
-        if (Array.isArray(data.definitions?.words)) {
-          return data.definitions.words;
-        } else if (data.definitions?.words) {
-          return [data.definitions.words];
-        } else {
-          return [];
-        }
-      })();
+      // ✅ API 응답 구조에 맞게 `words` 배열을 직접 사용
+      const wordDefinitions = data.words || [];
+
+      console.log("파싱된 wordDefinitions:", wordDefinitions); // 🔥 변환된 데이터 확인
 
       navigate("/Solution", {
         state: {
@@ -185,7 +183,7 @@ const Question = () => {
           selectedAnswers,
           elapsedTime,
           vocabulary: highlightedWords.map((hw) => hw.word),
-          wordDefinitions,
+          wordDefinitions, // ✅ 수정된 wordDefinitions 전달
         },
       });
     } catch (error) {
@@ -201,7 +199,7 @@ const Question = () => {
         },
       });
     } finally {
-      setIsLoading(false); // 로딩 종료
+      setIsLoading(false);
     }
   };
 
@@ -214,9 +212,11 @@ const Question = () => {
   const handleOpenPopup = () => {
     const elapsedMinutes = Math.floor(seconds / 60);
     const elapsedDisplaySeconds = seconds % 60;
-    if (highlightedWords.length === 0) {
+    {
+      /*if (highlightedWords.length === 0) {
       alert("모르는 단어를 하나 이상 선택해주세요!");
       return;
+    } */
     }
     setElapsedTime(`${elapsedMinutes}분 ${elapsedDisplaySeconds}초`);
     setShowPopup(true);
