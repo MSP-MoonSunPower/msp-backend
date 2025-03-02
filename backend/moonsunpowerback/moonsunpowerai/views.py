@@ -419,12 +419,4 @@ class UnknownWordsAPIView(APIView):
                 status=status.HTTP_500_INTERNAL_SERVER_ERROR
             )
         
-        # 입력 단어가 여러 개인 경우에는 JSON 배열, 단일 단어면 단일 객체 반환
-        if len(unknown_words) > 1:
-            if not isinstance(response_data, list):
-                response_data = [response_data]
-        else:
-            if isinstance(response_data, list) and len(response_data) > 0:
-                response_data = response_data[0]
-        print(response_data)
         return Response(response_data, status=status.HTTP_200_OK)
