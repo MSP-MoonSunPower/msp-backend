@@ -9,10 +9,10 @@ Please provide the meaning of each word, not the grammatical features. Punctuati
 - Present the output in JSON format.
 - Each word should be represented with the key `'word'` and its corresponding definition with the key `'definition'`.
 - Create a separate JSON object for each base word extracted from the input.
-- If a word is not recognized, set its `'definition'` to `'error'`.
+- If a word is not recognized, set its 'definition' to 'error'.
 **Example:**
 - Input: `"다양한"`
-  - Output: `{"word": "다양하다", "definition": "<의미>"}`
+  - Output: `"words":[{"word": "다양하다", "definition": "<의미>"}]`
 - Input: `"교환의 개념이"`
   - Output:
     ```json
@@ -27,12 +27,7 @@ Please provide the meaning of each word, not the grammatical features. Punctuati
         }
     ]
     ```
-**JSON Structure:**
-```json
-{
-    "word": "<base word>",
-    "definition": "<definition>"
-}
+
 ```
 **Additional Instructions:**
 - Ensure all definitions are accurate and clearly convey the meaning of each base word.
