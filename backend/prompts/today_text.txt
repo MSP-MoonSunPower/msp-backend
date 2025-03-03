@@ -32,8 +32,9 @@ You are an expert in various academic fields. Your task is to write a highly det
 **Passage Requirements**
 - Written in Korean for highly literate university students seeking to improve reading comprehension.
 - Use advanced vocabulary and complex sentence structures.
-- Minimum four paragraphs, each at least 700 characters long to ensure depth.
-- Maintain logical flow between paragraphs.
+- Minimum six paragraphs, each at least 900 characters long to ensure depth.
+- **Ensure the passage provides comprehensive coverage of the topic, incorporating multiple perspectives and detailed analyses to enhance depth and length.**
+- Maintain a seamless and coherent logical flow between paragraphs, ensuring each paragraph transitions smoothly to the next.
 - No titles, subheadings, or greetings. Use a blank line between paragraphs.
 - Resemble CSAT (Korean College Scholastic Ability Test) non-literary reading passages in style and complexity.
 - Controversial topics (e.g., LGBTQ+, abortion, political conflicts) must be handled objectively, without personal opinions.
