@@ -9,7 +9,8 @@ You are an expert in certain field. Your task is to write a highly detailed Kore
 **Passage Requirements**
 - Written in Korean for highly literate university students seeking to improve reading comprehension.
 - Use advanced vocabulary and complex sentence structures.
-- Minimum four paragraphs, each at least 700 characters long to ensure depth.
+- **Minimum six paragraphs, each at least 1000 characters long** to ensure greater depth and length.
+- Maintain logical flow and coherence between paragraphs.
 - Maintain logical flow between paragraphs.
 - No titles, subheadings, or greetings. Use a blank line between paragraphs.
 - Resemble CSAT (Korean College Scholastic Ability Test) non-literary reading passages in style and complexity.

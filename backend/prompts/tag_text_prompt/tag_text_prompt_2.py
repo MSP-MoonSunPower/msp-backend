@@ -11,7 +11,7 @@ You are an expert in a certain field. Your task is to write a highly detailed Ko
 **Passage Requirements**
 - Written in Korean for high-grade middle school students aiming to improve reading comprehension.
 - Use appropriate vocabulary and moderately complex sentence structures to challenge students while ensuring understandability.
-- Minimum three paragraphs, each at least 400 characters long to ensure sufficient content.
+- Minimum four paragraphs, each at least 500 characters long to ensure sufficient content.
 - Maintain a clear and logical flow between paragraphs.
 - No titles, subheadings, or greetings. Use a blank line between paragraphs.
 - Resemble reading passages found in middle school education materials in style and complexity.
