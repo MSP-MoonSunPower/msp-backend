@@ -58,10 +58,9 @@ function SignUp() {
       if (response.ok) {
         setSuccess("회원가입이 완료되었습니다!");
 
-        // 반환된 토큰이 있다면 저장 후 자동 로그인
         if (data.token) {
           localStorage.setItem("authToken", data.token);
-          navigate("/"); // 회원가입 후 홈으로 이동
+          navigate("/");
         }
       } else {
         setError(data.detail || "회원가입 실패");
@@ -90,7 +89,7 @@ function SignUp() {
           />
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="name">이름 (선택)</label>
+          <label htmlFor="name">이름 *</label>
           <input
             type="text"
             id="name"
