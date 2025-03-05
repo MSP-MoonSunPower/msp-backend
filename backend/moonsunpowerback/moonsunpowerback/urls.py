@@ -23,7 +23,7 @@ schema_view = get_schema_view(
 
 urlpatterns = [
     
-    path('admin/', admin.site.urls),
+    path('secret-admin/', admin.site.urls),
     path('ai/', include('moonsunpowerai.urls')),
     path('user/',include('accounts.urls')),
     # Swagger UI
