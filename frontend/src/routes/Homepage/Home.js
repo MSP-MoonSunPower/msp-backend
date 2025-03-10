@@ -101,7 +101,7 @@ function Home() {
       </div>
 
       <footer className={styles.footer}>
-        Contact :&nbsp;
+        Contact (문의 및 오류 신고) :&nbsp;
         <a
           href="https://pf.kakao.com/_hdaKn"
           target="_blank"
