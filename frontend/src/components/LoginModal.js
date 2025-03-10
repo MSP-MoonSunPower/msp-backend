@@ -71,7 +71,9 @@ function LoginModal({ onClose, onLogin }) {
           </button>
         </form>
         <div className={styles.signup}>
-          <Link to="/signup">회원가입하기</Link>
+          <Link to="/signup" onClick={onClose}>
+            회원가입하기
+          </Link>
         </div>
       </div>
     </div>
