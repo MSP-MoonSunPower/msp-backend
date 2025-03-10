@@ -1,4 +1,4 @@
 bind = "0.0.0.0:8000"
-workers = 3
-timeout = 600
+workers = 4
+timeout = 700
 
