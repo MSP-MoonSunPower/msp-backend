@@ -33,8 +33,8 @@ function LoginModal({ onClose, onLogin }) {
       if (response.status === 200) {
         onLogin(data.token); // 로그인 성공 시 토큰 저장
         navigate("/");
+        alert("반갑습니다! 오늘도 즐거운 MSP하세요:)");
       } else {
-        setError("로그인 실패. 아이디 또는 비밀번호를 확인하세요.");
         alert("로그인 실패");
       }
     } catch (err) {

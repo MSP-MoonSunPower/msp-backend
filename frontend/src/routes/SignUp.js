@@ -81,7 +81,6 @@ function SignUp() {
     //  생년월일 기본값 설정 (입력하지 않으면 2000-01-01)
     const birthDate = formData.birth_date ? formData.birth_date : "2000-01-01";
 
-    // 요청 데이터 필터링 (빈 값 제외)
     const requestData = {
       username: formData.username,
       password: formData.password,
