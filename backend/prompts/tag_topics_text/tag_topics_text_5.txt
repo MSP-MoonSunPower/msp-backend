@@ -1,8 +1,16 @@
-"literature, excluding the following example topics:
-   - Key literary concepts (e.g., intertextuality, modernist narrative techniques)
-   - Major historical events related to literature (e.g., the rise of the printing press)
-   - Important literary figures (e.g., Franz Kafka, Lu Xun)
-   - Global literature, not just Korean literature
+"literature. These topics must be academically recognized and represent a diverse range of subjects within the literary field. Avoid overly general topics (e.g., "문학의 역사") that tend to be repeated. Instead, include more nuanced and specific topics such as:
+   - 특정 문학 거장의 작품 특징 (예: 루쉰 문학의 특징, 카프카 소설의 특징)
+   - 문학 이론과 해석 방법 (예: 모더니즘 문학 해석, 포스트모더니즘의 특성)
+   - 문학 장르의 분석 (예: 시와 산문의 차이, 장르 융합의 현대 문학)
+   - 특정 시대나 지역 문학의 특성 (예: 20세기 한국 문학의 사회적 역할)
+   - 기타 다양한 문학 관련 세부 주제
 
-   *Ensure that none of the example topics or similar topics are included in the generated list.*
-2. Ensure the topic is real and academically recognized. Do NOT generate fictional or meaningless topics."
+Exclude the following example topics and any topics very similar to them:
+   - Key literary concepts (예: intertextuality, modernist narrative techniques)
+   - Major historical events related to literature (예: the rise of the printing press)
+   - Important literary figures (예: Franz Kafka, Lu Xun)
+   - Global literature general subjects (예: 문학의 역사)
+
+Ensure that each topic in the list is real and academically recognized. Do NOT generate fictional or meaningless topics.
+
+Finally, select the 45th item from your generated list. IMPORTANT: Do NOT output the topic selection process in your final output—only the final selected topic should be passed to the main prompt."
