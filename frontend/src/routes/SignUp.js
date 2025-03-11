@@ -25,13 +25,6 @@ function SignUp() {
       return;
     }
 
-    // 닉네임: 3글자 이상 입력 요구
-    if (name === "nickname" && value.length > 0 && value.length < 3) {
-      setError("닉네임은 3글자 이상이어야 합니다.");
-    } else {
-      setError("");
-    }
-
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
