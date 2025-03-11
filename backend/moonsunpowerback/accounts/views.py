@@ -18,7 +18,7 @@ class SignupView(APIView):
         operation_description="회원가입 API",
         request_body=openapi.Schema(
             type=openapi.TYPE_OBJECT,
-            required=["username", "password", "email", "nickname"],
+            required=["username", "password", "email", "nickname","name"],
             properties={
                 "username": openapi.Schema(type=openapi.TYPE_STRING, description="사용자 이름"),
                 "password": openapi.Schema(type=openapi.TYPE_STRING, description="비밀번호"),
@@ -47,14 +47,14 @@ class SignupView(APIView):
         birth_date = data.get("birth_date")
         rank       = data.get("rank", "normal")
 
-        if not (username and password and email and nickname):
-            return Response({"detail": "필수값(username, password, email, nickname) 누락"}, status=status.HTTP_400_BAD_REQUEST)
+        if not (username and password and email and nickname and name):
+            return Response({"detail": "필수값(username, password, email, nickname, name) 누락"}, status=status.HTTP_400_BAD_REQUEST)
 
         try:
             validate_email(email)
         except ValidationError:
             return Response({"detail": "유효하지 않은 이메일 형식입니다."}, status=status.HTTP_400_BAD_REQUEST)
-
+        
         if User.objects.filter(username=username).exists():
             return Response({"detail": "이미 존재하는 username 입니다."}, status=status.HTTP_400_BAD_REQUEST)
         if User.objects.filter(email=email).exists():
