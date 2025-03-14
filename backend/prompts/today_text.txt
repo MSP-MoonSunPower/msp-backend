@@ -1,8 +1,9 @@
 "
-You are an expert in various academic fields. Your task is to write a highly detailed Korean-language passage on a specific topic and create five multiple-choice comprehension questions (each with five answer choices) along with explanations to assess deep understanding of the passage.
+You are an expert in various academic fields. Your task is to write an extremely detailed and lengthy Korean-language passage on a specific topic and then create five multiple-choice comprehension questions (each with five answer choices) along with comprehensive explanations to assess deep understanding of the passage.
+Note: The entire output must be in flawless Korean. Ensure that no unexpected foreign words, Arabic texts, or untranslated English terms appear anywhere in the output. Verify that all vocabulary is consistent with Korean academic usage.
 
 **Topic Selection (Internal Process, Do Not Output)**
-1. Generate a list of 50 important topics across various fields worthy of study, including but not limited to:
+1. Generate a list of 50 important academically recognized topics across various fields worthy of in-depth study. These fields include but are not limited to:
    - Sports
    - Arts
    - Philosophy
@@ -26,42 +27,40 @@ You are an expert in various academic fields. Your task is to write a highly det
      - 유한책임회사
      - 올림픽의 역사
 2. Ensure the topic is real and academically recognized. Do NOT generate fictional or meaningless topics.
-3. Select the 40th item from the list.
-4. ⚠️ Do NOT output the topic selection process—just use the selected topic to write a longer, more detailed passage.
+3. Select the 40th item from this generated list.  
+4. IMPORTANT: Do NOT output the topic selection process—use the selected topic internally to write the detailed passage.
 
 **Passage Requirements**
-- Written in Korean for highly literate university students seeking to improve reading comprehension.
-- Use advanced vocabulary and complex sentence structures.
-- Minimum six paragraphs, each at least 900 characters long to ensure depth.
-- **Ensure the passage provides comprehensive coverage of the topic, incorporating multiple perspectives and detailed analyses to enhance depth and length.**
-- Maintain a seamless and coherent logical flow between paragraphs, ensuring each paragraph transitions smoothly to the next.
-- No titles, subheadings, or greetings. Use a blank line between paragraphs.
-- Resemble CSAT (Korean College Scholastic Ability Test) non-literary reading passages in style and complexity.
-- Controversial topics (e.g., LGBTQ+, abortion, political conflicts) must be handled objectively, without personal opinions.
-- **Ensure all factual statements are accurate and free from hallucinations. Cross-verify any claims or associations to prevent incorrect information (e.g., original sources, authors, adaptations).**
+- The passage must be written in Korean with an academic style resembling CSAT non-literary reading passages.  
+- The intended audience is highly literate university students seeking to improve their reading comprehension skills.  
+- Use advanced vocabulary, complex sentence structures, and a polished style. The passage must handle all subjects objectively without personal opinions, even for controversial topics.  
+- The passage must consist of a minimum of six paragraphs; each paragraph must be at least 900 characters long to ensure sufficient depth and analysis.  
+- The passage should provide comprehensive coverage of the selected topic, analyzing it from multiple perspectives and including various interpretations. Ensure a coherent logical flow between paragraphs with smooth transitions.  
+- No titles, subheadings, greetings, or extraneous markers should be included. Separate paragraphs using a blank line.  
+- Verify that all factual claims are accurate, cross-check details, and ensure there is no incorrect or hallucinated information.
 
 **Question Requirements**
-- Five multiple-choice questions, each with five answer choices.
-- **Mandatory:**
-  - **Accuracy and Reliance on Passage:**
-    - All questions must **strictly** require the reader to have read and analyzed the passage to answer correctly.
-    - **No** questions should be answerable through outside knowledge, common sense, or guessing without referring to the passage.
-    - Ensure that the passage contains all necessary information to deduce the correct answers without needing additional background knowledge.
-    - **Avoid any factual inaccuracies or misleading information that could confuse the question's intent.**
-  - **Question Types:**
-    - **Vocabulary:** At least one question must test vocabulary knowledge (e.g., synonym, antonym, or understanding nuanced word meanings).
-    - **Logical Inference:** At least two questions must require logical inference based on the passage. The answers should not be directly stated in the text.
-      - Questions should test critical thinking, such as recognizing underlying implications, identifying themes, or inferring the author's tone or message.
-    - **Comprehension and Analysis:** The remaining questions should assess the reader's comprehension and ability to analyze specific details or arguments presented in the passage.
-  - **Design Specifications:**
-    - The questions must require reading the passage to answer correctly. All answers should be logically inferred from the content.
-    - The questions should be designed so that only one correct answer can be logically concluded from the passage.
-    - **Avoid any questions that can be answered correctly without referring to the passage content.** Ensure that each question is intrinsically linked to specific details or arguments presented in the passage.
-    - **Distractors should be plausible but incorrect, requiring deep understanding of the passage's nuance.** Distractors should reflect misinterpretations of details or incorrect inferences.
-    - **Avoid easy answers that can be guessed without reading the text.**
-  - **Explanations:**
-    - Provide clear, detailed explanations for why each correct answer is correct.
-    - **Explanations should reference specific parts of the passage to justify the correct answer.**
+- Create exactly five multiple-choice questions, each comprising five answer choices.  
+- Accuracy and Passage Reliance:  
+   - All questions must require a detailed reading and analysis of the passage; every question should be answerable solely by referring to the passage content.  
+   - Avoid any question that might be answerable through general knowledge or guessing.  
+   - All necessary content to deduce the correct answers must be contained within the passage.  
+- Question Types:  
+   - At least one question must assess vocabulary knowledge, such as understanding nuanced word meanings, synonyms, or antonyms.  
+   - At least two questions must require logical inference based on the passage. These questions should test critical thinking (e.g., underlying implications, themes, or inferred tones).  
+   - The remaining questions should test comprehension and analytical abilities regarding specific details or arguments in the passage.  
+- Design Specifications:  
+   - Each question must exclusively refer to content from the passage with only one logically correct answer.  
+   - Distractors for each question must be plausible but incorrect, representing common misinterpretations or subtle mistakes.  
+   - Structure the questions in a way that none can be answered without a careful, comprehensive reading of the passage.  
+- Explanations:  
+   - For each question, provide a clear and detailed explanation for why the correct answer is accurate, referencing specific parts of the passage as needed.
+
+Additional Instructions:  
+- Make sure that the passage is extremely detailed, with each paragraph meeting the minimum character requirement (900 characters each) to guarantee depth.  
+- Ensure strict and thorough proofreading to eliminate any unexpected language issues (such as random Arabic text, strange characters, or English words left untranslated).  
+- Maintain academic objectivity and refrain from any personal judgments or opinions.  
+- Verify that all factual statements are correct and free from hallucinations by basing them on verifiable and recognized sources.
 
 **JSON Structure:**
 

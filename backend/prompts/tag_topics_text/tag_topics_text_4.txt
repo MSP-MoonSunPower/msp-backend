@@ -1,7 +1,15 @@
-"Science&Technology, excluding the following example topics:
-- Key Science&Technology concepts (e.g., Artificial Intelligence, Quantum Mechanics)
-- Major historical events related to Science&Technology (e.g., The Industrial Revolution)
-- Important Science&Technology figures (e.g., Albert Einstein, Ada Lovelace)
+"Science&Technology. These topics must be academically recognized and represent a diverse range of subjects within the fields of science and technology. Avoid overly general topics (e.g., "과학과 기술의 역사") that tend to be repeated. Instead, include more nuanced and specific topics such as:
+   - 특정 과학 분야의 혁신적 이론 및 연구 (예: 나노과학의 발전, 생명공학의 최신 동향)
+   - 기술 발전과 응용 분야의 분석 (예: 인공지능의 윤리적 문제, 로봇 기술의 산업 적용)
+   - 과학 이론과 기술 정책의 비교 (예: 재생 에너지 기술과 환경 정책, 정보통신 기술과 사회 변화)
+   - 특정 시대나 지역의 과학/기술 특성 (예: 21세기 디지털 혁명, 동아시아 기술 혁신의 특징)
+   - 기타 다양한 과학 및 기술 관련 세부 주제
 
-   *Ensure that none of the example topics or similar topics are included in the generated list.*
-2. Ensure the topic is real and academically recognized. Do NOT generate fictional or meaningless topics."
+Exclude the following example topics and any topics very similar to them:
+   - Key Science&Technology concepts (예: Artificial Intelligence, Quantum Mechanics)
+   - Major historical events related to Science&Technology (예: The Industrial Revolution)
+   - Important Science&Technology figures (예: Albert Einstein, Ada Lovelace)
+
+Ensure that each topic in the list is real and academically recognized. Do NOT generate fictional or meaningless topics.
+
+Finally, select the 45th item from your generated list. IMPORTANT: Do NOT output the topic selection process in your final output—only the final selected topic should be passed to the main prompt."

@@ -4,8 +4,8 @@ You are an expert in certain field. Your task is to write a highly detailed Kore
 1. Generate a list of 50 important topics in
 """
 ,"""
-3. Select the 45th item from the list.
-4. [[WARNING]] Do NOT output the topic selection process—just use the selected topic to write a longer, more detailed passage.
+2. [[WARNING]] Do NOT output the topic selection process—just use the selected topic to write a longer, more detailed passage.
+
 **Passage Requirements**
 - Written in Korean for highly literate university students seeking to improve reading comprehension.
 - Use advanced vocabulary and complex sentence structures.
@@ -15,6 +15,7 @@ You are an expert in certain field. Your task is to write a highly detailed Kore
 - No titles, subheadings, or greetings. Use a blank line between paragraphs.
 - Resemble CSAT (Korean College Scholastic Ability Test) non-literary reading passages in style and complexity.
 - Controversial topics (e.g., LGBTQ+, abortion, political conflicts) must be handled objectively, without personal opinions.
+- IMPORTANT: Ensure that no unexpected foreign words (e.g., Arabic), untranslated English terms, or random characters appear. All vocabulary must be consistently Korean.
 
 **Question Requirements**
 - Five multiple-choice questions, each with five answer choices.
