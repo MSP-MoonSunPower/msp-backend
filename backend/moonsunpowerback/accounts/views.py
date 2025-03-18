@@ -141,6 +141,37 @@ class LogoutView(APIView):
             return Response({"detail": f"토큰 삭제 중 오류 발생: {e}"}, status=status.HTTP_400_BAD_REQUEST)
         return Response({"detail": "로그아웃 성공"}, status=status.HTTP_200_OK)
 
+class UserDeleteView(APIView):
+    permission_classes = [permissions.IsAuthenticated]
+
+    @swagger_auto_schema(
+        operation_description="회원 탈퇴 API",
+        responses={
+            200: openapi.Response(
+                "회원 탈퇴 성공",
+                schema=openapi.Schema(
+                    type=openapi.TYPE_OBJECT,
+                    properties={
+                        "detail": openapi.Schema(type=openapi.TYPE_STRING, description="탈퇴 완료 메시지")
+                    }
+                )
+            ),
+            400: "회원 탈퇴 중 오류 발생"
+        }
+    )
+    def delete(self, request, *args, **kwargs):
+        user = request.user
+        try:
+            # 프로필 사진 파일 삭제 (있을 경우)
+            if user.profile_image:
+                user.profile_image.delete(save=False)
+            # 사용자 계정 삭제
+            user.delete()
+            return Response({"detail": "회원 탈퇴가 완료되었습니다."}, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({"detail": f"회원 탈퇴 중 오류 발생: {e}"}, status=status.HTTP_400_BAD_REQUEST)
+        
+
 class ProfileImageUpdateView(APIView):
     permission_classes = [permissions.IsAuthenticated]
     parser_classes = (MultiPartParser, FormParser)
