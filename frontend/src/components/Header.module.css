@@ -123,6 +123,7 @@
   background-color: white;
   box-shadow: none;
 }
+
 .logoContainer {
   display: flex;
   align-items: center;
@@ -154,12 +155,12 @@
   background: none;
   border: none;
   padding: 0;
-  font-family: inherit;
 }
 
 .navLink:hover {
   color: #e40046;
 }
+
 .profileSection {
   display: flex;
   align-items: center;
@@ -173,19 +174,24 @@
   top: 0%;
   left: 0;
   width: 100%;
-  font-size: 18px;
-  color: #020202;
+  font-size: 20px;
+  color: #000000;
   font-weight: bold;
   cursor: pointer;
   padding: 20px;
   border: none;
-  background-color: #ffeaea;
+  background-color: inherit;
   display: none;
   transition: transform 0.1s ease;
 }
 
 .profileSection:hover .logoutLink {
   display: block;
+}
+
+/*→ 프로필 섹션에 마우스를 올렸을 때, logoutLink 버튼을 제외한 나머지 모든 자식 요소들을 숨긴다 */
+.profileSection:hover > *:not(.logoutLink) {
+  visibility: hidden;
 }
 
 .profileImage {
