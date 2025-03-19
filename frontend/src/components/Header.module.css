@@ -93,6 +93,14 @@
   font-style: normal;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Gloria+Hallelujah&display=swap");
+
+.gloria-hallelujah-regular {
+  font-family: "Gloria Hallelujah", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -122,14 +130,6 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Bungee+Tint&family=Gloria+Hallelujah&display=swap");
-
-.gloria-hallelujah-regular {
-  font-family: "Gloria Hallelujah", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
 .title {
   font-size: 28px;
   margin-left: 20px;
@@ -141,10 +141,10 @@
 
 .nav {
   display: flex;
+  align-items: center;
   gap: 30px;
   margin-right: 50px;
 }
-
 .navLink {
   text-decoration: none;
   font-size: 18px;
@@ -161,6 +161,21 @@
   color: #e40046;
 }
 
-.link {
-  text-decoration: none;
+.profileSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-right: -20px;
+}
+
+.profileImage {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nickname {
+  font-weight: bold;
+  color: #070707;
 }
