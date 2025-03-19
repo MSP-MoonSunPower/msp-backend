@@ -29,10 +29,16 @@ function Header() {
     try {
       const trimmedToken = token.trim();
       console.log("Authorization 헤더에 들어가는 토큰:", trimmedToken);
+      const headers = {
+        Authorization: `Bearer ${trimmedToken}`,
+        "Content-Type": "application/json",
+      };
 
+      console.log("보낼 헤더:", headers);
       const response = await fetch("https://moonsunpower.com/user/profile/", {
         method: "GET",
         headers: {
+          headers,
           Authorization: `Bearer ${trimmedToken}`,
           "Content-Type": "application/json",
         },
