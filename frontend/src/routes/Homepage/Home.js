@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./Home.module.css";
 import logo from "../../assets/msp-bear.png";
+import cuteLogo from "../../assets/msp_logo.png";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
 import Section3 from "./Section3";
