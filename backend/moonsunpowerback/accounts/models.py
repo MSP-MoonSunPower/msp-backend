@@ -43,4 +43,4 @@ class CustomUser(AbstractUser):
         if self.profile_image and hasattr(self.profile_image, 'url'):
             return self.profile_image.url
         # 기본 프사 URL (실제 파일 경로에 맞게 수정)
-        return '/static/images/default_profile.png'
+        return '/profile_images/images/default_profile.png'
