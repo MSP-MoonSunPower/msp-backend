@@ -16,8 +16,6 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# 정적 파일을 모을 디렉토리 설정 (예: 프로젝트 루트 내 staticfiles 폴더)
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -177,7 +175,10 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_URL = '/django_static/'
+STATIC_URL = '/static/'
+# 정적 파일을 모을 디렉토리 설정 (예: 프로젝트 루트 내 staticfiles 폴더)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
