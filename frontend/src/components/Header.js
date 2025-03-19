@@ -107,12 +107,12 @@ function Header() {
         <Link to="/aboutus" className={styles.navLink}>
           About Us
         </Link>
-        <button onClick={handleLogout} className={styles.navLink}>
-          Log out
-        </button>
 
         {isLoggedIn ? (
           <div className={styles.profileSection}>
+            <button onClick={handleLogout} className={styles.navLink}>
+              Log out
+            </button>
             <span className={styles.nickname}>{nickname || "사용자 "} 님</span>
             {profileImage ? (
               <img

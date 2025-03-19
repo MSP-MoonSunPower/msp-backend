@@ -68,25 +68,24 @@ function SignUp() {
       });
 
       const data = await response.json();
-      console.log("회원가입 응답 데이터:", data); // ✅ 응답 데이터 확인
+      console.log("회원가입 응답 데이터:", data);
 
       if (response.ok) {
         alert("회원가입이 완료되었습니다!");
         setSuccess("회원가입이 완료되었습니다!");
 
-        // ✅ localStorage 저장
         localStorage.setItem("isLoggedIn", "true");
 
         if (data.profile_image) {
           localStorage.setItem("profile_image", data.profile_image);
         } else {
-          console.warn("⚠ profile_image 없음. 응답 데이터 확인:", data);
+          console.warn("profile_image 없음. 응답 데이터 확인:", data);
         }
 
         if (data.nickname) {
           localStorage.setItem("nickname", data.nickname);
         } else {
-          console.warn("⚠ nickname 없음. 응답 데이터 확인:", data);
+          console.warn("nickname 없음. 응답 데이터 확인:", data);
         }
 
         navigate("/");
