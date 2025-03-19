@@ -190,7 +190,7 @@ function SignUp() {
             )}
           </label>
           <label htmlFor="profile_image" className={styles.labelStyle}>
-            프로필 이미지
+            프로필 이미지 등록하기
           </label>
 
           <input
@@ -277,7 +277,7 @@ function SignUp() {
             />
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="birth_date">생년월일 (선택)</label>
+            <label htmlFor="birth_date">생년월일</label>
             <input
               type="date"
               id="birth_date"
