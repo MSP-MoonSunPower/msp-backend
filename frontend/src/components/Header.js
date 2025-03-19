@@ -15,7 +15,9 @@ function Header() {
 
   useEffect(() => {
     const loggedInStatus = localStorage.getItem("isLoggedIn") === "true";
-    const authToken = localStorage.getItem("authToken");
+    const authToken = localStorage.getItem("authToken"); // authtoken 확인
+
+    console.log("초기 로드 시 저장된 토큰:", authToken);
 
     if (loggedInStatus && authToken) {
       setIsLoggedIn(true);
@@ -25,10 +27,14 @@ function Header() {
 
   const fetchProfile = async (token) => {
     try {
+      const trimmedToken = token.trim();
+      console.log("Authorization 헤더에 들어가는 토큰:", trimmedToken);
+
       const response = await fetch("https://moonsunpower.com/user/profile/", {
         method: "GET",
         headers: {
-          Authorization: `Token ${token}`,
+          Authorization: `Bearer ${trimmedToken}`,
+          "Content-Type": "application/json",
         },
       });
 
@@ -54,6 +60,7 @@ function Header() {
       } else {
         console.warn("nickname 없음. 응답 데이터 확인:", profileData);
       }
+      console.log(profileData.profile_image_url);
     } catch (err) {
       console.error("사용자 프로필 불러오기 실패:", err);
     }
@@ -75,10 +82,22 @@ function Header() {
   const handleModalClose = () => setIsModalOpen(false);
 
   const handleLogin = (userData) => {
+    console.log("로그인 성공! 응답 데이터:", userData); // 로그인 후 authToken이 정상적으로 저장되는지 확인
+
+    if (!userData) {
+      console.error("토큰이 존재하지 않음! userData:", userData);
+      return; // 토큰이 없으면 저장하지 않음
+    }
+
     setIsLoggedIn(true);
     localStorage.setItem("isLoggedIn", "true");
-    localStorage.setItem("authToken", userData.token);
-    fetchProfile(userData.token);
+    localStorage.setItem("authToken", userData); // userData를 저장 - 백엔드에서 로그인 API 응답을 토큰 문자열 자체로 반환하고 있기 때문
+    console.log(
+      "토큰 저장 완료! 저장된 값:",
+      localStorage.getItem("authToken")
+    );
+
+    fetchProfile(userData);
     setIsModalOpen(false);
   };
 
