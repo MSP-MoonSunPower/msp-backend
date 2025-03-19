@@ -60,9 +60,9 @@ function Header() {
         console.warn("profile_image 없음. 응답 데이터 확인:", profileData);
       }
 
-      if (profileData.username) {
-        setNickname(profileData.username);
-        localStorage.setItem("nickname", profileData.username);
+      if (profileData.nickname) {
+        setNickname(profileData.nickname);
+        localStorage.setItem("nickname", profileData.nickname);
       } else {
         console.warn("nickname 없음. 응답 데이터 확인:", profileData);
       }
@@ -135,7 +135,7 @@ function Header() {
 
         {isLoggedIn ? (
           <div className={styles.profileSection}>
-            <button onClick={handleLogout} className={styles.navLink}>
+            <button onClick={handleLogout} className={styles.logoutLink}>
               Log out
             </button>
             <span className={styles.nickname}>{nickname || "사용자 "} 님</span>
