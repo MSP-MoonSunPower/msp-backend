@@ -30,7 +30,7 @@ function Header() {
       const trimmedToken = token.trim();
       console.log("Authorization 헤더에 들어가는 토큰:", trimmedToken);
       const headers = {
-        Authorization: `Bearer ${trimmedToken}`,
+        Authorization: `Token ${trimmedToken}`,
         "Content-Type": "application/json",
       };
 
@@ -39,7 +39,7 @@ function Header() {
         method: "GET",
         headers: {
           headers,
-          Authorization: `Bearer ${trimmedToken}`,
+          Authorization: `Token ${trimmedToken}`,
           "Content-Type": "application/json",
         },
       });
