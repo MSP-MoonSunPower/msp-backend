@@ -135,7 +135,7 @@ function Header() {
 
         {isLoggedIn ? (
           <div className={styles.profileSection}>
-            <button onClick={handleLogout} className={styles.navLink}>
+            <button onClick={handleLogout} className={styles.logoutLink}>
               Log out
             </button>
             <span className={styles.nickname}>{nickname || "사용자 "} 님</span>
