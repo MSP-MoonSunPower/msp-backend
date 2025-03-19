@@ -288,7 +288,7 @@ class UserProfileView(APIView):
     def get(self, request, *args, **kwargs):
         user = request.user
         data = {
-            "username": user.username,
+            "nickname": user.nickname,
             "profile_image_url": user.profile_image_url,
         }
         return Response(data)
