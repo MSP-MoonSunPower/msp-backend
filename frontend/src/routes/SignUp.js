@@ -22,11 +22,6 @@ function SignUp() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    if (name === "username" && !/^[a-zA-Z0-9]*$/.test(value)) {
-      return;
-    }
-
     setFormData((prevData) => ({
       ...prevData,
       [name]: value,
@@ -40,13 +35,68 @@ function SignUp() {
         ...prevData,
         profile_image: file,
       }));
-      setPreviewImage(URL.createObjectURL(file)); // 프로필 이미지 미리보기
+      setPreviewImage(URL.createObjectURL(file));
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setShowModal(true);
+    setError("");
+    setSuccess("");
+
+    if (formData.password !== formData.confirmPassword) {
+      alert("비밀번호가 일치하지 않습니다.");
+      return;
+    }
+
+    const birthDate = formData.birth_date ? formData.birth_date : "2000-01-01";
+    const formDataToSend = new FormData();
+    formDataToSend.append("username", formData.username);
+    formDataToSend.append("password", formData.password);
+    formDataToSend.append("email", formData.email);
+    formDataToSend.append("nickname", formData.nickname);
+    formDataToSend.append("birth_date", birthDate);
+    formDataToSend.append("name", formData.name);
+    if (formData.profile_image) {
+      formDataToSend.append("profile_image", formData.profile_image);
+    }
+
+    try {
+      const response = await fetch("https://moonsunpower.com/user/signup/", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      const data = await response.json();
+      console.log("회원가입 응답 데이터:", data); // ✅ 응답 데이터 확인
+
+      if (response.ok) {
+        alert("회원가입이 완료되었습니다!");
+        setSuccess("회원가입이 완료되었습니다!");
+
+        // ✅ localStorage 저장
+        localStorage.setItem("isLoggedIn", "true");
+
+        if (data.profile_image) {
+          localStorage.setItem("profile_image", data.profile_image);
+        } else {
+          console.warn("⚠ profile_image 없음. 응답 데이터 확인:", data);
+        }
+
+        if (data.nickname) {
+          localStorage.setItem("nickname", data.nickname);
+        } else {
+          console.warn("⚠ nickname 없음. 응답 데이터 확인:", data);
+        }
+
+        navigate("/");
+      } else {
+        alert(data.detail || "회원가입 실패");
+      }
+    } catch (err) {
+      alert("서버 요청 중 오류가 발생했습니다.");
+      console.error("회원가입 API 오류:", err);
+    }
   };
 
   const handleConfirmSignUp = async () => {
@@ -228,7 +278,7 @@ function SignUp() {
             />
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="birth_date">생년월일</label>
+            <label htmlFor="birth_date">생년월일 (선택)</label>
             <input
               type="date"
               id="birth_date"
