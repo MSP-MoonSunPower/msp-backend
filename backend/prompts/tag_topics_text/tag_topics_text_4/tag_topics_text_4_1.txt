@@ -1,0 +1,80 @@
+[
+    """
+You are an expert in a certain field. Your task is to write a highly detailed Korean-language passage on a specific topic and create five multiple-choice comprehension questions (each with five answer choices) along with explanations to assess understanding of the passage. **Topic Selection (Internal Process, Do Not Output)**
+1. Generate a list of 50 important topics in
+Science&Technology. These topics must be academically recognized and represent a diverse range of subjects within the fields of science and technology. Avoid overly general topics (e.g., "과학과 기술의 역사") that tend to be repeated. Instead, include more nuanced and specific topics such as:
+   - 특정 과학 분야의 혁신적 이론 및 연구 (예: 나노과학의 발전, 생명공학의 최신 동향)
+   - 기술 발전과 응용 분야의 분석 (예: 인공지능의 윤리적 문제, 로봇 기술의 산업 적용)
+   - 과학 이론과 기술 정책의 비교 (예: 재생 에너지 기술과 환경 정책, 정보통신 기술과 사회 변화)
+   - 특정 시대나 지역의 과학/기술 특성 (예: 21세기 디지털 혁명, 동아시아 기술 혁신의 특징)
+   - 기타 다양한 과학 및 기술 관련 세부 주제
+
+Exclude the following example topics and any topics very similar to them:
+   - Key Science&Technology concepts (예: Artificial Intelligence, Quantum Mechanics)
+   - Major historical events related to Science&Technology (예: The Industrial Revolution)
+   - Important Science&Technology figures (예: Albert Einstein, Ada Lovelace)
+
+Ensure that each topic in the list is real and academically recognized. Do NOT generate fictional or meaningless topics.
+
+Finally, select the 45th item from your generated list.
+
+IMPORTANT: Do NOT output the topic selection process in your final output—only the final selected topic should be passed to the main prompt."
+
+2. [[WARNING]] Do NOT output the topic selection process—just use the selected topic to write a longer, more detailed passage.
+
+**Passage Requirements**
+- Written in Korean for upper elementary school students aiming to improve reading comprehension.
+- Use age-appropriate vocabulary and simple sentence structures.
+- Minimum four paragraphs, each at least 400 characters long to ensure sufficient content.
+- Maintain logical flow and coherence between paragraphs.
+- Maintain a clear and logical flow between paragraphs.
+- No titles, subheadings, or greetings. Use a blank line between paragraphs.
+- Resemble reading passages found in elementary education materials in style and simplicity.
+- Controversial topics (e.g., LGBTQ+, abortion, political conflicts) must be handled objectively, without personal opinions.
+- IMPORTANT: Ensure that no unexpected foreign words (e.g., Arabic), untranslated English terms, or random characters appear. All vocabulary must be consistently Korean.
+
+**Question Requirements**
+- Five multiple-choice questions, each with five answer choices.
+- **Mandatory:**
+  - **At least one question must specifically test vocabulary knowledge** (e.g., synonym, antonym, or understanding a word's meaning). Ensure this requirement is explicitly addressed.
+  - All questions must **strictly** require the reader to have read and understood the passage to answer correctly.
+  - **No** questions should be answerable through outside knowledge, common sense, or guessing without referring to the passage.
+  - Ensure that the passage contains all necessary information to deduce the correct answers without needing additional background knowledge.
+  - At least two questions must require simple inference based on the passage. The answers should not be directly stated in the text.
+    - Questions should test basic understanding, such as recognizing main ideas or inferring the characters' feelings.
+  - The questions must require reading the passage to answer correctly. All answers should be logically inferred from the content.
+  - The questions should be designed so that only one correct answer can be logically concluded from the passage.
+  - **Avoid any questions that can be answered correctly without referring to the passage content.** Ensure that each question is intrinsically linked to specific details or ideas presented in the passage.
+  - Avoid easy answers that can be guessed without reading the text.
+  - Include distractors that are plausible but incorrect, requiring a good understanding of the passage's details.
+    - Distractors should reflect common misunderstandings or slight misinterpretations of details.
+- **Optional:**
+  - Other questions can focus on main ideas, basic inferences, or specific details as needed.
+
+- **Additional Instructions:**
+  - **Ensure that exactly one of the five questions is dedicated to vocabulary knowledge.** This question should clearly focus on understanding a specific word used in the passage, its synonym, antonym, or meaning within the context.
+  - Provide clear, detailed explanations for why each correct answer is correct.
+    - Explanations should reference specific parts of the passage to justify the correct answer.
+
+**JSON Structure:**
+```json
+{
+    "subject": "<selected one>",
+    "content": "<detailed and age-appropriate essay content>",
+    "questions": [
+        {
+            "question_text": "<understanding-based question>",
+            "choice1": "<option 1>",
+            "choice2": "<option 2>",
+            "choice3": "<option 3>",
+            "choice4": "<option 4>",
+            "choice5": "<option 5>",
+            "answer": <correct option number>,
+            "explanation": "<clear explanation referencing the passage>"
+        },
+        ...
+    ]
+}
+```
+"""
+]
