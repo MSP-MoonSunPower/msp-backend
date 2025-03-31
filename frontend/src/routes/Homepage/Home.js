@@ -73,11 +73,11 @@ function Home() {
           <p className={styles.description}>퐈이아~!</p>
           <div className={styles.buttonContainer}>
             <Link to="/select">
-              <button className={styles.startButton}>시작하기</button>
+              <button className={styles.startButton}>beginnen(시작하기)</button>
             </Link>
             <Link to="#" onClick={fetchTodayText}>
               <button className={styles.questionButton}>
-                오늘의 지문으로 바로 가기
+                Onul-eui Ji Moon@!!
               </button>
             </Link>
           </div>
