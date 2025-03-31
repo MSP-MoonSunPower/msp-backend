@@ -22,7 +22,7 @@ function AboutUs() {
         {
           id: 2,
           name: "오승민",
-          description: "PM",
+          description: "PM이자 MSP 돈 담당",
           introduction: "서강고 3학년",
           tagline: "깃린이 (언제 rm -rf 할지 몰라서 개무서움)",
           image: sm,
@@ -35,7 +35,7 @@ function AboutUs() {
         {
           id: 3,
           name: "최완",
-          description: "백엔드 개발자",
+          description: "백엔드 개발자 및 독재자",
           introduction: "서강고 4학년",
           tagline: "독재의 맛 느끼다 탄핵된지 한달차",
           image: hwan,
@@ -43,7 +43,7 @@ function AboutUs() {
         {
           id: 4,
           name: "안서진",
-          description: "프론트 개발자",
+          description: "프론트 개발자 및 내맘대로 디자이너",
           introduction: "서강고 4학년 (5학년 예정)",
           tagline: "일많다고 징징대놓고 만우절 이벤트 할 생각에 제일 신남",
           image: sj,
@@ -57,8 +57,8 @@ function AboutUs() {
         {
           id: 5,
           name: "황세빈",
-          description: "서강고 4학년",
-          introduction: "서강대학교 유럽문화학과 & 경영학과 21",
+          description: "실세",
+          introduction: "서강고 4학년",
           tagline: "서진언니가 하면 해 ",
           image: sb,
         },

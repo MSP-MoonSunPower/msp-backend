@@ -49,7 +49,19 @@ function Home() {
       <div className={styles.mobileContainer}>
         <img src={logo} alt="MSP Logo" className={styles.logoImage} />
         <h1 className={styles.title}>모바일 파업 - by. MSP 프론트 개발자 </h1>
-        <p>PC로 들어와줘요 제발 제발ㅠㅠ</p>
+        <p>PC로 들어와줘요 제발 제발ㅠㅠㅜ</p>
+        <div className={styles.buttonContainer}>
+          <Link to="/select">
+            <button className={styles.startButton}>
+              beginnen (시작하기 버튼..넣어는 드리지만 PC 추천)
+            </button>
+          </Link>
+          <Link to="#" onClick={fetchTodayText}>
+            <button className={styles.questionButton}>
+              OG 버튼 넣어는 드리지만 PC 추천 ㅠnㅠ
+            </button>
+          </Link>
+        </div>
       </div>
     );
   }
