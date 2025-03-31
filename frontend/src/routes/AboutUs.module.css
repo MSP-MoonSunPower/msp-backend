@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "MaruBuri";
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.woff2)
+      format("woff2"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.woff)
+      format("woff"),
+    url(https://hangeul.pstatic.net/hangeul_static/webfont/MaruBuri/MaruBuri-Regular.ttf)
+      format("truetype");
+}
 .container {
   width: 100%;
   max-width: 1200px;
@@ -11,6 +20,12 @@
   text-align: center;
   margin-bottom: 10px;
   margin-top: 10px;
+}
+
+.ment {
+  font-family: "MaruBuri";
+  font-size: 30px;
+  color: rgb(90, 8, 255);
 }
 
 .section {

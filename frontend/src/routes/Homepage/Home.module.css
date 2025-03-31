@@ -23,7 +23,8 @@ html {
 }
 
 .logoImage {
-  width: 100%;
+  width: 50%;
+  max-width: 300px;
   margin-right: 1%;
 }
 
@@ -45,13 +46,21 @@ html {
 }
 
 .title {
-  font-size: 80px;
-  color: #1d1d1d;
+  font-size: 75px;
+
   font-family: "Patrick Hand SC", serif;
   font-weight: lighter;
   margin-bottom: -20px;
   margin-top: -20px;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
+}
+
+.red {
+  color: rgb(252, 125, 40);
+}
+
+.purple {
+  color: rgb(94, 113, 255);
 }
 
 .description {
@@ -113,8 +122,9 @@ html {
 
   .logoImage {
     margin-left: 0.1px;
-    width: 100%;
-    margin-bottom: 16px;
+    width: 80%;
+    max-width: 200px;
+    margin-bottom: 40px;
   }
 
   .title {

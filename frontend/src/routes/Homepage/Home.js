@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./Home.module.css";
-import logo from "../../assets/msp-bear.png";
+import logo from "../../assets/bigLogo.png";
 import cuteLogo from "../../assets/msp_logo.png";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
@@ -48,24 +48,8 @@ function Home() {
     return (
       <div className={styles.mobileContainer}>
         <img src={logo} alt="MSP Logo" className={styles.logoImage} />
-        <h1 className={styles.title}>Moon Sun Power</h1>
-        <p className={styles.mobileMessage1}>
-          개인 맞춤형 문해력 향상 학습 프로그램
-        </p>
-
-        <div className={styles.buttonContainer}>
-          <Link to="/select">
-            <button className={styles.startButton}>시작하기</button>
-          </Link>
-          <Link to="#" onClick={fetchTodayText}>
-            <button className={styles.questionButton}>
-              오늘의 지문으로 바로 가기
-            </button>
-          </Link>
-        </div>
-        <p className={styles.mobileMessage2}>
-          * 모바일 버전은 3월중 업데이트 예정입니다. (PC 학습 권장)
-        </p>
+        <h1 className={styles.title}>모바일 파업 - by. MSP 프론트 개발자 </h1>
+        <p>PC로 들어와줘요 제발 제발ㅠㅠ</p>
       </div>
     );
   }
@@ -77,10 +61,16 @@ function Home() {
         </div>
 
         <div className={styles.rightContainer}>
-          <h1 className={styles.title}>Moon Sun Power</h1>
-          <p className={styles.description}>
-            생성형 AI 기반 NLG를 이용한 개인 맞춤형 문해력 향상 학습 프로그램
-          </p>
+          <h1 className={styles.title}>
+            <span className={styles.red}>M</span>
+            <span className={styles.purple}>yung </span>
+            <span className={styles.red}>S</span>
+            <span className={styles.purple}>oo </span>
+            <span className={styles.red}>P</span>
+            <span className={styles.purple}>ower</span>
+          </h1>
+
+          <p className={styles.description}>퐈이아~!</p>
           <div className={styles.buttonContainer}>
             <Link to="/select">
               <button className={styles.startButton}>시작하기</button>
