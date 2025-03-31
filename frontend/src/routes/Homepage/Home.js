@@ -70,7 +70,9 @@ function Home() {
             <span className={styles.purple}>ower</span>
           </h1>
 
-          <p className={styles.description}>퐈이아~!</p>
+          <p className={styles.description}>
+            퐈이아~! 오늘은 MSP 지문을 믿지 마세요! (GPT도 만우절 즐긴다네요^^7)
+          </p>
           <div className={styles.buttonContainer}>
             <Link to="/select">
               <button className={styles.startButton}>beginnen(시작하기)</button>
