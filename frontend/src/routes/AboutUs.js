@@ -16,7 +16,7 @@ function AboutUs() {
           name: "나윤재",
           description: "팀장이자 박명수",
           introduction: "서강대학교 유럽문화학과 & 경영학과 21",
-          tagline: "다섯달째 프롬프트 무한굴레. ",
+          tagline: "다섯달째 프롬프트 무한굴레. / 달리기 장인",
           image: yj,
         },
         {
@@ -45,7 +45,7 @@ function AboutUs() {
           name: "안서진",
           description: "프론트 개발자",
           introduction: "서강대학교 유럽문화학과 & 컴퓨터공학과 20",
-          tagline: "일많다고 징징대놓고 만우절 이벤트 할 생각에 세상신남",
+          tagline: "일많다고 징징대놓고 만우절 이벤트 할 생각에 제일 신남",
           image: sj,
         },
       ],

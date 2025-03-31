@@ -127,10 +127,10 @@ function Header() {
       </div>
       <nav className={styles.nav}>
         <Link to="/mypage" className={styles.navLink}>
-          My Page
+          마이페이지(파업) - FE
         </Link>
         <Link to="/aboutus" className={styles.navLink}>
-          About Us
+          ★우리들 소개★
         </Link>
 
         {isLoggedIn ? (
