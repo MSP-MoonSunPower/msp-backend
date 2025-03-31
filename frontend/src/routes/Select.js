@@ -164,7 +164,7 @@ function Select() {
           }`}
           onClick={() => handleDifficultyClick("1")}
         >
-          초급
+          EZ
         </button>
         <button
           className={`${styles.difficultyButton} ${
@@ -172,7 +172,7 @@ function Select() {
           }`}
           onClick={() => handleDifficultyClick("2")}
         >
-          중급
+          착한맛
         </button>
         <button
           className={`${styles.difficultyButton} ${
@@ -180,7 +180,7 @@ function Select() {
           }`}
           onClick={() => handleDifficultyClick("3")}
         >
-          고급
+          오리지날
         </button>
         <button
           className={`${styles.difficultyButton} ${
@@ -188,7 +188,7 @@ function Select() {
           }`}
           onClick={() => handleDifficultyClick("4")}
         >
-          지옥
+          마라맛
         </button>
       </div>
 
@@ -227,10 +227,10 @@ function Select() {
 
       <div className={styles.buttons}>
         <button className={styles.startButton} onClick={handleStartClick}>
-          시작하기
+          beginnen (시작)
         </button>
         <Link to="#" onClick={fetchTodayText}>
-          <button className={styles.questionButton}>오늘의 지문</button>
+          <button className={styles.questionButton}>Onul-eui Jimoon@!</button>
         </Link>
       </div>
     </div>
