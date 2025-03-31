@@ -109,7 +109,7 @@ html {
   color: white;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .mobileContainer {
     display: flex;
     flex-direction: column;
