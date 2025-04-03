@@ -60,19 +60,6 @@ TEXT_LENGTH = load_files(
     key_func=lambda key: key.replace("text_length_", "").replace(".txt", "")
 )
 
-# 3. 태그 주제 텍스트 (tag_topics_text 폴더) - 키를 단순 숫자 문자열로 저장
-TAG_TOPICS_TEXT = load_files(
-    os.path.join(PROMPTS_DIR, "tag_topics_text"),
-    [f"tag_topics_text_{i}.txt" for i in range(1, 7)],
-    key_func=lambda key: key.replace("tag_topics_text_", "").replace(".txt", "")
-)
-
-# 4. 태그 텍스트 프롬프트 (tag_text_prompt 폴더, 파일 내 내용은 리스트 형태)
-TAG_TEXT_PROMPTS = load_files(
-    os.path.join(PROMPTS_DIR, "tag_text_prompt"),
-    [f"tag_text_prompt_{i}.py" for i in range(1, 5)]
-)
-
 # 5. 단어 정의 사전 (word_definition_dictionary 폴더)
 WORD_DEFINITION_DICTIONARY = load_files(
     os.path.join(PROMPTS_DIR, "word_definition_dictionary"),
@@ -84,26 +71,25 @@ MODEL_SELECTOR = load_files(
     os.path.join(PROMPTS_DIR, "model_type"),
     [f"model_type_{i}.txt" for i in range(1, 5)]
 )
+
 def setPresetPrompt(preset_topic_key, difficulty):
     """
-    preset_topic_key: 예) "1" (혹은 "tag_topics_text_1")
-    difficulty: 태그 텍스트 프롬프트 번호 (정수)
+    새 폴더 구조를 기반으로 프롬프트 파일을 불러오는 함수
+    예: tag_topics_text_6/tag_topics_text_6_1.txt
     """
-    preset_topic_key = str(preset_topic_key)
-    tag_prompt = TAG_TEXT_PROMPTS.get(f"tag_text_prompt_{difficulty}")
-    if not tag_prompt or not isinstance(tag_prompt, list) or len(tag_prompt) < 2:
-        print(f"Error: tag_text_prompt_{difficulty}가 리스트 형식(최소 2요소)이 아닙니다.")
+    topic_str = str(preset_topic_key)
+    difficulty_str = str(difficulty)
+
+    file_path = os.path.join(
+        PROMPTS_DIR,
+        "tag_topics_text",
+        f"tag_topics_text_{topic_str}",
+        f"tag_topics_text_{topic_str}_{difficulty_str}.txt"
+    )
+
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return f.read()
+    except Exception as e:
+        print(f"Failed to load preset prompt from {file_path}: {e}")
         return ""
-    start_prompt = tag_prompt[0]
-    end_prompt = tag_prompt[1]
-    
-    # 먼저 단순 숫자 키로 조회
-    topic = TAG_TOPICS_TEXT.get(preset_topic_key)
-    # 없으면 "tag_topics_text_" 접두어를 붙여서 조회
-    if not topic:
-        topic = TAG_TOPICS_TEXT.get(f"tag_topics_text_{preset_topic_key}")
-    if not topic:
-        print(f"Error: {preset_topic_key}에 해당하는 태그 주제 텍스트를 찾을 수 없습니다.")
-        return ""
-    
-    return f"{start_prompt}{topic}{end_prompt}"
