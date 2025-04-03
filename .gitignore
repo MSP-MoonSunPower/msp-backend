@@ -205,5 +205,5 @@ frontend/node_modules/
 backend/moonsunpowerback/accounts/migrations/*public/naver*.html
 *.swp
 */staticfiles/
-*/staticfiles/
+**/staticfiles/
 public/naver*.html
