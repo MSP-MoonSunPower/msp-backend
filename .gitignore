@@ -202,4 +202,8 @@ backend/moonsunpowerback/celerybeat-schedule.dir
 # 제거할 내용 (예시)
 
 frontend/node_modules/
-backend/moonsunpowerback/accounts/migrations/*
+backend/moonsunpowerback/accounts/migrations/*public/naver*.html
+*.swp
+*/staticfiles/
+*/staticfiles/
+public/naver*.html
