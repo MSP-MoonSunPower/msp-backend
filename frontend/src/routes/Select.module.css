@@ -205,3 +205,70 @@
   text-align: center;
   margin-top: 50px;
 }
+
+/*언어 선택*/
+.languageChoice {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1.5rem 0;
+  flex-wrap: wrap;
+}
+
+.languageChoice button {
+  margin-top: 20px;
+
+  background-color: #fff4f4;
+  border: 2px solid #ffc2c2;
+  color: #000000;
+  padding: 0.6rem 1.2rem;
+  border-radius: 500px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.languageChoice button:hover {
+  transform: translateY(-3px);
+  background-color: #ffe3e3;
+  box-shadow: 0 4px 8px rgba(255, 141, 141, 0.3);
+}
+
+.languageChoice button {
+  position: relative;
+}
+
+.languageChoice button::after {
+  content: attr(langBtn);
+  position: absolute;
+  top: -2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+  z-index: 10;
+}
+
+.languageChoice button:hover::after {
+  opacity: 1;
+}
+
+.languageChoice button:active {
+  transform: translateY(0);
+  background-color: #ffd4d4;
+}
+
+.languageChoice button.selected {
+  background-color: #ff8a8a;
+  color: white;
+  border-color: #ff3d3d;
+}

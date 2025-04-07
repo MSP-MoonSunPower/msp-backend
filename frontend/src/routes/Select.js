@@ -11,6 +11,7 @@ function Select() {
   const [error, setError] = useState(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const navigate = useNavigate();
+  const [selectedLanguage, setSelectedLanguage] = useState("korean"); // 언어 기본설정 : 한국어
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -155,6 +156,26 @@ function Select() {
           </div>
         </div>
       )}
+
+      <div className={styles.languageChoice}>
+        <button
+          onClick={() => setSelectedLanguage("korean")}
+          className={`${styles.languageButton} ${
+            selectedLanguage === "korean" ? styles.selected : ""
+          }`}
+        >
+          한글 (Korean)
+        </button>
+        <button langBtn="영어는 5월부터 이용하실 수 있습니다!">
+          영어 (English)
+        </button>
+        <button langBtn="독일어는 5월부터 이용하실 수 있습니다!">
+          독일어 (German)
+        </button>
+        <button langBtn="프랑스어는 5월부터 이용하실 수 있습니다!">
+          프랑스어 (French)
+        </button>
+      </div>
 
       <h2>✔️ 지문 난이도 </h2>
       <div className={styles.difficultyOptions}>
