@@ -175,6 +175,9 @@ function Select() {
         <button langBtn="프랑스어는 5월부터 이용하실 수 있습니다!">
           프랑스어 (French)
         </button>
+        <button langBtn="스페인어는 5월부터 이용하실 수 있습니다!">
+          스페인어 (Spanish)
+        </button>
       </div>
 
       <h2>✔️ 지문 난이도 </h2>
