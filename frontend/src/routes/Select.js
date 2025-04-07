@@ -170,13 +170,13 @@ function Select() {
           영어 (English)
         </button>
         <button langBtn="독일어는 5월부터 이용하실 수 있습니다!">
-          독일어 (German)
+          독일어 (Deutsch)
         </button>
         <button langBtn="프랑스어는 5월부터 이용하실 수 있습니다!">
-          프랑스어 (French)
+          프랑스어 (Français)
         </button>
         <button langBtn="스페인어는 5월부터 이용하실 수 있습니다!">
-          스페인어 (Spanish)
+          스페인어 (Español)
         </button>
       </div>
 
