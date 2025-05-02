@@ -123,7 +123,7 @@ function Header() {
       className={`${styles.header} ${isHomePage ? styles.homeHeader : ""}`}
     >
       <div className={styles.logoContainer} onClick={handleLogoClick}>
-        <span className={styles.title}>MSP</span>
+        <span className={styles.title}>★ 문 썬 빠 워 ★</span>
       </div>
       <nav className={styles.nav}>
         <Link to="/mypage" className={styles.navLink}>

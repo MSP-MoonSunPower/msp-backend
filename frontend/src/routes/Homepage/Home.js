@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./Home.module.css";
-import logo from "../../assets/msp-bear.png";
-import cuteLogo from "../../assets/msp_logo.png";
+import logo from "../../assets/jamLogo.png";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
 import Section3 from "./Section3";
@@ -48,23 +47,23 @@ function Home() {
     return (
       <div className={styles.mobileContainer}>
         <img src={logo} alt="MSP Logo" className={styles.logoImage} />
-        <h1 className={styles.title}>Moon Sun Power</h1>
+        <h1 className={styles.title}>Meokgi Siro Paprika~</h1>
         <p className={styles.mobileMessage1}>
-          개인 맞춤형 문해력 향상 학습 프로그램
+        문썬파워 하나 풀고 돈까스 묵으러 가자!!
         </p>
 
         <div className={styles.buttonContainer}>
           <Link to="/select">
-            <button className={styles.startButton}>시작하기</button>
+            <button className={styles.startButton}>허거덩거덩스~</button>
           </Link>
           <Link to="#" onClick={fetchTodayText}>
             <button className={styles.questionButton}>
-              오늘의 지문으로 바로 가기
+            오늘 숙제 (짱중요)
             </button>
           </Link>
         </div>
         <p className={styles.mobileMessage2}>
-          * 모바일 버전은 3월중 업데이트 예정입니다. (PC 학습 권장)
+          PC로 들어와주세요 ㅠㅠ 🥕🥕🥕
         </p>
       </div>
     );
@@ -77,17 +76,17 @@ function Home() {
         </div>
 
         <div className={styles.rightContainer}>
-          <h1 className={styles.title}>Moon Sun Power</h1>
+          <h1 className={styles.title}>Meokgi Siro Paprika~</h1>
           <p className={styles.description}>
-            생성형 AI 기반 NLG를 이용한 개인 맞춤형 문해력 향상 학습 프로그램
+            문썬파워 하나 풀고 돈까스 묵으러 가자!!
           </p>
           <div className={styles.buttonContainer}>
             <Link to="/select">
-              <button className={styles.startButton}>시작하기</button>
+              <button className={styles.startButton}>허거덩거덩스~</button>
             </Link>
             <Link to="#" onClick={fetchTodayText}>
               <button className={styles.questionButton}>
-                오늘의 지문으로 바로 가기
+                오늘 숙제 (짱중요)
               </button>
             </Link>
           </div>
@@ -102,7 +101,7 @@ function Home() {
       </div>
 
       <footer className={styles.footer}>
-        Contact (문의 및 오류 신고) :&nbsp;
+        Contact :&nbsp;
         <a
           href="https://pf.kakao.com/_hdaKn"
           target="_blank"
