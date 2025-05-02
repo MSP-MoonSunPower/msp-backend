@@ -156,7 +156,7 @@ function Select() {
         </div>
       )}
 
-      <h2>✔️ 지문 난이도 </h2>
+      <h2>🍔 지문 난이도 </h2>
       <div className={styles.difficultyOptions}>
         <button
           className={`${styles.difficultyButton} ${
@@ -164,7 +164,7 @@ function Select() {
           }`}
           onClick={() => handleDifficultyClick("1")}
         >
-          초급
+          브론즈
         </button>
         <button
           className={`${styles.difficultyButton} ${
@@ -172,7 +172,7 @@ function Select() {
           }`}
           onClick={() => handleDifficultyClick("2")}
         >
-          중급
+          골드
         </button>
         <button
           className={`${styles.difficultyButton} ${
@@ -180,7 +180,7 @@ function Select() {
           }`}
           onClick={() => handleDifficultyClick("3")}
         >
-          고급
+          플래티넘
         </button>
         <button
           className={`${styles.difficultyButton} ${
@@ -188,21 +188,21 @@ function Select() {
           }`}
           onClick={() => handleDifficultyClick("4")}
         >
-          지옥
+          다이아
         </button>
       </div>
 
-      <h2>✔️ 지문 주제 </h2>
+      <h2>🍟 지문 주제 </h2>
       <input
         type="text"
         className={styles.topicInput}
-        placeholder="원하는 주제를 입력해주세요. (ex. 옥토버페스트)"
+        placeholder="원하는 주제를 입력해주세요. (ex. 치킨)"
         value={topic}
         onChange={handleTopicChange}
         disabled={!!selectedTag}
       />
 
-      <h3>원하는 주제가 없으신가요?</h3>
+      <h3>🍕 원하는 주제가 없으신가요?</h3>
       <div className={styles.tagContainer}>
         {[
           { label: "스포츠 / 예술", number: 1 },
@@ -227,10 +227,10 @@ function Select() {
 
       <div className={styles.buttons}>
         <button className={styles.startButton} onClick={handleStartClick}>
-          시작하기
+          허거덩거덩스~
         </button>
         <Link to="#" onClick={fetchTodayText}>
-          <button className={styles.questionButton}>오늘의 지문</button>
+          <button className={styles.questionButton}>오늘의 숙제! (짱중요)</button>
         </Link>
       </div>
     </div>

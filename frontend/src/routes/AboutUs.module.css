@@ -6,22 +6,18 @@
 }
 
 .title {
-  font-size: 32px;
-  font-family: "NanumSquareNeoLight";
+  font-size: 40px;
+  font-family: 'TTHakgyoansimKkokkomaR' ;
   text-align: center;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-
-.section {
-  margin-bottom: 50px;
+  margin-bottom: 1px;
+  margin-top: 1px;
 }
 
 .sectionTitle {
-  font-size: 24px;
-  font-family: "NanumSquareNeoLight";
-  margin-bottom: 20px;
-  color: #333;
+  font-size: 32px;
+  font-family: 'TTHakgyoansimKkokkomaR' ;
+  margin-bottom: -10px;
+  color: #c400a0;
   text-align: left;
 }
 
@@ -41,9 +37,9 @@
 .memberImage {
   width: 130px;
   height: 130px;
-  border-radius: 50%;
+  border-radius: 20px;
   object-fit: cover;
-  aspect-ratio: 1 / 1;
+
 }
 
 .textContainer {
@@ -53,28 +49,30 @@
 }
 
 .memberName {
-  font-size: 20px;
-  font-family: "NanumSquareNeo";
-  margin-bottom: 1px;
-  color: #333;
+  font-size: 28px;
+  font-family: 'TTHakgyoansimKkokkomaR' ;  margin-bottom: 1px;
+  color: #1d00b0;
 }
 
 .memberIntroduction {
-  font-size: 15px;
-  font-family: "NanumSquareNeo";
+  font-size: 20px;
+
+  font-family: 'TTHakgyoansimKkokkomaR' ;  
   margin-bottom: -5px;
   color: #000000;
 }
 
 .memberDescription {
-  font-size: 15px;
-  font-family: "NanumSquareNeoLight";
-  margin-bottom: -1px;
+  font-size: 20px;
+  font-family: 'TTHakgyoansimKkokkomaR' ;  
+  margin-top: 10px;
+  margin-bottom: -5px;
   color: #000000;
 }
 
 .memberTagline {
-  font-size: 14px;
-  font-family: "NanumSquareNeoLight";
-  color: #ff4040;
+  font-size: 20px;
+  font-family: 'TTHakgyoansimKkokkomaR' ;  
+  color: #0d0d0d;
+  background-color: rgb(216, 248, 222);
 }

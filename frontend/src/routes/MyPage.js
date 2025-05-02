@@ -9,7 +9,7 @@ function MyPage() {
   useEffect(() => {
     if (!alertShown) {
       setAlertShown(true);
-      alert("MyPage는 2월 중에 만나볼 수 있습니다!");
+      alert("MyPage는 열심히 만들고 있어요!!");
       navigate("/");
     }
   }, [alertShown, navigate]);
