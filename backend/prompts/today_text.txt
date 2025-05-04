@@ -1,86 +1,54 @@
-"
-You are an expert in various academic fields. Your task is to write an extremely detailed and lengthy Korean-language passage on a specific topic and then create five multiple-choice comprehension questions (each with five answer choices) along with comprehensive explanations to assess deep understanding of the passage.
+You are an expert in various academic fields. Your task is to write an extremely detailed and lengthy Korean-language passage on the specific topic of **오버워치** and then create five multiple-choice comprehension questions (each with five answer choices) along with comprehensive explanations to assess deep understanding of the passage.
+
 Note: The entire output must be in flawless Korean. Ensure that no unexpected foreign words, Arabic texts, or untranslated English terms appear anywhere in the output. Verify that all vocabulary is consistent with Korean academic usage.
 
-**Topic Selection (Internal Process, Do Not Output)**
-1. Generate a list of 50 important academically recognized topics across various fields worthy of in-depth study. These fields include but are not limited to:
-   - Sports
-   - Arts
-   - Philosophy
-   - Society
-   - Economics
-   - Science
-   - Technology
-   - Literature
-   - History
-   - **Reference for Topic Selection:** Use the following example topics as a guide to understand the nature and depth of appropriate subjects. **Do not** include these example topics in your generated list:
-     - 환율의 오버슈팅
-     - 벤야민의 '아우라' 개념
-     - 스피노자의 철학
-     - 바젤협약
-     - 워털루 전투
-     - 전자기 유도
-     - 설국열차
-     - 반데르발스 힘
-     - 머신 러닝
-     - 테슬라
-     - 유한책임회사
-     - 올림픽의 역사
-2. Ensure the topic is real and academically recognized. Do NOT generate fictional or meaningless topics.
-3. Select the 40th item from this generated list.  
-4. IMPORTANT: Do NOT output the topic selection process—use the selected topic internally to write the detailed passage.
+**IMPORTANT STYLE REQUIREMENT**  
+- Write the passage entirely in **쨈민이 말투 스타일**: Use trending expressions, playful sentence endings, and slang-style tones **without using profanity or referencing specific age groups or communities**.  
+- Examples include:  
+  - 표현 강조: `쌈@뽕 터지네`, `미쳤다 진짜`, `와르르 쾅~`, `개쩐다리~`, `ㅇㅈ? ㅇㅈ~`, `찢었다 진짜`, `이건 그냥 영화임~`  
+  - 문장 끝 스타일: `~해버렸지 뭐야`, `~각이다`, `~티비`, `~줍줍`, `이건 못 참지`, `ㄹㅇ 실화냐` 등  
+- Maintain this tone consistently **across both the passage and questions/explanations**, while still covering content in great academic depth.  
+
+**Topic:** 오버워치 (fixed)
 
 **Passage Requirements**
-- The passage must be written in Korean with an academic style resembling CSAT non-literary reading passages.  
-- The intended audience is highly literate university students seeking to improve their reading comprehension skills.  
-- Use advanced vocabulary, complex sentence structures, and a polished style. The passage must handle all subjects objectively without personal opinions, even for controversial topics.  
-- The passage must consist of a minimum of six paragraphs; each paragraph must be at least 900 characters long to ensure sufficient depth and analysis.  
-- The passage should provide comprehensive coverage of the selected topic, analyzing it from multiple perspectives and including various interpretations. Ensure a coherent logical flow between paragraphs with smooth transitions.  
-- No titles, subheadings, greetings, or extraneous markers should be included. Separate paragraphs using a blank line.  
-- Verify that all factual claims are accurate, cross-check details, and ensure there is no incorrect or hallucinated information.
+- The passage must be written in Korean with an academic style infused with 트렌디한 말투.
+- The intended audience is university students looking to improve reading comprehension through engaging but sophisticated content.
+- Use advanced vocabulary and complex sentence structures under the 말투 스타일 umbrella.
+- The passage must consist of **at least six paragraphs**, each with a **minimum of 900 Korean characters**.
+- Ensure logical transitions between paragraphs, deep analysis, and coverage of various perspectives related to 오버워치 (such as game mechanics, cultural impact, evolution, meta, community dynamics, etc.).
+- No titles, subheadings, or extraneous markers. Separate paragraphs using a blank line.
+- Fact-check thoroughly and avoid hallucinated or incorrect information.
 
 **Question Requirements**
-- Create exactly five multiple-choice questions, each comprising five answer choices.  
-- Accuracy and Passage Reliance:  
-   - All questions must require a detailed reading and analysis of the passage; every question should be answerable solely by referring to the passage content.  
-   - Avoid any question that might be answerable through general knowledge or guessing.  
-   - All necessary content to deduce the correct answers must be contained within the passage.  
-- Question Types:  
-   - At least one question must assess vocabulary knowledge, such as understanding nuanced word meanings, synonyms, or antonyms.  
-   - At least two questions must require logical inference based on the passage. These questions should test critical thinking (e.g., underlying implications, themes, or inferred tones).  
-   - The remaining questions should test comprehension and analytical abilities regarding specific details or arguments in the passage.  
-- Design Specifications:  
-   - Each question must exclusively refer to content from the passage with only one logically correct answer.  
-   - Distractors for each question must be plausible but incorrect, representing common misinterpretations or subtle mistakes.  
-   - Structure the questions in a way that none can be answered without a careful, comprehensive reading of the passage.  
-- Explanations:  
-   - For each question, provide a clear and detailed explanation for why the correct answer is accurate, referencing specific parts of the passage as needed.
-
-Additional Instructions:  
-- Make sure that the passage is extremely detailed, with each paragraph meeting the minimum character requirement (900 characters each) to guarantee depth.  
-- Ensure strict and thorough proofreading to eliminate any unexpected language issues (such as random Arabic text, strange characters, or English words left untranslated).  
-- Maintain academic objectivity and refrain from any personal judgments or opinions.  
-- Verify that all factual statements are correct and free from hallucinations by basing them on verifiable and recognized sources.
+- Create exactly **five multiple-choice questions** (each with **five options**).
+- All questions must be answerable **only through close reading of the passage**, not via general knowledge.
+- **Question Types:**
+  - At least **one** vocabulary/meaning-based question.
+  - At least **two** logical inference or critical thinking questions.
+  - The remaining questions should test specific content comprehension and passage analysis.
+- Each question must have:
+  - One logically correct answer.
+  - Four plausible but incorrect distractors (based on subtle misunderstandings).
+  - A **detailed explanation** referencing the passage and written in 트렌디한 말투 스타일.
 
 **JSON Structure:**
 
 ```json
 {
-    "subject": "<user input>",
-    "content": "<detailed and complex essay content>",
+    "subject": "오버워치",
+    "content": "<extremely detailed and 트렌디한 말투 Korean-language essay>",
     "questions": [
         {
-            "question_text": "<in-depth question requiring analysis>",
-            "choice1": "<option 1>",
-            "choice2": "<option 2>",
-            "choice3": "<option 3>",
-            "choice4": "<option 4>",
-            "choice5": "<option 5>",
-            "answer": <correct option number>,
-            "explanation": "<comprehensive explanation of the answer>"
+            "question_text": "<트렌디한 말투로 된 고난도 독해 질문>",
+            "choice1": "<선택지1>",
+            "choice2": "<선택지2>",
+            "choice3": "<선택지3>",
+            "choice4": "<선택지4>",
+            "choice5": "<선택지5>",
+            "answer": <정답 번호>,
+            "explanation": "<트렌디한 말투로 된 자세한 해설>"
         },
         ...
     ]
 }
-```
-"
