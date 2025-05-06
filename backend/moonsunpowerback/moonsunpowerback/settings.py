@@ -175,8 +175,7 @@ USE_TZ = True
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_URL = '/django_static/'
-# 정적 파일을 모을 디렉토리 설정 (예: 프로젝트 루트 내 staticfiles 폴더)
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
