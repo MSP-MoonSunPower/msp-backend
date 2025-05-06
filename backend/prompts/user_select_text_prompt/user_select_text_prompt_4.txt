@@ -2,8 +2,8 @@ As a highly skilled and meticulous professional researcher and writer, your prim
 
 (1) ESSAY LENGTH REQUIREMENT (EXTREMELY IMPORTANT):
 
-MAXIMIZE YOUR FULL GENERATION CAPACITY to produce the LONGEST POSSIBLE essay content. (Use your MAXIMUM token generation ability allowed. Generate the highest feasible number of Korean tokens within the GPT-4o limitations.)
-Strictly compose EXACTLY 6-7 paragraphs (no fewer, no more), ensuring EACH paragraph is MAXIMALLY EXTENSIVE, highly detailed, sophisticated, and comprehensive.
+MAXIMIZE YOUR FULL GENERATION CAPACITY to produce the LONGEST POSSIBLE essay content. (Use your MAXIMUM token generation ability allowed. Generate the highest feasible number of Korean tokens within the GPT-4.1 limitations.)
+Strictly compose EXACTLY 7 paragraphs (no fewer, no more), ensuring EACH paragraph is MAXIMALLY EXTENSIVE, highly detailed, sophisticated, and comprehensive.
 Clearly explore and analyze your topic in exhaustive depth using rigorous logic, detailed analytical reasoning, specific illustrative examples, and explicitly cited reliable sources.
 
 (2) EXAMPLES OF EXCELLENT ESSAY FORM (FOLLOW THESE EXACT STYLE):
@@ -39,6 +39,10 @@ Clearly explore and analyze your topic in exhaustive depth using rigorous logic,
   "content": "초콜릿은 전 세계적으로 사랑받는 간식이자 디저트의 핵심 재료로, 그 기원은 약 3,000년 전 고대 중미 문화로 거슬러 올라간다. 마야와 아즈텍 문명은 카카오 나무의 열매를 신성하게 여겼으며, 종교 의식과 교역에 중요한 역할을 하였다. 초콜릿은 이 시기에 '신들의 음료'로 불렸으며, 주로 음료 형태로 소비되었다. 16세기 스페인 정복자들에 의해 유럽으로 전파된 후, 초콜릿은 설탕과 혼합되어 지금의 달콤한 형태로 발전하게 되었다.\n\n초콜릿의 제조 과정은 카카오 콩을 수확하여 발효하고, 건조한 후 로스팅하는 단계에서 시작된다. 이러한 과정은 초콜릿의 맛과 향을 결정하는 중요한 요소이다. 로스팅된 콩은 껍질을 제거하고, 남은 카카오 닙을 갈아서 생초콜릿(초콜릿 리커)을 만든다. 이 과정에서는 카카오 버터와 카카오 고형분이 분리되며, 다양한 종류의 초콜릿이 만들어진다. 다크 초콜릿, 밀크 초콜릿, 화이트 초콜릿 등 각기 다른 맛과 질감의 제품이 이 과정을 통해 탄생한다.\n\n초콜릿은 단순한 맛 이상의 건강상의 이점 또한 지니고 있다. 특히 다크 초콜릿에는 플라보노이드와 같은 항산화 물질이 풍부하여 심혈관 건강에 긍정적인 영향을 미친다. 포도의 폴리페놀처럼, 이 성분들은 혈압을 낮추고 혈액 순환을 개선하는 데 도움을 줄 수 있다. 또한, 초콜릿은 뇌 기능을 향상시키고, 스트레스를 줄이는 데 기여하는 엔도르핀과 세로토닌의 분비를 촉진하는 것으로 알려져 있다.\n\n초콜릿의 문화적 중요성은 레시피와 요리에 깊숙이 스며들어 있다. 전 세계의 수많은 문화권에서 초콜릿은 기념일, 축제, 개인적인 기쁨을 상징하는 음식으로 사용된다. 벨기에와 스위스는 정교한 초콜릿 제조 기술로 유명하며, 초콜릿의 프리미엄 시장을 선도하고 있다. 초콜릿은 케이크, 쿠키, 타르트, 마카롱 등의 다양한 디저트에서 중심적인 역할을 한다. 또한, 달콤하고 쌉쌀한 맛의 조화를 이루어 주는 훌륭한 조합으로 요리의 풍미를 더하기도 한다.\n\n초콜릿 산업은 경제적으로도 중요한 위치를 차지하고 있다. 세계 각지에서 카카오를 재배하는 농부들은 공정 무역을 통해 더 나은 삶의 질을 추구하고 있으며, 지속 가능한 초콜릿 생산 방식이 강조되고 있다. 이러한 노력은 환경적, 사회적 책임을 지닌 소비를 가능하게 하고, 지구 환경 보호와 지역 경제 개발에 긍정적인 영향을 미치고 있다. 기업들은 혁신적인 제조 공법과 고품질 원료를 통해 소비자에게 더 나은 맛과 경험을 제공하기 위해 지속적으로 연구개발을 추진하고 있다.\n\n최근 들어 초콜릿은 건강과 웰빙 트렌드에 맞춰 변화하고 있다. 저설탕, 고프로틴, 유기농 제품 등 다양한 소비자 요구를 충족시키기 위한 다양한 초콜릿 제품이 시장에 등장하고 있다. 첨단 기술을 활용한 새로운 맛과 질감을 가진 초콜릿은 현대인의 다양한 입맛을 사로잡고 있으며, 이러한 변화를 통해 초콜릿 산업은 더욱 혁신적이고 포괄적인 방향으로 발전하고 있다.\n\n결론적으로, 초콜릿은 단순히 달콤한 간식 이상의 의미를 가진다. 그것은 풍부한 역사와 문화적 상징성을 통해 인류의 감각적인 즐거움과 더불어 건강에 기여하는 음식으로 자리잡아왔다. 초콜릿의 지속 가능한 생산과 소비는 앞으로도 계속해서 사회적 책임을 다하는 주요한 분야로 남아 있을 것이다. 초콜릿은 과거, 현재, 그리고 미래에도 계속해서 사랑받으며, 다양한 가능성을 담아내며 인류의 삶을 더욱 풍요롭게 해줄 것이다."
 }
 
+{
+"subject": "가위",
+"content": "가위는 인류 역사에서 가장 오래되고 유용한 도구 중 하나로, 오늘날까지 다양한 용도로 사용되고 있다. 가위의 기원은 기원전 1500년경 고대 이집트로 거슬러 올라가며, 당시에는 금속으로 제작된 단순한 형태였다. 이후 시간이 흐르면서 다양한 재료와 설계가 발전하였고, 현대의 가위는 고도의 정밀성과 인체공학적 디자인을 특징으로 한다. 가위의 발명은 단순한 일상 용품 이상의 의미를 지니며, 다양한 분야에서 필수적인 도구로 자리잡고 있다.\n\n가위의 기본 구조는 두 개의 날(a blade)이 중심 축을 기준으로 맞물려 있는 형태이다. 이러한 구조는 사용자가 물리적인 힘을 적용하여 두 날을 결합하고, 물체를 자르거나 절단하는 데 효율적이다. 가위의 재료는 주로 스테인리스강과 같은 내구성이 강한 금속으로 만들어지며, 날의 날카로움과 사용 수명을 결정한다. 오늘날에는 플라스틱과 같은 가볍고 견고한 재료가 사용되어 다양한 용도에 맞춘 가위가 제작되고 있다.\n\n가위는 그 용도에 따라 다양한 형태로 발전하였다. 주방에서 사용하는 조리용 가위, 미용실에서 필수적인 헤어 가위, 원예 작업을 위한 전지가위, 그리고 정밀 작업에 사용되는 재단 가위 등 수많은 종류가 존재한다. 각각의 가위는 그 목적에 맞춰 특별한 설계가 되어 있으며, 특히 전문가용 가위는 사용자에게 편안한 그립감과 정확성을 제공하도록 설계된다. 이러한 다양성은 가위가 얼마나 적응력 있는 도구인지를 보여준다.\n\n가위의 발전은 기술적 혁신과 깊은 관계가 있다. 예를 들어, 날의 마찰을 줄이고 오랜 시간 날카로움을 유지하기 위해 다양한 코팅 기술이 사용되고 있으며, 레이저로 정밀하게 설계된 날을 갖춘 가위도 등장하고 있다. 또한, 가위는 미세 조정 메커니즘과 인체공학적 핸들 디자인을 통해 사용자의 피로를 줄이고 작업의 효율성을 높이고 있다. 이렇듯 가위는 단순한 도구 이상의 복잡한 기술적 변화를 담고 있다.\n\n가위는 일상의 다양한 분야에서 필수적이다. 예술가와 디자이너에게는 창의성을 표현하는 도구로, 요리사에게는 음식을 준비하는 필수적 도구로, 학생에게는 학습의 도구로 사용된다. 또한, 가위는 의복 제작과 패션 산업에서도 핵심적인 역할을 한다. 이러한 다양한 활용성은 가위가 얼마나 보편적이며 동시에 필수적인지를 잘 보여준다. 가위는 단순히 물체를 자르는 기능을 넘어, 인간의 창조적인 활동을 지원하고 촉진한다.\n\n최근에는 가위의 디자인과 기능이 더욱 진화하고 있다. 스마트 가위 및 전동 가위와 같은 기술과 결합한 새로운 형태의 가위가 개발되고 있으며, 이는 사용의 편의성을 높이고 다양한 기능을 제공한다. 이와 같은 발전은 가위의 사용 범위를 확장하며, 특히 물리적 제한을 겪는 사용자에게 큰 도움을 준다. 지속적으로 변모하는 가위는 미래에도 그 중요성을 잃지 않을 것이다.\n\n결론적으로, 가위는 단순한 절단 도구를 넘어 인간 생활의 다양한 측면에 깊이 관여하고 있다. 그 역사와 진화 과정은 인간의 발명과 기술 발전의 연장선에 놓여 있으며, 앞으로도 여러 분야에서 핵심적인 역할을 할 것이다. 가위는 언제 어디서나 필요한 도구로, 지속 가능한 방식으로 인간 사회에 기여하고 있다. 이러한 가위의 중요성은 시대를 초월하여 계속될 것이고, 새로운 기술과 결합하여 더욱 발전할 것이다."
+}
 
 STRICT WARNING: You MUST follow the above excellent essays explicitly—not only in terms of style and detailed format, but also strictly matching its exact length and number of paragraphs (precisely 7 paragraphs as provided). Any deviations in essay form, paragraph count, or total length are strictly forbidden and unacceptable under any circumstances.
 
@@ -55,12 +59,35 @@ If the topic explicitly passes reality verification (clear existence and verifia
 
 CLEAR-TOPIC EXAMPLES (strictly authentic):
 
-Academic (e.g., 거시경제학, 양자역학, 프랑스 혁명, 로미오와 줄리엣, 미적분학)
-Current Affairs (e.g., 2024 파리 올림픽, COVID-19 팬데믹, 러시아-우크라이나 전쟁, 요아정, 제주항공 여객기 사고, 트럼프 관세 정책)
-Real Personalities (e.g., 도널드 트럼프, 오타니 쇼헤이, 아브라함 링컨, 마리 퀴리, 임마누엘 칸트, 박명수, 아일릿)
-Established Fictional Characters (e.g., 토르, 호머 심슨, 하츄핑, 해리 포터)
-Real Companies & Organizations (e.g., BMW, 삼성화재, 보잉, 테슬라, GM, 현대모비스, 넷플릭스)
-Real Objects or Foods (e.g., 마이크, 스피커, 자동차, 바나나, 계란말이, 김치찌개)
+Academic (e.g., 거시경제학, 양자역학, 프랑스 혁명, 로미오와 줄리엣, 미적분학, Quantum Mechanics, Evolutionary Biology, Relativity Theory, Cognitive Dissonance, Game Theory, Chaos Theory, String Theory, Behavioral Economics, Plate Tectonics, Artificial Intelligence.)
+
+Historic Events (e.g., The French Revolution, The Fall of the Berlin Wall, The Moon Landing, The Russian Revolution, COVID-19 Pandemic, Assassination of Archduke Franz Ferdinand, Civil Rights Movement, Hiroshima Atomic Bombing, September 11 Attacks, The Renaissance, The Magna Carta, The Industrial Revolution, The Crusades, Women’s Suffrage Movement, V-E Day.)
+
+Current Affairs (e.g., 2024 파리 올림픽, COVID-19 팬데믹, 러시아-우크라이나 전쟁, 요아정, 제주항공 여객기 사고, 트럼프 관세 정책, Black Lives Matter Protests, US Capitol Riot, COVID-19 Vaccine Rollouts, Global Supply Chain Disruptions, Tokyo 2020 Olympics, Afghanistan Withdrawal, Suez Canal Blockage, COP26 Climate Summit, Ukraine Crisis. )
+
+Real Personalities (e.g., 도널드 트럼프, 오타니 쇼헤이, 아브라함 링컨, 마리 퀴리, 임마누엘 칸트, 박명수, 아일릿, Elon Musk, Bill Gates, Warren Buffett, Oprah Winfrey, Jeff Bezos, Angelina Jolie, Rihanna, Richard Branson, Angela Merkel, Martin Luther King Jr,  Steven Sasson, Reshma Saujani, Fei-Fei Li, Joy Buolamwini, Saul Griffith, Rana el Kaliouby, Boyan Slat, Parag Agrawal, Mary Barra, Tristan Harris.)
+
+Established Fictional Characters (e.g., 토르, 호머 심슨, 하츄핑, 해리 포터, Mickey Mouse, Sherlock Holmes, Darth Vader, Harry Potter, SpongeBob SquarePants, Iron Man, Pikachu, Elsa, Batman, Mario.)
+
+Real Companies & Organizations (e.g., BMW, 삼성화재, 보잉, 테슬라, GM, 현대모비스, 넷플릭스, Spotify, Shopify, NextEra Energy, ASML, Sea Limited, Stora Enso, Zai Lab, Uipath, Teladoc Health, Plug Power, Apple, Microsoft, Amazon, Tesla, TSMC, Paypal)
+
+Countries (e.g., United States, Canada, Brazil, France, Germany, Japan, South Korea, China, India, Australia, United Kingdom, Italy, Mexico, Russia, South Africa.)
+
+Real Objects or Foods (e.g., 마이크, 스피커, 자동차, 바나나, 계란말이, 김치찌개,Smartphone, Notebook, Glasses, Watch, Wallet, Backpack, Laptop, Water Bottle, Umbrella, Headphones, Toothbrush, Remote Control, Pen, Coffee Mug, Keychain, Pizza, Sushi, Burger, Tacos, Pasta,Banana, Apple, Orange, Grape, Strawberry, Lemon, Watermelon, Pineapple, Mango, Pear.)
+
+Music Genres and Artists (e.g., Rock, Pop, Hip-Hop, Classical, Jazz, Blues, Reggae, Country, Electronic, R&B, Punk, Metal, K-pop, Indie, Folk: The Beatles, Taylor Swift, Eminem, Ludwig van Beethoven, Miles Davis, Bob Marley, Johnny Cash, Daft Punk, Rihanna, BTS.)
+
+Popular TV Shows (e.g., Breaking Bad, Game of Thrones, Friends, The Office, Stranger Things, The Crown, The Simpsons, Westworld, The Mandalorian, Grey’s Anatomy, The Witcher, The Sopranos, Black Mirror, Sherlock, Brooklyn Nine-Nine.)
+
+Famous Artists and Works (e.g., Leonardo da Vinci - Mona Lisa, Vincent van Gogh - Starry Night, Pablo Picasso - Guernica, Claude Monet - Water Lilies, Michelangelo - David, Frida Kahlo - The Two Fridas, Salvador Dalí - The Persistence of Memory, Rembrandt - The Night Watch, Georgia O'Keeffe - Black Iris, Andy Warhol - Campbell's Soup Cans, Gustav Klimt - The Kiss, Sandro Botticelli - The Birth of Venus, Jackson Pollock - Number 1, Henri Matisse - Dance, Edvard Munch - The Scream.)
+
+Novels (e.g., To Kill a Mockingbird, 1984, Pride and Prejudice, The Great Gatsby, Moby Dick, War and Peace, Crime and Punishment, The Catcher in the Rye, Jane Eyre, The Lord of the Rings, Harry Potter Series, The Alchemist, The Hobbit, Brave New World, Animal Farm.)
+
+Sports (e.g., Soccer, Basketball, Tennis, Baseball, Swimming, Golf, Rugby, Cricket, Volleyball, Hockey, Track, Wrestling, Cycling, Skiing, Boxing.)
+
+Vehicles (e.g., Car, Motorcycle, Bicycle, Truck, Bus, Van, Scooter, Airplane, Boat, Train, Tram, Helicopter, Yacht, Submarine, RV.)
+
+Drinks (e.g., Water, Coffee, Tea, Juice, Soda, Beer, Wine, Whiskey, Cocktail, Smoothie, Milk, Lemonade, Espresso, Champagne, Hot Chocolate.)
 
 This includes topics which may not typically be considered educational, such as simple terms like household items, common goods, or basic foods.
 
@@ -96,7 +123,6 @@ Good Vocabulary Question Examples (Explicitly follow these examples):
 "answer": 3,
 "explanation": "아리스토텔레스의 '에우다이모니아'는 존재의 목적을 충분히 실현한 상태로서 활력 있는 자기실현과 최고의 덕성을 나타낸다는 본문의 문장을 직접 명시해서 설명합니다."
 },
-
 {
 "question_text": "아리스토텔레스의 목적론에서 '목적(telos)'이란 무엇인가요?",
 "choice1": "시작점",
@@ -107,7 +133,42 @@ Good Vocabulary Question Examples (Explicitly follow these examples):
 "answer": 3,
 "explanation": "본문에서는 '목적(telos)'이란 사물의 고유한 목적과 방향성을 의미한다고 명확히 명시되어 있습니다."
 },
-
+{
+  "questions": [
+    {
+      "question_text": "모비딕에 등장한 '모비딕'의 의미는 무엇인가요?",
+      "choice1": "작은 물고기",
+      "choice2": "상어",
+      "choice3": "거대한 하얀 고래",
+      "choice4": "해적선",
+      "choice5": "암초",
+      "answer": 3,
+      "explanation": "'모비딕'은 거대한 하얀 고래를 뜻하며, 소설의 중심 소재입니다."
+    }
+  ]
+}
+{
+  "questions": [
+    {
+      "question_text": "럭비에서 '스크럼'이란 무엇을 의미하나요?",
+      "choice1": "경기 전 준비 운동",
+      "choice2": "공을 편안하게 잡는 자세",
+      "choice3": "양 팀의 전방 선수들이 어깨를 맞대고 공을 차지하는 상황",
+      "choice4": "포워드 패스를 실행하는 시간",
+      "choice5": "점수를 얻는 공간",
+      "answer": 3,
+      "explanation": "'스크럼'은 럭비에서 양 팀의 전방 선수들이 어깨를 맞대고 공을 차지하려고 하는 상황을 의미합니다."
+    }
+{
+      "question_text": "맥주 양조 과정에서 '발효'란 무엇인가요?",
+      "choice1": "곡물을 수확하는 단계",
+      "choice2": "원재료를 혼합하는 과정",
+      "choice3": "효모가 당을 알코올과 이산화탄소로 전환하는 과정",
+      "choice4": "병에 라벨을 붙이는 작업",
+      "choice5": "완제품을 유통하는 단계",
+      "answer": 3,
+      "explanation": "발효는 효모가 당을 알코올과 이산화탄소로 전환하는 과정입니다."
+    }
 {
   "questions": [
     {
@@ -133,6 +194,48 @@ Good Vocabulary Question Examples (Explicitly follow these examples):
   ]
 }
 {
+"question_text": "2020 도쿄 올림픽에 등장한 표현인 '지속 가능성'의 의미와 가장 가까운 단어는 무엇인가요?",
+"choice1": "임시적",
+"choice2": "단기적",
+"choice3": "보존성",
+"choice4": "변덕스러움",
+"choice5": "휘발성",
+"answer": 3,
+"explanation": "'지속 가능성'은 환경과 자원을 보존하며 장기적으로 유지 가능한 상태를 뜻하므로 '보존성'과 가장 가깝습니다."
+},
+{
+"question_text": "안젤리나 졸리에 등장한 표현인 '인도주의'의 의미와 가장 가까운 단어는 무엇인가요?",
+"choice1": "이기주의",
+"choice2": "개인주의",
+"choice3": "이타심",
+"choice4": "배타주의",
+"choice5": "자본주의",
+"answer": 3,
+"explanation": "'인도주의'는 다른 사람을 배려하고 돕는 것을 중시하는 태도로 '이타심'과 가장 가깝습니다."
+},
+{
+"question_text": "피카츄에 등장한 표현인 '친근감'의 의미와 가장 가까운 단어는 무엇인가요?",
+"choice1": "반감",
+"choice2": "무관심",
+"choice3": "호감",
+"choice4": "위협",
+"choice5": "불안",
+"answer": 3,
+"explanation": "'친근감'은 누군가나 무엇에 대해 긍정적이고 다정한 감정을 가지는 것이므로 '호감'과 가장 가깝습니다."
+},
+{
+"question_text": "Spotify에 등장한 표현인 '다양성'의 의미와 가장 가까운 단어는 무엇인가요?",
+"choice1": "단조로움",
+"choice2": "획일성",
+"choice3": "풍부함",
+"choice4": "제한성",
+"choice5": "일관성",
+"answer": 3,
+"explanation": "'다양성'은 여러 가지 다른 특징들이 공존하는 상태를 의미하므로 '풍부함'과 가장 가깝습니다."
+}
+]
+}
+{
   "questions": [
     {
       "question_text": "다음은 서강대학교에 대한 지문의 문장입니다. 빈칸에 들어갈 가장 적합한 어휘를 고르세요.\n\n'서강대학교의 학풍은 폭넓은 교양교육을 바탕으로 하는 전통적인 _____ 교육과 깊이 있는 학문 연구, 탁월한 국제화 전략이 어우러져 있다.'",
@@ -146,8 +249,7 @@ Good Vocabulary Question Examples (Explicitly follow these examples):
     }
   ]
 }
-
- "questions": [
+"questions": [
     {
       "question_text": "지문에서 사용된 '누적적 관점'이라는 표현의 의미와 가장 가까운 것은 무엇인가요?",
       "choice1": "개별적으로 따로따로 분석하는 관점",
@@ -158,6 +260,37 @@ Good Vocabulary Question Examples (Explicitly follow these examples):
       "answer": 4,
       "explanation": "지문의 적분학 설명 문단에서 '누적적 관점'은 함수 아래의 영역 전체를 합하여 계산하는 과정이라고 설명했으므로, '모두 합쳐 더하거나 쌓이는 방식으로 전체를 바라보는 관점'이 올바른 의미입니다."
     },
+"questions": [
+{
+"question_text": "지문에서 사용된 '미적분학의 기초'라는 표현의 의미와 가장 가까운 것은 무엇인가요?",
+"choice1": "변화율과 누적량을 다루는 수학적 원리",
+"choice2": "단지 이론적인 개념에 머무는 학문",
+"choice3": "실험적 자료 수집에 의존하는 과학",
+"choice4": "미술과 연관된 전통적 원리",
+"choice5": "철학적 논쟁을 중심으로 한 학문",
+"answer": 1,
+"explanation": "미적분학은 변화율과 누적량을 계산하는 수학적 기초를 다루므로 '변화율과 누적량을 다루는 수학적 원리'가 가장 가까운 의미입니다."
+},
+{
+"question_text": "안젤리나 졸리에 대한 지문에서 '인권 활동가'라는 표현은 무엇을 의미하나요?",
+"choice1": "오락 활동을 주도하는 사람",
+"choice2": "환경 보전을 돕는 사람",
+"choice3": "인권을 보호하고 증진시키는 사람",
+"choice4": "예술 작품을 창작하는 사람",
+"choice5": "정치적 권력을 추구하는 사람",
+"answer": 3,
+"explanation": "인권 활동가는 인권을 보호하고 증진시키는 역할을 수행합니다."
+},
+{
+"question_text": "피카츄에 대한 지문에서 '상징적인 캐릭터'라는 표현은 무엇을 의미하나요?",
+"choice1": "직접적으로 관련이 없는 캐릭터",
+"choice2": "좋아하는 사람만 아는 캐릭터",
+"choice3": "특정 그룹이나 개념을 대표하는 캐릭터",
+"choice4": "유행이 지난 캐릭터",
+"choice5": "신비로운 특성을 가진 캐릭터",
+"answer": 3,
+"explanation": "상징적인 캐릭터는 특정 그룹이나 개념을 대표하는 캐릭터를 의미합니다."
+},
     {
       "question_text": "다음 문장의 빈칸에 들어갈 용어로 가장 적절한 것은 무엇인가요? '뉴턴과 라이프니츠가 개발한 미적분학의 두 연산인 미분과 적분은 서로 ____ 관계에 있다.'",
       "choice1": "병렬적",
@@ -170,6 +303,66 @@ Good Vocabulary Question Examples (Explicitly follow these examples):
     }
   ]
 }
+{
+      "question_text": "다음은 모비딕에 대한 지문의 문장입니다. 빈칸에 들어갈 가장 적합한 어휘를 고르세요.\n\n'모비딕은 거대한 하얀 고래와 그를 쫓는 선원들의 이야기를 담고 있는 _____ 중 하나이다.'",
+      "choice1": "자서전",
+      "choice2": "역사서",
+      "choice3": "고전 소설",
+      "choice4": "과학 논문",
+      "choice5": "요리책",
+      "answer": 3,
+      "explanation": "모비딕은 고전 소설로 분류됩니다."
+    }
+{
+      "question_text": "다음은 뭉크의 절규에 대한 지문의 문장입니다. 빈칸에 들어갈 가장 적합한 어휘를 고르세요.\n\n'뭉크의 절규는 인간의 _____를 강렬히 표현한 명작으로, 현대 미술의 중요한 작품 중 하나이다.'",
+      "choice1": "기쁨",
+      "choice2": "불안",
+      "choice3": "희망",
+      "choice4": "모험",
+      "choice5": "사랑",
+      "answer": 2,
+      "explanation": "뭉크의 절규는 인간의 불안을 표현한 작품입니다."
+    }
+{
+      "question_text": "다음은 칫솔에 대한 지문의 문장입니다. 빈칸에 들어갈 가장 적합한 어휘를 고르세요.\n\n'칫솔은 구강 건강을 유지하는 데 중요한 _____으로, 다양한 크기와 강도의 브러시가 있다.'",
+      "choice1": "음식",
+      "choice2": "악기",
+      "choice3": "도구",
+      "choice4": "기계",
+      "choice5": "의복",
+      "answer": 3,
+      "explanation": "칫솔은 구강 건강을 위한 도구로 사용됩니다."
+    }
+{
+      "question_text": "다음은 피카츄에 대한 지문의 문장입니다. 빈칸에 들어갈 가장 적합한 어휘를 고르세요.\n\n'피카츄는 Pokémon 시리즈에서 가장 _____ 캐릭터 중 하나로, 귀여운 외모와 전기 공격으로 인기를 끌고 있다.'",
+      "choice1": "무서운",
+      "choice2": "강력한",
+      "choice3": "상징적인",
+      "choice4": "미스터리한",
+      "choice5": "실제적인",
+      "answer": 3,
+      "explanation": "피카츄는 Pokémon 시리즈의 상징적인 캐릭터입니다."
+    }
+{
+      "question_text": "다음은 안젤리나 졸리에 대한 지문의 문장입니다. 빈칸에 들어갈 가장 적합한 어휘를 고르세요.\n\n'안젤리나 졸리는 뛰어난 배우이자 인권 _____으로도 널리 알려져 있다.'",
+      "choice1": "활동가",
+      "choice2": "과학자",
+      "choice3": "기자",
+      "choice4": "의사",
+      "choice5": "작가",
+      "answer": 1,
+      "explanation": "안젤리나 졸리는 인권 활동가로서의 역할로도 잘 알려져 있습니다."
+    }
+{
+      "question_text": "다음은 2020 도쿄 올림픽에 대한 지문의 문장입니다. 빈칸에 들어갈 가장 적합한 어휘를 고르세요.\n\n'2020 도쿄 올림픽은 _____로 인해 역사상 처음으로 관중 없이 대부분의 경기가 진행되었다.'",
+      "choice1": "기상 이변",
+      "choice2": "정치적 이유",
+      "choice3": "자연 재해",
+      "choice4": "코로나19 팬데믹",
+      "choice5": "기술 오류",
+      "answer": 4,
+      "explanation": "2020 도쿄 올림픽은 코로나19 팬데믹의 영향으로 관중 없이 개최되었습니다."
+    }
 
 YOUR VOCABULARY QUESTIONS MUST CLEARLY MATCH ABOVE-QUALITY EXAMPLES—NO MORE FAILURES or exceptions permitted regarding vocabulary-question creation. These vocabulary question examples are all derived from the excellent essay examples provided above. You must infer from the content and output vocabulary questions such as synonyms, antonyms, synonyms, meaning inference, and fill-in-the-blank inference questions.
 
@@ -180,11 +373,13 @@ Provide explicitly detailed explanations clearly referencing exact sentences, ph
 Write the ENTIRE OUTPUT (essay and questions) EXCLUSIVELY in Korean. Absolutely NO OTHER LANGUAGES or mixed usage allowed anywhere.
 Explicitly avoid headings or subtitles—just plain, sophisticated paragraphing only.
 Carefully review and explicitly verify your complete output, ensuring ALL instructions listed here are rigorously and fully followed BEFORE FINAL JSON production.
+
 (7) MANDATORY EXPLICIT FINAL CHECK & VALIDATION PROCESS:
 
 Explicitly and carefully verify your essay's topic genuinely exists—reject immediately with JSON error if unrealistic.
 Clearly confirm EACH QUESTION explicitly derives DIRECTLY from your Korean essay content—strictly no exceptions permitted.
 Double-check vocabulary questions clearly appear and match given perfect examples—NO further failures or missing questions permitted.
+
 (8) STRICT JSON OUTPUT STRUCTURE REQUIRED (NO DEVIATION AT ALL):
 
 {

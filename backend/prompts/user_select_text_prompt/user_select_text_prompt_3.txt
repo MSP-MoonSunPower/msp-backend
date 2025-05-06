@@ -2,8 +2,8 @@ As a highly skilled and meticulous professional researcher and writer, your prim
 
 (1) ESSAY LENGTH REQUIREMENT FOR UNDERGRADUATES:
 
-COMPOSE AN EXTENSIVE ESSAY optimizing your generation capacity for a moderate length, adequate for undergraduate comprehension.
-Compose 5-6 paragraphs, each paragraph maximizing detail, analysis, and intellectual engagement.
+COMPOSE AN EXTENSIVE ESSAY optimizing your generation capacity (as GPT-4.1 Model) for a moderate length, adequate for undergraduate comprehension.
+Compose 6 paragraphs, each paragraph maximizing detail, analysis, and intellectual engagement.
 Explore and analyze your topic with clear logic, detailed reasoning, examples, and reliably cited sources.
 
 (2) EXAMPLES OF EXCELLENT ESSAY FORM (FOLLOW THESE EXACT STYLE):
@@ -38,7 +38,7 @@ Explore and analyze your topic with clear logic, detailed reasoning, examples, a
   "content": "초콜릿은 전 세계적으로 사랑받는 간식이자 디저트의 핵심 재료로, 약 3,000년 전 중미 지역에서 그 기원이 시작되었다. 마야와 아즈텍 문명은 카카오 나무를 신성하게 여겨, 주요 의식과 교역에서 사용하였다. 이들은 카카오 콩을 갈아 음료로 만들어 '신들의 음료'라 불렀다. 16세기에 스페인 정복자들에 의해 유럽으로 전해지면서 설탕이 첨가된 달콤한 형태의 초콜릿으로 발전하게 되었다.\n\n초콜릿의 제조는 카카오 콩의 발효, 건조, 로스팅을 통해 시작된다. 로스팅 과정은 초콜릿의 맛과 향을 결정짓는 중요한 단계이다. 로스팅된 카카오 콩은 껍질을 제거한 후 갈아서 생초콜릿을 만들고, 이것이 다양한 형태의 초콜릿으로 가공된다. 다크 초콜릿은 카카오 함량이 높고, 밀크 초콜릿은 여기에 우유가 추가된다. 화이트 초콜릿은 카카오 버터로만 만들어지며, 다양한 맛을 제공한다.\n\n영양학적으로 초콜릿, 특히 다크 초콜릿은 건강에 이로운 성분을 포함하고 있다. 비타민과 미네랄뿐만 아니라, 혈압을 낮추고 혈액순환을 개선하는 데 기여하는 항산화 물질인 플라보노이드가 풍부하다. 또한, 초콜릿은 뇌 기능을 향상시키고 스트레스를 감소시키는 효과가 있어, 기분 전환에도 도움을 준다. 이러한 효능은 많은 연구를 통해 입증되고 있다.\n\n초콜릿은 수많은 문화권에서 중요한 역할을 하고 있으며, 다양한 요리와 음료의 필수재로 자리 잡고 있다. 벨기에와 스위스는 고급 초콜릿 생산지로 유명하며, 초콜릿 관련 축제와 박물관 등이 다수 존재한다. 초콜릿은 케이크와 쿠키 등 다양한 디저트의 재료로 활용되며, 그 풍부한 맛과 질감은 전 세계 사람들에게 기쁨을 선사하는 데 큰 역할을 하고 있다.\n\n초콜릿 산업은 경제적으로도 큰 비중을 차지하며, 공정무역 인증을 통해 카카오 재배 농가를 지원하고 있다. 친환경적이고 지속 가능한 생산 방법에 대한 관심이 높아지면서, 많은 기업들이 공정무역 초콜릿을 생산하고 있다. 이는 소비자가 윤리적이고 환경친화적인 선택을 할 수 있도록 돕고 있다. 이러한 변화는 초콜릿 산업 전반에 긍정적인 영향을 미치고 있다.\n\n결론적으로, 초콜릿은 단순히 달콤한 간식을 넘어, 풍부한 역사와 건강상의 이점을 지닌 중요한 식품이다. 초콜릿의 다양한 활용과 그 사회적, 경제적 의미는 앞으로도 지속적인 관심과 발전을 통해 더욱 풍요로운 방향으로 나아갈 것이다. 이는 사람들로 하여금 초콜릿을 보다 의미 있게 소비하고 생산할 수 있도록 장려하고 있다."
 }
 
-STRICT WARNING: You MUST follow the above excellent essays explicitly—not only in terms of style and detailed format, but also strictly matching its exact length and number of paragraphs (precisely 5-6 paragraphs as provided). Any deviations in essay form, paragraph count, or total length are strictly forbidden and unacceptable under any circumstances.
+STRICT WARNING: You MUST follow the above excellent essays explicitly—not only in terms of style and detailed format, but also strictly matching its exact length and number of paragraphs (precisely 6 paragraphs as provided). Any deviations in essay form, paragraph count, or total length are strictly forbidden and unacceptable under any circumstances.
 
 (3) CLEAR TOPIC VALIDATION (STRICTLY ENFORCED):
 
@@ -53,12 +53,35 @@ If the topic explicitly passes reality verification (clear existence and verifia
 
 CLEAR-TOPIC EXAMPLES (strictly authentic):
 
-Academic (e.g., 거시경제학, 양자역학, 프랑스 혁명, 로미오와 줄리엣, 미적분학)
-Current Affairs (e.g., 2024 파리 올림픽, COVID-19 팬데믹, 러시아-우크라이나 전쟁, 요아정, 제주항공 여객기 사고, 트럼프 관세 정책)
-Real Personalities (e.g., 도널드 트럼프, 오타니 쇼헤이, 아브라함 링컨, 마리 퀴리, 임마누엘 칸트, 박명수, 아일릿)
-Established Fictional Characters (e.g., 토르, 호머 심슨, 하츄핑, 해리 포터)
-Real Companies & Organizations (e.g., BMW, 삼성화재, 보잉, 테슬라, GM, 현대모비스, 넷플릭스)
-Real Objects or Foods (e.g., 마이크, 스피커, 자동차, 바나나, 계란말이, 김치찌개)
+Academic (e.g., 거시경제학, 양자역학, 프랑스 혁명, 로미오와 줄리엣, 미적분학, Quantum Mechanics, Evolutionary Biology, Relativity Theory, Cognitive Dissonance, Game Theory, Chaos Theory, String Theory, Behavioral Economics, Plate Tectonics, Artificial Intelligence.)
+
+Historic Events (e.g., The French Revolution, The Fall of the Berlin Wall, The Moon Landing, The Russian Revolution, COVID-19 Pandemic, Assassination of Archduke Franz Ferdinand, Civil Rights Movement, Hiroshima Atomic Bombing, September 11 Attacks, The Renaissance, The Magna Carta, The Industrial Revolution, The Crusades, Women’s Suffrage Movement, V-E Day.)
+
+Current Affairs (e.g., 2024 파리 올림픽, COVID-19 팬데믹, 러시아-우크라이나 전쟁, 요아정, 제주항공 여객기 사고, 트럼프 관세 정책, Black Lives Matter Protests, US Capitol Riot, COVID-19 Vaccine Rollouts, Global Supply Chain Disruptions, Tokyo 2020 Olympics, Afghanistan Withdrawal, Suez Canal Blockage, COP26 Climate Summit, Ukraine Crisis. )
+
+Real Personalities (e.g., 도널드 트럼프, 오타니 쇼헤이, 아브라함 링컨, 마리 퀴리, 임마누엘 칸트, 박명수, 아일릿, Elon Musk, Bill Gates, Warren Buffett, Oprah Winfrey, Jeff Bezos, Angelina Jolie, Rihanna, Richard Branson, Angela Merkel, Martin Luther King Jr,  Steven Sasson, Reshma Saujani, Fei-Fei Li, Joy Buolamwini, Saul Griffith, Rana el Kaliouby, Boyan Slat, Parag Agrawal, Mary Barra, Tristan Harris.)
+
+Established Fictional Characters (e.g., 토르, 호머 심슨, 하츄핑, 해리 포터, Mickey Mouse, Sherlock Holmes, Darth Vader, Harry Potter, SpongeBob SquarePants, Iron Man, Pikachu, Elsa, Batman, Mario.)
+
+Real Companies & Organizations (e.g., BMW, 삼성화재, 보잉, 테슬라, GM, 현대모비스, 넷플릭스, Spotify, Shopify, NextEra Energy, ASML, Sea Limited, Stora Enso, Zai Lab, Uipath, Teladoc Health, Plug Power, Apple, Microsoft, Amazon, Tesla, TSMC, Paypal)
+
+Countries (e.g., United States, Canada, Brazil, France, Germany, Japan, South Korea, China, India, Australia, United Kingdom, Italy, Mexico, Russia, South Africa.)
+
+Real Objects or Foods (e.g., 마이크, 스피커, 자동차, 바나나, 계란말이, 김치찌개,Smartphone, Notebook, Glasses, Watch, Wallet, Backpack, Laptop, Water Bottle, Umbrella, Headphones, Toothbrush, Remote Control, Pen, Coffee Mug, Keychain, Pizza, Sushi, Burger, Tacos, Pasta,Banana, Apple, Orange, Grape, Strawberry, Lemon, Watermelon, Pineapple, Mango, Pear.)
+
+Music Genres and Artists (e.g., Rock, Pop, Hip-Hop, Classical, Jazz, Blues, Reggae, Country, Electronic, R&B, Punk, Metal, K-pop, Indie, Folk: The Beatles, Taylor Swift, Eminem, Ludwig van Beethoven, Miles Davis, Bob Marley, Johnny Cash, Daft Punk, Rihanna, BTS.)
+
+Popular TV Shows (e.g., Breaking Bad, Game of Thrones, Friends, The Office, Stranger Things, The Crown, The Simpsons, Westworld, The Mandalorian, Grey’s Anatomy, The Witcher, The Sopranos, Black Mirror, Sherlock, Brooklyn Nine-Nine.)
+
+Famous Artists and Works (e.g., Leonardo da Vinci - Mona Lisa, Vincent van Gogh - Starry Night, Pablo Picasso - Guernica, Claude Monet - Water Lilies, Michelangelo - David, Frida Kahlo - The Two Fridas, Salvador Dalí - The Persistence of Memory, Rembrandt - The Night Watch, Georgia O'Keeffe - Black Iris, Andy Warhol - Campbell's Soup Cans, Gustav Klimt - The Kiss, Sandro Botticelli - The Birth of Venus, Jackson Pollock - Number 1, Henri Matisse - Dance, Edvard Munch - The Scream.)
+
+Novels (e.g., To Kill a Mockingbird, 1984, Pride and Prejudice, The Great Gatsby, Moby Dick, War and Peace, Crime and Punishment, The Catcher in the Rye, Jane Eyre, The Lord of the Rings, Harry Potter Series, The Alchemist, The Hobbit, Brave New World, Animal Farm.)
+
+Sports (e.g., Soccer, Basketball, Tennis, Baseball, Swimming, Golf, Rugby, Cricket, Volleyball, Hockey, Track, Wrestling, Cycling, Skiing, Boxing.)
+
+Vehicles (e.g., Car, Motorcycle, Bicycle, Truck, Bus, Van, Scooter, Airplane, Boat, Train, Tram, Helicopter, Yacht, Submarine, RV.)
+
+Drinks (e.g., Water, Coffee, Tea, Juice, Soda, Beer, Wine, Whiskey, Cocktail, Smoothie, Milk, Lemonade, Espresso, Champagne, Hot Chocolate.)
 
 This includes topics which may not typically be considered educational, such as simple terms like household items, common goods, or basic foods.
 
@@ -70,7 +93,6 @@ Accuracy & Reliability:
 
 Explicitly conduct rigorous and thorough research SOLELY from highly trustworthy and reliable sources—Wikipedia, peer-reviewed academic journals, official websites, Google Scholar, credible media outlets, academic textbooks, and publicly recognized scholarly databases.
 Clearly mention and cite significant sources explicitly within your essay to guarantee full authenticity and remove any possibility of misinformation or hallucination.
-
 Sensitive & Controversial Topics:
 
 Maintain an explicitly neutral, professional, purely educational perspective when discussing sensitive issues (LGBT, political controversies, violence, Adolf Hitler, criminals, abortion). Absolutely NO personal opinions or biased statements at all.
@@ -95,7 +117,6 @@ Good Vocabulary Question Examples (Explicitly follow these examples):
 "answer": 3,
 "explanation": "아리스토텔레스의 '에우다이모니아'는 존재의 목적을 충분히 실현한 상태로서 활력 있는 자기실현과 최고의 덕성을 나타낸다는 본문의 문장을 직접 명시해서 설명합니다."
 },
-
 {
 "question_text": "아리스토텔레스의 목적론에서 '목적(telos)'이란 무엇인가요?",
 "choice1": "시작점",
@@ -106,7 +127,42 @@ Good Vocabulary Question Examples (Explicitly follow these examples):
 "answer": 3,
 "explanation": "본문에서는 '목적(telos)'이란 사물의 고유한 목적과 방향성을 의미한다고 명확히 명시되어 있습니다."
 },
-
+{
+  "questions": [
+    {
+      "question_text": "모비딕에 등장한 '모비딕'의 의미는 무엇인가요?",
+      "choice1": "작은 물고기",
+      "choice2": "상어",
+      "choice3": "거대한 하얀 고래",
+      "choice4": "해적선",
+      "choice5": "암초",
+      "answer": 3,
+      "explanation": "'모비딕'은 거대한 하얀 고래를 뜻하며, 소설의 중심 소재입니다."
+    }
+  ]
+}
+{
+  "questions": [
+    {
+      "question_text": "럭비에서 '스크럼'이란 무엇을 의미하나요?",
+      "choice1": "경기 전 준비 운동",
+      "choice2": "공을 편안하게 잡는 자세",
+      "choice3": "양 팀의 전방 선수들이 어깨를 맞대고 공을 차지하는 상황",
+      "choice4": "포워드 패스를 실행하는 시간",
+      "choice5": "점수를 얻는 공간",
+      "answer": 3,
+      "explanation": "'스크럼'은 럭비에서 양 팀의 전방 선수들이 어깨를 맞대고 공을 차지하려고 하는 상황을 의미합니다."
+    }
+{
+      "question_text": "맥주 양조 과정에서 '발효'란 무엇인가요?",
+      "choice1": "곡물을 수확하는 단계",
+      "choice2": "원재료를 혼합하는 과정",
+      "choice3": "효모가 당을 알코올과 이산화탄소로 전환하는 과정",
+      "choice4": "병에 라벨을 붙이는 작업",
+      "choice5": "완제품을 유통하는 단계",
+      "answer": 3,
+      "explanation": "발효는 효모가 당을 알코올과 이산화탄소로 전환하는 과정입니다."
+    }
 {
   "questions": [
     {
@@ -132,6 +188,48 @@ Good Vocabulary Question Examples (Explicitly follow these examples):
   ]
 }
 {
+"question_text": "2020 도쿄 올림픽에 등장한 표현인 '지속 가능성'의 의미와 가장 가까운 단어는 무엇인가요?",
+"choice1": "임시적",
+"choice2": "단기적",
+"choice3": "보존성",
+"choice4": "변덕스러움",
+"choice5": "휘발성",
+"answer": 3,
+"explanation": "'지속 가능성'은 환경과 자원을 보존하며 장기적으로 유지 가능한 상태를 뜻하므로 '보존성'과 가장 가깝습니다."
+},
+{
+"question_text": "안젤리나 졸리에 등장한 표현인 '인도주의'의 의미와 가장 가까운 단어는 무엇인가요?",
+"choice1": "이기주의",
+"choice2": "개인주의",
+"choice3": "이타심",
+"choice4": "배타주의",
+"choice5": "자본주의",
+"answer": 3,
+"explanation": "'인도주의'는 다른 사람을 배려하고 돕는 것을 중시하는 태도로 '이타심'과 가장 가깝습니다."
+},
+{
+"question_text": "피카츄에 등장한 표현인 '친근감'의 의미와 가장 가까운 단어는 무엇인가요?",
+"choice1": "반감",
+"choice2": "무관심",
+"choice3": "호감",
+"choice4": "위협",
+"choice5": "불안",
+"answer": 3,
+"explanation": "'친근감'은 누군가나 무엇에 대해 긍정적이고 다정한 감정을 가지는 것이므로 '호감'과 가장 가깝습니다."
+},
+{
+"question_text": "Spotify에 등장한 표현인 '다양성'의 의미와 가장 가까운 단어는 무엇인가요?",
+"choice1": "단조로움",
+"choice2": "획일성",
+"choice3": "풍부함",
+"choice4": "제한성",
+"choice5": "일관성",
+"answer": 3,
+"explanation": "'다양성'은 여러 가지 다른 특징들이 공존하는 상태를 의미하므로 '풍부함'과 가장 가깝습니다."
+}
+]
+}
+{
   "questions": [
     {
       "question_text": "다음은 서강대학교에 대한 지문의 문장입니다. 빈칸에 들어갈 가장 적합한 어휘를 고르세요.\n\n'서강대학교의 학풍은 폭넓은 교양교육을 바탕으로 하는 전통적인 _____ 교육과 깊이 있는 학문 연구, 탁월한 국제화 전략이 어우러져 있다.'",
@@ -145,8 +243,7 @@ Good Vocabulary Question Examples (Explicitly follow these examples):
     }
   ]
 }
-
- "questions": [
+"questions": [
     {
       "question_text": "지문에서 사용된 '누적적 관점'이라는 표현의 의미와 가장 가까운 것은 무엇인가요?",
       "choice1": "개별적으로 따로따로 분석하는 관점",
@@ -157,6 +254,37 @@ Good Vocabulary Question Examples (Explicitly follow these examples):
       "answer": 4,
       "explanation": "지문의 적분학 설명 문단에서 '누적적 관점'은 함수 아래의 영역 전체를 합하여 계산하는 과정이라고 설명했으므로, '모두 합쳐 더하거나 쌓이는 방식으로 전체를 바라보는 관점'이 올바른 의미입니다."
     },
+"questions": [
+{
+"question_text": "지문에서 사용된 '미적분학의 기초'라는 표현의 의미와 가장 가까운 것은 무엇인가요?",
+"choice1": "변화율과 누적량을 다루는 수학적 원리",
+"choice2": "단지 이론적인 개념에 머무는 학문",
+"choice3": "실험적 자료 수집에 의존하는 과학",
+"choice4": "미술과 연관된 전통적 원리",
+"choice5": "철학적 논쟁을 중심으로 한 학문",
+"answer": 1,
+"explanation": "미적분학은 변화율과 누적량을 계산하는 수학적 기초를 다루므로 '변화율과 누적량을 다루는 수학적 원리'가 가장 가까운 의미입니다."
+},
+{
+"question_text": "안젤리나 졸리에 대한 지문에서 '인권 활동가'라는 표현은 무엇을 의미하나요?",
+"choice1": "오락 활동을 주도하는 사람",
+"choice2": "환경 보전을 돕는 사람",
+"choice3": "인권을 보호하고 증진시키는 사람",
+"choice4": "예술 작품을 창작하는 사람",
+"choice5": "정치적 권력을 추구하는 사람",
+"answer": 3,
+"explanation": "인권 활동가는 인권을 보호하고 증진시키는 역할을 수행합니다."
+},
+{
+"question_text": "피카츄에 대한 지문에서 '상징적인 캐릭터'라는 표현은 무엇을 의미하나요?",
+"choice1": "직접적으로 관련이 없는 캐릭터",
+"choice2": "좋아하는 사람만 아는 캐릭터",
+"choice3": "특정 그룹이나 개념을 대표하는 캐릭터",
+"choice4": "유행이 지난 캐릭터",
+"choice5": "신비로운 특성을 가진 캐릭터",
+"answer": 3,
+"explanation": "상징적인 캐릭터는 특정 그룹이나 개념을 대표하는 캐릭터를 의미합니다."
+},
     {
       "question_text": "다음 문장의 빈칸에 들어갈 용어로 가장 적절한 것은 무엇인가요? '뉴턴과 라이프니츠가 개발한 미적분학의 두 연산인 미분과 적분은 서로 ____ 관계에 있다.'",
       "choice1": "병렬적",
@@ -169,6 +297,66 @@ Good Vocabulary Question Examples (Explicitly follow these examples):
     }
   ]
 }
+{
+      "question_text": "다음은 모비딕에 대한 지문의 문장입니다. 빈칸에 들어갈 가장 적합한 어휘를 고르세요.\n\n'모비딕은 거대한 하얀 고래와 그를 쫓는 선원들의 이야기를 담고 있는 _____ 중 하나이다.'",
+      "choice1": "자서전",
+      "choice2": "역사서",
+      "choice3": "고전 소설",
+      "choice4": "과학 논문",
+      "choice5": "요리책",
+      "answer": 3,
+      "explanation": "모비딕은 고전 소설로 분류됩니다."
+    }
+{
+      "question_text": "다음은 뭉크의 절규에 대한 지문의 문장입니다. 빈칸에 들어갈 가장 적합한 어휘를 고르세요.\n\n'뭉크의 절규는 인간의 _____를 강렬히 표현한 명작으로, 현대 미술의 중요한 작품 중 하나이다.'",
+      "choice1": "기쁨",
+      "choice2": "불안",
+      "choice3": "희망",
+      "choice4": "모험",
+      "choice5": "사랑",
+      "answer": 2,
+      "explanation": "뭉크의 절규는 인간의 불안을 표현한 작품입니다."
+    }
+{
+      "question_text": "다음은 칫솔에 대한 지문의 문장입니다. 빈칸에 들어갈 가장 적합한 어휘를 고르세요.\n\n'칫솔은 구강 건강을 유지하는 데 중요한 _____으로, 다양한 크기와 강도의 브러시가 있다.'",
+      "choice1": "음식",
+      "choice2": "악기",
+      "choice3": "도구",
+      "choice4": "기계",
+      "choice5": "의복",
+      "answer": 3,
+      "explanation": "칫솔은 구강 건강을 위한 도구로 사용됩니다."
+    }
+{
+      "question_text": "다음은 피카츄에 대한 지문의 문장입니다. 빈칸에 들어갈 가장 적합한 어휘를 고르세요.\n\n'피카츄는 Pokémon 시리즈에서 가장 _____ 캐릭터 중 하나로, 귀여운 외모와 전기 공격으로 인기를 끌고 있다.'",
+      "choice1": "무서운",
+      "choice2": "강력한",
+      "choice3": "상징적인",
+      "choice4": "미스터리한",
+      "choice5": "실제적인",
+      "answer": 3,
+      "explanation": "피카츄는 Pokémon 시리즈의 상징적인 캐릭터입니다."
+    }
+{
+      "question_text": "다음은 안젤리나 졸리에 대한 지문의 문장입니다. 빈칸에 들어갈 가장 적합한 어휘를 고르세요.\n\n'안젤리나 졸리는 뛰어난 배우이자 인권 _____으로도 널리 알려져 있다.'",
+      "choice1": "활동가",
+      "choice2": "과학자",
+      "choice3": "기자",
+      "choice4": "의사",
+      "choice5": "작가",
+      "answer": 1,
+      "explanation": "안젤리나 졸리는 인권 활동가로서의 역할로도 잘 알려져 있습니다."
+    }
+{
+      "question_text": "다음은 2020 도쿄 올림픽에 대한 지문의 문장입니다. 빈칸에 들어갈 가장 적합한 어휘를 고르세요.\n\n'2020 도쿄 올림픽은 _____로 인해 역사상 처음으로 관중 없이 대부분의 경기가 진행되었다.'",
+      "choice1": "기상 이변",
+      "choice2": "정치적 이유",
+      "choice3": "자연 재해",
+      "choice4": "코로나19 팬데믹",
+      "choice5": "기술 오류",
+      "answer": 4,
+      "explanation": "2020 도쿄 올림픽은 코로나19 팬데믹의 영향으로 관중 없이 개최되었습니다."
+    }
 
 YOUR VOCABULARY QUESTIONS MUST CLEARLY MATCH ABOVE-QUALITY EXAMPLES—NO MORE FAILURES or exceptions permitted regarding vocabulary-question creation. These vocabulary question examples are all derived from the excellent essay examples provided above. You must infer from the content and output vocabulary questions such as synonyms, antonyms, synonyms, meaning inference, and fill-in-the-blank inference questions.
 
