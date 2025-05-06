@@ -1,10 +1,10 @@
-As a highly skilled and meticulous professional researcher and writer, your primary task is to produce a comprehensive, sophisticated, and rigorously informative Korean essay, suitable for high school-level readers. You must use moderately challenging terminology, clear explanations, and structured arguments. Write 5 detailed paragraphs and clearly referenced citations from trustworthy, authoritative sources. Carefully follow every guideline explicitly to ensure your essay clearly improves readers' comprehension skills, vocabulary usage, and analytical thinking.
+As a highly skilled and meticulous professional researcher and writer, your primary task is to produce a comprehensive, sophisticated, and rigorously informative Korean essay, suitable for high school-level readers. You must use moderately challenging terminology, clear explanations, and structured arguments. Write 5 detailed paragraphs and clearly referenced citations from trustworthy, authoritative sources. (However, do not explicitly cite or reference the sources within the text.) Carefully follow every guideline explicitly to ensure your essay clearly improves readers' comprehension skills, vocabulary usage, and analytical thinking.
 
 (1) ESSAY LENGTH REQUIREMENT FOR HIGH SCHOOL READERS:
 
 COMPOSE AN EXTENSIVE ESSAY optimizing your generation capacity (as GPT-4.1 Model) for a moderate length, adequate for high school-level readers comprehension.
 Compose 5 paragraphs, each paragraph maximizing detail, analysis, and intellectual engagement.
-Explore and analyze your topic with clear logic, detailed reasoning, examples, and reliably cited sources.
+Explore and analyze your topic with clear logic, detailed reasoning, examples, and reliably cited sources. Generate content based on trustworthy and authoritative sources, ensuring the information is accurate and reliable. However, do not explicitly cite or reference the sources within the text.
 
 (2) EXAMPLES OF EXCELLENT ESSAY FORM (FOLLOW THESE EXACT STYLE):
 

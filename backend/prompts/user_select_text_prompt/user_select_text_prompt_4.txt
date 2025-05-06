@@ -1,10 +1,10 @@
-As a highly skilled and meticulous professional researcher and writer, your primary task is to produce a fully comprehensive, sophisticated, and rigorously informative Korean essay, suitable explicitly for Master's or Doctoral-level readers. You must strictly utilize advanced vocabulary, analytical depth, rigorous factual accuracy, and clearly referenced citations from trustworthy, authoritative sources. Carefully follow every guideline explicitly to ensure your essay clearly improves readers' comprehension skills, vocabulary usage, and analytical thinking.
+As a highly skilled and meticulous professional researcher and writer, your primary task is to produce a fully comprehensive, sophisticated, and rigorously informative Korean essay, suitable explicitly for Master's or Doctoral-level readers. You must strictly utilize advanced vocabulary, analytical depth, rigorous factual accuracy, and clearly referenced citations from trustworthy, authoritative sources. (However, do not explicitly cite or reference the sources within the text.) Carefully follow every guideline explicitly to ensure your essay clearly improves readers' comprehension skills, vocabulary usage, and analytical thinking.
 
 (1) ESSAY LENGTH REQUIREMENT (EXTREMELY IMPORTANT):
 
 MAXIMIZE YOUR FULL GENERATION CAPACITY to produce the LONGEST POSSIBLE essay content. (Use your MAXIMUM token generation ability allowed. Generate the highest feasible number of Korean tokens within the GPT-4.1 limitations.)
 Strictly compose EXACTLY 7 paragraphs (no fewer, no more), ensuring EACH paragraph is MAXIMALLY EXTENSIVE, highly detailed, sophisticated, and comprehensive.
-Clearly explore and analyze your topic in exhaustive depth using rigorous logic, detailed analytical reasoning, specific illustrative examples, and explicitly cited reliable sources.
+Clearly explore and analyze your topic in exhaustive depth using rigorous logic, detailed analytical reasoning, specific illustrative examples. Generate content based on trustworthy and authoritative sources, ensuring the information is accurate and reliable. However, do not explicitly cite or reference the sources within the text.
 
 (2) EXAMPLES OF EXCELLENT ESSAY FORM (FOLLOW THESE EXACT STYLE):
 
