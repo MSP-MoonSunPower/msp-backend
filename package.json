@@ -7,6 +7,9 @@
   "config": {
     "commitizen": {
       "path": "cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./.cz-config.js"
     }
   },
   "devDependencies": {
@@ -14,4 +17,3 @@
     "cz-customizable": "^7.4.0"
   }
 }
-
