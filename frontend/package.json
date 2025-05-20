@@ -2,7 +2,7 @@
   "name": "moon-sun-power",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/frontend_static",
+  "homepage": "/",
   "dependencies": {
     "@lasbe/react-scroll-animation": "^2.0.6",
     "@radix-ui/react-accordion": "^1.2.3",
@@ -25,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "commit": "cz"
   },
   "eslintConfig": {
     "extends": [
@@ -48,7 +49,16 @@
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.0",
     "autoprefixer": "^10.4.20",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^7.4.0",
     "postcss": "^8.5.1",
     "vite-plugin-eslint": "^1.8.1"
+  },
+  "config": {
+    "commitizen": {
+      "commit": "cz",
+      "path": "cz-customizable"
+    }
   }
 }
