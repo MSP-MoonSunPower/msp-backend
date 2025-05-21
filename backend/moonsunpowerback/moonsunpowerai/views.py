@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
+from rest_framework.permissions import AllowAny
 from openai import OpenAI
 from .models import CustomText, GeneratedText, QuestionItem
 from .prompts import *
@@ -14,6 +15,7 @@ import re
 load_dotenv()
 
 class TodayTextAPIView(APIView):
+    permission_classes = [AllowAny]
     """
     API to fetch the latest generated text entry along with its related question items.
     """
@@ -86,6 +88,7 @@ class TodayTextAPIView(APIView):
         return Response({'error': 'No content found'}, status=status.HTTP_404_NOT_FOUND)
 
 class GenerateTextAPIView(APIView):
+    permission_classes = [AllowAny]
     """
     주어진 subject와 difficulty에 따라 교육용 텍스트를 생성하는 API 뷰입니다.
     """
@@ -190,6 +193,7 @@ class GenerateTextAPIView(APIView):
         return Response(response_data, status=status.HTTP_200_OK)
 
 class GenerateTagTextAPIView(APIView):
+    permission_classes = [AllowAny]
     @swagger_auto_schema(
         operation_description="Generate educational text and questions based on subject and difficulty level.",
         manual_parameters=[
@@ -344,6 +348,7 @@ class GenerateTagTextAPIView(APIView):
 
         return Response(response_data, status=status.HTTP_200_OK)
 class UnknownWordsAPIView(APIView):
+    permission_classes = [AllowAny]
     @swagger_auto_schema(
         operation_description="사전 API: 입력된 단어 또는 구에 대해 각각의 기본형과 정의를 반환합니다. 단일 단어 입력 시 단일 JSON 객체, 여러 단어 입력 시 JSON 배열로 출력합니다.",
         request_body=openapi.Schema(
