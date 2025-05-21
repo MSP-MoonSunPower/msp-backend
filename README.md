@@ -94,6 +94,28 @@ After completing the questions, check:
 
 ## Architecture-Patches
 
+### Berlin Brandenburg  (~2025.05.21)
+v.1.2.1:
+- New!:
+    - Dev and Test Enviornment now divided into two! yay!
+    
+v1.2.0:
+- New!:
+    - User Management: Sign-up, Log-in, and Log-out functionality added
+    - Admin Controls: Admin users can now perform specific actions
+- Fix:
+    - Enhanced Prompts:
+	    - Better-formulated questions
+	    - More academic-style text
+	    - Expanded topic coverage for tag texts
+    - Bug Fixes:
+	    - Fixed vocabulary search bug when 0 or 1 word is entered
+    - UI Improvements:
+	    - Beautifully redesigned main page
+    	- Added explanation to help newcomers understand MSP
+	    - Fancy topic selection page
+
+
 ### Amsterdam Schipol (~2024.12.06)
 v1.1.0:
 - New!:
@@ -118,8 +140,3 @@ v1.0.0: Creation of MoonSunPower!
 DM us on Instagram at [@moonsunpower.sg](https://www.instagram.com/moonsunpower.sg/) 🌟  
 
  
-
-
-
-
-
