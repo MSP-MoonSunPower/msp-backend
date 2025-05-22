@@ -89,28 +89,82 @@ class TodayTextAPIView(APIView):
 
 class GenerateTextAPIView(APIView):
     permission_classes = [AllowAny]
-    """
-    주어진 subject와 difficulty에 따라 교육용 텍스트를 생성하는 API 뷰입니다.
-    """
+    @swagger_auto_schema(
+    operation_summary="Generate educational text and questions",
+    operation_description="""
+    주어진 주제(subject), 난이도(difficulty), 언어(language)에 따라
+    교육용 텍스트와 객관식 질문을 생성합니다.
     
-    def get(self, request, subject, difficulty, *args, **kwargs):
+    예: /text/science/2/korean/
+    """,
+    responses={
+        200: openapi.Response(
+            description="성공적으로 텍스트와 질문을 생성한 경우",
+            examples={
+                "application/json": {
+                    "subject": "science",
+                    "content": "Generated educational content here...",
+                    "date": "2025-05-21",
+                    "questions": [
+                        {
+                            "question_text": "물은 몇 도에서 끓는가?",
+                            "choice1": "80도",
+                            "choice2": "90도",
+                            "choice3": "100도",
+                            "choice4": "110도",
+                            "choice5": "120도",
+                            "answer": 3,
+                            "explanation": "물은 1기압에서 100도에서 끓는다."
+                        }
+                    ]
+                }
+            }
+        ),
+        400: openapi.Response(
+            description="잘못된 요청 파라미터 (예: 지원하지 않는 언어 또는 난이도)",
+            examples={
+                "application/json": {
+                    "error": "Unsupported language 'japanese'"
+                }
+            }
+        ),
+        500: openapi.Response(
+            description="OpenAI API 호출 실패 또는 JSON 파싱 오류",
+            examples={
+                "application/json": {
+                    "error": "Invalid JSON format in API response"
+                }
+            }
+        ),
+    }
+)
+    def get(self, request, subject, difficulty,language, *args, **kwargs):
+        language = language.lower()
         if not subject:
             return Response(
                 {"error": "Subject parameter is required."},
                 status=status.HTTP_400_BAD_REQUEST
             )
-        # USER_SELECT_TEXT_PROMPTS에서 해당 난이도의 프롬프트를 가져옵니다.
+
         prompt_key = f"user_select_text_prompt_{difficulty}"
-        if prompt_key not in USER_SELECT_TEXT_PROMPTS:
-            
+
+        # 언어 유효성 검사
+        if language not in USER_SELECT_TEXT_PROMPTS:
             return Response(
-                {"error": "Invalid difficulty level. Choose a value between 1 and 4."},
+                {"error": f"Unsupported language '{language}'"},
                 status=status.HTTP_400_BAD_REQUEST
             )
-        prompt_text = USER_SELECT_TEXT_PROMPTS[prompt_key]
-        
-        text_length = int(TEXT_LENGTH[str(difficulty)])      
-        
+
+        if prompt_key not in USER_SELECT_TEXT_PROMPTS[language]:
+            return Response(
+                {"error": f"No prompt found for difficulty {difficulty} in language '{language}'"},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        prompt_text = USER_SELECT_TEXT_PROMPTS[language][prompt_key]
+
+        # 기존대로 모델 및 텍스트 길이 가져오기 (여기는 언어 독립적이라면 그대로 둬도 됨)
+        text_length = int(TEXT_LENGTH.get(str(difficulty)))
         client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
         response = client.chat.completions.create(
             model = str(MODEL_SELECTOR.get(f"model_type_{difficulty}")).strip(),
@@ -133,9 +187,7 @@ class GenerateTextAPIView(APIView):
             frequency_penalty=0,
             presence_penalty=0,
         )
-        print(response)
         content_raw = response.choices[0].message.content
-        print(content_raw)
         if not content_raw or "error" in content_raw:
             return Response(
                 {"error": "No content received from OpenAI API"},

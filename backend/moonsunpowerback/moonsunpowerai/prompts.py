@@ -48,10 +48,20 @@ except Exception as e:
     TODAY_TEXT = ""
 
 # 1. 사용자 선택 텍스트 프롬프트 (user_select_text_prompt 폴더)
-USER_SELECT_TEXT_PROMPTS = load_files(
-    os.path.join(PROMPTS_DIR, "user_select_text_prompt"),
-    [f"user_select_text_prompt_{i}.txt" for i in range(1, 5)]
-)
+USER_SELECT_TEXT_PROMPTS = {}
+base_prompt_dir = os.path.join(PROMPTS_DIR, "user_select_text_prompt")
+
+for lang in ["korean", "english", "german"]:
+    lang_dir = os.path.join(base_prompt_dir, lang)
+    if not os.path.isdir(lang_dir):
+        print(f"Directory not found: {lang_dir}")
+        continue
+    USER_SELECT_TEXT_PROMPTS[lang] = load_files(
+        lang_dir,
+        [f"user_select_text_prompt_{i}.txt" for i in range(1, 5)],
+        key_func=lambda key: key.replace(".txt", "")
+    )
+
 
 # 2. 텍스트 길이 (text_length 폴더) - 키를 단순 숫자 문자열로 저장
 TEXT_LENGTH = load_files(
