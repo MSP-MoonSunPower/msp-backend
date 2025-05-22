@@ -58,7 +58,7 @@ function Select() {
         const response = await fetch(
           `https://moonsunpower.com/ai/text/${encodeURIComponent(
             topic
-          )}/${difficulty}`
+          )}/${difficulty}/${selectedLanguage}`
         );
         if (!response.ok) {
           throw new Error("텍스트 가져오기 실패");
@@ -166,12 +166,23 @@ function Select() {
         >
           한글 (Korean)
         </button>
-        <button langBtn="영어는 5월부터 이용하실 수 있습니다!">
+        <button
+          onClick={() => setSelectedLanguage("english")}
+          className={`${styles.languageButton} ${
+            selectedLanguage === "english" ? styles.selected : ""
+          }`}
+        >
           영어 (English)
         </button>
-        <button langBtn="독일어는 5월부터 이용하실 수 있습니다!">
+        <button
+          onClick={() => setSelectedLanguage("german")}
+          className={`${styles.languageButton} ${
+            selectedLanguage === "german" ? styles.selected : ""
+          }`}
+        >
           독일어 (Deutsch)
         </button>
+
         <button langBtn="프랑스어는 5월부터 이용하실 수 있습니다!">
           프랑스어 (Français)
         </button>
