@@ -64,7 +64,7 @@ function Home() {
           </Link>
         </div>
         <p className={styles.mobileMessage2}>
-          * 모바일 버전은 3월중 업데이트 예정입니다. (PC 학습 권장)
+          * 모바일 버전은 추후 업데이트 됩니다. (PC로 학습해주세요!)
         </p>
       </div>
     );
