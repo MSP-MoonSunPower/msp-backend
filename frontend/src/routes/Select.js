@@ -237,28 +237,40 @@ function Select() {
         disabled={!!selectedTag}
       />
 
-      <h3>원하는 주제가 없으신가요?</h3>
-      <div className={styles.tagContainer}>
-        {[
-          { label: "스포츠 / 예술", number: 1 },
-          { label: "철학", number: 2 },
-          { label: "사회 / 경제", number: 3 },
-          { label: "과학 / 기술", number: 4 },
-          { label: "문학", number: 5 },
-          { label: "역사", number: 6 },
-        ].map((tag) => (
-          <span
-            key={tag.number}
-            className={`${styles.tag} ${
-              selectedTag === tag.number ? styles.selectedTag : ""
-            }`}
-            onClick={() => handleTagClick(tag.number)}
-            style={{ pointerEvents: topic ? "none" : "auto" }}
-          >
-            {tag.label}
-          </span>
-        ))}
-      </div>
+      {selectedLanguage === "korean" && (
+        <>
+          <h3>원하는 주제가 없으신가요?</h3>
+          <div className={styles.tagContainer}>
+            {[
+              { label: "스포츠 / 예술", number: 1 },
+              { label: "철학", number: 2 },
+              { label: "사회 / 경제", number: 3 },
+              { label: "과학 / 기술", number: 4 },
+              { label: "문학", number: 5 },
+              { label: "역사", number: 6 },
+            ].map((tag) => (
+              <span
+                key={tag.number}
+                className={`${styles.tag} ${
+                  selectedTag === tag.number ? styles.selectedTag : ""
+                }`}
+                onClick={() => {
+                  if (selectedLanguage === "korean" && !topic) {
+                    handleTagClick(tag.number);
+                  }
+                }}
+                style={{
+                  pointerEvents:
+                    selectedLanguage !== "korean" || topic ? "none" : "auto",
+                  opacity: selectedLanguage !== "korean" || topic ? 0 : 1,
+                }}
+              >
+                {tag.label}
+              </span>
+            ))}
+          </div>
+        </>
+      )}
 
       <div className={styles.buttons}>
         <button className={styles.startButton} onClick={handleStartClick}>
