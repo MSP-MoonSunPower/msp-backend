@@ -4,6 +4,11 @@ import ClockLoader from "react-spinners/ClockLoader";
 import styles from "./Select.module.css";
 
 function Select() {
+  const API_BASE =
+    window.location.hostname === "test.moonsunpower.com"
+      ? "https://test.moonsunpower.com"
+      : "https://moonsunpower.com";
+
   const [difficulty, setDifficulty] = useState(null);
   const [topic, setTopic] = useState("");
   const [selectedTag, setSelectedTag] = useState(null);
@@ -11,7 +16,7 @@ function Select() {
   const [error, setError] = useState(null);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const navigate = useNavigate();
-  const [selectedLanguage, setSelectedLanguage] = useState("korean"); // 언어 기본설정 : 한국어
+  const [selectedLanguage, setSelectedLanguage] = useState("korean");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -56,7 +61,7 @@ function Select() {
     if (topic) {
       try {
         const response = await fetch(
-          `https://moonsunpower.com/ai/text/${encodeURIComponent(
+          `${API_BASE}/ai/text/${encodeURIComponent(
             topic
           )}/${difficulty}/${selectedLanguage}`
         );
@@ -64,13 +69,10 @@ function Select() {
           throw new Error("텍스트 가져오기 실패");
         }
         const data = await response.json();
-        console.log("텍스트 가져오기 성공:", data);
-
         navigate("/Question", {
           state: { passage: data.content, questions: data.questions },
         });
       } catch (error) {
-        console.error("텍스트 가져오는 중 오류 발생:", error);
         setError("지문 생성에 실패했습니다. 주제를 다시 선택해주세요.");
         setIsPopupOpen(true);
       } finally {
@@ -79,19 +81,16 @@ function Select() {
     } else if (selectedTag) {
       try {
         const response = await fetch(
-          `https://moonsunpower.com/ai/tagtext/${selectedTag}/${difficulty}`
+          `${API_BASE}/ai/tagtext/${selectedTag}/${difficulty}`
         );
         if (!response.ok) {
           throw new Error("태그 텍스트 가져오기 실패");
         }
         const data = await response.json();
-        console.log("태그 텍스트 가져오기 성공:", data);
-
         navigate("/Question", {
           state: { passage: data.content, questions: data.questions },
         });
       } catch (error) {
-        console.error("태그 텍스트 가져오는 중 오류 발생:", error);
         setError("지문 생성에 실패했습니다. 주제를 다시 선택해주세요.");
         setIsPopupOpen(true);
       } finally {
@@ -108,7 +107,7 @@ function Select() {
     setIsLoading(true);
     setError(null);
     try {
-      const response = await fetch("https://moonsunpower.com/ai/todaytext/");
+      const response = await fetch(`${API_BASE}/ai/todaytext/`);
       if (!response.ok) {
         if (response.status === 404) {
           throw new Error("No Content Found");
@@ -116,13 +115,10 @@ function Select() {
         throw new Error("오늘의 지문 가져오기 실패");
       }
       const data = await response.json();
-      console.log("오늘의 지문 가져오기 성공:", data);
-
       navigate("/Question", {
         state: { passage: data.content, questions: data.questions },
       });
     } catch (error) {
-      console.error("오늘의 지문 가져오는 중 오류 발생:", error);
       setError("오늘의 지문을 가져오는데 실패했습니다. 다시 시도해주세요.");
       setIsPopupOpen(true);
     } finally {
@@ -133,12 +129,7 @@ function Select() {
   if (isLoading) {
     return (
       <div className={styles.loadingContainer}>
-        <ClockLoader
-          color="black"
-          size={80}
-          aria-label="Loading Spinner"
-          data-testid="loader"
-        />
+        <ClockLoader color="black" size={80} />
         <p className={styles.waittext}>
           지문이 생성되고 있습니다. 잠시만 기다려주세요!
         </p>
@@ -158,30 +149,21 @@ function Select() {
       )}
 
       <div className={styles.languageChoice}>
-        <button
-          onClick={() => setSelectedLanguage("korean")}
-          className={`${styles.languageButton} ${
-            selectedLanguage === "korean" ? styles.selected : ""
-          }`}
-        >
-          한글 (Korean)
-        </button>
-        <button
-          onClick={() => setSelectedLanguage("english")}
-          className={`${styles.languageButton} ${
-            selectedLanguage === "english" ? styles.selected : ""
-          }`}
-        >
-          영어 (English)
-        </button>
-        <button
-          onClick={() => setSelectedLanguage("german")}
-          className={`${styles.languageButton} ${
-            selectedLanguage === "german" ? styles.selected : ""
-          }`}
-        >
-          독일어 (Deutsch)
-        </button>
+        {[
+          { label: "한글 (Korean)", value: "korean" },
+          { label: "영어 (English)", value: "english" },
+          { label: "독일어 (Deutsch)", value: "german" },
+        ].map((lang) => (
+          <button
+            key={lang.value}
+            onClick={() => setSelectedLanguage(lang.value)}
+            className={`${styles.languageButton} ${
+              selectedLanguage === lang.value ? styles.selected : ""
+            }`}
+          >
+            {lang.label}
+          </button>
+        ))}
 
         <button langBtn="프랑스어는 5월부터 이용하실 수 있습니다!">
           프랑스어 (Français)
@@ -193,38 +175,17 @@ function Select() {
 
       <h2>✔️ 지문 난이도 </h2>
       <div className={styles.difficultyOptions}>
-        <button
-          className={`${styles.difficultyButton} ${
-            difficulty === "1" ? styles.selected : ""
-          }`}
-          onClick={() => handleDifficultyClick("1")}
-        >
-          초급
-        </button>
-        <button
-          className={`${styles.difficultyButton} ${
-            difficulty === "2" ? styles.selected : ""
-          }`}
-          onClick={() => handleDifficultyClick("2")}
-        >
-          중급
-        </button>
-        <button
-          className={`${styles.difficultyButton} ${
-            difficulty === "3" ? styles.selected : ""
-          }`}
-          onClick={() => handleDifficultyClick("3")}
-        >
-          고급
-        </button>
-        <button
-          className={`${styles.difficultyButton} ${
-            difficulty === "4" ? styles.selected : ""
-          }`}
-          onClick={() => handleDifficultyClick("4")}
-        >
-          지옥
-        </button>
+        {["1", "2", "3", "4"].map((level, index) => (
+          <button
+            key={level}
+            className={`${styles.difficultyButton} ${
+              difficulty === level ? styles.selected : ""
+            }`}
+            onClick={() => handleDifficultyClick(level)}
+          >
+            {["초급", "중급", "고급", "지옥"][index]}
+          </button>
+        ))}
       </div>
 
       <h2>✔️ 지문 주제 </h2>
