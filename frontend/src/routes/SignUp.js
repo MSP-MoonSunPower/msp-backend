@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm, SubmitHandler } from "react-hook-form";
 import styles from "./SignUp.module.css";
 
 function SignUp() {
@@ -39,70 +40,12 @@ function SignUp() {
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
-
-    if (formData.password !== formData.confirmPassword) {
-      alert("비밀번호가 일치하지 않습니다.");
-      return;
-    }
-
-    const birthDate = formData.birth_date ? formData.birth_date : "2000-01-01";
-    const formDataToSend = new FormData();
-    formDataToSend.append("username", formData.username);
-    formDataToSend.append("password", formData.password);
-    formDataToSend.append("email", formData.email);
-    formDataToSend.append("nickname", formData.nickname);
-    formDataToSend.append("birth_date", birthDate);
-    formDataToSend.append("name", formData.name);
-    if (formData.profile_image) {
-      formDataToSend.append("profile_image", formData.profile_image);
-    }
-
-    try {
-      const response = await fetch("https://moonsunpower.com/user/signup/", {
-        method: "POST",
-        body: formDataToSend,
-      });
-
-      const data = await response.json();
-      console.log("회원가입 응답 데이터:", data);
-
-      if (response.ok) {
-        alert("회원가입이 완료되었습니다!");
-        setSuccess("회원가입이 완료되었습니다!");
-
-        localStorage.setItem("isLoggedIn", "true");
-
-        if (data.profile_image) {
-          localStorage.setItem("profile_image", data.profile_image);
-        } else {
-          console.warn("profile_image 없음. 응답 데이터 확인:", data);
-        }
-
-        if (data.nickname) {
-          localStorage.setItem("nickname", data.nickname);
-        } else {
-          console.warn("nickname 없음. 응답 데이터 확인:", data);
-        }
-
-        navigate("/");
-      } else {
-        alert(data.detail || "회원가입 실패");
-      }
-    } catch (err) {
-      alert("서버 요청 중 오류가 발생했습니다.");
-      console.error("회원가입 API 오류:", err);
-    }
-  };
-
   const handleConfirmSignUp = async () => {
     setShowModal(false);
     setError("");
     setSuccess("");
 
+    // 유효성 검사
     const usernameRegex = /^[a-zA-Z0-9]{4,20}$/;
     if (!usernameRegex.test(formData.username)) {
       alert("아이디는 영어 및 숫자로 이루어진 4~20자여야 합니다.");
@@ -116,6 +59,7 @@ function SignUp() {
 
     const passwordRegex =
       /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
+
     if (!passwordRegex.test(formData.password)) {
       alert(
         "비밀번호는 영어, 숫자, 특수문자를 포함하고 8자리 이상이어야 합니다."
@@ -155,18 +99,26 @@ function SignUp() {
       const data = await response.json();
 
       if (response.ok) {
-        alert("회원가입이 완료되었습니다:)");
+        alert("회원가입이 완료되었습니다!");
         setSuccess("회원가입이 완료되었습니다!");
 
         if (data.token) {
           localStorage.setItem("authToken", data.token);
-          navigate("/");
         }
+        if (data.nickname) {
+          localStorage.setItem("nickname", data.nickname);
+        }
+        if (data.profile_image) {
+          localStorage.setItem("profile_image", data.profile_image);
+        }
+
+        navigate("/");
       } else {
         alert(data.detail || "회원가입 실패");
       }
     } catch (err) {
       alert("서버 요청 중 오류가 발생했습니다.");
+      console.error("회원가입 API 오류:", err);
     }
   };
 
@@ -203,7 +155,10 @@ function SignUp() {
           />
         </div>
 
-        <form onSubmit={handleSubmit} className={styles.signupForm}>
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className={styles.signupForm}
+        >
           <div className={styles.formGroup}>
             <label htmlFor="username">아이디 *</label>
             <input
@@ -286,7 +241,11 @@ function SignUp() {
               onChange={handleChange}
             />
           </div>
-          <button type="submit" className={styles.submitButton}>
+          <button
+            type="button"
+            className={styles.submitButton}
+            onClick={() => setShowModal(true)}
+          >
             회원가입
           </button>
         </form>
