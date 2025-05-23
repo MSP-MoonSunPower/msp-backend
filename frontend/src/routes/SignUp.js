@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm, SubmitHandler } from "react-hook-form";
 import styles from "./SignUp.module.css";
 
 function SignUp() {
-  const [formData, setFormData] = useState({
-    username: "",
-    name: "",
-    password: "",
-    confirmPassword: "",
-    email: "",
-    nickname: "",
-    birth_date: "",
-    profile_image: null,
-  });
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm();
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
@@ -20,130 +18,62 @@ function SignUp() {
   const [previewImage, setPreviewImage] = useState(null);
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      setFormData((prevData) => ({
-        ...prevData,
-        profile_image: file,
-      }));
+      setValue("profile_image", e.target.files);
       setPreviewImage(URL.createObjectURL(file));
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError("");
-    setSuccess("");
-
-    if (formData.password !== formData.confirmPassword) {
-      alert("비밀번호가 일치하지 않습니다.");
-      return;
-    }
-
-    const birthDate = formData.birth_date ? formData.birth_date : "2000-01-01";
-    const formDataToSend = new FormData();
-    formDataToSend.append("username", formData.username);
-    formDataToSend.append("password", formData.password);
-    formDataToSend.append("email", formData.email);
-    formDataToSend.append("nickname", formData.nickname);
-    formDataToSend.append("birth_date", birthDate);
-    formDataToSend.append("name", formData.name);
-    if (formData.profile_image) {
-      formDataToSend.append("profile_image", formData.profile_image);
-    }
-
-    try {
-      const response = await fetch("https://moonsunpower.com/user/signup/", {
-        method: "POST",
-        body: formDataToSend,
-      });
-
-      const data = await response.json();
-      console.log("회원가입 응답 데이터:", data);
-
-      if (response.ok) {
-        alert("회원가입이 완료되었습니다!");
-        setSuccess("회원가입이 완료되었습니다!");
-
-        localStorage.setItem("isLoggedIn", "true");
-
-        if (data.profile_image) {
-          localStorage.setItem("profile_image", data.profile_image);
-        } else {
-          console.warn("profile_image 없음. 응답 데이터 확인:", data);
-        }
-
-        if (data.nickname) {
-          localStorage.setItem("nickname", data.nickname);
-        } else {
-          console.warn("nickname 없음. 응답 데이터 확인:", data);
-        }
-
-        navigate("/");
-      } else {
-        alert(data.detail || "회원가입 실패");
-      }
-    } catch (err) {
-      alert("서버 요청 중 오류가 발생했습니다.");
-      console.error("회원가입 API 오류:", err);
-    }
-  };
-
-  const handleConfirmSignUp = async () => {
+  const onValid = async (data) => {
     setShowModal(false);
     setError("");
     setSuccess("");
 
+    // 유효성 검사
     const usernameRegex = /^[a-zA-Z0-9]{4,20}$/;
-    if (!usernameRegex.test(formData.username)) {
+    if (!usernameRegex.test(data.username)) {
       alert("아이디는 영어 및 숫자로 이루어진 4~20자여야 합니다.");
-      return;
-    }
-
-    if (!formData.password.trim()) {
-      alert("비밀번호를 입력하세요.");
       return;
     }
 
     const passwordRegex =
       /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
-    if (!passwordRegex.test(formData.password)) {
+
+    if (!passwordRegex.test(data.password)) {
       alert(
         "비밀번호는 영어, 숫자, 특수문자를 포함하고 8자리 이상이어야 합니다."
       );
       return;
     }
 
-    if (formData.password !== formData.confirmPassword) {
+    if (data.password !== data.confirmPassword) {
       alert("비밀번호가 일치하지 않습니다.");
       return;
     }
 
-    if (formData.nickname.length < 3) {
+    if (data.nickname.length < 3) {
       alert("닉네임은 3글자 이상이어야 합니다.");
       return;
     }
 
-    const birthDate = formData.birth_date ? formData.birth_date : "2000-01-01";
+    const birthDate = data.birth_date || "2000-01-01";
 
     const formDataToSend = new FormData();
-    formDataToSend.append("username", formData.username);
-    formDataToSend.append("password", formData.password);
-    formDataToSend.append("email", formData.email);
-    formDataToSend.append("nickname", formData.nickname);
+    formDataToSend.append("username", data.username);
+    formDataToSend.append("password", data.password);
+    formDataToSend.append("email", data.email);
+    formDataToSend.append("nickname", data.nickname);
     formDataToSend.append("birth_date", birthDate);
-    formDataToSend.append("name", formData.name);
-    if (formData.profile_image) {
-      formDataToSend.append("profile_image", formData.profile_image);
+    formDataToSend.append("name", data.name);
+
+    // 이미지는 여전히 별도로 관리되므로 아래 방식 유지
+    if (
+      watch("profile_image") instanceof FileList &&
+      watch("profile_image")[0]
+    ) {
+      formDataToSend.append("profile_image", watch("profile_image")[0]);
     }
 
     try {
@@ -152,21 +82,23 @@ function SignUp() {
         body: formDataToSend,
       });
 
-      const data = await response.json();
+      const result = await response.json();
 
       if (response.ok) {
-        alert("회원가입이 완료되었습니다:)");
+        alert("회원가입이 완료되었습니다!");
         setSuccess("회원가입이 완료되었습니다!");
+        if (result.token) localStorage.setItem("authToken", result.token);
+        if (result.nickname) localStorage.setItem("nickname", result.nickname);
+        if (result.profile_image)
+          localStorage.setItem("profile_image", result.profile_image);
 
-        if (data.token) {
-          localStorage.setItem("authToken", data.token);
-          navigate("/");
-        }
+        navigate("/");
       } else {
-        alert(data.detail || "회원가입 실패");
+        alert(result.detail || "회원가입 실패");
       }
     } catch (err) {
       alert("서버 요청 중 오류가 발생했습니다.");
+      console.error("회원가입 API 오류:", err);
     }
   };
 
@@ -203,17 +135,21 @@ function SignUp() {
           />
         </div>
 
-        <form onSubmit={handleSubmit} className={styles.signupForm}>
+        <form
+          id="signupForm"
+          onSubmit={handleSubmit(onValid)}
+          className={styles.signupForm}
+        >
           <div className={styles.formGroup}>
             <label htmlFor="username">아이디 *</label>
             <input
               type="text"
               id="username"
-              name="username"
               placeholder="아이디를 입력하세요. (영어 및 숫자 4~20자)"
-              value={formData.username}
-              onChange={handleChange}
-              required
+              {...register("username", {
+                required: true,
+                pattern: /^[a-zA-Z0-9]{4,20}$/,
+              })}
             />
           </div>
           <div className={styles.formGroup}>
@@ -221,11 +157,12 @@ function SignUp() {
             <input
               type="password"
               id="password"
-              name="password"
               placeholder="비밀번호를 입력하세요. (영어,숫자,특수문자 모두 포함) "
-              value={formData.password}
-              onChange={handleChange}
-              required
+              {...register("password", {
+                required: true,
+                pattern:
+                  /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/,
+              })}
             />
           </div>
           <div className={styles.formGroup}>
@@ -233,11 +170,8 @@ function SignUp() {
             <input
               type="password"
               id="confirmPassword"
-              name="confirmPassword"
               placeholder="비밀번호를 다시 입력하세요."
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
+              {...register("confirmPassword", { required: true })}
             />
           </div>
           <div className={styles.formGroup}>
@@ -245,10 +179,8 @@ function SignUp() {
             <input
               type="text"
               id="name"
-              name="name"
               placeholder="이름을 입력하세요."
-              value={formData.name}
-              onChange={handleChange}
+              {...register("name", { required: true })}
             />
           </div>
 
@@ -257,11 +189,8 @@ function SignUp() {
             <input
               type="text"
               id="nickname"
-              name="nickname"
               placeholder="닉네임을 입력하세요. (3글자 이상)"
-              value={formData.nickname}
-              onChange={handleChange}
-              required
+              {...register("nickname", { required: true, minLength: 3 })}
             />
           </div>
           <div className={styles.formGroup}>
@@ -269,24 +198,25 @@ function SignUp() {
             <input
               type="email"
               id="email"
-              name="email"
               placeholder="이메일을 입력하세요."
-              value={formData.email}
-              onChange={handleChange}
-              required
+              {...register("email", {
+                required: true,
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "유효한 이메일 주소를 입력해주세요.",
+                },
+              })}
             />
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="birth_date">생년월일</label>
-            <input
-              type="date"
-              id="birth_date"
-              name="birth_date"
-              value={formData.birth_date}
-              onChange={handleChange}
-            />
+            <input type="date" id="birth_date" {...register("birth_date")} />
           </div>
-          <button type="submit" className={styles.submitButton}>
+          <button
+            type="button"
+            className={styles.submitButton}
+            onClick={() => setShowModal(true)}
+          >
             회원가입
           </button>
         </form>
@@ -361,7 +291,15 @@ function SignUp() {
                 </p>
               </div>
               <div className={styles.modalFooter}>
-                <button onClick={handleConfirmSignUp}>동의하고 회원가입</button>
+                <button
+                  type="submit"
+                  form="signupForm"
+                  className={styles.confirmButton}
+                  onClick={() => setShowModal(false)}
+                >
+                  동의하고 회원가입
+                </button>
+
                 <button
                   className={styles.cancelButton}
                   onClick={() => setShowModal(false)}
