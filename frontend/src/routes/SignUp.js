@@ -4,16 +4,13 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import styles from "./SignUp.module.css";
 
 function SignUp() {
-  const [formData, setFormData] = useState({
-    username: "",
-    name: "",
-    password: "",
-    confirmPassword: "",
-    email: "",
-    nickname: "",
-    birth_date: "",
-    profile_image: null,
-  });
+  const {
+    register,
+    handleSubmit,
+    watch,
+    setValue,
+    formState: { errors },
+  } = useForm();
 
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
