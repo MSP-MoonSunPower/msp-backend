@@ -161,11 +161,11 @@ function SignUp() {
             <input
               type="text"
               id="username"
-              name="username"
               placeholder="아이디를 입력하세요. (영어 및 숫자 4~20자)"
-              value={formData.username}
-              onChange={handleChange}
-              required
+              {...register("username", {
+                required: true,
+                pattern: /^[a-zA-Z0-9]{4,20}$/,
+              })}
             />
           </div>
           <div className={styles.formGroup}>
@@ -173,11 +173,12 @@ function SignUp() {
             <input
               type="password"
               id="password"
-              name="password"
               placeholder="비밀번호를 입력하세요. (영어,숫자,특수문자 모두 포함) "
-              value={formData.password}
-              onChange={handleChange}
-              required
+              {...register("password", {
+                required: true,
+                pattern:
+                  /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/,
+              })}
             />
           </div>
           <div className={styles.formGroup}>
@@ -185,11 +186,8 @@ function SignUp() {
             <input
               type="password"
               id="confirmPassword"
-              name="confirmPassword"
               placeholder="비밀번호를 다시 입력하세요."
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
+              {...register("confirmPassword", { required: true })}
             />
           </div>
           <div className={styles.formGroup}>
@@ -197,10 +195,8 @@ function SignUp() {
             <input
               type="text"
               id="name"
-              name="name"
               placeholder="이름을 입력하세요."
-              value={formData.name}
-              onChange={handleChange}
+              {...register("name", { required: true })}
             />
           </div>
 
@@ -209,11 +205,8 @@ function SignUp() {
             <input
               type="text"
               id="nickname"
-              name="nickname"
               placeholder="닉네임을 입력하세요. (3글자 이상)"
-              value={formData.nickname}
-              onChange={handleChange}
-              required
+              {...register("nickname", { required: true, minLength: 3 })}
             />
           </div>
           <div className={styles.formGroup}>
@@ -221,22 +214,19 @@ function SignUp() {
             <input
               type="email"
               id="email"
-              name="email"
               placeholder="이메일을 입력하세요."
-              value={formData.email}
-              onChange={handleChange}
-              required
+              {...register("email", {
+                required: true,
+                pattern: {
+                  value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                  message: "유효한 이메일 주소를 입력해주세요.",
+                },
+              })}
             />
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="birth_date">생년월일</label>
-            <input
-              type="date"
-              id="birth_date"
-              name="birth_date"
-              value={formData.birth_date}
-              onChange={handleChange}
-            />
+            <input type="date" id="birth_date" {...register("birth_date")} />
           </div>
           <button
             type="button"
