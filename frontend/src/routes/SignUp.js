@@ -18,14 +18,6 @@ function SignUp() {
   const [previewImage, setPreviewImage] = useState(null);
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
