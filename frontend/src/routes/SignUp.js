@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import styles from "./SignUp.module.css";
 
 function SignUp() {
@@ -9,6 +9,8 @@ function SignUp() {
     handleSubmit,
     watch,
     setValue,
+    trigger,
+    getValues,
     formState: { errors },
   } = useForm();
 
@@ -26,37 +28,22 @@ function SignUp() {
     }
   };
 
+  const handleCheckAndOpenModal = async () => {
+    const isValid = await trigger();
+    const values = getValues();
+    if (isValid) {
+      if (values.password !== values.confirmPassword) {
+        alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+        return;
+      }
+      setShowModal(true);
+    }
+  };
+
   const onValid = async (data) => {
     setShowModal(false);
     setError("");
     setSuccess("");
-
-    // 유효성 검사
-    const usernameRegex = /^[a-zA-Z0-9]{4,20}$/;
-    if (!usernameRegex.test(data.username)) {
-      alert("아이디는 영어 및 숫자로 이루어진 4~20자여야 합니다.");
-      return;
-    }
-
-    const passwordRegex =
-      /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/;
-
-    if (!passwordRegex.test(data.password)) {
-      alert(
-        "비밀번호는 영어, 숫자, 특수문자를 포함하고 8자리 이상이어야 합니다."
-      );
-      return;
-    }
-
-    if (data.password !== data.confirmPassword) {
-      alert("비밀번호가 일치하지 않습니다.");
-      return;
-    }
-
-    if (data.nickname.length < 3) {
-      alert("닉네임은 3글자 이상이어야 합니다.");
-      return;
-    }
 
     const birthDate = data.birth_date || "2000-01-01";
 
@@ -68,7 +55,6 @@ function SignUp() {
     formDataToSend.append("birth_date", birthDate);
     formDataToSend.append("name", data.name);
 
-    // 이미지는 여전히 별도로 관리되므로 아래 방식 유지
     if (
       watch("profile_image") instanceof FileList &&
       watch("profile_image")[0]
@@ -91,7 +77,6 @@ function SignUp() {
         if (result.nickname) localStorage.setItem("nickname", result.nickname);
         if (result.profile_image)
           localStorage.setItem("profile_image", result.profile_image);
-
         navigate("/");
       } else {
         alert(result.detail || "회원가입 실패");
@@ -108,8 +93,8 @@ function SignUp() {
       <div className={styles.signupContainer}>
         {error && <p className={styles.error}>{error}</p>}
         {success && <p className={styles.success}>{success}</p>}
+
         <div className={styles.profileContainer}>
-          {/* 동그라미 회색 박스(기본 프로필) 클릭 시 파일 선택 가능 */}
           <label htmlFor="profile_image" className={styles.profileImageWrapper}>
             {previewImage ? (
               <img
@@ -124,7 +109,6 @@ function SignUp() {
           <label htmlFor="profile_image" className={styles.labelStyle}>
             프로필 이미지 등록하기
           </label>
-
           <input
             type="file"
             id="profile_image"
@@ -145,43 +129,64 @@ function SignUp() {
             <input
               type="text"
               id="username"
-              placeholder="아이디를 입력하세요. (영어 및 숫자 4~20자)"
               {...register("username", {
-                required: true,
-                pattern: /^[a-zA-Z0-9]{4,20}$/,
+                required: "아이디는 필수입니다.",
+                pattern: {
+                  value: /^[a-zA-Z0-9]{4,20}$/,
+                  message: "영문자 및 숫자 조합 4~20자",
+                },
               })}
             />
+            {errors.username && (
+              <span className={styles.error}>{errors.username.message}</span>
+            )}
           </div>
+
           <div className={styles.formGroup}>
             <label htmlFor="password">비밀번호 *</label>
             <input
               type="password"
               id="password"
-              placeholder="비밀번호를 입력하세요. (영어,숫자,특수문자 모두 포함) "
               {...register("password", {
-                required: true,
-                pattern:
-                  /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/,
+                required: "비밀번호는 필수입니다.",
+                pattern: {
+                  value:
+                    /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/,
+                  message: "영문자+숫자+특수문자 포함 8자 이상",
+                },
               })}
             />
+            {errors.password && (
+              <span className={styles.error}>{errors.password.message}</span>
+            )}
           </div>
+
           <div className={styles.formGroup}>
             <label htmlFor="confirmPassword">비밀번호 확인 *</label>
             <input
               type="password"
               id="confirmPassword"
-              placeholder="비밀번호를 다시 입력하세요."
-              {...register("confirmPassword", { required: true })}
+              {...register("confirmPassword", {
+                required: "비밀번호 확인은 필수입니다.",
+              })}
             />
+            {errors.confirmPassword && (
+              <span className={styles.error}>
+                {errors.confirmPassword.message}
+              </span>
+            )}
           </div>
+
           <div className={styles.formGroup}>
             <label htmlFor="name">이름 *</label>
             <input
               type="text"
               id="name"
-              placeholder="이름을 입력하세요."
-              {...register("name", { required: true })}
+              {...register("name", { required: "이름은 필수입니다." })}
             />
+            {errors.name && (
+              <span className={styles.error}>{errors.name.message}</span>
+            )}
           </div>
 
           <div className={styles.formGroup}>
@@ -189,33 +194,46 @@ function SignUp() {
             <input
               type="text"
               id="nickname"
-              placeholder="닉네임을 입력하세요. (3글자 이상)"
-              {...register("nickname", { required: true, minLength: 3 })}
+              {...register("nickname", {
+                required: "닉네임은 필수입니다.",
+                minLength: {
+                  value: 3,
+                  message: "닉네임은 최소 3자 이상이어야 합니다.",
+                },
+              })}
             />
+            {errors.nickname && (
+              <span className={styles.error}>{errors.nickname.message}</span>
+            )}
           </div>
+
           <div className={styles.formGroup}>
             <label htmlFor="email">이메일 *</label>
             <input
               type="email"
               id="email"
-              placeholder="이메일을 입력하세요."
               {...register("email", {
-                required: true,
+                required: "이메일은 필수입니다.",
                 pattern: {
                   value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                  message: "유효한 이메일 주소를 입력해주세요.",
+                  message: "유효한 이메일을 입력해주세요.",
                 },
               })}
             />
+            {errors.email && (
+              <span className={styles.error}>{errors.email.message}</span>
+            )}
           </div>
+
           <div className={styles.formGroup}>
             <label htmlFor="birth_date">생년월일</label>
             <input type="date" id="birth_date" {...register("birth_date")} />
           </div>
+
           <button
             type="button"
             className={styles.submitButton}
-            onClick={() => setShowModal(true)}
+            onClick={handleCheckAndOpenModal}
           >
             회원가입
           </button>
@@ -299,7 +317,6 @@ function SignUp() {
                 >
                   동의하고 회원가입
                 </button>
-
                 <button
                   className={styles.cancelButton}
                   onClick={() => setShowModal(false)}
