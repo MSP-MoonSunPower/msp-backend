@@ -319,10 +319,10 @@ function SignUp() {
                   type="submit"
                   form="signupForm"
                   className={styles.confirmButton}
-                  onClick={() => setShowModal(false)}
                 >
                   동의하고 회원가입
                 </button>
+
                 <button
                   className={styles.cancelButton}
                   onClick={() => setShowModal(false)}
