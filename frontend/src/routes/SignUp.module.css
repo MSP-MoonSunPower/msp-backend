@@ -1,6 +1,6 @@
 .SignUp {
   font-family: "NanumSquareNeo";
-  color: #ff6363;
+  color: #121212;
   font-size: 28px;
   text-align: center;
   display: flex;
@@ -77,6 +77,14 @@
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+}
+
+.error {
+  color: red;
+  font-size: 0.85rem;
+  margin-left: 10px;
+  display: block;
+  position: static;
 }
 
 .formGroup label {

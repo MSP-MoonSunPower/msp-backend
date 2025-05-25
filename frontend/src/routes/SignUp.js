@@ -129,6 +129,7 @@ function SignUp() {
             <input
               type="text"
               id="username"
+              placeholder="영문자 및 숫자 조합 4~20자"
               {...register("username", {
                 required: "아이디는 필수입니다.",
                 pattern: {
@@ -147,6 +148,7 @@ function SignUp() {
             <input
               type="password"
               id="password"
+              placeholder="영문자+숫자+특수문자 포함 8자 이상"
               {...register("password", {
                 required: "비밀번호는 필수입니다.",
                 pattern: {
@@ -166,6 +168,7 @@ function SignUp() {
             <input
               type="password"
               id="confirmPassword"
+              placeholder="비밀번호를 한 번 더 입력해주세요"
               {...register("confirmPassword", {
                 required: "비밀번호 확인은 필수입니다.",
               })}
@@ -182,6 +185,7 @@ function SignUp() {
             <input
               type="text"
               id="name"
+              placeholder="이름을 입력하세요"
               {...register("name", { required: "이름은 필수입니다." })}
             />
             {errors.name && (
@@ -194,6 +198,7 @@ function SignUp() {
             <input
               type="text"
               id="nickname"
+              placeholder="화면에 표시될 닉네임을 입력해주세요. (3자 이상)"
               {...register("nickname", {
                 required: "닉네임은 필수입니다.",
                 minLength: {
@@ -212,6 +217,7 @@ function SignUp() {
             <input
               type="email"
               id="email"
+              placeholder="이메일을 입력하세요"
               {...register("email", {
                 required: "이메일은 필수입니다.",
                 pattern: {
