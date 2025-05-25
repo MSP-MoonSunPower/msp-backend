@@ -137,7 +137,7 @@ class GenerateTextAPIView(APIView):
             }
         ),
     }
-)
+    )
     def get(self, request, subject, difficulty,language, *args, **kwargs):
         language = language.lower()
         if not subject:
@@ -204,7 +204,11 @@ class GenerateTextAPIView(APIView):
 
         main_content = content_data.get("content", "")
         questions = content_data.get("questions", [])
-
+        if not main_content.strip() or not questions:
+            return Response(
+                {"error": "OpenAI API returned empty content or no questions. Please check your subject."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
         generated_text = CustomText.objects.create(
             subject=subject,
             difficulty=difficulty,
