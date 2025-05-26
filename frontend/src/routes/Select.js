@@ -165,10 +165,10 @@ function Select() {
           </button>
         ))}
 
-        <button langBtn="프랑스어는 5월부터 이용하실 수 있습니다!">
+        <button langBtn="프랑스어는 6월부터 이용하실 수 있습니다!">
           프랑스어 (Français)
         </button>
-        <button langBtn="스페인어는 5월부터 이용하실 수 있습니다!">
+        <button langBtn="스페인어는 6월부터 이용하실 수 있습니다!">
           스페인어 (Español)
         </button>
       </div>
