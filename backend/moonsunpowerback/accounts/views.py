@@ -4,12 +4,17 @@ from rest_framework import status, permissions
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from django.contrib.auth import get_user_model
+from django.contrib.auth import authenticate
 from rest_framework.authtoken.models import Token
 from django.utils.http import urlsafe_base64_encode
 from django.utils.encoding import force_bytes
 from django.contrib.auth.tokens import default_token_generator
 from django.core.mail import send_mail
 from django.conf import settings
+from django.utils.http import urlsafe_base64_decode
+from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.permissions import IsAuthenticated
+
 
 from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
@@ -100,6 +105,44 @@ class SignupView(APIView):
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[user.email],
         )
+class EmailVerifyView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    @swagger_auto_schema(
+        operation_summary="이메일 인증 확인",
+        operation_description="링크로 받은 uid와 token을 사용해 사용자의 이메일 인증을 완료합니다.",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            required=["uid", "token"],
+            properties={
+                "uid": openapi.Schema(type=openapi.TYPE_STRING, description="Base64 인코딩된 사용자 ID"),
+                "token": openapi.Schema(type=openapi.TYPE_STRING, description="Django 토큰"),
+            }
+        ),
+        responses={
+            200: openapi.Response(description="이메일 인증 성공"),
+            400: openapi.Response(description="유효하지 않은 요청")
+        }
+    )
+    def post(self, request):
+        uidb64 = request.data.get("uid")
+        token = request.data.get("token")
+
+        if not uidb64 or not token:
+            return Response({"error": "uid와 token은 필수입니다."}, status=400)
+
+        try:
+            uid = urlsafe_base64_decode(uidb64).decode()
+            user = User.objects.get(pk=uid)
+        except (User.DoesNotExist, ValueError, TypeError):
+            return Response({"error": "유효하지 않은 사용자입니다."}, status=400)
+
+        if not default_token_generator.check_token(user, token):
+            return Response({"error": "유효하지 않은 토큰입니다."}, status=400)
+
+        user.is_active = True
+        user.save()
+        return Response({"message": "이메일 인증이 완료되었습니다. 이제 로그인할 수 있습니다."}, status=200)
 
 # 로그인 API
 class LoginView(APIView):
@@ -246,6 +289,7 @@ class ProfileImageUpdateView(APIView):
                 {"detail": f"프로필 사진 업데이트 중 오류 발생: {e}"},
                 status=status.HTTP_400_BAD_REQUEST
             )
+        
 class ProfileImageDeleteView(APIView):
     permission_classes = [IsAuthenticated]
 

@@ -8,5 +8,7 @@ urlpatterns = [
     path('change-photo/', ProfileImageUpdateView.as_view(), name='change-photo'),
     path('delete-photo/', ProfileImageDeleteView.as_view(), name='delete-photo'),
     path('profile/', UserProfileView.as_view(), name='profile'),
-    path('delete-account/', UserDeleteView.as_view(), name='delete-account')
+    path('delete-account/', UserDeleteView.as_view(), name='delete-account'),
+    path('email-verify/', EmailVerifyView.as_view(), name='email-verify'),
+
 ]
