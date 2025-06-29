@@ -52,6 +52,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'moonsunpower.com','test.moonsunpower.com']
 
 INSTALLED_APPS = [
     'accounts',
+    'password',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -206,3 +207,15 @@ CELERY_BROKER_URL = 'redis://localhost:6379/0'
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_CACHE_BACKEND = 'django-cache'
+
+
+##이메일
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = get_secret("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = get_secret("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = get_secret("DEFAULT_FROM_EMAIL")
+
+FRONTEND_DOMAINS = get_secret("FRONTEND_DOMAINS")
