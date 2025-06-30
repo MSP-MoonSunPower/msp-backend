@@ -1,22 +1,31 @@
-from django.contrib.auth import get_user_model, authenticate
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.authtoken.models import Token
 from rest_framework import status, permissions
-from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
-from drf_yasg.utils import swagger_auto_schema
-from drf_yasg import openapi
+from django.core.validators import validate_email
+from django.contrib.auth import get_user_model
+from django.contrib.auth import authenticate
+from rest_framework.authtoken.models import Token
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from django.contrib.auth.tokens import default_token_generator
+from django.core.mail import send_mail
+from django.conf import settings
+from django.utils.http import urlsafe_base64_decode
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.permissions import IsAuthenticated
+
+
+from drf_yasg.utils import swagger_auto_schema
+from drf_yasg import openapi
+
 User = get_user_model()
 
-# 회원가입 API
 class SignupView(APIView):
     permission_classes = [permissions.AllowAny]
 
     @swagger_auto_schema(
-        operation_description="회원가입 API",
+        operation_description="회원가입 API (이메일 인증 기반)",
         request_body=openapi.Schema(
             type=openapi.TYPE_OBJECT,
             required=["username", "password", "email", "nickname", "name"],
@@ -32,10 +41,7 @@ class SignupView(APIView):
             }
         ),
         responses={
-            201: openapi.Response("회원가입 성공", schema=openapi.Schema(
-                type=openapi.TYPE_OBJECT,
-                properties={"token": openapi.Schema(type=openapi.TYPE_STRING)}
-            )),
+            201: openapi.Response("회원가입 성공. 이메일 인증 필요"),
             400: "필수값 누락 또는 유효하지 않은 입력"
         }
     )
@@ -64,7 +70,6 @@ class SignupView(APIView):
         if User.objects.filter(nickname=nickname).exists():
             return Response({"detail": "이미 존재하는 nickname 입니다."}, status=status.HTTP_400_BAD_REQUEST)
 
-        # 파일은 request.FILES에서 가져옴 (없으면 None)
         profile_image = request.FILES.get("profile_image")
 
         try:
@@ -78,10 +83,66 @@ class SignupView(APIView):
                 rank=rank,
                 profile_image=profile_image
             )
-            token, _ = Token.objects.get_or_create(user=user)
-            return Response({"token": token.key}, status=status.HTTP_201_CREATED)
+            user.is_active = False  # 인증 전 로그인 제한
+            user.save()
+
+            self.send_verification_email(user, request)
+
+            return Response({"message": "회원가입 성공. 이메일 인증을 완료해주세요."}, status=status.HTTP_201_CREATED)
         except Exception as e:
             return Response({"detail": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+    def send_verification_email(self, user, request):
+        uid = urlsafe_base64_encode(force_bytes(user.pk))
+        token = default_token_generator.make_token(user)
+        host = request.get_host()
+        frontend_base_url = settings.FRONTEND_DOMAINS.get(host, "https://moonsunpower.com")
+        verify_url = f"{frontend_base_url}/verify-email?uid={uid}&token={token}"
+
+        send_mail(
+            subject="[MoonsunPower] 이메일 인증",
+            message=f"다음 링크를 클릭하여 이메일을 인증하세요:\n{verify_url}",
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[user.email],
+        )
+class EmailVerifyView(APIView):
+    permission_classes = [permissions.AllowAny]
+
+    @swagger_auto_schema(
+        operation_summary="이메일 인증 확인",
+        operation_description="링크로 받은 uid와 token을 사용해 사용자의 이메일 인증을 완료합니다.",
+        request_body=openapi.Schema(
+            type=openapi.TYPE_OBJECT,
+            required=["uid", "token"],
+            properties={
+                "uid": openapi.Schema(type=openapi.TYPE_STRING, description="Base64 인코딩된 사용자 ID"),
+                "token": openapi.Schema(type=openapi.TYPE_STRING, description="Django 토큰"),
+            }
+        ),
+        responses={
+            200: openapi.Response(description="이메일 인증 성공"),
+            400: openapi.Response(description="유효하지 않은 요청")
+        }
+    )
+    def post(self, request):
+        uidb64 = request.data.get("uid")
+        token = request.data.get("token")
+
+        if not uidb64 or not token:
+            return Response({"error": "uid와 token은 필수입니다."}, status=400)
+
+        try:
+            uid = urlsafe_base64_decode(uidb64).decode()
+            user = User.objects.get(pk=uid)
+        except (User.DoesNotExist, ValueError, TypeError):
+            return Response({"error": "유효하지 않은 사용자입니다."}, status=400)
+
+        if not default_token_generator.check_token(user, token):
+            return Response({"error": "유효하지 않은 토큰입니다."}, status=400)
+
+        user.is_active = True
+        user.save()
+        return Response({"message": "이메일 인증이 완료되었습니다. 이제 로그인할 수 있습니다."}, status=200)
 
 # 로그인 API
 class LoginView(APIView):
@@ -228,6 +289,7 @@ class ProfileImageUpdateView(APIView):
                 {"detail": f"프로필 사진 업데이트 중 오류 발생: {e}"},
                 status=status.HTTP_400_BAD_REQUEST
             )
+        
 class ProfileImageDeleteView(APIView):
     permission_classes = [IsAuthenticated]
 

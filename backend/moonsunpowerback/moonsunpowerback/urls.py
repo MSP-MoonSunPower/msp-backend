@@ -26,6 +26,7 @@ urlpatterns = [
     path('secret-admin/', admin.site.urls),
     path('ai/', include('moonsunpowerai.urls')),
     path('user/',include('accounts.urls')),
+    path('accounts/', include('password.urls')),
     # Swagger UI
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     # ReDoc (alternative UI)
