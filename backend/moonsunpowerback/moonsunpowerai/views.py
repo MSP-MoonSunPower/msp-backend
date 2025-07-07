@@ -329,7 +329,7 @@ class GenerateTagTextAPIView(APIView):
             )
             
         response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=str(MODEL_SELECTOR.get(f"model_type_{difficulty}")).strip(),
             messages=[
                 {
                     "role": "system",
@@ -447,7 +447,7 @@ class UnknownWordsAPIView(APIView):
         
         client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
         response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=str(MODEL_SELECTOR.get(f"model_type_{difficulty}")).strip(),
             messages=[
                 {
                     "role": "system",
