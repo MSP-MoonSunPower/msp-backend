@@ -246,6 +246,7 @@ class GenerateTextAPIView(APIView):
             })
 
         response_data = {
+            "id": generated_text.id,
             "subject": generated_text.subject,
             "content": generated_text.content,
             "date": generated_text.date,
@@ -416,6 +417,7 @@ class GenerateTagTextAPIView(APIView):
             })
 
         response_data = {
+            "id": generated_text.id,
             "subject": subject_name,
             "content": generated_text.content,
             "date": generated_text.date,
