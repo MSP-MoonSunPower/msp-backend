@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils import timezone
+from django.conf import settings
+
 
 # 개별 질문 항목 모델
 class QuestionItem(models.Model):
@@ -41,12 +43,40 @@ class GeneratedText(models.Model):
 
 
 # 사용자가 요청한 주제 기반의 텍스트 모델 -> 이름 변경
+# models.py
 class CustomText(models.Model):
     subject = models.CharField(max_length=255, null=True, default="")
     difficulty = models.IntegerField(null=True, default=3)
-    date = models.DateTimeField(default=timezone.now)
     content = models.TextField()
+    date = models.DateTimeField(default=timezone.now)
     created_at = models.DateTimeField(auto_now_add=True)
+    created_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True, blank=True,
+        related_name='custom_texts'
+    )
+    is_tag_text = models.BooleanField(default=False)  # ← 추가
 
     def __str__(self):
-        return f"User Generated Text {self.id} - {self.date.strftime('%Y-%m-%d')}"
+        return f"[{'태그텍스트' if self.is_tag_text else '일반'}] {self.subject} ({self.date.strftime('%Y-%m-%d')})"
+
+# models.py
+from django.conf import settings
+
+class SolvedText(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    custom_text = models.ForeignKey('CustomText', on_delete=models.CASCADE, null=True, blank=True)
+    generated_text = models.ForeignKey('GeneratedText', on_delete=models.CASCADE, null=True, blank=True)
+    solved_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        constraints = [
+            models.CheckConstraint(
+                check=(
+                    models.Q(custom_text__isnull=False, generated_text__isnull=True) |
+                    models.Q(custom_text__isnull=True, generated_text__isnull=False)
+                ),
+                name="only_one_text_selected"
+            )
+        ]
