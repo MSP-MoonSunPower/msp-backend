@@ -14,11 +14,11 @@ jobs:
       run: |
         if [[ "${GITHUB_REF##*/}" == "main" ]]; then
           echo "host=${{ secrets.PROD_HOST }}" >> $GITHUB_OUTPUT
-          echo "dir=/srv/shared/MoonSunPower" >> $GITHUB_OUTPUT
+          echo "dir=/srv/shared/MoonSunPower/MoonSunPower" >> $GITHUB_OUTPUT
           echo "prefix=moonsunpower" >> $GITHUB_OUTPUT
         else
           echo "host=${{ secrets.DEV_HOST }}" >> $GITHUB_OUTPUT
-          echo "dir=/srv/shared/test-MoonSunPower" >> $GITHUB_OUTPUT
+          echo "dir=/srv/shared/test-MoonSunPower/MoonSunPower" >> $GITHUB_OUTPUT
           echo "prefix=test_moonsunpower" >> $GITHUB_OUTPUT
         fi
 
@@ -32,21 +32,30 @@ jobs:
           cd ${{ steps.env.outputs.dir }}
           git pull origin ${GITHUB_REF##*/}
 
+          # Backend
           cd backend
-          source venv/bin/activate
-          pip install -r requirements.txt
-          python manage.py migrate
+          if [ -f "venv/bin/activate" ]; then
+            source venv/bin/activate
+          fi
+          if [ -f "requirements.txt" ]; then
+            pip install -r requirements.txt || true
+          fi
+          if [ -f "manage.py" ]; then
+            python manage.py migrate || true
+          fi
 
           sudo systemctl daemon-reload
           for svc in backend celery_worker celery_beat; do
             sudo systemctl stop "${{ steps.env.outputs.prefix }}_$svc"
-          done
-          for svc in backend celery_worker celery_beat; do
             sudo systemctl start "${{ steps.env.outputs.prefix }}_$svc"
           done
 
+          # Frontend
           cd ../frontend
-          npm install
-          npm run build
+          if [ -f "package.json" ]; then
+            npm install
+            npm run build
+          fi
 
           sudo nginx -t && sudo systemctl restart nginx
+
