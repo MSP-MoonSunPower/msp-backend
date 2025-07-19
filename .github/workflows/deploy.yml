@@ -1,0 +1,52 @@
+name: Auto Deploy to Dev / Prod
+
+on:
+  push:
+    branches: [main, dev]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Set environment variables
+      id: env
+      run: |
+        if [[ "${GITHUB_REF##*/}" == "main" ]]; then
+          echo "host=${{ secrets.PROD_HOST }}" >> $GITHUB_OUTPUT
+          echo "dir=/srv/shared/MoonSunPower" >> $GITHUB_OUTPUT
+          echo "prefix=moonsunpower" >> $GITHUB_OUTPUT
+        else
+          echo "host=${{ secrets.DEV_HOST }}" >> $GITHUB_OUTPUT
+          echo "dir=/srv/shared/test-MoonSunPower" >> $GITHUB_OUTPUT
+          echo "prefix=test_moonsunpower" >> $GITHUB_OUTPUT
+        fi
+
+    - name: SSH Deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ steps.env.outputs.host }}
+        username: ubuntu
+        key: ${{ secrets.SSH_KEY }}
+        script: |
+          cd ${{ steps.env.outputs.dir }}
+          git pull origin ${GITHUB_REF##*/}
+
+          cd backend
+          source venv/bin/activate
+          pip install -r requirements.txt
+          python manage.py migrate
+
+          sudo systemctl daemon-reload
+          for svc in backend celery_worker celery_beat; do
+            sudo systemctl stop "${{ steps.env.outputs.prefix }}_$svc"
+          done
+          for svc in backend celery_worker celery_beat; do
+            sudo systemctl start "${{ steps.env.outputs.prefix }}_$svc"
+          done
+
+          cd ../frontend
+          npm install
+          npm run build
+
+          sudo nginx -t && sudo systemctl restart nginx
