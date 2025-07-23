@@ -3,7 +3,6 @@ html {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: "NanumSquareNeoLight";
   height: 100vh;
 }
 
@@ -37,17 +36,9 @@ html {
   padding-left: 16px;
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand+SC&display=swap");
-.patrick-hand-sc-regular {
-  font-family: "Patrick Hand SC", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
 .title {
   font-size: 80px;
   color: #1d1d1d;
-  font-family: "Patrick Hand SC", serif;
   font-weight: lighter;
   margin-bottom: -20px;
   margin-top: -20px;
@@ -74,7 +65,6 @@ html {
   background-color: #ff0808;
   color: white;
   width: 100%;
-  font-family: "NanumSquareNeo";
   padding: 15px 20px;
   font-size: 1.1rem;
   border-radius: 20px;
@@ -119,7 +109,6 @@ html {
 
   .title {
     font-size: 24px;
-    font-family: "NanumSquareNeoLight";
     margin-bottom: 1px;
   }
 
@@ -147,7 +136,6 @@ html {
     padding: 12px 16px;
     font-size: 16px;
     border-radius: 8px;
-    font-family: "NanumSquareNeoLight";
     cursor: pointer;
     border: none;
   }
