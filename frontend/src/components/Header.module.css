@@ -10,13 +10,12 @@
   left: 0;
   z-index: 1000;
   height: 60px;
-  background-color: #ffeaea;
   box-sizing: border-box;
   font-weight: bold;
 }
 
 .homeHeader {
-  background-color: white;
+  background: #fdf8f6;
   box-shadow: none;
 }
 
@@ -28,11 +27,12 @@
 }
 
 .title {
-  font-size: 28px;
+  font-size: 20px;
+  margin-top: 10px;
   margin-left: 20px;
-  letter-spacing: 1.5px;
-  font-weight: bold;
-  color: #de2a2a;
+  letter-spacing: 0.1px;
+
+  color: green;
 }
 
 .nav {

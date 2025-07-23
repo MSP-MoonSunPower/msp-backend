@@ -1,14 +1,14 @@
 .page {
-  background-color: rgba(255, 235, 235, 0.997);
+  background-color: #111;
 }
 
 .wrapper {
   display: flex;
-
   justify-content: center;
   align-items: center;
   width: 100%;
   min-height: 100vh;
+  background: #111;
 }
 
 .sectionContainer {
@@ -20,6 +20,7 @@
   width: 100%;
   min-height: 100vh;
   position: relative;
+  background: #111;
 }
 
 .imageContainer {
