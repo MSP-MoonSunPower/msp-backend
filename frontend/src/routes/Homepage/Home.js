@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./Home.module.css";
-import lmainImg from "../../assets/mainMacImg.png";
+import mainImg from "../../assets/mainMacImg.png";
 import yellowLogo from "../../assets/logoYellow.png";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
@@ -13,7 +13,7 @@ function Home() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 600);
     };
 
     handleResize();
@@ -47,7 +47,7 @@ function Home() {
   if (isMobile) {
     return (
       <div className={styles.mobileContainer}>
-        <img src={yellowLogo} alt="MSP Logo" className={styles.logoImage} />
+        <img src={mainImg} alt="MSP Logo" className={styles.logoImage} />
         <h1 className={styles.title}>Moon Sun Power</h1>
         <p className={styles.mobileMessage1}>
           개인 맞춤형 문해력 향상 학습 프로그램
@@ -58,9 +58,7 @@ function Home() {
             <button className={styles.startButton}>시작하기</button>
           </Link>
           <Link to="#" onClick={fetchTodayText}>
-            <button className={styles.questionButton}>
-              오늘의 지문으로 바로 가기
-            </button>
+            <button className={styles.questionButton}>오늘의 지문</button>
           </Link>
         </div>
         <p className={styles.mobileMessage2}>
@@ -98,7 +96,7 @@ function Home() {
         </div>
 
         <div className={styles.rightContainer}>
-          <img src={lmainImg} alt="MSP Logo" className={styles.logoImage} />
+          <img src={mainImg} alt="MSP Logo" className={styles.logoImage} />
         </div>
       </div>
 
