@@ -29,35 +29,29 @@ const Section1 = () => {
   };
 
   return (
-    <div className={styles.page}>
-      <ScrollAnimation
-        animateIn="fadeInUp"
-        animateOnce={false}
-        duration={1.5}
-        initiallyVisible={false}
-      >
-        <div className={styles.wrapper}>
-          <section id="section1" className={styles.sectionContainer}>
-            <div className={styles.imageContainer}>
-              <img
-                src={images[step]}
-                alt={`Step ${step + 1} Image`}
-                className={styles.sectionImage}
-              />
-            </div>
+    <ScrollAnimation
+      animateIn="fadeInUp"
+      animateOnce={false}
+      duration={1.5}
+      initiallyVisible={false}
+    >
+      <section id="section1" className={styles.sectionContainer}>
+        <img
+          src={images[step]}
+          alt={`Step ${step + 1} Image`}
+          className={styles.sectionImage}
+        />
 
-            <div className={styles.bottomNavButtons}>
-              <button className={styles.navButton} onClick={handlePrevStep}>
-                <FiChevronLeft size={20} />
-              </button>
-              <button className={styles.navButton} onClick={handleNextStep}>
-                <FiChevronRight size={20} />
-              </button>
-            </div>
-          </section>
+        <div className={styles.bottomNavButtons}>
+          <button className={styles.navButton} onClick={handlePrevStep}>
+            <FiChevronLeft size={20} />
+          </button>
+          <button className={styles.navButton} onClick={handleNextStep}>
+            <FiChevronRight size={20} />
+          </button>
         </div>
-      </ScrollAnimation>
-    </div>
+      </section>
+    </ScrollAnimation>
   );
 };
 

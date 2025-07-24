@@ -39,18 +39,20 @@
   width: 100%;
   margin-top: 10px;
   padding: 10px 20px;
-
-  background-color: #d31717;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
   color: white;
   font-size: 16px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
 }
 
 .loginButton:hover {
-  background-color: #ffc2c2;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
 }
 
 .signup {

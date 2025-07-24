@@ -74,10 +74,11 @@ function Home() {
       <div className={styles.container}>
         <div className={styles.leftContainer}>
           <h1 className={styles.title}>
-            Move <br />
-            Solve
+            Maximize
             <br />
-            Play!
+            Some
+            <br />
+            Potential
           </h1>
           <p className={styles.description}>
             내가 스스로 만들고 풀며 성장하는 힘 <br />
@@ -101,12 +102,9 @@ function Home() {
         </div>
       </div>
 
-      <div className={styles.sectionContainer}>
-        <Section2 />
-        <Section1 />
-
-        <Section3 />
-      </div>
+      <Section1 />
+      <Section2 />
+      <Section3 />
 
       <footer className={styles.footer}>
         Contact (문의 및 오류 신고) :&nbsp;

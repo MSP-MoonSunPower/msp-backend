@@ -30,40 +30,47 @@
 }
 
 .difficultyButton:nth-child(1) {
-  background-color: #ffe6e6;
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  color: #155724;
 }
 
 .difficultyButton:nth-child(1):hover {
-  background-color: #ffc2c2;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #c3e6cb 0%, #b1dfbb 100%);
+  box-shadow: 0 4px 15px rgba(116, 217, 134, 0.3);
+  transform: translateY(-2px);
 }
 
 .difficultyButton:nth-child(2) {
-  background-color: #ffcccc;
+  background: linear-gradient(135deg, #b8e6b8 0%, #a8d8a8 100%);
+  color: #0f5132;
 }
 
 .difficultyButton:nth-child(2):hover {
-  background-color: #ff9999;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #a8d8a8 0%, #98ca98 100%);
+  box-shadow: 0 4px 15px rgba(116, 217, 134, 0.3);
+  transform: translateY(-2px);
 }
 
 .difficultyButton:nth-child(3) {
-  background-color: #ff9999;
+  background: linear-gradient(135deg, #9cd69c 0%, #8cc88c 100%);
+  color: #0a3d2a;
 }
 
 .difficultyButton:nth-child(3):hover {
-  background-color: #ff6666;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #8cc88c 0%, #7cba7c 100%);
+  box-shadow: 0 4px 15px rgba(116, 217, 134, 0.3);
+  transform: translateY(-2px);
 }
 
 .difficultyButton:nth-child(4) {
-  background-color: #ff6666;
-  color: white;
+  background: linear-gradient(135deg, #80c680 0%, #70b870 100%);
+  color: #052e1f;
 }
 
 .difficultyButton:nth-child(4):hover {
-  background-color: #e63939;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #70b870 0%, #60aa60 100%);
+  box-shadow: 0 4px 15px rgba(116, 217, 134, 0.3);
+  transform: translateY(-2px);
 }
 
 .selected {
@@ -95,23 +102,27 @@
 
 .tag {
   padding: 15px 20px;
-  background-color: #fdefef;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border-radius: 10px;
   font-size: 0.9em;
   flex: 1;
   max-width: 100px;
   text-align: center;
   transition: all 0.3s ease;
+  color: #495057;
+  border: 1px solid #dee2e6;
 }
 
 .tag:hover {
-  background-color: #ffb3b3;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+  transform: translateY(-2px);
 }
 
 .selectedTag {
-  border: 2px solid #ff5f5f;
-  background-color: #ffd1d1;
+  border: 2px solid #4ade80;
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  color: #155724;
 }
 
 .buttons {
@@ -121,7 +132,7 @@
 }
 
 .startButton {
-  background-color: #ff5f5f;
+  background: #4ade80;
   color: white;
   font-size: 1.2em;
   border: none;
@@ -129,21 +140,43 @@
   padding: 15px 0;
   width: 230px;
   cursor: pointer;
-
   letter-spacing: 0.8px;
   font-family: "NanumSquareNeo";
-  transition: transform 0.3s ease, background-color 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.startButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.startButton:hover::before {
+  left: 100%;
 }
 
 .startButton:hover {
-  background-color: #e53e3e;
-  box-shadow: 0 4px 15px rgba(229, 62, 62, 0.5);
-  transform: scale(1.05);
+  background: #22c55e;
+  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
+  transform: translateY(-3px) scale(1.05);
 }
 
 .questionButton {
-  background-color: #ffe2e2;
-  color: #ff5f5f;
+  background: #4ade80;
+  color: white;
   font-size: 1.2em;
   border: none;
   border-radius: 15px;
@@ -151,12 +184,14 @@
   width: 230px;
   cursor: pointer;
   font-family: "NanumSquareNeo";
-  transition: transform 0.3s ease, background-color 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
 }
 
 .questionButton:hover {
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transform: scale(1.05);
+  background: #22c55e;
+  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
+  transform: translateY(-3px) scale(1.05);
 }
 
 .popup {
@@ -182,11 +217,17 @@
 .popupContent button {
   margin-top: 10px;
   padding: 5px 10px;
-  background-color: #ffd1d1;
-  color: black;
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  color: #155724;
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.popupContent button:hover {
+  background: linear-gradient(135deg, #c3e6cb 0%, #b1dfbb 100%);
+  transform: translateY(-1px);
 }
 
 .loadingContainer {
@@ -217,10 +258,9 @@
 
 .languageChoice button {
   margin-top: 20px;
-
-  background-color: #fff4f4;
-  border: 2px solid #ffc2c2;
-  color: #000000;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 2px solid #dee2e6;
+  color: #495057;
   padding: 0.6rem 1.2rem;
   border-radius: 500px;
   font-size: 1rem;
@@ -232,43 +272,17 @@
 
 .languageChoice button:hover {
   transform: translateY(-3px);
-  background-color: #ffe3e3;
-  box-shadow: 0 4px 8px rgba(255, 141, 141, 0.3);
-}
-
-.languageChoice button {
-  position: relative;
-}
-
-.languageChoice button::after {
-  content: attr(langBtn);
-  position: absolute;
-  top: -2.2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #333;
-  color: #fff;
-  padding: 6px 10px;
-  border-radius: 5px;
-  font-size: 0.75rem;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s ease-in-out;
-  z-index: 10;
-}
-
-.languageChoice button:hover::after {
-  opacity: 1;
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  box-shadow: 0 4px 8px rgba(108, 117, 125, 0.3);
 }
 
 .languageChoice button:active {
   transform: translateY(0);
-  background-color: #ffd4d4;
+  background: linear-gradient(135deg, #dee2e6 0%, #ced4da 100%);
 }
 
 .languageChoice button.selected {
-  background-color: #ff8a8a;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
   color: white;
-  border-color: #ff3d3d;
+  border-color: #16a34a;
 }

@@ -113,18 +113,21 @@
 .submitButton {
   width: 100%;
   padding: 0.75rem;
-  background-color: #ff6b6b;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
   border: none;
   border-radius: 12px;
   color: #fff;
   font-size: 1.1rem;
   margin-top: 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
 }
 
 .submitButton:hover {
-  background-color: #ff5252;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
 }
 
 .modal {
@@ -182,29 +185,33 @@
 }
 
 .modalContent button {
-  background-color: #ff0303;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 20px;
   font-size: 1rem;
   cursor: pointer;
-  transition: background 0.2s ease-in-out;
+  transition: all 0.3s ease;
   flex: 1;
   margin: 0 5px;
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
 }
 
 .modalContent button:hover {
-  background-color: #fd9a9a;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
 }
 
 .modalContent .cancelButton {
-  background-color: #ddd;
-  color: #333;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #495057;
 }
 
 .modalContent .cancelButton:hover {
-  background-color: #bbb;
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  transform: translateY(-2px);
 }
 
 @keyframes fadeIn {

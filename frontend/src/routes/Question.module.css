@@ -50,9 +50,12 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #f0f0f0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   margin-left: 10px;
+  color: #495057;
+  transition: all 0.3s ease;
 }
+
 .resetButton {
   font-family: "MaruBuri" !important;
   padding: 15px;
@@ -62,23 +65,26 @@
   margin-right: -15px;
   border: none;
   cursor: pointer;
-  background-color: #ffeaea;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+  color: #155724;
+  transition: all 0.3s ease;
 }
 
 .resetButton:hover {
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(116, 217, 134, 0.3);
+  transform: translateY(-2px) scale(1.05);
 }
 
 .showPassageButton:hover {
-  background-color: #c8c0fd;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+  transform: translateY(-2px);
 }
 
 .WordBtn:hover {
-  background-color: #fad4d0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+  transform: translateY(-2px);
 }
 
 .CloseFullPassageBTN {
@@ -89,12 +95,15 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #f0f0f0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #495057;
+  transition: all 0.3s ease;
 }
 
 .CloseFullPassageBTN:hover {
-  background-color: #fad4d0;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+  transform: translateY(-2px);
 }
 
 .Jimoon {
@@ -121,7 +130,7 @@
 .submitButton {
   display: block;
   width: 30%;
-  background-color: #e74c3c;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
   color: white;
   border: none;
   border-radius: 20px;
@@ -131,11 +140,14 @@
   margin-left: auto;
   margin-right: 5%;
   margin-top: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
 }
 
 .submitButton:hover {
-  background-color: #ff523f;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
+  transform: translateY(-3px) scale(1.05);
 }
 
 .radioBtn {
@@ -218,13 +230,25 @@
 }
 
 .cancelButton {
-  background-color: #f0f0f0;
-  color: #333;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #495057;
+  transition: all 0.3s ease;
+}
+
+.cancelButton:hover {
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  transform: translateY(-2px);
 }
 
 .confirmButton {
-  background-color: #eb4a44;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
   color: white;
+  transition: all 0.3s ease;
+}
+
+.confirmButton:hover {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  transform: translateY(-2px);
 }
 .fullPassage {
   position: fixed;
@@ -295,14 +319,20 @@
   margin-left: 8px;
   background: none;
   border: none;
-  color: red;
+  color: #dc3545;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.deleteButton:hover {
+  color: #c82333;
+  transform: scale(1.1);
 }
 
 .closeButton {
-  background-color: #fff;
-  color: #ff5f5f;
-  border: 2px solid #ff5f5f;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #495057;
+  border: 2px solid #dee2e6;
   width: 100px;
   height: 30px;
   font-size: 1em;
@@ -310,11 +340,12 @@
   cursor: pointer;
   align-self: center;
   margin-top: 10px;
-  transition: background-color 0.3s, color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .closeButton:hover {
-  background-color: #ffebeb;
+  background: linear-gradient(135deg, #e9ecef 0%, #dee2e6 100%);
+  transform: translateY(-2px);
 }
 
 .highlight {
@@ -339,9 +370,16 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  background-color: #ffe0e0;
+  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
   margin-left: 10px;
   font-weight: bold;
+  color: #856404;
+  transition: all 0.3s ease;
+}
+
+.timerBTN:hover {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+  transform: translateY(-2px);
 }
 
 .loadingOverlay {

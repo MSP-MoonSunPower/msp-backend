@@ -22,7 +22,7 @@ function AboutUs() {
         {
           id: 2,
           name: "Seungmin Oh",
-          description: "Project Manager / Prompt Engineer",
+          description: "Prompt Engineer",
           introduction: "서강대학교 유럽문화학과 & 경영학과 21",
           tagline: "Stay hungry, Stay foolish",
           image: sm,
