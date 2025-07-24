@@ -137,7 +137,7 @@
 .startButton {
   display: block;
   margin: 40px auto 0;
-  background: #4ade80;
+  background: #10b981;
   color: white;
   width: 90%;
   border: none;
@@ -167,13 +167,9 @@
   transition: left 0.5s;
 }
 
-.startButton:hover::before {
-  left: 100%;
-}
-
 .startButton:hover {
-  background: #22c55e;
-  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
+  background: #059669;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
   transform: translateY(-3px) scale(1.05);
 }
 

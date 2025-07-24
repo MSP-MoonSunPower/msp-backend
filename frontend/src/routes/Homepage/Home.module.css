@@ -97,7 +97,7 @@ html {
 
 .startButton,
 .questionButton {
-  background: #4ade80;
+  background: #10b981;
   color: #fff;
   width: auto;
   min-width: 120px;
@@ -139,20 +139,10 @@ html {
 
 .startButton:hover,
 .questionButton:hover {
-  background: #22c55e;
+  background: #059669;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
   color: #fff;
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
-}
-
-.questionButton {
-  background: #4ade80;
-  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
-}
-
-.questionButton:hover {
-  background: #22c55e;
-  box-shadow: 0 8px 25px rgba(74, 222, 128, 0.4);
 }
 
 @media (max-width: 1400px) {

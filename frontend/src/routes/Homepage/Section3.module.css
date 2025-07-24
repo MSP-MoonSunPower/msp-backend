@@ -85,7 +85,7 @@
   display: block;
   margin-top: 50px;
   margin-bottom: 30px;
-  background: #22c55e;
+  background: #10b981;
   color: white;
   width: 620px;
   border: none;
@@ -122,7 +122,8 @@
 }
 
 .startButton:hover {
-  background: #16a34a;
+  background: #059669;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+  color: #fff;
   transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 25px rgba(34, 197, 94, 0.4);
 }
