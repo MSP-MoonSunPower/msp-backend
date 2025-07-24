@@ -9,31 +9,10 @@ import yj from "../assets/yj.jpg";
 function AboutUs() {
   const teamSections = [
     {
-      title: "Prompt Engineering",
-      members: [
-        {
-          id: 1,
-          name: "Yunje Na",
-          description: "Team Leader / Prompt Engineer",
-          introduction: "서강대학교 유럽문화학과 & 경영학과 21",
-          tagline: "Do or Die",
-          image: yj,
-        },
-        {
-          id: 2,
-          name: "Seungmin Oh",
-          description: "Prompt Engineer",
-          introduction: "서강대학교 유럽문화학과 & 경영학과 21",
-          tagline: "Stay hungry, Stay foolish",
-          image: sm,
-        },
-      ],
-    },
-    {
       title: "Development",
       members: [
         {
-          id: 3,
+          id: 1,
           name: "Hwan Choe",
           description: "Backend Developer",
           introduction: "서강대학교 유럽문화학과 & 컴퓨터공학과 19",
@@ -41,12 +20,33 @@ function AboutUs() {
           image: hwan,
         },
         {
-          id: 4,
+          id: 2,
           name: "Seojin An",
           description: "Frontend Engineer / UXUI Designer ",
           introduction: "서강대학교 유럽문화학과 & 컴퓨터공학과 20",
           tagline: "Always be curious. Carpe diem!",
           image: sj,
+        },
+      ],
+    },
+    {
+      title: "Prompt Engineering",
+      members: [
+        {
+          id: 3,
+          name: "Yunje Na",
+          description: "Team Leader / Prompt Engineer",
+          introduction: "서강대학교 유럽문화학과 & 경영학과 21",
+          tagline: "Do or Die",
+          image: yj,
+        },
+        {
+          id: 4,
+          name: "Seungmin Oh",
+          description: "Prompt Engineer",
+          introduction: "서강대학교 유럽문화학과 & 경영학과 21",
+          tagline: "Stay hungry, Stay foolish",
+          image: sm,
         },
       ],
     },
