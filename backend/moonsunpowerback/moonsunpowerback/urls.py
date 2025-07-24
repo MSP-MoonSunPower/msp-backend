@@ -27,6 +27,7 @@ urlpatterns = [
     path('ai/', include('moonsunpowerai.urls')),
     path('user/',include('accounts.urls')),
     path('accounts/', include('password.urls')),
+    path('activity/', include('activity.urls')),
     # Swagger UI
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     # ReDoc (alternative UI)
