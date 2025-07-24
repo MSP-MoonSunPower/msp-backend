@@ -12,10 +12,11 @@
   height: 60px;
   box-sizing: border-box;
   font-weight: bold;
+  background: white;
 }
 
 .homeHeader {
-  background: #fdf8f6;
+  background: transparent;
   box-shadow: none;
 }
 
