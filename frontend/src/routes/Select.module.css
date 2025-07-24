@@ -7,7 +7,6 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  font-family: "NanumSquareNeoLight";
   font-size: 15px;
 }
 
@@ -15,7 +14,6 @@
   display: flex;
   gap: 1px;
   margin-top: 5px;
-  font-family: "NanumSquareNeoLight";
 }
 
 .difficultyButton {
@@ -26,7 +24,6 @@
   cursor: pointer;
   margin-bottom: 30px;
   transition: all 0.3s ease;
-  font-family: "NanumSquareNeoLight";
 }
 
 .difficultyButton:nth-child(1) {
@@ -141,7 +138,6 @@
   width: 230px;
   cursor: pointer;
   letter-spacing: 0.8px;
-  font-family: "NanumSquareNeo";
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
   position: relative;
