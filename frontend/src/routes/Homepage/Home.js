@@ -74,7 +74,7 @@ function Home() {
           <h1 className={styles.title}>
             Maximize
             <br />
-            Some
+            Self
             <br />
             Potential
           </h1>
