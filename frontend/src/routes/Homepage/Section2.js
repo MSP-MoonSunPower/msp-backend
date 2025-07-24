@@ -6,7 +6,7 @@ import { ScrollAnimation } from "@lasbe/react-scroll-animation";
 
 const Section2 = () => {
   return (
-    <section id="section3" className={styles.sectionContainer}>
+    <section id="section2" className={styles.sectionContainer}>
       <ScrollAnimation
         startingPoint="left"
         duration={1.3}

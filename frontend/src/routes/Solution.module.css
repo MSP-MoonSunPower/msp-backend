@@ -100,31 +100,30 @@
 }
 
 .correctChoice {
-  border: 2px solid #ff2121;
-  color: #ff2121;
-  background-color: #ffdbdb;
+  border: 2px solid #22c55e;
+  color: #155724;
+  background-color: #d4edda;
   font-weight: bold;
 }
 
 .correctSelected {
-  border: 2.5px solid #ff0505;
-  background-color: #bfceff;
-  color: #000000;
+  border: 2.5px solid #16a34a;
+  background-color: #c3e6cb;
+  color: #0f5132;
   font-weight: bold;
 }
 
 .incorrectSelected {
-  border: 2px solid #ddd;
-  background-color: #becdff;
-  color: #333333;
+  border: 2px solid #dc3545;
+  background-color: #f8d7da;
+  color: #721c24;
   font-weight: bold;
 }
 
 .explanation {
   margin-top: 15px;
   font-size: 15px;
-  color: #ff2121;
-
+  color: #22c55e;
   text-indent: 10px;
   font-weight: bold;
 }
@@ -132,13 +131,13 @@
 .explanationText {
   line-height: 1.6;
   font-weight: normal !important;
-  color: black !important;
+  color: #495057 !important;
 }
 
 .startButton {
   display: block;
   margin: 40px auto 0;
-  background-color: #ff5f5f;
+  background: #10b981;
   color: white;
   width: 90%;
   border: none;
@@ -146,14 +145,34 @@
   font-size: 1em;
   border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(74, 222, 128, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.startButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.15),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.startButton:hover {
+  background: #059669;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+  transform: translateY(-3px) scale(1.05);
 }
 
 a {
   text-decoration: none;
-}
-
-.startButton:hover {
-  background-color: #e53e3e;
-  box-shadow: 0 4px 15px rgba(229, 62, 62, 0.5);
 }

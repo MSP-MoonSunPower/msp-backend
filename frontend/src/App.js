@@ -13,6 +13,7 @@ import Question from "./routes/Question";
 import Select from "./routes/Select";
 import Solution from "./routes/Solution";
 import SignUp from "./routes/SignUp";
+import "pretendard/dist/web/variable/pretendardvariable.css";
 
 function App() {
   const location = useLocation();
@@ -20,6 +21,12 @@ function App() {
 
   return (
     <>
+      <div
+        style={{
+          fontFamily:
+            '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif',
+        }}
+      ></div>
       <Header isHomePage={isHomePage} />
       <main style={{ marginTop: isHomePage ? "0px" : "80px" }}>
         <Routes>

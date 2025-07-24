@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import styles from "./Home.module.css";
-import logo from "../../assets/msp-bear.png";
-import cuteLogo from "../../assets/msp_logo.png";
+import mainImg from "../../assets/mainMacImg.png";
+import yellowLogo from "../../assets/logoYellow.png";
 import Section1 from "./Section1";
 import Section2 from "./Section2";
 import Section3 from "./Section3";
@@ -13,7 +13,7 @@ function Home() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 600);
     };
 
     handleResize();
@@ -47,7 +47,7 @@ function Home() {
   if (isMobile) {
     return (
       <div className={styles.mobileContainer}>
-        <img src={logo} alt="MSP Logo" className={styles.logoImage} />
+        <img src={mainImg} alt="MSP Logo" className={styles.logoImage} />
         <h1 className={styles.title}>Moon Sun Power</h1>
         <p className={styles.mobileMessage1}>
           개인 맞춤형 문해력 향상 학습 프로그램
@@ -58,9 +58,7 @@ function Home() {
             <button className={styles.startButton}>시작하기</button>
           </Link>
           <Link to="#" onClick={fetchTodayText}>
-            <button className={styles.questionButton}>
-              오늘의 지문으로 바로 가기
-            </button>
+            <button className={styles.questionButton}>오늘의 지문</button>
           </Link>
         </div>
         <p className={styles.mobileMessage2}>
@@ -73,14 +71,18 @@ function Home() {
     <div>
       <div className={styles.container}>
         <div className={styles.leftContainer}>
-          <img src={logo} alt="MSP Logo" className={styles.logoImage} />
-        </div>
-
-        <div className={styles.rightContainer}>
-          <h1 className={styles.title}>Moon Sun Power</h1>
+          <h1 className={styles.title}>
+            Maximize
+            <br />
+            Some
+            <br />
+            Potential
+          </h1>
           <p className={styles.description}>
+            내가 스스로 만들고 풀며 성장하는 힘 <br />
             생성형 AI 기반 NLG를 이용한 개인 맞춤형 문해력 향상 학습 프로그램
           </p>
+
           <div className={styles.buttonContainer}>
             <Link to="/select">
               <button className={styles.startButton}>시작하기</button>
@@ -92,14 +94,15 @@ function Home() {
             </Link>
           </div>
         </div>
+
+        <div className={styles.rightContainer}>
+          <img src={mainImg} alt="MSP Logo" className={styles.logoImage} />
+        </div>
       </div>
 
-      <div className={styles.sectionContainer}>
-        <Section2 />
-        <Section1 />
-
-        <Section3 />
-      </div>
+      <Section1 />
+      <Section2 />
+      <Section3 />
 
       <footer className={styles.footer}>
         Contact (문의 및 오류 신고) :&nbsp;

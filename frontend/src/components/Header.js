@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import styles from "./Header.module.css";
 import LoginModal from "./LoginModal";
+import yellowLogo from "../assets/logoYellow.png";
 
 function Header() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -123,7 +124,7 @@ function Header() {
       className={`${styles.header} ${isHomePage ? styles.homeHeader : ""}`}
     >
       <div className={styles.logoContainer} onClick={handleLogoClick}>
-        <span className={styles.title}>MSP</span>
+        <span className={styles.title}>MoonSunPower</span>
       </div>
       <nav className={styles.nav}>
         <Link to="/mypage" className={styles.navLink}>

@@ -27,7 +27,7 @@ const questions = [
   {
     id: "q3",
     question: "오늘의 지문은 무엇인가요?",
-    answer: `오늘의 지문은 매일 자정에 업데이트되며, 난이도는 ‘지옥’으로 고정됩니다.
+    answer: `오늘의 지문은 매일 자정에 업데이트되며, 난이도는 '지옥'으로 고정됩니다.
 주제는 랜덤으로 선정되어, 매일 다양한 내용을 접하며 학습할 수 있도록 구성되었습니다. 
 매일 꾸준히 오늘의 지문을 풀기만 해도, 문해력과 상식이 눈에 띄게 향상되는 것을 경험하게 될 것입니다! 🚀`,
   },
@@ -51,13 +51,13 @@ const Section3 = () => {
   const [openItem, setOpenItem] = useState(null);
 
   return (
-    <div className={styles.container}>
-      <ScrollAnimation
-        animateIn="fadeInUp"
-        animateOnce={false}
-        duration={1.5}
-        initiallyVisible={false}
-      >
+    <ScrollAnimation
+      animateIn="fadeInUp"
+      animateOnce={false}
+      duration={1.5}
+      initiallyVisible={false}
+    >
+      <div className={styles.container}>
         <div className={styles.card}>
           <h2 className={styles.title}> 📌 자주 묻는 질문</h2>
           <Accordion.Root
@@ -95,13 +95,12 @@ const Section3 = () => {
             ))}
           </Accordion.Root>
         </div>
-      </ScrollAnimation>
 
-      {/* ✅ select 버튼을 ScrollAnimation 바깥으로 이동 */}
-      <Link to="/select">
-        <button className={styles.startButton}> MSP 시작하러 가기 📖 </button>
-      </Link>
-    </div>
+        <Link to="/select">
+          <button className={styles.startButton}> MSP 시작하러 가기 📖 </button>
+        </Link>
+      </div>
+    </ScrollAnimation>
   );
 };
 
