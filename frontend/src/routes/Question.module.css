@@ -370,16 +370,18 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
-  background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+  background: #f8f9fa;
   margin-left: 10px;
   font-weight: bold;
-  color: #856404;
+  color: #495057;
   transition: all 0.3s ease;
+  border: 1px solid #dee2e6;
 }
 
 .timerBTN:hover {
-  background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+  background: #e9ecef;
   transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
 }
 
 .loadingOverlay {
