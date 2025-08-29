@@ -6,5 +6,8 @@ urlpatterns = [
     path('text/<str:subject>/<int:difficulty>/<str:language>/', GenerateTextAPIView.as_view(), name='text-by-subject'),
     path('words/',UnknownWordsAPIView.as_view(),name='unknown-word'),
     path('tagtext/<int:subject>/<int:difficulty>',GenerateTagTextAPIView.as_view(),name='tag-text'),
+    path('submit/custom/<int:pk>/', SubmitCustomTextAPIView.as_view(), name='submit-custom'),
+    path('my-solved/', MySolvedTextsAPIView.as_view(), name='my-solved'),
+
 ]
 

@@ -45,10 +45,10 @@ def generate_and_save_text():
     )
     
     content = response.choices[0].message.content  # response에서 content 가져오기
-
+    subject = response_data.get("subject", "").strip()
         # Text 객체 생성
     generated_text = GeneratedText.objects.create(
-        subject="do not know",
+        subject=subject if subject else "unknown",
         content=content
     )
     # Assuming `content` is in JSON format and contains questions

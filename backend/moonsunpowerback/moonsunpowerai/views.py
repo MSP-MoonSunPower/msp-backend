@@ -7,10 +7,16 @@ from drf_yasg.utils import swagger_auto_schema
 from drf_yasg import openapi
 from rest_framework.permissions import AllowAny
 from openai import OpenAI
-from .models import CustomText, GeneratedText, QuestionItem
+from .models import CustomText, GeneratedText, QuestionItem, SolvedText
 from .prompts import *
 from dotenv import load_dotenv
-import re
+from rest_framework.permissions import IsAuthenticated
+from rest_framework import status
+from .serializers import SolvedTextSerializer
+from rest_framework.generics import ListAPIView
+from rest_framework.permissions import IsAuthenticated
+from .models import SolvedText
+
 
 load_dotenv()
 
@@ -240,6 +246,7 @@ class GenerateTextAPIView(APIView):
             })
 
         response_data = {
+            "id": generated_text.id,
             "subject": generated_text.subject,
             "content": generated_text.content,
             "date": generated_text.date,
@@ -247,6 +254,15 @@ class GenerateTextAPIView(APIView):
         }
 
         return Response(response_data, status=status.HTTP_200_OK)
+
+TAG_SUBJECT_LABELS = {
+    1: "스포츠/예술",
+    2: "철학",
+    3: "사회/경제",
+    4: "과학/기술",
+    5: "문학",
+    6: "역사"
+}
 
 class GenerateTagTextAPIView(APIView):
     permission_classes = [AllowAny]
@@ -329,7 +345,7 @@ class GenerateTagTextAPIView(APIView):
             )
             
         response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=str(MODEL_SELECTOR.get(f"model_type_{difficulty}")).strip(),
             messages=[
                 {
                     "role": "system",
@@ -365,11 +381,16 @@ class GenerateTagTextAPIView(APIView):
         main_content = content_data.get("content", "")
         questions = content_data.get("questions", [])
 
+        subject_name = TAG_SUBJECT_LABELS.get(subject, f"Unknown({subject})")
+
         generated_text = CustomText.objects.create(
-            subject=subject,
+            subject=subject_name,
             difficulty=difficulty,
-            content=main_content
+            content=main_content,
+            is_tag_text=True,
+            created_by=request.user if request.user.is_authenticated else None
         )
+
 
         questions_data = []
         for question in questions:
@@ -396,11 +417,13 @@ class GenerateTagTextAPIView(APIView):
             })
 
         response_data = {
-            "subject": generated_text.subject,
+            "id": generated_text.id,
+            "subject": subject_name,
             "content": generated_text.content,
             "date": generated_text.date,
             "questions": questions_data
         }
+
 
         return Response(response_data, status=status.HTTP_200_OK)
 class UnknownWordsAPIView(APIView):
@@ -447,7 +470,7 @@ class UnknownWordsAPIView(APIView):
         
         client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
         response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model=str(MODEL_SELECTOR.get(f"model_type_{difficulty}")).strip(),
             messages=[
                 {
                     "role": "system",
@@ -476,3 +499,33 @@ class UnknownWordsAPIView(APIView):
             )
         
         return Response(response_data, status=status.HTTP_200_OK)
+
+
+class SubmitCustomTextAPIView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, pk):
+        try:
+            text = CustomText.objects.get(pk=pk)
+        except CustomText.DoesNotExist:
+            return Response({"error": "지문이 존재하지 않습니다."}, status=404)
+
+        # 중복 제출 방지
+        solved, created = SolvedText.objects.get_or_create(
+            user=request.user,
+            custom_text=text
+        )
+
+        if not created:
+            return Response({"message": "이미 제출한 지문입니다."}, status=200)
+
+        return Response({"message": "제출이 완료되었습니다."}, status=201)
+    
+
+
+class MySolvedTextsAPIView(ListAPIView):
+    permission_classes = [IsAuthenticated]
+    serializer_class = SolvedTextSerializer
+
+    def get_queryset(self):
+        return SolvedText.objects.filter(user=self.request.user).order_by('-solved_at')
