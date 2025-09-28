@@ -42,7 +42,7 @@ DEBUG = True
 
 # OpenAI API Key
 OPENAI_API_KEY = get_secret("OPENAI_API_KEY")
-ALLOWED_HOSTS = ['127.0.0.1', 'moonsunpower.com','test.moonsunpower.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'moonsunpower.com','test.moonsunpower.com','www.moonsunpower.com','api.moonsunpower.com','localhost:3000']
 
 # AWS_ACCESS_KEY_ID = get_secret("AWS_ACCESS_KEY_ID")
 # AWS_SECRET_ACCESS_KEY = get_secret("AWS_SECRET_ACCESS_KEY")
