@@ -88,6 +88,7 @@ ROOT_URLCONF = 'moonsunpowerback.urls'
 
 CORS_ALLOW_ALL_ORIGINS = True
 
+APPEND_SLASH = True  # 기본값
 
 TEMPLATES = [
     {
